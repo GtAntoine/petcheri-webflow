@@ -19,7 +19,7 @@ export function HomeStats() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="bg-[--color-chocolat] py-14" ref={ref}>
+    <section className="py-14" style={{ background: "#2C1810" }} ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-[--color-ivoire]/10">
           {STATS.map((stat, i) => {

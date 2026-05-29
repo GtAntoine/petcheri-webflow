@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import SendIcon from "@/components/icons/send-icon";
 
 export function HomeNewsletter() {
   const t = useTranslations("home");
@@ -16,9 +16,9 @@ export function HomeNewsletter() {
   };
 
   return (
-    <section className="bg-[--color-chocolat] py-20">
+    <section className="py-20" style={{ background: "#2C1810" }}>
       <div className="max-w-2xl mx-auto px-6 text-center">
-        <Mail className="w-8 h-8 text-[--color-or] mx-auto mb-5" />
+        <SendIcon size={32} color="var(--color-or)" className="mx-auto mb-5" />
         <h2 className="text-h2 text-[--color-ivoire] mb-4">{t("newsletter_title")}</h2>
         <p className="text-[--color-ivoire]/60 text-sm leading-relaxed mb-10">
           {t("newsletter_subtitle")}

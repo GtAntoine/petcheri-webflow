@@ -215,7 +215,7 @@ export default async function QuiSommesNousPage({
       </section>
 
       {/* Nos chouchouteurs */}
-      <section className="section-padding bg-[--color-chocolat]">
+      <section className="section-padding" style={{ background: "#2C1810" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>

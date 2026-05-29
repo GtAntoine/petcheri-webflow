@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { SectionHeader } from "./section-header";
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
+import MessageSquareIcon from "@/components/icons/message-square-icon";
 
 const TESTIMONIALS = [
   {
@@ -48,7 +49,7 @@ export function HomeTestimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
-              <Quote className="w-8 h-8 text-[--color-or]/40" />
+              <MessageSquareIcon size={28} color="var(--color-or)" className="opacity-40" />
 
               <p className="text-[--color-chocolat] leading-relaxed italic text-sm flex-1">
                 "{item.text}"
