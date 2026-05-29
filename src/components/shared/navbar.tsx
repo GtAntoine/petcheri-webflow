@@ -1,0 +1,164 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { UI } from "@/lib/assets";
+import { Menu, X, ChevronDown } from "lucide-react";
+
+const PETCHERI_APP = "https://app.petcheri.com";
+
+export function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const otherLocale = locale === "fr" ? "en" : "fr";
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        scrolled
+          ? "bg-[--color-ivoire]/95 backdrop-blur-md shadow-sm border-b border-[--color-border]"
+          : "bg-transparent"
+      )}
+    >
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <Image
+            src={UI.logo}
+            alt="Petcheri"
+            width={140}
+            height={40}
+            priority
+            className="h-9 w-auto"
+          />
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden lg:flex items-center gap-8">
+          {/* Services dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button className="flex items-center gap-1 text-sm font-medium text-[--color-chocolat] hover:text-[--color-or] transition-colors">
+              {t("services")}
+              <ChevronDown
+                className={cn("w-4 h-4 transition-transform duration-200", servicesOpen && "rotate-180")}
+              />
+            </button>
+            {servicesOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2">
+                <div className="bg-white border border-[--color-border] rounded-xl shadow-[--shadow-card-hover] p-2 min-w-[200px]">
+                  {[
+                    { href: "/services-chien" as const, label: t("services_dog") },
+                    { href: "/services-chat" as const, label: t("services_cat") },
+                    { href: "/services-nac" as const, label: t("services_nac") },
+                  ].map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block px-4 py-2.5 text-sm text-[--color-chocolat] hover:bg-[--color-ivoire] hover:text-[--color-or] rounded-lg transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {[
+            { href: "/qui-sommes-nous" as const, label: t("about") },
+            { href: "/vip-club" as const, label: t("vip") },
+            { href: "/entreprises" as const, label: t("for_business") },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "text-sm font-medium transition-colors",
+                pathname === item.href
+                  ? "text-[--color-or]"
+                  : "text-[--color-chocolat] hover:text-[--color-or]"
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        {/* Right side */}
+        <div className="hidden lg:flex items-center gap-4">
+          <Link
+            href={pathname}
+            locale={otherLocale}
+            className="text-xs font-medium text-[--color-muted] hover:text-[--color-or] transition-colors uppercase tracking-wider"
+          >
+            {t("language")}
+          </Link>
+          <Button variant="or" size="sm" asChild>
+            <a href={PETCHERI_APP} target="_blank" rel="noopener noreferrer">
+              {t("book")}
+            </a>
+          </Button>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden p-2 rounded-lg text-[--color-chocolat]"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
+        >
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
+      </nav>
+
+      {/* Mobile menu */}
+      {isOpen && (
+        <div className="lg:hidden bg-[--color-ivoire] border-t border-[--color-border] px-6 py-4 flex flex-col gap-4">
+          {[
+            { href: "/nos-services" as const, label: t("services") },
+            { href: "/services-chien" as const, label: t("services_dog") },
+            { href: "/services-chat" as const, label: t("services_cat") },
+            { href: "/services-nac" as const, label: t("services_nac") },
+            { href: "/qui-sommes-nous" as const, label: t("about") },
+            { href: "/vip-club" as const, label: t("vip") },
+            { href: "/entreprises" as const, label: t("for_business") },
+            { href: "/contact" as const, label: t("contact") },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-[--color-chocolat] hover:text-[--color-or]"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Button variant="or" size="md" className="mt-2" asChild>
+            <a href={PETCHERI_APP} target="_blank" rel="noopener noreferrer">
+              {t("book")}
+            </a>
+          </Button>
+        </div>
+      )}
+    </header>
+  );
+}

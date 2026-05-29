@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "services": "Nos services",
+    "services_dog": "Services chien",
+    "services_cat": "Services chat",
+    "services_nac": "Services NAC",
+    "about": "Qui sommes-nous",
+    "vip": "VIP Club",
+    "partners": "Partenaires",
+    "for_business": "Entreprises",
+    "luxury_hotels": "Hôtels de luxe",
+    "become_petsitter": "Devenir Petsitter",
+    "reviews": "Vos avis",
+    "contact": "Contact",
+    "book": "Réserver",
+    "blog": "Blog",
+    "language": "EN"
+  },
+  "home": {
+    "hero_title": "La conciergerie qui prend soin de votre animal",
+    "hero_subtitle": "Un service sur-mesure, partout en France. Chiens, chats et NAC confiés à des passionnés certifiés.",
+    "hero_cta": "Découvrir nos services",
+    "hero_secondary_cta": "En savoir plus",
+    "trust_label": "Ils nous font confiance",
+    "stats_providers": "prestataires certifiés",
+    "stats_satisfaction": "satisfaction client",
+    "stats_insurance": "Assurance AXA incluse",
+    "services_title": "Des services pensés pour chaque animal",
+    "services_subtitle": "Garde, éducation, toilettage, transport — tout ce dont votre compagnon a besoin, assuré et supervisé.",
+    "process_title": "Comment ça fonctionne ?",
+    "process_step1_title": "Vous décrivez vos besoins",
+    "process_step1_desc": "Remplissez notre formulaire en quelques minutes — type d'animal, service souhaité, dates, adresse.",
+    "process_step2_title": "Nous sélectionnons votre chouchouteur",
+    "process_step2_desc": "Notre équipe identifie le prestataire certifié le plus adapté à votre animal et à votre situation.",
+    "process_step3_title": "Votre animal est entre de bonnes mains",
+    "process_step3_desc": "Suivi en temps réel, compte-rendu photo, assurance AXA incluse. Vous partez l'esprit serein.",
+    "testimonials_title": "Ce que disent nos clients",
+    "newsletter_title": "Rejoignez notre communauté",
+    "newsletter_subtitle": "Conseils bien-être animal, offres exclusives et actualités Petcheri directement dans votre boîte mail.",
+    "newsletter_placeholder": "Votre adresse email",
+    "newsletter_cta": "S'inscrire"
+  },
+  "services": {
+    "dog": {
+      "hero_title": "Un service d'exception pour votre chien",
+      "hero_subtitle": "Garde, éducation, promenade, toilettage — nos chouchouteurs certifiés prennent soin de votre compagnon comme du leur.",
+      "hero_cta": "Réserver un service"
+    },
+    "cat": {
+      "hero_title": "Votre chat mérite le meilleur",
+      "hero_subtitle": "Visites à domicile, garde et soins personnalisés — respectueux du territoire et des habitudes de votre félin.",
+      "hero_cta": "Réserver un service"
+    },
+    "nac": {
+      "hero_title": "Un soin spécialisé pour vos NAC",
+      "hero_subtitle": "Lapins, oiseaux, reptiles, rongeurs — nos prestataires formés aux espèces exotiques prennent le relais.",
+      "hero_cta": "Réserver un service"
+    }
+  },
+  "footer": {
+    "tagline": "La conciergerie qui prend soin de votre animal.",
+    "services_title": "Nos services",
+    "company_title": "Petcheri",
+    "legal_title": "Légal",
+    "privacy": "Politique de confidentialité",
+    "terms": "CGU",
+    "mentions": "Mentions légales",
+    "cookies": "Cookies",
+    "insurance": "Assurance",
+    "rights": "Tous droits réservés."
+  },
+  "common": {
+    "book_cta": "Réserver",
+    "learn_more": "En savoir plus",
+    "discover": "Découvrir",
+    "contact_us": "Nous contacter",
+    "get_quote": "Recevoir un devis",
+    "our_petsitters": "Nos chouchouteurs",
+    "certified": "Certifié",
+    "insured": "Assuré AXA",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue.",
+    "press_title": "Ils parlent de nous"
+  }
+}

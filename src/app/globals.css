@@ -1,49 +1,162 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* ── Palette ── */
+  --color-ivoire: #FAF7F2;
+  --color-ivoire-dark: #F0EBE1;
+  --color-chocolat: #2C1810;
+  --color-chocolat-light: #4A2E22;
+  --color-or: #C9A96E;
+  --color-or-light: #DFC08A;
+  --color-or-dark: #A8834A;
+  --color-sauge: #8B9D77;
+  --color-sauge-light: #A8BA94;
+  --color-sauge-dark: #6E7D5E;
+  --color-creme: #F5EDD8;
+
+  /* ── Semantic colors ── */
+  --color-background: var(--color-ivoire);
+  --color-foreground: var(--color-chocolat);
+  --color-muted: #9E8B7A;
+  --color-muted-foreground: #7A6A5A;
+  --color-border: #E8DFD0;
+  --color-ring: var(--color-or);
+
+  /* ── Typography ── */
+  --font-serif: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
+  --font-sans: var(--font-inter, "Inter"), system-ui, sans-serif;
+
+  /* ── Spacing ── */
+  --spacing-section: 6rem;
+  --spacing-section-sm: 4rem;
+
+  /* ── Border radius ── */
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 2px 20px rgba(44, 24, 16, 0.08);
+  --shadow-card-hover: 0 8px 40px rgba(44, 24, 16, 0.14);
+  --shadow-or: 0 4px 24px rgba(201, 169, 110, 0.3);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-}
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-ivoire);
+    color: var(--color-chocolat);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-ivoire); }
+  ::-webkit-scrollbar-thumb { background: var(--color-or); border-radius: 3px; }
+}
+
+@layer components {
+  /* Typography scale */
+  .text-display {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  .text-h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .text-h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .text-lead {
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-muted-foreground);
+  }
+
+  /* Section containers */
+  .section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+
+  .section-padding-sm {
+    padding-top: var(--spacing-section-sm);
+    padding-bottom: var(--spacing-section-sm);
+  }
+
+  /* Gold divider line */
+  .divider-or {
+    width: 3rem;
+    height: 1px;
+    background: var(--color-or);
+    margin: 1.5rem auto;
+  }
+
+  /* Card base */
+  .card-base {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-base:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
   }
 }

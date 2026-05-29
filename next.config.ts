@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // All assets are local in /public/assets — no external image domains needed
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

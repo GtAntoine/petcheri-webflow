@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "services": "Our services",
+    "services_dog": "Dog services",
+    "services_cat": "Cat services",
+    "services_nac": "Exotic pet services",
+    "about": "About us",
+    "vip": "VIP Club",
+    "partners": "Partners",
+    "for_business": "Corporate",
+    "luxury_hotels": "Luxury hotels",
+    "become_petsitter": "Become a Petsitter",
+    "reviews": "Reviews",
+    "contact": "Contact",
+    "book": "Book",
+    "blog": "Blog",
+    "language": "FR"
+  },
+  "home": {
+    "hero_title": "The concierge that cares for your pet",
+    "hero_subtitle": "A bespoke service, throughout France. Dogs, cats and exotic pets entrusted to certified professionals.",
+    "hero_cta": "Discover our services",
+    "hero_secondary_cta": "Learn more",
+    "trust_label": "They trust us",
+    "stats_providers": "certified sitters",
+    "stats_satisfaction": "client satisfaction",
+    "stats_insurance": "AXA Insurance included",
+    "services_title": "Services tailored for every pet",
+    "services_subtitle": "Sitting, training, grooming, transport — everything your companion needs, insured and supervised.",
+    "process_title": "How does it work?",
+    "process_step1_title": "You describe your needs",
+    "process_step1_desc": "Fill in our form in just a few minutes — pet type, desired service, dates, address.",
+    "process_step2_title": "We select your petsitter",
+    "process_step2_desc": "Our team identifies the certified professional best suited to your pet and situation.",
+    "process_step3_title": "Your pet is in good hands",
+    "process_step3_desc": "Real-time updates, photo reports, AXA insurance included. You leave with complete peace of mind.",
+    "testimonials_title": "What our clients say",
+    "newsletter_title": "Join our community",
+    "newsletter_subtitle": "Pet wellness tips, exclusive offers and Petcheri news delivered straight to your inbox.",
+    "newsletter_placeholder": "Your email address",
+    "newsletter_cta": "Subscribe"
+  },
+  "services": {
+    "dog": {
+      "hero_title": "Exceptional care for your dog",
+      "hero_subtitle": "Sitting, training, walking, grooming — our certified petsitters treat your companion like their own.",
+      "hero_cta": "Book a service"
+    },
+    "cat": {
+      "hero_title": "Your cat deserves the best",
+      "hero_subtitle": "Home visits, sitting and personalised care — respectful of your cat's territory and habits.",
+      "hero_cta": "Book a service"
+    },
+    "nac": {
+      "hero_title": "Specialist care for your exotic pets",
+      "hero_subtitle": "Rabbits, birds, reptiles, rodents — our providers trained in exotic species take care of everything.",
+      "hero_cta": "Book a service"
+    }
+  },
+  "footer": {
+    "tagline": "The concierge that cares for your pet.",
+    "services_title": "Our services",
+    "company_title": "Petcheri",
+    "legal_title": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "mentions": "Legal Notice",
+    "cookies": "Cookies",
+    "insurance": "Insurance",
+    "rights": "All rights reserved."
+  },
+  "common": {
+    "book_cta": "Book",
+    "learn_more": "Learn more",
+    "discover": "Discover",
+    "contact_us": "Contact us",
+    "get_quote": "Get a quote",
+    "our_petsitters": "Our petsitters",
+    "certified": "Certified",
+    "insured": "AXA Insured",
+    "loading": "Loading...",
+    "error": "An error occurred.",
+    "press_title": "As seen in"
+  }
+}
