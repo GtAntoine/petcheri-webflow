@@ -6,24 +6,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--color-or] disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
   {
     variants: {
       variant: {
         primary:
-          "bg-[--color-chocolat] text-[--color-ivoire] hover:bg-[--color-chocolat-light] shadow-sm hover:shadow-md",
+          "bg-chocolat text-ivoire hover:bg-chocolat-light shadow-sm hover:shadow-md",
         or:
-          "bg-[--color-or] text-[--color-chocolat] hover:bg-[--color-or-light] shadow-[--shadow-or] hover:shadow-md font-semibold",
+          "bg-or text-chocolat hover:bg-or-light shadow-or hover:shadow-md font-semibold",
         outline:
-          "border border-[--color-chocolat] text-[--color-chocolat] bg-transparent hover:bg-[--color-chocolat] hover:text-[--color-ivoire]",
+          "border border-chocolat text-chocolat bg-transparent hover:bg-chocolat hover:text-ivoire",
         "outline-or":
-          "border border-[--color-or] text-[--color-or] bg-transparent hover:bg-[--color-or] hover:text-[--color-chocolat]",
+          "border border-or text-or bg-transparent hover:bg-or hover:text-chocolat",
         ghost:
-          "text-[--color-chocolat] hover:bg-[--color-ivoire-dark]",
+          "text-chocolat hover:bg-ivoire-dark",
         link:
-          "text-[--color-or] underline-offset-4 hover:underline p-0 h-auto rounded-none",
+          "text-or underline-offset-4 hover:underline p-0 h-auto rounded-none",
         white:
-          "bg-white text-[--color-chocolat] hover:bg-[--color-ivoire] shadow-sm hover:shadow-md",
+          "bg-white text-chocolat hover:bg-ivoire shadow-sm hover:shadow-md",
       },
       size: {
         sm: "h-9 px-5 text-xs",
