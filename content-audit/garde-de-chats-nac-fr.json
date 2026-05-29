@@ -1,0 +1,40 @@
+{
+  "url": "https://www.petcheri.com/garde-de-chats-nac",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Garde de chats & NAC",
+  "meta_description": null,
+  "h1": ["Garde et Visite Chats & NAC"],
+  "h2": [
+    "De quel service avez-vous besoin ?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Visite & Garde de chat",
+    "Visite & Garde de NAC"
+  ],
+  "paragraphs": [
+    "Nos visites et gardes ultra-personnalisées pour les chats, ainsi que pour les rongeurs, oiseaux, reptiles, amphibiens, poissons et autres animaux exotiques.",
+    "Nous adaptons nos services aux besoins spécifiques de votre animal, en tenant compte de son âge, de sa taille, de sa morphologie, de ses besoins, de ses peurs mais aussi à vous !",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal"
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxRQ"},
+    {"text": "Voir plus", "url": "/visite-garde-de-chats"},
+    {"text": "Voir plus", "url": "/visite-garde-de-nacs"}
+  ],
+  "images": [],
+  "form_fields": [],
+  "testimonials": [
+    {
+      "author": "Stéphanie, maman de Pilepoil",
+      "text": "Giovanna est une super bunny sitter avec Pilepoil 🐰👍Fiable, gentille et professionnelle. Elle a bien compris les besoins de mon lapin et elle s'en occupe merveilleusement bien.Je recommande !"
+    }
+  ],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}

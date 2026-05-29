@@ -1,0 +1,68 @@
+{
+  "url": "https://www.petcheri.com/visite-garde-de-chats",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Visite & Garde de chat",
+  "meta_description": null,
+  "h1": ["Visite & Garde de chats"],
+  "h2": [
+    "Visite à domicile",
+    "Garde à domicile",
+    "Garde chez le chouchouteur",
+    "Hôtel pour chat",
+    "Le conseil de notre comportementaliste",
+    "Pourquoi choisir Pet Cheri?",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Des soins adaptés et une réelle supervision",
+    "Un planning personnalisé et une vraie proximité",
+    "Service couvert par notre assurance professionnelle",
+    "Des photos et des vidéos régulières",
+    "Un accès à un vétérinaire en cas de besoin",
+    "Arrosage des plantes et réception du courrier en bonus !"
+  ],
+  "paragraphs": [
+    "Nous proposons des gardes de chats à travers toute la France. Trouvez le chouchouteur parfait pour rendre visite à votre chat ou le garder, le nourrir et le câliner en fonction de ses besoins et de ses envies.",
+    "Nos catsitters peuvent aussi garder votre matou chez vous ou à leur domicile si celui-ci a plus besoin de compagnie humaine mais également en pension s'il apprécie la compagnie d'autres félins.",
+    "Nos visites à domicile de 15 min à 1h ou plus permettent à votre matou de recevoir toute l'attention et le soin dont il a besoin : nourriture, eau, jeux, nettoyage de litière et séances de ronrons à n'en plus finir.",
+    "Nos catsitters font de chaque visite LE moment de votre matou tout en s'assurant de sa sécurité.",
+    "Indiquez le régime précis de votre animal (nourriture sèche et/ou humide, fréquence et quantité), notre chouchouteur.se le nourrira et s'assurera qu'il ait suffisamment d'eau.",
+    "Notre chouchouteur nettoiera la litière ou la cage de votre animal pour le plus grand confort et l'hygiène de votre compagnon.",
+    "Nos petits félins aussi ont besoin d'interaction, notre catsitter pourra divertir votre animal avec ses jouets ou accessoires et pourra lui offrir de longues séances de câlins.",
+    "Votre chat a besoin de beaucoup d'attention et préfère le confort de votre foyer ? Nos concierges vous proposent des catsitters professionnels et de confiance qui prendront soin de votre matou chez vous.",
+    "Plus besoin de demander à votre animal de s'adapter à un nouvel environnement, choisissez l'un de nos gardiens de confiance pour s'occuper de votre animal directement chez vous. Ils veilleront au bien-être de votre animal dans le confort et les habitudes de son propre foyer !",
+    "Si votre chat s'adapte facilement à un nouvel environnement et a besoin de compagnie humaine, vous pouvez opter pour l'un de nos gardiens pour s'occuper de lui pendant votre absence.",
+    "Nous nous assurons que le domicile du chouchouteur est entièrement équipé et sécurisé (filets de sécurité aux fenêtres, arbres à chat, jouets…) pour répondre à tous les besoins de votre chat.",
+    "Vous pouvez choisir parmi différents profils, avec ou sans autres animaux, en fonction des préférences de votre compagnon moustachu.",
+    "Nos services de pension pour chats offrent une expérience 5 étoiles pour les félins. Votre chat disposera d'un espace qui lui est dédié, qu'il soit partagé avec d'autres chats ou non, équipé de jouets, de repas comme à la maison, d'une litière, d'une literie confortable digne des plus grands palaces, de perchoirs en hauteur, et de tout le nécessaire pour répondre à ses besoins et lui garantir un séjour MIAOUGIQUE.",
+    "Avant de faire votre choix, assurez-vous de bien prendre en compte les préférences de votre chat. Comment réagit-il avec les autres chats ? A-t-il besoin de beaucoup d'attention ? Nous restons disponibles pour vous guider vers la solution la plus adaptée.",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal"
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible💻🤩", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/"},
+    {"text": "Réserver son séjour", "url": "https://www.petcheri-app.com/"},
+    {"text": "Learn more", "url": "/contact"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a105a43dc5288e4c60ee6d_Icone%20V4%20CT%20sleep.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e4565b156253128ca93201_Illustrations%20Site%20(800%C2%A0%C3%97%C2%A0800%C2%A0px)-114.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d41a2384a05b689cbbcaf1_Tests%20DA-85.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e4595545b4f6abb1412a02_Moodboard%20-%20NEW%20DA-5.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d41a23b269fd6642919a32_Tests%20DA-86.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e45c4e66f7981576de8069_Moodboard%20-%20NEW%20DA-6.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2fd017977a5972f4f63a3_Planning.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a8485e5bd0a4dd8a3c0b_Planning.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848bbcf31fb30e4e0d5_Assurance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a84899e1f69d420ae1d0_Photos.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848ef56e7d8fca3dd7c_Veterinaire.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2e32e5846c8d09f16088b_seedling.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""}
+  ],
+  "form_fields": [{"type": "email", "label": "Newsletter"}],
+  "testimonials": [],
+  "blog_articles": []
+}

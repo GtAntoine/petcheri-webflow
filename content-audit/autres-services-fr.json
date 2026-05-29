@@ -1,0 +1,57 @@
+{
+  "url": "https://www.petcheri.com/autres-services",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Autres services",
+  "meta_description": null,
+  "h1": ["Autres services"],
+  "h2": [
+    "Livraison",
+    "Aide administrative",
+    "Aide à l'aménagement",
+    "Votre besoin ne figure pas ici ?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [],
+  "paragraphs": [
+    "Notre objectif : offrir aux animaux la vie de wouf qu'ils méritent tout en simplifiant le quotidien de leurs propriétaires !",
+    "En tant que pet parents, nous nous sommes tous retrouvés à avoir besoin d'aide que ce soit vous voyager avec son animal pour une expatriation, être conseillé pour trouver les bons aménagements pour un chat âgé ou se faire livrer les repas préférés de son toutou en express…",
+    "Vous n'avez plus à vous tracasser, l'équipe Pet Cheri et ses prestataires de confiance sont là pour vous accompagner de A à Z !",
+    "Notre conciergerie vous propose un service de livraison au grès des envies de votre boule de poils : croquettes, nourriture fraîche, jouets, accessoires…",
+    "Notre sélection vous propose des produits de premier choix parmi nos marques partenaires.",
+    "Nous assurons une livraison rapide et fiable à travers toute la France pour un confort maximal.",
+    "Vous êtes expatrié ou vous partez en voyage avec votre boule de poils ? Nous nous occupons des démarches administratives de votre animal à l'arrivée / départ : passeports, documents officiels, mise à jour du carnet de santé, transport, etc… Une prise en charge de A-Z pour un voyage sans tracas !",
+    "Pour toujours plus de confort, nous nous occupons également d'accompagner votre animal chez le vétérinaire et de gérer son planning de soins ou administratif.",
+    "Vous allez accueillir un chiot, un chaton, un lapin ou un animal exotique mais ne savez pas comment aménager votre intérieur ? Votre animal est âgé ou a une pathologie invalidante et avez besoin d'adapter son environnement ?",
+    "Nous proposons des solutions d'aménagement 100% adaptées aux besoins de votre animal aux côtés de comportementalistes félins et canins aux côté d'architectes et designers spécialisés. Profitez de nos sélections parmi nos marques pattenaires pour un intérieur pet-friendly et design.",
+    "N'hésitez pas à nous contacter directement, nous trouverons une solution au poil !",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal",
+    "Made in Paris with love.",
+    "© 2024 Pet Cheri. Tous droits réservés."
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible 💻🤩", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Être livré", "url": "https://www.petcheri-app.com/"},
+    {"text": "Me faire aider", "url": "https://www.petcheri-app.com/"},
+    {"text": "Demander un devis", "url": "https://www.petcheri-app.com/"},
+    {"text": "Contactez-nous", "url": "/contact"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Voir tous les articles", "url": "/blog"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a52c427cd8e3b30bcd9e7c_icone%20V4%20LP%20Livraison.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e42c345922e03451fd1aaf_Scooter%20dog.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e42fede133fa3c0f9e0052_Moodboard%20-%20NEW%20DA-4.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d49d44aa224da55152c482_Administration.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d49d449629375d0d6e82b1_Tests%20DA-90.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d59677a81dc3e2c59ba65c_3.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e43392fb830c63d29a5f91_Illustrations%20Site%20(800%C2%A0%C3%97%C2%A0800%C2%A0px)-112.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""}
+  ],
+  "form_fields": [{"type": "email", "label": "Newsletter"}],
+  "testimonials": [],
+  "blog_articles": []
+}

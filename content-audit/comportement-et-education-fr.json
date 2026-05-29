@@ -1,0 +1,68 @@
+{
+  "url": "https://www.petcheri.com/comportement-et-education",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Comportement & Éducation",
+  "meta_description": null,
+  "h1": ["Comportement & Éducation"],
+  "h2": [
+    "Par quelle problématique êtes-vous concerné(e) ?",
+    "Nos solutions paw-sitives pour chiens 👇",
+    "Nos solutions pawsitives pour chats",
+    "Pourquoi choisir Pet Cheri ?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Troubles du comportement",
+    "Arrivée d'un chiot",
+    "Leçon en groupe",
+    "Promenade éducative",
+    "Une approche positive et bienveillante",
+    "Un suivi personnalisé",
+    "Des professionnels diplômés et recrutés avec soin",
+    "Service couvert par notre assurance professionnelle"
+  ],
+  "paragraphs": [
+    "De simples conditionnements peuvent faire la différence dans la communication avec votre animal.",
+    "Se faire accompagner par un professionnel n'est pas un échec, bien au contraire : c'est un investissement pour offrir sérénité et complicité entre votre animal et vous.",
+    "Que vous souhaitiez aider votre chien à faire face à un trouble du comportement spécifique, éduquer votre chiot ou chaton, le socialiser, notre conciergerie vous propose des solutions variées et adaptées à votre problématique avec une approche positive et bienveillante.",
+    "Votre animal présente un comportement problématique ? Nos éducateurs ou comportementalistes professionnels choisis pour leur professionnalisme et leur douceur vous aident à mieux comprendre ce que votre animal essaie d'exprimer en commençant par un bilan comportemental qui permettra de déceler les besoins de votre boule de poils.",
+    "Accueillir chez soi un nouvel animal peut être stressant et soulever beaucoup de questions liées à son bien-être et à son intégration au sein du foyer. Être accompagné par un professionnel vous aidera à préparer au mieux son arrivée et s'assurer d'une cohabitation harmonieuse.",
+    "Les leçons en groupe sont idéales pour socialiser votre animal tout en alliant théorie et pratique via des méthodes positives. Elles prévoient des activités pour stimuler la communication entre les chiens présents tout en fournissant à leurs humains les connaissances essentielles pour instaurer une relation humain-animal basée sur la confiance.",
+    "Les promenades en solo ont pour objectif d'aider votre chien à mieux appréhender son environnement et ses imprévus. Nos spécialistes du comportement peuvent vous accompagner pour des promenades en forêt ou en ville selon les défis à relever.",
+    "Agressivité, miaulements intempestifs, déjections hors de la litière... Les chats peuvent exprimer leur stress et leur anxiété de manières qui leur sont propres.",
+    "C'est pour cela que les comportementalistes pour félins existent : leurs connaissances du comportement des chats leur permet d'identifier la ou les causes du problème rencontré par le propriétaire et donner des solutions pour instaurer une harmonie chat humain bénéfique pour tout le foyer.",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal"
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible💻🤩", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver une séance", "url": "https://www.petcheri-app.com/"},
+    {"text": "Voir tous les articles", "url": "/blog"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": "Logo"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc83810c11a54065a84_Icone%20V4%20education.png", "alt": "Education icon"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a105a4cfeca9db32811720_Icone%20V4%20CT%20Education.svg", "alt": "CT Education icon"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbbc07b19633d175d89_Tests%20DA-78.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbb2d407a55a23330a0_Tests%20DA-79.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbceacc1750fae85089_Tests%20DA-80.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbb5005b821214a115d_Tests%20DA-81.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbb86a015b3b534d352_Tests%20DA-82.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbb2fb3a3833ee0a1f9_Tests%20DA-83.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c8fcbbdeae7e3a7554cf1e_Tests%20DA-68.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2fd017977a5972f4f63a3_Planning.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848c7fae07ea786f56e_Socialisation.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e325a1396ca7a8e7b28e91_Illustrations%20Site%20(800%C2%A0%C3%97%C2%A0800%C2%A0px)-6.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848bbcf31fb30e4e0d5_Assurance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/697b3c43654f1b1ef4789681_Sans%20titre%20(532%20x%20358%20px)-27.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""}
+  ],
+  "form_fields": [{"type": "email", "label": "Newsletter"}],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "url": "https://www.petcheri.com/transport",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Transport",
+  "meta_description": null,
+  "h1": ["Transport"],
+  "h2": [
+    "Transport en voiture",
+    "S'envoyer en l'air avec Pet Cheri",
+    "Besoin d'aide avant votre voyage ?",
+    "Pourquoi choisir Pet Cheri?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "VTC animalier",
+    "Van",
+    "Inter-City",
+    "Des chauffeurs rigoureusement sélectionnés",
+    "Du matériel adapté pour un maximum de sécurité",
+    "Une organisation clé en main",
+    "Service couvert par notre assurance professionnelle"
+  ],
+  "paragraphs": [
+    "Nous savons que voyager avec son animal que ce soit pour de courtes ou de longues distances n'est pas toujours très pratique. Heureusement il existe des solutions alternatives afin d'éviter les voyages en avion (ou en train), que beaucoup d'entre nous redoutent, et nous permettant de rester auprès de nos animaux pendant toute la durée d'un trajet. Avec Pet Cheri vous n'aurez qu'à vous détendre et à profiter de la vue.",
+    "Les chauffeurs de notre conciergerie ont été rigoureusement sélectionnés et témoignent d'une expérience personnelle avec les animaux. Ils se sont engagés à rendre votre voyage et celui de votre boule de poils le plus confortable possible.",
+    "Leurs véhicules sont tous équipés de harnais de sécurité permettent d'assurer une protection maximale lors de nos trajets évitant tout choc en cas de freinage.",
+    "Réservez un taxi ou un VTC pour votre animal, avec ou sans vous, pour un trajet de courte distance.",
+    "Réservez un van équipé, pour transporter votre animal dans une cage homologuée et confortable, pour de plus longs trajets.",
+    "Réservez une voiture privée pour voyager d'une ville à l'autre et éviter les difficultés à la gare ou l'aéroport.",
+    "Avec notre partenaire Jet Miles, offrez à vos compagnons à quatre pattes le voyage qu'ils méritent avec un service exclusif de jets privés pour les propriétaires d'animaux de compagnie. Leurs jets privés offrent une expérience de voyage luxueuse, avec des intérieurs spacieux conçus pour le confort de vos animaux de compagnie. Évitez les stress liés aux voyages traditionnels et offrez-leur un environnement calme et apaisant.",
+    "Passeports, certificats, rendez-vous chez le vétérinaire... On s'occupe de TOUT !",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal"
+  ],
+  "buttons_cta": [
+    {"text": "Réserver un trajet", "url": "https://www.petcheri-app.com/"},
+    {"text": "En voiture Simone !", "url": "https://www.petcheri-app.com/"},
+    {"text": "Contactez-nous", "url": "mailto:concierge@petcheri.com?subject=Réserver%20un%20vol"},
+    {"text": "En savoir plus", "url": "/autres-services"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""}
+  ],
+  "form_fields": [{"type": "email", "label": "Newsletter"}],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}

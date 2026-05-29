@@ -1,0 +1,38 @@
+{
+  "url": "https://www.petcheri.com/contact",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Contact",
+  "meta_description": null,
+  "h1": ["Comment pouvons nous vous aider ?"],
+  "h2": [],
+  "h3": ["Menu", "Horaires"],
+  "paragraphs": [
+    "Contactez-nous pour toutes questions concernant nos services, toute demande de renseignements, nous serons heureux de vous aider !",
+    "Votre demande a été soumise et nous vous contacterons dans les plus brefs délais.",
+    "Made in Paris with love.",
+    "© 2024 Pet Cheri. Tous droits réservés."
+  ],
+  "buttons_cta": [
+    {"text": "Nos services", "url": "/nos-services"},
+    {"text": "Contact", "url": "/contact"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"}
+  ],
+  "nav_items": ["Nos services", "Chien", "Chat", "NAC", "About us", "Devenir chouchouteur", "Promos", "Web-App"],
+  "footer_texts": [
+    "Lundi : 9h - 18h", "Mardi : 9h - 18h", "Mercredi : 9h - 18h", "Jeudi : 9h - 18h",
+    "Vendredi : 9h - 18h", "Samedi : 9h - 18h", "Dimanche : 9h - 18h",
+    "Conditions générales", "Mentions légales"
+  ],
+  "images": [],
+  "form_fields": [
+    {"label": "Prénom*", "type": "text"},
+    {"label": "Nom de famille*", "type": "text"},
+    {"label": "Email*", "type": "email"},
+    {"label": "Téléphone*", "type": "tel"},
+    {"label": "Votre Message*", "type": "textarea"}
+  ],
+  "testimonials": [],
+  "blog_articles": []
+}

@@ -1,0 +1,69 @@
+{
+  "url": "https://www.petcheri.com/services-chat",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Services chat",
+  "meta_description": null,
+  "h1": [
+    "La conciergerie qui fait ronronner votre chat",
+    "Des services personnalisés pour votre chat",
+    "Quelque soit son besoin, nous trouvons chaussure à son coussinet !"
+  ],
+  "h2": ["Nos derniers articles", "Recevez nos conseils de chouchoutage."],
+  "h3": [
+    "Visite à domicile",
+    "Garde et pension",
+    "Toilettage",
+    "Coupe des griffes",
+    "Comportement & Éducation",
+    "Bien-être & soins",
+    "Transport",
+    "Administratif, voyages & autres"
+  ],
+  "paragraphs": [
+    "Des services sur-mesure pour matous exigeants partout en France : visite à domicile, garde, toilettage et soins, comportement et bien d'autres… Laissez la \"miaougie\" opérer ✨",
+    "Nos visites sur-mesure selon ses besoins et les vôtre",
+    "Un all-inclusive félin chez nos catsitters, à domicile ou en pension",
+    "Du toilettage à domicile respectueux des besoins de nos amis félins",
+    "C'est parti pour une patt'icure adaptée au tempérament de nos mini fauves",
+    "Des comportementalistes diplômés pour aider votre matou à être \"bien ses pattes\"",
+    "Masseurs, ostéopathes, nutritionnistes et autres au service du bien-être de votre chat",
+    "Chauffeurs spécialisés dans le transport des chats pour un voyage tout confort",
+    "Tout ce dont votre matou pourrait avoir besoin, nous sommes là pour le servir",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal",
+    "Made in Paris with love."
+  ],
+  "buttons_cta": [
+    {"text": "Faire chouchouter mon chat", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Notre Web App est disponible 💻🤩", "url": "https://www.petcheri-app.com/customer/signin"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": "Logo"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66cf227c30d38e807b7fdfd6_Tests%20DA-98.png", "alt": "Tests DA"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/69fa11caa3c64f553fa6fa78_gala%20logo.png", "alt": "Logo Gala"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/69fa11c95a5160c40b5d8a43_envoy%C3%A9%20special.jpg", "alt": "Logo Envoyé Spécial"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/69fa11ca2a822939b8a9ef1a_Europe1_FLAT.png", "alt": "Logo Europe 1"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/69fa11c9b9a9ae6326b8a211_marie%20claire%20logo.png", "alt": "Logo Marie Claire"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a105a410cbecba03e5b738_Icone%20V4%20CT%20Cat.svg", "alt": "Icône visite"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a105a43dc5288e4c60ee6d_Icone%20V4%20CT%20sleep.svg", "alt": "Icône garde"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a3a127ea02a8671fd4f0d9_icone%20V4%20%20CT%20Grooming.svg", "alt": "Icône toilettage"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a3a12758b481b6c3c31348_icone%20V4%20%20CT%20Claws.svg", "alt": "Icône griffes"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a105a4cfeca9db32811720_Icone%20V4%20CT%20Education.svg", "alt": "Icône éducation"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a3a127a7b7cc25d23a2f0c_icone%20V4%20%20CT%20Care.svg", "alt": "Icône soins"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a3a12745b349e9cd107d8f_icone%20V4%20%20CT%20Transport.svg", "alt": "Icône transport"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a3a12723092e1da76c5cea_icone%20V4%20%20CT%20Administratif.svg", "alt": "Icône administratif"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/682454ca8d909036108c0673_Sans%20titre%20(532%20x%20358%20px)%20(1).png", "alt": "Article wishlist"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/67f798ca67ce63aa9fad7c0d_Sans%20titre%20(532%20x%20358%20px)-20.png", "alt": "Article Ziggy"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/668eb8c42adef1ccfdb85103_Sans%20titre%20(532%20x%20358%20px)-9.png", "alt": "Article été"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": "Logo Pet Cheri"}
+  ],
+  "form_fields": [{"type": "newsletter", "label": "Recevez nos conseils de chouchoutage"}],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Wishlist d'un chat d'appartement", "description": "Notre comportementaliste félin a élaboré LA wishlist parfaite pour nos chats d'appartements qui allie le respect de leur instinct félin, design et qualité.", "author": "Marion & Anne", "url": "/ebook/wishlist-dun-chat-dappartement"},
+    {"title": "On a testé Ziggy (vous allez être surpris)", "description": "Jascha teste pour vous les produits Ziggy, la marque la plus feline-friendly de France qui ne veut que les bien de nos moustachus, découvrez son expérience ici !", "author": "Anne", "url": "/ebook/on-a-teste-ziggy-vous-allez-etre-surpris"},
+    {"title": "5 conseils pour garder votre chat au frais cet été", "description": "Notre expert des félins vous donne quelques conseils pour garder votre chat au frais pendant l'été.", "author": "Marion", "url": "/ebook/5-conseils-pour-garder-votre-chat-au-frais-cet-ete"}
+  ]
+}

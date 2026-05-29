@@ -1,0 +1,63 @@
+{
+  "url": "https://www.petcheri.com/visite-garde-de-nacs",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Visite & Garde de NAC",
+  "meta_description": null,
+  "h1": ["Visite & Garde de NAC"],
+  "h2": [
+    "Visite à domicile",
+    "Garde de nuit à domicile",
+    "Garde de nuit chez le petsitter",
+    "Pourquoi choisir Pet Cheri ?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Des soins adaptés et une réelle supervision",
+    "Un planning personnalisé",
+    "Une proximité et des concierges disponibles",
+    "Service couvert par une assurance professionnelle",
+    "Un accès à un vétérinaire en cas de besoin",
+    "Arrosage des plantes et réception du courrier en bonus !"
+  ],
+  "paragraphs": [
+    "Rongeurs, reptiles, poissons, insectes… Les NACS c'est 5 millions d'animaux en France aux besoins spécifiques. Connaissant les exigences des NACS et la difficulté de leurs propriétaires à trouver des solutions de garde adéquates en leur absence, nous faisons intervenir des chouchouteurs spécialisés dans les soins destinés à cette catégorie d'animaux.",
+    "Vous peinez à confier votre animal ? Rassurez-vous, chez Pet Cheri nous nous assurons que votre animal est bien nourri et chouchouté selon les besoins physiologiques propres à son espèce. Visites de 30 minutes à 1 heure, à la fréquence souhaitée.",
+    "Indiquez le régime précis de votre animal (type de nourriture, fréquence et quantités), notre chouchouteur le nourrira et s'assurera qu'il ait suffisamment d'eau.",
+    "Notre chouchouteur nettoiera la litière ou la cage de votre animal pour le plus grand confort et l'hygiène de votre compagnon à poils, écailles ou plumes. Nos petsitters pour NACS sont recrutés pour leur connaissance de l'environnement des espèces exotiques et leur entretien.",
+    "Qu'il s'agisse d'un rongeur, d'un lagomorphe ou d'un reptile, les NAC ont besoin de soins adaptés parfois quotidiens. Pour assurer ces soins en toute sécurité, nous faisons intervenir des petsitters habiletés à les pratiquer.",
+    "Votre animal a besoin d'une attention particulière et doit rester dans son environnement ? Nos concierges vous proposent des petsitters de confiance qui prendront soin de lui nuit et jour directement chez vous.",
+    "Plus besoin de demander à votre animal de s'adapter à un nouvel environnement. Choisissez l'un de nos gardiens de confiance pour s'occuper de votre animal directement chez vous. Ils veilleront au bien-être de votre animal dans le confort et les habitudes de son propre foyer !",
+    "Si votre animal s'adapte facilement à un nouvel environnement et a besoin de compagnie humaine, vous pouvez opter pour une garde directement chez le chouchouteur. Nous nous assurons que son domicile est entièrement équipé et sécurisé afin d'être entièrement adapté aux besoins de votre animal, même les plus particuliers.",
+    "Vous pouvez choisir parmi différents profils, avec ou sans autres animaux.",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal"
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/"},
+    {"text": "Voir tous les articles", "url": "/blog"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66a52c42530b2b28e516b816_icone%20V4%20LP%20Sunglasses.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66cf13185b79bbe20902281e_NAC.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d4237fea785d53b3f1db6c_Tests%20DA-87.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d423803f16fc3af84f8f83_Tests%20DA-88.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66cf1447034bedf1c74a1e73_Tests%20DA-96.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848f2c930af0735d713_Surveillance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a8485e5bd0a4dd8a3c0b_Planning.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848bbcf31fb30e4e0d5_Assurance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848ef56e7d8fca3dd7c_Photos.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a84899e1f69d420ae1d0_Assurance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2e32e5846c8d09f16088b_seedling.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/697b3c43654f1b1ef4789681_Sans%20titre%20(532%20x%20358%20px)-27.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""}
+  ],
+  "form_fields": [{"type": "email", "label": "Newsletter"}],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}

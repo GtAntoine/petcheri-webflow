@@ -1,0 +1,67 @@
+{
+  "url": "https://www.petcheri.com/garde-a-la-journee",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Garde à la journée",
+  "meta_description": null,
+  "h1": ["Garde de jour"],
+  "h2": [
+    "Une garde personnalisée tout confort",
+    "Garde à votre domicile",
+    "Garde chez le chouchouteur",
+    "👉 Tip de notre comportementaliste",
+    "Pourquoi choisir Pet Cheri?",
+    "Nos derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Des horaires flexibles et un planning personnalisé",
+    "Des soins adaptés et une réelle supervision",
+    "Possibilité de socialisation et jeux avec des congénères",
+    "Des nouvelles régulières par photos/vidéos",
+    "Un accès à un vétérinaire en cas de besoin",
+    "Service couvert par une assurance professionnelle"
+  ],
+  "paragraphs": [
+    "Notre conciergerie vous propose des solutions adaptées et personnalisées pour chien lorsque vous vous absentez le temps d'une journée, et ce, à travers toute la France. Bien-être et détente assurés",
+    "Vous avez adopté un chiot ? Votre chien est sujet à de l'anxiété de séparation ? Optez pour une garde de jour à votre domicile, votre animal pourra ainsi être dorloté tout en profitant du confort de son environnement. Jeux, stimulations, promenades, repas, câlins à gogo et soins spécifiques si besoin… Nos petsitters de confiance s'occuperont de tout et s'adapteront à chaque demande spécifique pour un moment de wouf !",
+    "Selon vos besoins et vos préférences, notre conciergerie propose également des gardes directement chez le chouchouteur qui pourra accueillir votre animal dans un nouvel environnement, avec ou sans autres animaux. Nos petsitters recrutés avec le plus grand soin assurent les besoins de base de votre boule de poils : accès à de l'eau fraîche, repas conformes à son régime alimentaire et/ou ses allergies ainsi que des soins si nécessaire (prise de médicaments ou autres soins spécifiques). Mais le petsitting chez Pet Cheri c'est aussi des papouilles, des séances de jeux, des promenades…",
+    "Vous avez un chiot ou des difficultés à promener votre chien à cause de problèmes de comportement ? Nous pouvons faire appel à un spécialiste du dressage en renforcement positif pour aider votre compagnon à quatre pattes à retrouver confiance et à profiter pleinement de ses promenades 🐾",
+    "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal",
+    "Made in Paris with love."
+  ],
+  "buttons_cta": [
+    {"text": "Trouver un dogsitter", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Ça m'intéresse", "url": "https://www.petcheri-app.com/"},
+    {"text": "Notre Web App est disponible", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Voir tous les articles", "url": "/blog"}
+  ],
+  "footer_links": [
+    {"text": "Accueil", "url": "/"},
+    {"text": "Nos bons plans", "url": "/nos-bons-plans"},
+    {"text": "Nos avis", "url": "/vos-avis"},
+    {"text": "Devenir chouchouteur", "url": "/devenir-petsitter"},
+    {"text": "Blog de wouf", "url": "/blog"},
+    {"text": "Nous contacter", "url": "/contact"},
+    {"text": "Assurance", "url": "https://www.petcheri.com/assurance"},
+    {"text": "Conditions générales", "url": "/terms-conditions"},
+    {"text": "Mentions légales", "url": "/mentions-legales"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d99d1794b9a8b1bbb66485_Illustrations%20Site%20(800%C2%A0%C3%97%C2%A0800%C2%A0px)-111.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc8f8642f7e9d6e39ce_icone%20V4%20Dog%20(1).png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c34ac8d56e0fd4ffd7ffa5_Tests%20DA-49.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c34a8ed21a0667e832f6ab_Tests%20DA-51.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/697b3c43654f1b1ef4789681_Sans%20titre%20(532%20x%20358%20px)-27.png", "alt": "Stop aux idées reçues sur les petits chiens !"},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""}
+  ],
+  "form_fields": [],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "url": "https://www.petcheri.com/faire-garder-mon-chien",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Faire garder mon chien",
+  "meta_description": null,
+  "h1": [
+    "Une garde personnalisée pour votre chien",
+    "Une garde personnalisée pour votre toutou",
+    "De quoi a-t-il besoin ?",
+    "Dites-nous tout sur lui et sur vous, et nous vous proposerons une solution de garde 100% sur-mesure !"
+  ],
+  "h2": ["Nos derniers articles", "Recevez nos conseils de chouchoutage."],
+  "h3": ["Garde de jour", "Garde de nuit", "Garde à domicile", "Pension familiale"],
+  "paragraphs": [
+    "Nous nous adaptons à votre chien, en fonction de son âge, son gabarit, sa morphologie, ses besoins, ses peurs, etc. Et à vous ! Nous proposons des dogsitters à domicile ou chez eux, professionnels ou particuliers, etc.",
+    "Une journée ou quelques heures d'absence ? On chouchoute votre toutou selon ses besoins et les vôtres !",
+    "Quelques jours de vacances en vue ? Nous lui préparons un séjour de wouf avec le chouchouteur de ses rêves !",
+    "Votre chien est plus à l'aise chez lui ? Nous lui trouvons un chouchouteur de confiance pour le dorloter chez vous.",
+    "Votre toutou rêve d'une colo entre copains ? Faites-lui passer le séjour au vert dans une pension familiale !",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal",
+    "You're all signed up.",
+    "Oops! Something went wrong while submitting the form.",
+    "Made in Paris with love.",
+    "© 2024 Pet Cheri. Tous droits réservés."
+  ],
+  "buttons_cta": [
+    {"text": "Notre Web App est disponible 💻🤩", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Réserver", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Voir plus", "url": "/garde-a-la-journee"},
+    {"text": "Voir plus", "url": "/garde-de-nuit"},
+    {"text": "Recevoir un devis personnalisé", "url": "https://www.petcheri-app.com/customer/signup"},
+    {"text": "Voir tous les articles", "url": "/blog"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/666734cb6d344cfbda28071a_Avis%20Google.svg", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66d99562bc2a27c0b18fc032_Tests%20DA-101.png", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc89c3f4e039a4b8d73_icone%20V4%20Dog.svg", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc7f288dc4b8109c025_icone%20V4%20Sleep.svg", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc7243758c4aad0d1ba_icone%20V4%20Walking%202.png", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc85fb9217d311f8ad3_Icone%20V4%20education.svg", "alt": null},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": null}
+  ],
+  "form_fields": ["Newsletter subscription form"],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Voyager avec son chien : bien gérer le séjour sur place et les alternatives", "description": "Arrivée, adaptation, sécurité… et solutions de garde si besoin : les clés pour assurer le bien-être de votre chien pendant votre séjour, selon les experts Pet Cheri.", "url": "/ebook/voyager-avec-son-chien-bien-gerer-le-sejour-sur-place-et-les-alternatives", "author": "Agathe"},
+    {"title": "Voyager avec son chien : choisir le bon mode de transport (voiture, avion, train)", "description": "Suite de notre guide pour voyager avec son chien : focus sur les différents modes de transport et les précautions à connaître pour assurer un trajet sûr et confortable.", "url": "/ebook/voyager-avec-son-chien-choisir-le-bon-mode-de-transport-voiture-avion-train", "author": "Agathe"},
+    {"title": "Voyager avec son chien : tout préparer avant le départ", "description": "Profil du chien, visite vétérinaire, documents, transport… tout ce qu'il faut anticiper avant de partir en vacances avec son chien, selon les experts Pet Cheri.", "url": "/ebook/voyager-avec-son-chien-tout-preparer-avant-le-depart", "author": "Agathe"}
+  ]
+}

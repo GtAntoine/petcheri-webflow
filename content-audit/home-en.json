@@ -1,0 +1,28 @@
+{
+  "url": "https://www.petcheri.com/?lang=en",
+  "scraped_at": "2026-05-28",
+  "lang": "en",
+  "status": 200,
+  "note": "The site does not have a distinct English version via ?lang=en parameter. The page returns the same French content. The English flag in the nav links to the same URLs. Content is identical to home-fr.json.",
+  "page_title": "Pet Cheri - La conciergerie de confiance pour votre animal",
+  "meta_description": null,
+  "h1": ["La conciergerie qui chouchoute votre animal"],
+  "h2": [
+    "Services ultra-personnalisés pour animaux de compagnie partout en France : garde, promenades, toilettage, transport, comportement, bien-être, et bien d'autres…",
+    "Nos services personnalisés",
+    "Chaque animal est unique, chacune de nos prestations l'est aussi.",
+    "Comment ça marche ?",
+    "Nos derniers articles"
+  ],
+  "paragraphs": [
+    "Garde à la journée, garde de nuit chez vous ou chez le dogsitter, pension familiale",
+    "Visite à domicile, garde chez vous ou chez le petsitter, pension féline",
+    "Promenade en ville ou en forêt, solo ou en groupe selon les besoins de votre chien",
+    "Toilettage à domicile ou en salon, coupe des griffes, soins SPA...",
+    "Des éducateurs & comportementalistes professionnels pour vous aider",
+    "Massage, ostéopathie, naturopathie, nutrition, aromathérapie...",
+    "Vos trajets ou voyages tout-confort avec nos chauffeurs agréés pour un maximum de sécurité",
+    "Vous partez avec votre animal à l'autre bout du monde ? Ou vous avez besoin d'être livré ? Quelque soit votre besoin, nous avons la solution !"
+  ],
+  "language_note": "No EN-specific content detected. The site's English version (pet-services-for-luxury-hotels) is the main English-language page. All other pages serve French content regardless of ?lang=en parameter."
+}

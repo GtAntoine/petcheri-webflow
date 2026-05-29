@@ -1,0 +1,66 @@
+{
+  "url": "https://www.petcheri.com/garde-de-nuit",
+  "scraped_at": "2026-05-28",
+  "lang": "fr",
+  "status": 200,
+  "page_title": "Garde de nuit",
+  "meta_description": null,
+  "h1": ["Garde de nuit", "Prêt pour une paw-jama party ?"],
+  "h2": [
+    "Garde de nuit chez vous",
+    "Garde de nuit chez le chouchouteur",
+    "Pension familiale",
+    "Un all-inclusive au poil",
+    "Pourquoi choisir Pet Cheri?",
+    "No derniers articles",
+    "Recevez nos conseils de chouchoutage."
+  ],
+  "h3": [
+    "Des horaires flexibles et un service sur-mesure",
+    "Des soins adaptés et une réelle supervision",
+    "Des nouvelles régulières par photos/vidéos",
+    "Service couvert par une assurance professionnelle",
+    "Un accès à un vétérinaire en cas de besoin",
+    "Arrosage des plantes et réception du courrier en bonus !"
+  ],
+  "paragraphs": [
+    "Vous partez en vacances ou devez vous absenter ? La conciergerie Pet Cheri vous propose des solutions de garde de nuit personnalisées à travers toute la France en offrant la meilleure expérience pour votre animal avec toute l'attention et tout l'amour dont il a besoin.",
+    "Lorsque vous laissez votre animal pour un court ou long séjour, nous nous assurerons qu'il dispose de tout le nécessaire pour se sentir à l'aise. Les gardes de nuit à votre domicile permettent à votre boule de deconserver ses habitudes dans un environnement familier sans le perturber.",
+    "Pour les animaux s'adaptant facilement à un nouvel environnement, les gardes de nuit directement chez le chouchouter avec un ou plusieurs copains à truffes sont idéales pour socialiser.Nos petsitters de confiance mettront tout en oeuvre pour que votre animal se sente chez lui.",
+    "Si votre toutou rêve d'un colo entre copains à truffes la pension familiale est l'option idéale ! Votre chien pourra profiter d'un environnement chaleureux et bienveillant, sans boxe ou cage. ‍ Pour une cohabitation harmonieuse, nous nous assurons en amont de la compatibilité de votre toutou avec ses futurs compagnons de séjour.",
+    "Pendant son séjour, votre animal peut bénéficier d'autres services pour rendre ses vacances encore plus mémorables : une promenade en forêt, une séance de toilettage, des options de repas frais, un massage, etc… Nous mettons tout en œuvre pour qu'il passe lui aussi des vacances de wouf !",
+    "Notre newsletter propose des conseils et des astuces de wouf sur tous les animaux de notre communauté d'experts de la santé et du bien-être animal",
+    "You're all signed up.",
+    "Oops! Something went wrong while submitting the form.",
+    "Made in Paris with love."
+  ],
+  "buttons_cta": [
+    {"text": "Trouver un dogsitter", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Trouver un petsitter", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Réserver son séjour", "url": "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"},
+    {"text": "Réserver", "url": "https://www.petcheri-app.com/customer/signin"},
+    {"text": "Notre Web App est disponible", "url": "https://www.petcheri-app.com/customer/signin"}
+  ],
+  "images": [
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66f2d25fec1d07cb2576a43c_Capture%20d%E2%80%99e%CC%81cran%202024-09-24%20a%CC%80%2016.53.12.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc8e54a9d989cfe0978_Icone%20V4%20Care.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/6697ffc7f288dc4b8109c025_icone%20V4%20Sleep.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c499aa95b7a6bf775ac5d5_Tests%20DA-60.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66c499aa922f68087ef88d2e_Tests%20DA-59.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2e59dd61f609acc9c6315_Moodboard%20-%20NEW%20DA-2.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a8485e5bd0a4dd8a3c0b_Planning.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848f2c930af0735d713_Surveillance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a84899e1f69d420ae1d0_Photos.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848bbcf31fb30e4e0d5_Assurance.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2a848ef56e7d8fca3dd7c_Veterinaire.svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2e32e5846c8d09f16088b_seedling.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/697b3c43654f1b1ef4789681_Sans%20titre%20(532%20x%20358%20px)-27.png", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/669e94b44a21b661c3ed1c09_INFILTRATION%20DES%20MARQUES%20%20(3).svg", "alt": ""},
+    {"src": "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/66e2df8fa58948490f86cdb3_Moodboard%20-%20NEW%20DA.png", "alt": ""}
+  ],
+  "form_fields": [],
+  "testimonials": [],
+  "blog_articles": [
+    {"title": "Stop aux idées reçues sur les petits chiens !", "author": "Marion", "description": "Les idées reçues sur les petits chiens sont tenaces, notre comportementaliste Marion experte en éducation positive démêle pour vous le vrai du faux à la lumière de la science.", "url": "/ebook/stop-aux-idees-recues-sur-les-petits-chiens"}
+  ]
+}
