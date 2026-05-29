@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import TrophyIcon from "@/components/icons/trophy-icon";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
@@ -284,7 +285,7 @@ export default async function QuiSommesNousPage({
                 className="card-base p-7 flex flex-col gap-3 text-center items-center"
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
-                <span className="text-3xl">🏆</span>
+                <TrophyIcon size={28} color="#C9A96E" strokeWidth={1.5} />
                 <div>
                   <p
                     className="text-[--color-chocolat] font-medium mb-1"
