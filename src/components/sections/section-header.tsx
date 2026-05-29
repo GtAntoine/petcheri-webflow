@@ -24,7 +24,10 @@ export function SectionHeader({
           {label}
         </span>
       )}
-      <h2 className={cn("text-h2 text-[--color-chocolat] max-w-2xl", titleClassName)}>
+      <h2
+        className={cn("text-[--color-chocolat] max-w-2xl font-normal", titleClassName)}
+        style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.75rem, 3vw, 2.5rem)", lineHeight: 1.2 }}
+      >
         {title}
       </h2>
       {align === "center" && <div className="divider-or mt-4" />}
