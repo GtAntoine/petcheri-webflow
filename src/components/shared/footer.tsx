@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Share2, Tv2 } from "lucide-react";
 import { UI } from "@/lib/assets";
+import { FooterSocial } from "./footer-social";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -25,26 +25,7 @@ export function Footer() {
             <p className="text-sm text-[--color-ivoire]/70 leading-relaxed mb-6">
               {t("tagline")}
             </p>
-            <div className="flex gap-3">
-              <a
-                href="https://www.instagram.com/petcheri/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-9 h-9 rounded-full border border-[--color-ivoire]/20 flex items-center justify-center hover:border-[--color-or] hover:text-[--color-or] transition-colors"
-              >
-                <Share2 className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.facebook.com/petcheri"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-9 h-9 rounded-full border border-[--color-ivoire]/20 flex items-center justify-center hover:border-[--color-or] hover:text-[--color-or] transition-colors"
-              >
-                <Tv2 className="w-4 h-4" />
-              </a>
-            </div>
+            <FooterSocial />
           </div>
 
           {/* Services */}

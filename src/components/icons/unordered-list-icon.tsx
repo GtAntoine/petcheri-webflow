@@ -1,0 +1,57 @@
+"use client";
+import { forwardRef, useImperativeHandle, useCallback } from "react";
+import type { AnimatedIconHandle, AnimatedIconProps } from "./types";
+import { motion, useAnimate } from "framer-motion";
+
+const UnorderedListIcon = forwardRef<AnimatedIconHandle, AnimatedIconProps>(
+  ({ size = 24, color = "currentColor", strokeWidth = 2, className = "" }, ref) => {
+    const [scope, animate] = useAnimate();
+
+    const start = useCallback(async () => {
+      animate(".list-line-1", { scaleX: [0, 1] }, { duration: 0.25, ease: "easeOut" });
+      animate(".list-line-2", { scaleX: [0, 1] }, { duration: 0.25, ease: "easeOut", delay: 0.1 });
+      animate(".list-line-3", { scaleX: [0, 1] }, { duration: 0.25, ease: "easeOut", delay: 0.2 });
+      animate(".list-bullets", { scale: [1, 1.3, 1] }, { duration: 0.4, ease: "easeInOut" });
+    }, [animate]);
+
+    const stop = useCallback(() => {
+      animate(".list-line-1", { scaleX: 1 }, { duration: 0.2 });
+      animate(".list-line-2", { scaleX: 1 }, { duration: 0.2 });
+      animate(".list-line-3", { scaleX: 1 }, { duration: 0.2 });
+      animate(".list-bullets", { scale: 1 }, { duration: 0.2 });
+    }, [animate]);
+
+    useImperativeHandle(ref, () => ({ startAnimation: start, stopAnimation: stop }));
+
+    return (
+      <motion.svg
+        ref={scope}
+        onHoverStart={start}
+        onHoverEnd={stop}
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={`cursor-pointer ${className}`}
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <motion.path className="list-line-1" d="M9 6l11 0" style={{ transformOrigin: "9px 6px" }} />
+        <motion.path className="list-line-2" d="M9 12l11 0" style={{ transformOrigin: "9px 12px" }} />
+        <motion.path className="list-line-3" d="M9 18l11 0" style={{ transformOrigin: "9px 18px" }} />
+        <motion.g className="list-bullets">
+          <path d="M5 6l0 .01" />
+          <path d="M5 12l0 .01" />
+          <path d="M5 18l0 .01" />
+        </motion.g>
+      </motion.svg>
+    );
+  },
+);
+
+UnorderedListIcon.displayName = "UnorderedListIcon";
+export default UnorderedListIcon;
