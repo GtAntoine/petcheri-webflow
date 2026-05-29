@@ -54,7 +54,7 @@ export function HomeHero() {
 
           {/* Subtitle */}
           <motion.p
-            className="text-lead mb-5 max-w-lg"
+            className="text-lead mb-8 max-w-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
@@ -63,6 +63,31 @@ export function HomeHero() {
             France : garde, promenades, toilettage, transport, comportement,
             bien-être, et bien d&apos;autres&hellip;
           </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            className="flex flex-wrap gap-3 mb-8"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
+          >
+            <a
+              href={PETCHERI_APP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition-all duration-200 shadow-md hover:shadow-lg hover:brightness-110"
+              style={{ background: "#E8705A" }}
+            >
+              Réserver maintenant
+            </a>
+            <Link
+              href="/nos-services"
+              className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold text-[--color-chocolat] bg-white/70 hover:bg-white transition-all duration-200"
+              style={{ borderColor: "#E8705A" }}
+            >
+              Voir tous nos services
+            </Link>
+          </motion.div>
 
           {/* Stars */}
           <motion.div
