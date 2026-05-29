@@ -19,9 +19,9 @@ export function HomeStats() {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-14" style={{ background: "#2C1810" }} ref={ref}>
+    <section className="py-14 bg-[--color-creme]" ref={ref}>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-[--color-ivoire]/10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-[--color-border]">
           {STATS.map((stat, i) => {
             const Icon = stat.icon;
             return (
@@ -33,10 +33,13 @@ export function HomeStats() {
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
                 <Icon className="w-5 h-5 text-[--color-or] mb-3" />
-                <span className="font-serif text-3xl font-light text-[--color-ivoire] mb-1">
+                <span
+                  className="font-normal mb-1"
+                  style={{ fontFamily: "var(--font-serif)", fontSize: "1.875rem", color: "#2C1810" }}
+                >
                   {stat.value}
                 </span>
-                <span className="text-xs text-[--color-ivoire]/60 leading-snug">
+                <span className="text-xs text-[--color-muted-foreground] leading-snug">
                   {"key" in stat ? t(stat.key) : stat.label}
                 </span>
               </motion.div>

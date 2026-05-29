@@ -137,7 +137,7 @@ export default async function EntreprisesPage({
       />
 
       {/* Stats strip */}
-      <section className="py-10" style={{ background: "#2C1810" }}>
+      <section className="py-10 bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
@@ -153,7 +153,7 @@ export default async function EntreprisesPage({
                 >
                   {value}
                 </span>
-                <span className="text-sm" style={{ color: "rgba(250,247,242,0.65)" }}>{label}</span>
+                <span className="text-sm text-[--color-muted-foreground]">{label}</span>
               </div>
             ))}
           </div>
