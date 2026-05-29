@@ -125,11 +125,8 @@ export function Footer() {
           <p className="text-xs text-[--color-ivoire]/40">
             © {year} Petcheri. {t("rights")}
           </p>
-          {/* Press logos */}
-          <div className="flex items-center gap-6 opacity-30">
-            <span className="text-xs font-semibold tracking-widest uppercase">Gala</span>
-            <span className="text-xs font-semibold tracking-widest uppercase">Marie Claire</span>
-            <span className="text-xs font-semibold tracking-widest uppercase">Europe 1</span>
+          <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/40">
+            <span>Made in Paris with love 🐾</span>
           </div>
         </div>
       </div>

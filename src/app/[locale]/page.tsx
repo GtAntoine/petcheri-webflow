@@ -6,7 +6,6 @@ import { HomeHero } from "@/components/sections/home-hero";
 import { HomeStats } from "@/components/sections/home-stats";
 import { HomeServices } from "@/components/sections/home-services";
 import { HomeProcess } from "@/components/sections/home-process";
-import { PressLogos } from "@/components/sections/press-logos";
 import { HomeTestimonials } from "@/components/sections/home-testimonials";
 import { HomeNewsletter } from "@/components/sections/home-newsletter";
 import { routing } from "@/i18n/routing";
@@ -30,7 +29,6 @@ export default async function HomePage({
         <HomeHero />
         <HomeStats />
         <HomeServices />
-        <PressLogos className="py-16 px-6 bg-[--color-ivoire-dark]" />
         <HomeProcess />
         <HomeTestimonials />
         <HomeNewsletter />

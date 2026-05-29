@@ -7,7 +7,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
-import { ILLUSTRATIONS, PHOTOS, PRESS } from "@/lib/assets";
+import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { CheckCircle, Building2, Users, ShieldCheck, Headphones } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -137,7 +137,7 @@ export default async function EntreprisesPage({
       />
 
       {/* Stats strip */}
-      <section className="py-10 bg-[--color-chocolat]">
+      <section className="py-10" style={{ background: "#2C1810" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
@@ -153,7 +153,7 @@ export default async function EntreprisesPage({
                 >
                   {value}
                 </span>
-                <span className="text-sm text-white/70">{label}</span>
+                <span className="text-sm" style={{ color: "rgba(250,247,242,0.65)" }}>{label}</span>
               </div>
             ))}
           </div>
@@ -320,22 +320,6 @@ export default async function EntreprisesPage({
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Press */}
-      <section className="py-12 bg-white">
-        <div className="max-w-5xl mx-auto px-6">
-          <p className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-[--color-muted-foreground] mb-8">
-            Petcheri dans la presse
-          </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60 grayscale hover:opacity-80 transition-opacity">
-            {Object.entries(PRESS).map(([key, src]) => (
-              <div key={key} className="relative h-8 w-24">
-                <Image src={src} alt={key} fill className="object-contain" sizes="96px" />
-              </div>
-            ))}
           </div>
         </div>
       </section>

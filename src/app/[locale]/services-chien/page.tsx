@@ -5,7 +5,6 @@ import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBanner } from "@/components/sections/cta-banner";
-import { PressLogos } from "@/components/sections/press-logos";
 import { HomeProcess } from "@/components/sections/home-process";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
@@ -109,13 +108,6 @@ export default async function ServicesChienPage({
         trustBadges={["Chouchouteurs certifiés", "Assurance AXA incluse", "Sans engagement"]}
         variant="warm"
       />
-
-      {/* Press */}
-      <div className="py-10 bg-white border-b border-[--color-border]">
-        <div className="max-w-7xl mx-auto px-6">
-          <PressLogos />
-        </div>
-      </div>
 
       {/* Services grid */}
       <section className="section-padding bg-[--color-ivoire]">

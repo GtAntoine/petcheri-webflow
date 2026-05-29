@@ -6,7 +6,7 @@ import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
-import { ILLUSTRATIONS, PHOTOS, PRESS } from "@/lib/assets";
+import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
@@ -269,24 +269,15 @@ export default async function QuiSommesNousPage({
         </div>
       </section>
 
-      {/* Presse */}
+      {/* Récompenses */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Ils parlent de nous"
-            title="Petcheri dans la presse"
+            label="Reconnus par les meilleurs"
+            title="Nos récompenses"
             className="mb-12"
           />
-          <div className="flex flex-wrap justify-center items-center gap-10 opacity-60 grayscale">
-            {Object.entries(PRESS).map(([key, src]) => (
-              <div key={key} className="relative h-10 w-28">
-                <Image src={src} alt={key} fill className="object-contain" sizes="112px" />
-              </div>
-            ))}
-          </div>
-
-          {/* Awards */}
-          <div className="grid sm:grid-cols-2 gap-6 mt-14 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {AWARDS.map(({ title, date, desc }) => (
               <div
                 key={title}
