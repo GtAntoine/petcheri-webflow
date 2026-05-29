@@ -7,6 +7,11 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import PartyPopperIcon from "@/components/icons/party-popper-icon";
+import HandHeartIcon from "@/components/icons/hand-heart-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 
 export const metadata: Metadata = {
   title: "Le VIP Club — Very Important Pet",
@@ -20,27 +25,27 @@ export function generateStaticParams() {
 
 const BENEFITS = [
   {
-    emoji: "🎓",
+    Icon: GraduationCapIcon,
     title: "Ateliers & tables rondes",
     desc: "Des sessions animées par des spécialistes du comportement animal, des vétérinaires et des experts du bien-être — pour mieux comprendre et accompagner votre compagnon.",
   },
   {
-    emoji: "🎟️",
+    Icon: PartyPopperIcon,
     title: "Invitations exclusives",
     desc: "Accès prioritaire à tous nos événements privés : soirées membres, avant-premières, rencontres VIP avec des experts du secteur animalier.",
   },
   {
-    emoji: "🎁",
+    Icon: HandHeartIcon,
     title: "Cadeaux personnalisés & surprises",
     desc: "Votre animal est unique — nos attentions aussi. Coffrets personnalisés, surprises d'anniversaire pour votre animal et sélections exclusives de produits premium.",
   },
   {
-    emoji: "🐾",
+    Icon: PawPrintIcon,
     title: "Rencontres régulières entre membres",
     desc: "Rejoignez une communauté de propriétaires passionnés. Des rencontres organisées régulièrement pour échanger, partager et créer des liens autour de l'amour des animaux.",
   },
   {
-    emoji: "🤝",
+    Icon: HeartHandshakeIcon,
     title: "Interventions associatives",
     desc: "Des représentants d'associations engagées pour le bien-être animal interviennent lors de nos événements pour sensibiliser et agir ensemble.",
   },
@@ -132,9 +137,9 @@ export default async function VipClubPage({
           />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BENEFITS.slice(0, 3).map(({ emoji, title, desc }) => (
+            {BENEFITS.slice(0, 3).map(({ Icon, title, desc }) => (
               <div key={title} className="card-base p-7 flex flex-col gap-4">
-                <span className="text-3xl">{emoji}</span>
+                <Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
@@ -147,9 +152,9 @@ export default async function VipClubPage({
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 mt-6 max-w-3xl mx-auto">
-            {BENEFITS.slice(3).map(({ emoji, title, desc }) => (
+            {BENEFITS.slice(3).map(({ Icon, title, desc }) => (
               <div key={title} className="card-base p-7 flex flex-col gap-4">
-                <span className="text-3xl">{emoji}</span>
+                <Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
