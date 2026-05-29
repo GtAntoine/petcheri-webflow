@@ -9,6 +9,12 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { CheckCircle, Building2, Users, ShieldCheck, Headphones } from "lucide-react";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import SparklesIcon from "@/components/icons/sparkles-icon";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import TruckIcon from "@/components/icons/truck-icon";
+import HeartIcon from "@/components/icons/heart-icon";
+import UnorderedListIcon from "@/components/icons/unordered-list-icon";
 
 export const metadata: Metadata = {
   title: "Petcheri pour les Entreprises",
@@ -45,36 +51,36 @@ const BENEFITS = [
 
 const SERVICES = [
   {
-    emoji: "🐶",
+    Icon: PawPrintIcon,
     title: "Garde & promenades",
     desc: "Garde à domicile, pension, promenades quotidiennes — vos collaborateurs choisissent la formule qui leur convient.",
   },
   {
-    emoji: "✂️",
+    Icon: SparklesIcon,
     title: "Toilettage",
     desc: "Bain, coupe, soins — disponibles à domicile ou en salon proche du bureau, selon les préférences.",
   },
   {
-    emoji: "🎓",
+    Icon: GraduationCapIcon,
     title: "Comportement & éducation",
     desc: "Séances avec comportementalistes certifiés pour accompagner l'éducation et le bien-être des animaux.",
   },
   {
-    emoji: "🚗",
+    Icon: TruckIcon,
     title: "Transport",
     desc: "Déplacements chez le vétérinaire, en pension ou sur tout trajet — avec des conducteurs formés.",
   },
   {
-    emoji: "🏨",
+    Icon: HeartIcon,
     title: "Pension & hébergement",
     desc: "Des familles d'accueil ou pensions vérifiées pour les périodes de déplacements professionnels.",
   },
   {
-    emoji: "📋",
+    Icon: UnorderedListIcon,
     title: "Suivi personnalisé",
     desc: "Photos, rapports de sortie, compte-rendu de séances — tout est communiqué en temps réel via l'app.",
   },
-] as const;
+];
 
 const HOW_IT_WORKS = [
   {
@@ -204,9 +210,9 @@ export default async function EntreprisesPage({
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((svc) => (
-              <div key={svc.title} className="card-base p-6 flex flex-col gap-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{svc.emoji}</span>
+              <div key={svc.title} className="card-base p-6 flex flex-col gap-4">
+                <svc.Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
+                <div className="flex flex-col gap-2">
                   <h3
                     className="text-[--color-chocolat] font-medium"
                     style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 1.5vw, 1.3rem)" }}
