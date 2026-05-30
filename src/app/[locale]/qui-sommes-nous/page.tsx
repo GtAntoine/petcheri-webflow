@@ -13,6 +13,8 @@ import SparklesIcon from "@/components/icons/sparkles-icon";
 import SearchIcon from "@/components/icons/search-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import { PressLogos } from "@/components/sections/press-logos";
+import { StatsCounter } from "@/components/sections/stats-counter";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
@@ -220,7 +222,7 @@ export default async function QuiSommesNousPage({
       </section>
 
       {/* Nos chouchouteurs */}
-      <section className="section-padding" style={{ background: "#2C1810" }}>
+      <section className="section-padding" style={{ background: "linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -305,6 +307,12 @@ export default async function QuiSommesNousPage({
           </div>
         </div>
       </section>
+
+      {/* Chiffres clés */}
+      <StatsCounter variant="navy" />
+
+      {/* Ils parlent de nous */}
+      <PressLogos />
 
       {/* Team photos */}
       <section className="section-padding bg-[--color-ivoire]">

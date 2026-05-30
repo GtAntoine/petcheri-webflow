@@ -14,6 +14,8 @@
   --color-sauge-light: #A8BA94;
   --color-sauge-dark: #6E7D5E;
   --color-creme: #F5EDD8;
+  --color-navy: #0E1B30;
+  --color-navy-light: #16294A;
 
   /* ── Semantic colors ── */
   --color-background: var(--color-ivoire);

@@ -19,32 +19,42 @@ export function PressLogos({ variant = "light", className }: PressLogosProps) {
   const t = useTranslations("common");
 
   return (
-    <div className={cn("flex flex-col items-center gap-6", className)}>
-      <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[--color-muted]">
-        {t("press_title")}
-      </p>
-      <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-        {PRESS_ITEMS.map((item) => (
-          <div
-            key={item.name}
-            className={cn(
-              "transition-opacity duration-300 hover:opacity-80",
-              variant === "light" ? "opacity-40" : "opacity-30"
-            )}
-          >
-            <Image
-              src={item.src}
-              alt={item.name}
-              width={item.width}
-              height={item.height}
+    <section
+      className={cn(
+        "py-12 border-y border-[--color-border]",
+        variant === "dark" ? "bg-transparent" : "bg-white",
+        className
+      )}
+    >
+      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.2em]"
+          style={{ color: variant === "dark" ? "rgba(255,255,255,0.4)" : "var(--color-muted)" }}
+        >
+          {t("press_title")}
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+          {PRESS_ITEMS.map((item) => (
+            <div
+              key={item.name}
               className={cn(
-                "h-7 w-auto object-contain",
-                variant === "dark" && "brightness-0 invert"
+                "transition-all duration-300",
+                variant === "light"
+                  ? "opacity-40 grayscale hover:opacity-80 hover:grayscale-0"
+                  : "opacity-30 brightness-0 invert hover:opacity-55"
               )}
-            />
-          </div>
-        ))}
+            >
+              <Image
+                src={item.src}
+                alt={item.name}
+                width={item.width}
+                height={item.height}
+                className="h-8 w-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
