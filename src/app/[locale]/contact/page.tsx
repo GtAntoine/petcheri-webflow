@@ -5,6 +5,7 @@ export const dynamic = "force-dynamic";
 import React, { useState } from "react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
+import { PageHeroCentered } from "@/components/sections/page-hero-centered";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import { HAPTIC } from "@/lib/haptics";
@@ -48,25 +49,11 @@ export default function ContactPage() {
     <>
       <Navbar />
 
-      {/* Hero */}
-      <section
-        className="pt-28 pb-16 px-6"
-        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
-      >
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-5 py-2 text-sm font-medium text-[--color-chocolat] shadow-sm mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-            Réponse sous 24h
-          </div>
-          <h1 className="text-display text-[--color-chocolat] mb-5 leading-[1.1]">
-            Comment pouvons-nous{" "}
-            <span style={{ color: "#E8705A" }}>vous aider&nbsp;?</span>
-          </h1>
-          <p className="text-lead">
-            Contactez-nous pour toutes questions concernant nos services, toute demande de renseignements — nous serons heureux de vous aider !
-          </p>
-        </div>
-      </section>
+      <PageHeroCentered
+        badge="Réponse sous 24h"
+        title={<>Comment pouvons-nous <span style={{ color: "#E8705A" }}>vous aider&nbsp;?</span></>}
+        subtitle="Contactez-nous pour toutes questions concernant nos services, toute demande de renseignements — nous serons heureux de vous aider !"
+      />
 
       {/* Main content */}
       <section className="section-padding bg-[--color-ivoire]">

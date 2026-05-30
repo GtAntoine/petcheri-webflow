@@ -88,11 +88,11 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
     <div className="card-base flex flex-col overflow-hidden hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300">
 
       {/* Full-width logo banner */}
-      <div className="relative w-full h-40 bg-[--color-creme] flex items-center justify-center overflow-hidden">
+      <div className="relative w-full  bg-[--color-creme] flex items-center justify-center overflow-hidden">
         <img
           src={promo.logoUrl}
           alt={promo.partnerName}
-          className="w-full h-full object-contain p-6"
+          className="w-full h-full p-3 object-contain"
         />
         {/* Category badge — top right */}
         <span
@@ -108,7 +108,7 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
       </div>
 
       {/* Body */}
-      <div className="px-5 pt-4 pb-3 flex flex-col flex-1 gap-2">
+      <div className="px-5 pb-3 flex flex-col flex-1 gap-2">
         <h3 className="text-sm font-semibold text-[--color-chocolat]">{promo.partnerName}</h3>
         <p className="text-xs text-[--color-muted-foreground] leading-relaxed flex-1 line-clamp-2">
           {promo.description}

@@ -7,11 +7,18 @@
  * so that /qui-sommes-nous resolves to the correct file on static hosts.
  */
 
-import { cpSync, readdirSync } from "fs";
+import { cpSync, existsSync, readdirSync } from "fs";
 import { join } from "path";
 
 const OUT = "out";
 const FR = join(OUT, "fr");
+
+// When Netlify uses @netlify/plugin-nextjs, the build outputs to .next/ (SSR/SSG mode)
+// and never creates out/. The plugin handles locale routing natively — skip gracefully.
+if (!existsSync(FR)) {
+  console.log("out/fr not found — skipping (Netlify SSR mode, locale routing handled by runtime).");
+  process.exit(0);
+}
 
 const entries = readdirSync(FR);
 for (const entry of entries) {
