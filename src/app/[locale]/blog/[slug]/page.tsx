@@ -13,7 +13,7 @@ import {
 import { getPromotionsByIds } from "@/lib/promotions";
 import { BlogCard } from "@/components/ui/blog-card";
 import { PromoCard } from "@/components/ui/promo-card";
-import { Clock, User, ArrowLeft, Tag, Gift } from "lucide-react";
+import { Clock, User, ArrowLeft, Gift } from "lucide-react";
 
 // ─── Static generation ───────────────────────────────────────────────────────
 
@@ -82,48 +82,51 @@ export default async function BlogPostPage({
     <>
       <Navbar />
 
-      {/* ── Cover hero ───────────────────────────────────────────── */}
-      <div className="relative w-full h-72 sm:h-96 lg:h-[480px] overflow-hidden bg-[--color-creme]">
-        <img
-          src={post.coverImage}
-          alt={post.title}
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      {/* ── Hero : titre à gauche, cover à droite ───────────────── */}
+      <section
+        className="pt-28 pb-16 px-6"
+        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        {/* Back link */}
-        <div className="absolute top-24 left-6 sm:left-10">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium rounded-full px-4 py-2 hover:bg-white/30 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Tous les articles
-          </Link>
-        </div>
+            {/* Colonne gauche */}
+            <div>
+              {/* Retour + catégorie */}
+              <div className="flex items-center gap-3 mb-5">
+                <Link
+                  href="/blog"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[--color-muted-foreground] hover:text-[--color-chocolat] transition-colors"
+                >
+                  <ArrowLeft className="w-3.5 h-3.5" />
+                  Tous les articles
+                </Link>
+                <span className="text-[--color-border]">·</span>
+                <span
+                  className="text-xs font-semibold rounded-full px-3 py-1 text-white"
+                  style={{ background: categoryColor }}
+                >
+                  {post.category}
+                </span>
+              </div>
 
-        {/* Category badge on cover */}
-        <div className="absolute bottom-6 left-6 sm:left-10">
-          <span
-            className="inline-flex items-center gap-1.5 text-xs font-semibold rounded-full px-3 py-1.5 text-white shadow-sm"
-            style={{ background: categoryColor }}
-          >
-            <Tag className="w-3 h-3" />
-            {post.category}
-          </span>
-        </div>
-      </div>
+              {/* Titre */}
+              <h1
+                className="text-[--color-chocolat] font-normal mb-5"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(1.75rem, 3.5vw, 3rem)",
+                  lineHeight: 1.15,
+                }}
+              >
+                {post.title}
+              </h1>
 
-      {/* ── Article layout ───────────────────────────────────────── */}
-      <section className="bg-[--color-ivoire]">
-        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
-          <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
+              {/* Excerpt */}
+              <p className="text-lead mb-7">{post.excerpt}</p>
 
-            {/* ── Main article ─────────────────────────────────── */}
-            <article>
               {/* Meta */}
-              <div className="flex flex-wrap items-center gap-4 text-sm text-[--color-muted-foreground] mb-6">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-[--color-muted-foreground]">
                 <span className="flex items-center gap-1.5">
                   <User className="w-4 h-4" />
                   {post.author}
@@ -136,27 +139,29 @@ export default async function BlogPostPage({
                   {post.readTime} min de lecture
                 </span>
               </div>
+            </div>
 
-              {/* Title */}
-              <h1
-                className="text-[--color-chocolat] font-normal mb-6"
-                style={{
-                  fontFamily: "var(--font-serif)",
-                  fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                  lineHeight: 1.2,
-                }}
-              >
-                {post.title}
-              </h1>
+            {/* Colonne droite — cover image */}
+            <div className="relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
 
-              {/* Excerpt lead */}
-              <p
-                className="text-lg text-[--color-muted-foreground] leading-relaxed mb-8 pb-8 border-b border-[--color-border]"
-                style={{ fontStyle: "italic" }}
-              >
-                {post.excerpt}
-              </p>
+          </div>
+        </div>
+      </section>
 
+      {/* ── Article layout ───────────────────────────────────────── */}
+      <section className="bg-[--color-ivoire]">
+        <div className="max-w-7xl mx-auto px-6 py-12 lg:py-16">
+          <div className="grid lg:grid-cols-[1fr_300px] gap-12 items-start">
+
+            {/* ── Main article ─────────────────────────────────── */}
+            <article>
               {/* Content */}
               <div
                 className="prose-blog"
