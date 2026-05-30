@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -9,13 +9,22 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { ICONS, ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Nos services",
-  description:
-    "Garde, toilettage, comportement, transport et bien-être — tous nos services pour chiens, chats et NAC partout en France.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("nos_services.meta_title"),
+    description: t("nos_services.meta_description"),
+    alternates: buildAlternates("/nos-services", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -97,15 +106,21 @@ export default async function NosServicesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="Disponible 7j/7 partout en France"
-        title="Services personnalisés pour votre animal"
-        subtitle="Quelque soit le besoin de votre animal, nous avons la solution adaptée, réalisée par des experts sélectionnés, partout en France."
+        badge={t("nos_services.hero_badge")}
+        title={
+          <>
+            {t("nos_services.hero_title")}{" "}
+            <span className="text-accent">{t("nos_services.hero_title_accent")}</span>
+          </>
+        }
+        subtitle={t("nos_services.hero_subtitle")}
         ctas={[
           { label: "Réserver", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nous contacter", href: "/contact" },

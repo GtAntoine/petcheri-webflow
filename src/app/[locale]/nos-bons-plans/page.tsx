@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHeroCentered } from "@/components/sections/page-hero-centered";
 import { routing } from "@/i18n/routing";
+import { buildAlternates } from "@/lib/seo";
 import { NosBoonsPlansClient } from "./_components/nos-bons-plans-client";
 
-export const metadata: Metadata = {
-  title: "Nos bons plans — Petcheri",
-  description:
-    "Des offres exclusives chez nos partenaires triés sur le volet : alimentation, santé, accessoires, assurance et compléments pour votre animal.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("nos_bons_plans.meta_title"),
+    description: t("nos_bons_plans.meta_description"),
+    alternates: buildAlternates("/nos-bons-plans", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

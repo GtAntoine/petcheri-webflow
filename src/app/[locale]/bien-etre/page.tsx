@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -7,6 +7,7 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
+import { buildAlternates } from "@/lib/seo";
 import HeartIcon from "@/components/icons/heart-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
@@ -16,11 +17,19 @@ import TrophyIcon from "@/components/icons/trophy-icon";
 import TruckIcon from "@/components/icons/truck-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 
-export const metadata: Metadata = {
-  title: "Bien-être & soins pour animaux — Petcheri",
-  description:
-    "Massage, ostéopathie, reiki, naturopathie, hydrothérapie… Des soins alternatifs pour l'équilibre physique et émotionnel de votre animal, par des praticiens certifiés.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("bien_etre.meta_title"),
+    description: t("bien_etre.meta_description"),
+    alternates: buildAlternates("/bien-etre", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -68,20 +77,21 @@ export default async function BienEtrePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="💚 Bien-être & soins"
+        badge={t("bien_etre.hero_badge")}
         title={
           <>
-            Parce qu&apos;un animal épanoui,{" "}
-            <span className="text-accent">ça se voit et ça se sent</span>
+            {t("bien_etre.hero_title")}{" "}
+            <span className="text-accent">{t("bien_etre.hero_title_accent")}</span>
           </>
         }
-        subtitle="Au-delà de la garde et du toilettage, Petcheri propose des méthodes alternatives pour le bien-être profond de votre animal. Des praticiens certifiés, sélectionnés par nos vétérinaires partenaires, à domicile ou en salon."
+        subtitle={t("bien_etre.hero_subtitle")}
         ctas={[
           { label: "Trouver un praticien", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Tous nos services", href: "/nos-services" },

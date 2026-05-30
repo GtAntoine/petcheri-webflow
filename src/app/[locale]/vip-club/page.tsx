@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -13,12 +13,21 @@ import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Le VIP Club — Very Important Pet",
-  description:
-    "Le Very Important Pet Club by Petcheri : événements exclusifs, ateliers bien-être animal, cadeaux personnalisés et rencontres entre membres passionnés.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("vip_club.meta_title"),
+    description: t("vip_club.meta_description"),
+    alternates: buildAlternates("/vip-club", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -116,7 +125,7 @@ export default async function VipClubPage({
               <div
                 className="absolute -bottom-5 -left-5 card-base px-5 py-4 flex items-center gap-3"
               >
-                <span className="text-2xl">🐾</span>
+                <PawPrintIcon size={22} color="#E8705A" />
                 <div>
                   <p className="text-sm font-semibold text-[--color-chocolat]">Communauté bienveillante</p>
                   <p className="text-xs text-[--color-muted-foreground]">Membres passionnés</p>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,12 +8,24 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
+import MessageSquareIcon from "@/components/icons/message-square-icon";
+import ShieldCheckIcon from "@/components/icons/shield-check-icon";
+import SendIcon from "@/components/icons/send-icon";
 
-export const metadata: Metadata = {
-  title: "Garde de nuit pour chien — Petcheri",
-  description:
-    "Votre chien gardé la nuit chez vous ou chez un chouchouteur certifié. Soirée, nuit complète ou week-end — assurance AXA, rapport photo inclus.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("garde_nuit.meta_title"),
+    description: t("garde_nuit.meta_description"),
+    alternates: buildAlternates("/garde-nuit", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -40,6 +52,24 @@ const FORMULES = [
   },
 ] as const;
 
+const REASSURANCE = [
+  {
+    Icon: MessageSquareIcon,
+    label: "Photos & rapports",
+    desc: "Votre chouchouteur vous envoie des nouvelles régulièrement.",
+  },
+  {
+    Icon: ShieldCheckIcon,
+    label: "Couvert par AXA",
+    desc: "Assurance professionnelle 9 000 000 € sur chaque prestation.",
+  },
+  {
+    Icon: SendIcon,
+    label: "Ligne d'urgence",
+    desc: "Une équipe disponible 7j/7 pour toute question ou imprévu.",
+  },
+] as const;
+
 export default async function GardeNuitPage({
   params,
 }: {
@@ -47,20 +77,21 @@ export default async function GardeNuitPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🌙 Garde de nuit"
+        badge={t("garde_nuit.hero_badge")}
         title={
           <>
-            Une nuit reposante{" "}
-            <span className="text-accent">même sans vous</span>
+            {t("garde_nuit.hero_title")}{" "}
+            <span className="text-accent">{t("garde_nuit.hero_title_accent")}</span>
           </>
         }
-        subtitle="Soirée entre amis, voyage d'affaires ou week-end en amoureux ? Votre chien est entre de bonnes mains. Nos chouchouteurs certifiés assurent une présence nocturne rassurante — chez vous ou dans leur foyer."
+        subtitle={t("garde_nuit.hero_subtitle")}
         ctas={[
           { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Garde de journée aussi", href: "/garde-journee" },
@@ -136,13 +167,14 @@ export default async function GardeNuitPage({
                 className="mb-8"
               />
               <div className="space-y-4">
-                {[
-                  { emoji: "📸", label: "Photos & rapports", desc: "Votre chouchouteur vous envoie des nouvelles régulièrement." },
-                  { emoji: "🛡️", label: "Couvert par AXA", desc: "Assurance professionnelle 9 000 000 € sur chaque prestation." },
-                  { emoji: "📞", label: "Ligne d'urgence", desc: "Une équipe disponible 7j/7 pour toute question ou imprévu." },
-                ].map(({ emoji, label, desc }) => (
+                {REASSURANCE.map(({ Icon, label, desc }) => (
                   <div key={label} className="flex items-start gap-4">
-                    <span className="text-2xl" aria-hidden="true">{emoji}</span>
+                    <span
+                      className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
+                      style={{ background: "#fde0d4" }}
+                    >
+                      <Icon size={18} color="#E8705A" />
+                    </span>
                     <div>
                       <p className="text-sm font-semibold text-[--color-chocolat]">{label}</p>
                       <p className="text-sm text-[--color-muted-foreground]">{desc}</p>

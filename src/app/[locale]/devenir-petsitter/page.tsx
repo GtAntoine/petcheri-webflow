@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -10,6 +10,7 @@ import { AnimatedCard } from "@/components/ui/animated-card";
 import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
@@ -19,11 +20,19 @@ import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 
-export const metadata: Metadata = {
-  title: "Devenir chouchouteur — Rejoignez Petcheri",
-  description:
-    "Rejoignez le réseau Petcheri et exercez votre passion des animaux en toute liberté. Assurance professionnelle incluse, accompagnement, communauté de 400 chouchouteurs.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("devenir_petsitter.meta_title"),
+    description: t("devenir_petsitter.meta_description"),
+    alternates: buildAlternates("/devenir-petsitter", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -110,13 +119,14 @@ export default async function DevenirPetsitterPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐾 Rejoindre Petcheri"
+        badge={t("devenir_petsitter.hero_badge")}
         title={
           <>
             Faites de votre passion{" "}

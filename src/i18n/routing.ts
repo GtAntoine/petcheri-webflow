@@ -74,6 +74,10 @@ export const routing = defineRouting({
       fr: "/nos-bons-plans",
       en: "/partners",
     },
+    "/bien-etre": {
+      fr: "/bien-etre",
+      en: "/pet-wellness",
+    },
     "/vos-avis": {
       fr: "/vos-avis",
       en: "/reviews",

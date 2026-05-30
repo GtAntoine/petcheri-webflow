@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,12 +8,21 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Visite & Garde de chats — Petcheri",
-  description:
-    "Visites à domicile, garde chez vous ou chez un chouchouteur pour votre chat. Services personnalisés selon ses habitudes — assurance AXA, photos incluses.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("garde_chat.meta_title"),
+    description: t("garde_chat.meta_description"),
+    alternates: buildAlternates("/garde-chat", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -58,20 +67,21 @@ export default async function GardeChatPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐱 Garde de chats"
+        badge={t("garde_chat.hero_badge")}
         title={
           <>
-            Chouchoutés comme ils l&apos;exigent —{" "}
-            <span className="text-accent">pas un poil de moins</span>
+            {t("garde_chat.hero_title")}{" "}
+            <span className="text-accent">{t("garde_chat.hero_title_accent")}</span>
           </>
         }
-        subtitle="Votre chat a ses habitudes, ses exigences et son caractère bien trempé. Nos chouchouteurs spécialisés félins s'adaptent à lui — pas l'inverse. Visite à domicile, garde chez vous ou en famille d'accueil."
+        subtitle={t("garde_chat.hero_subtitle")}
         ctas={[
           { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nos services chat", href: "/services-chat" },

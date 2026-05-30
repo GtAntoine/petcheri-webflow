@@ -15,7 +15,7 @@ const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/petcheri/",          Icon: InstagramIcon },
   { label: "Facebook",  href: "https://www.facebook.com/petcheri",             Icon: FacebookIcon  },
   { label: "LinkedIn",  href: "https://www.linkedin.com/company/petcheri/",    Icon: LinkedinIcon  },
-  { label: "X / Twitter", href: "https://twitter.com/petcheri",               Icon: TwitterXIcon  },
+ // { label: "X / Twitter", href: "https://twitter.com/petcheri",               Icon: TwitterXIcon  },
 ];
 
 export function FooterSocial() {

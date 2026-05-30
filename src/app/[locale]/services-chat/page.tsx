@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -7,50 +7,71 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
+import ShieldCheckIcon from "@/components/icons/shield-check-icon";
+import SparklesIcon from "@/components/icons/sparkles-icon";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import HeartIcon from "@/components/icons/heart-icon";
+import TruckIcon from "@/components/icons/truck-icon";
+import type { ComponentType } from "react";
 
-export const metadata: Metadata = {
-  title: "Services pour chats — Petcheri",
-  description:
-    "Garde, visite à domicile, toilettage, comportement et bien-être pour votre chat. Des chouchouteurs spécialisés félins sélectionnés par nos vétérinaires.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("services_chat.meta_title"),
+    description: t("services_chat.meta_description"),
+    alternates: buildAlternates("/services-chat", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const SERVICES = [
+const SERVICES: ReadonlyArray<{
+  Icon: ComponentType<{ size?: number; color?: string }>;
+  title: string;
+  desc: string;
+  href: string;
+  cta: string;
+}> = [
   {
-    emoji: "🏠",
+    Icon: ShieldCheckIcon,
     title: "Visite & garde",
     desc: "Visite à domicile, garde chez vous ou en famille d'accueil — selon les habitudes de votre chat et vos contraintes.",
     href: "/garde-chat",
     cta: "Découvrir",
   },
   {
-    emoji: "✂️",
+    Icon: SparklesIcon,
     title: "Toilettage",
     desc: "Brossage approfondi, coupe délicate, nettoyage des yeux et oreilles, griffes — par des toiletteurs spécialisés chats.",
     href: "/toilettage",
     cta: "Découvrir",
   },
   {
-    emoji: "🎓",
+    Icon: GraduationCapIcon,
     title: "Comportement & éducation",
     desc: "Votre chat griffe les meubles, panique au moindre bruit ou refuse de partager l'espace ? Nos comportementalistes ont les réponses.",
     href: "/comportement-education",
     cta: "Découvrir",
   },
   {
-    emoji: "💚",
+    Icon: HeartIcon,
     title: "Bien-être & soins",
     desc: "Massage, ostéopathie, reiki, naturopathie — des soins alternatifs pour l'équilibre physique et émotionnel de votre chat.",
     href: "/bien-etre",
     cta: "Découvrir",
   },
   {
-    emoji: "🚗",
+    Icon: TruckIcon,
     title: "Transport",
     desc: "Trajet chez le vétérinaire, le toiletteur ou chez un proche — nos chauffeurs animaliers transportent votre chat en toute sécurité.",
     href: "/transport",
@@ -65,20 +86,21 @@ export default async function ServicesChatPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐱 Services pour chats"
+        badge={t("services_chat.hero_badge")}
         title={
           <>
-            Tout ce que votre chat{" "}
-            <span className="text-accent">daigne accepter</span>
+            {t("services_chat.hero_title")}{" "}
+            <span className="text-accent">{t("services_chat.hero_title_accent")}</span>
           </>
         }
-        subtitle="Garde, toilettage, comportement, bien-être et transport — une conciergerie complète au service de votre félin exigeant. Chaque chouchouteur est sélectionné et validé par nos vétérinaires partenaires."
+        subtitle={t("services_chat.hero_subtitle")}
         ctas={[
           { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Voir la garde de chats", href: "/garde-chat" },
@@ -101,7 +123,7 @@ export default async function ServicesChatPage({
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((svc) => (
               <div key={svc.title} className="card-base p-7 flex flex-col gap-4">
-                <span className="text-3xl" aria-hidden="true">{svc.emoji}</span>
+                <svc.Icon size={28} color="#E8705A" />
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}

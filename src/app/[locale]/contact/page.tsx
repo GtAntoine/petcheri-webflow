@@ -143,7 +143,7 @@ export default function ContactPage() {
                 {sent ? (
                   <div className="text-center py-16">
                     <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: "#fde0d4" }}>
-                      <span className="text-3xl">🐾</span>
+                      <PawPrintIcon size={22} color="#E8705A" />
                     </div>
                     <h3 className="text-h3 text-[--color-chocolat] mb-2">Message envoyé !</h3>
                     <p className="text-sm text-[--color-muted-foreground]">

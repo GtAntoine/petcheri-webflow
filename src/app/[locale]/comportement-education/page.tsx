@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,13 +8,26 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { CheckCircle } from "lucide-react";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import UsersIcon from "@/components/icons/users-icon";
+import SparklesIcon from "@/components/icons/sparkles-icon";
 
-export const metadata: Metadata = {
-  title: "Comportement & Éducation",
-  description:
-    "Éducation positive, bilan comportemental, rééducation pour chiens et chats — par des comportementalistes certifiés. Assurance AXA incluse.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("comportement_education.meta_title"),
+    description: t("comportement_education.meta_description"),
+    alternates: buildAlternates("/comportement-education", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -22,25 +35,25 @@ export function generateStaticParams() {
 
 const DOG_SOLUTIONS = [
   {
-    emoji: "🧠",
+    Icon: GraduationCapIcon,
     title: "Troubles du comportement",
     desc: "Votre animal présente un comportement problématique ? Nos éducateurs et comportementalistes professionnels vous aident à mieux comprendre ce que votre animal essaie d'exprimer.",
     image: ILLUSTRATIONS.dogDay,
   },
   {
-    emoji: "🐾",
+    Icon: PawPrintIcon,
     title: "Arrivée d'un chiot",
     desc: "Accueillir un nouvel animal peut soulever beaucoup de questions. Un professionnel vous aidera à préparer son arrivée et assurer une cohabitation harmonieuse.",
     image: PHOTOS.moodboard2,
   },
   {
-    emoji: "👥",
+    Icon: UsersIcon,
     title: "Leçon en groupe",
     desc: "Idéales pour socialiser votre animal, les leçons en groupe allient théorie et pratique via des méthodes positives. Activités de communication entre chiens et humains.",
     image: PHOTOS.chouchouteur1,
   },
   {
-    emoji: "🌳",
+    Icon: SparklesIcon,
     title: "Promenade éducative",
     desc: "Aider votre chien à mieux appréhender son environnement et ses imprévus. Promenades en forêt ou en ville selon les défis à relever.",
     image: PHOTOS.moodboard5,
@@ -82,20 +95,21 @@ export default async function ComportementEducationPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🎓 Comportement & Éducation"
+        badge={t("comportement_education.hero_badge")}
         title={
           <>
-            Fini les{" "}
-            <span className="text-accent">humeurs de chien&nbsp;!</span>
+            {t("comportement_education.hero_title")}{" "}
+            <span className="text-accent">{t("comportement_education.hero_title_accent")}</span>
           </>
         }
-        subtitle="Se faire accompagner par un professionnel n'est pas un échec — c'est un investissement pour offrir sérénité et complicité entre votre animal et vous."
+        subtitle={t("comportement_education.hero_subtitle")}
         ctas={[
           { label: "Réserver une séance", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nos services chien", href: "/services-chien" },
@@ -110,7 +124,7 @@ export default async function ComportementEducationPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos solutions paw-sitives pour chiens 🐕"
+            label="Nos solutions pour chiens"
             title="Par quelle problématique êtes-vous concerné·e ?"
             subtitle="Que vous souhaitiez aider votre chien à faire face à un trouble du comportement, éduquer votre chiot ou le socialiser — nous avons la solution adaptée."
             className="mb-12"
@@ -129,7 +143,7 @@ export default async function ComportementEducationPage({
                 </div>
                 <div className="p-6 flex flex-col gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xl">{sol.emoji}</span>
+                    <sol.Icon size={18} color="#E8705A" />
                     <h3 className="text-h3 text-[--color-chocolat]">{sol.title}</h3>
                   </div>
                   <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{sol.desc}</p>
@@ -166,7 +180,7 @@ export default async function ComportementEducationPage({
             </div>
             <div className="order-1 lg:order-2">
               <SectionHeader
-                label="Nos solutions pawsitives pour chats 🐱"
+                label="Nos solutions pour chats"
                 title="Les comportementalistes félins existent pour ça"
                 subtitle="Agressivité, miaulements, déjections hors litière… les chats expriment leur stress à leur façon. Nos spécialistes identifient les causes et instaurent une harmonie bénéfique pour tout le foyer."
                 align="left"

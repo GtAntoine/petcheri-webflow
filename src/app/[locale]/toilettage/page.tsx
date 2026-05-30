@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,13 +8,22 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { CheckCircle } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Toilettage",
-  description:
-    "Toilettage à domicile ou en salon pour chiens et chats — bain, coupe, griffes, spa. Toiletteurs professionnels sélectionnés par Petcheri, assurance AXA.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("toilettage.meta_title"),
+    description: t("toilettage.meta_description"),
+    alternates: buildAlternates("/toilettage", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -89,20 +98,21 @@ export default async function ToilettagePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="✂️ Toilettage professionnel"
+        badge={t("toilettage.hero_badge")}
         title={
           <>
-            Votre animal a besoin d&apos;un petit{" "}
-            <span className="text-accent">glow up&nbsp;?</span>
+            {t("toilettage.hero_title")}{" "}
+            <span className="text-accent">{t("toilettage.hero_title_accent")}</span>
           </>
         }
-        subtitle="Petcheri vous propose des soins de toilettage à domicile ou en salon. Nous sélectionnons nos toiletteurs pour leur professionnalisme, leur douceur et leur patience."
+        subtitle={t("toilettage.hero_subtitle")}
         ctas={[
           { label: "Trouver un toiletteur", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Voir nos services", href: "/nos-services" },

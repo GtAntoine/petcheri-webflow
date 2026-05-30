@@ -81,5 +81,146 @@
     "loading": "Chargement...",
     "error": "Une erreur est survenue.",
     "press_title": "Ils parlent de nous"
+  },
+  "pages": {
+    "home": {
+      "meta_title": "Petcheri — Conciergerie animalière premium",
+      "meta_description": "Un service sur-mesure, partout en France. Chiens, chats et NAC confiés à des passionnés certifiés. Assurance AXA incluse."
+    },
+    "nos_services": {
+      "meta_title": "Nos services — Petcheri",
+      "meta_description": "Garde, toilettage, comportement, transport et bien-être — tous nos services pour chiens, chats et NAC partout en France.",
+      "hero_badge": "Nos services",
+      "hero_title": "Chaque service",
+      "hero_title_accent": "que mérite votre animal",
+      "hero_subtitle": "Garde, promenade, toilettage, éducation — une conciergerie d'exception pour chiens, chats et NAC, partout en France."
+    },
+    "services_chien": {
+      "meta_title": "Services pour chien — Petcheri",
+      "meta_description": "Garde, promenade, toilettage, comportement et éducation — des services ultra-personnalisés pour votre toutou partout en France.",
+      "hero_badge": "Services chien",
+      "hero_title": "Le concierge",
+      "hero_title_accent": "qui a du chien !",
+      "hero_subtitle": "Services ultra-personnalisés pour votre toutou partout en France : garde, promenade, transport, éducation, toilettage et bien d'autres…"
+    },
+    "services_chat": {
+      "meta_title": "Services pour chats — Petcheri",
+      "meta_description": "Garde, visite à domicile, toilettage, comportement et bien-être pour votre chat. Des chouchouteurs spécialisés félins sélectionnés par nos vétérinaires.",
+      "hero_badge": "Services pour chats",
+      "hero_title": "Tout ce que votre chat",
+      "hero_title_accent": "daigne accepter",
+      "hero_subtitle": "Garde, toilettage, comportement, bien-être et transport — une conciergerie complète au service de votre félin exigeant."
+    },
+    "services_nac": {
+      "meta_title": "Services NAC — Petcheri",
+      "meta_description": "Lapins, rongeurs, reptiles, oiseaux — soins spécialisés pour tous les NAC, couverts par l'assurance AXA.",
+      "hero_badge": "NAC — Nouveaux Animaux de Compagnie",
+      "hero_title": "Des soins spécialisés",
+      "hero_title_accent": "pour chaque espèce",
+      "hero_subtitle": "Lapins, reptiles, oiseaux, poissons — nos chouchouteurs formés aux espèces exotiques prennent en charge vos compagnons avec le même soin qu'un chien ou un chat."
+    },
+    "garde_chien": {
+      "meta_title": "Garde de chien — Petcheri",
+      "meta_description": "Garde à domicile, garde de jour, garde de nuit et pension familiale — une solution sur-mesure pour chaque chien, assurée AXA.",
+      "hero_badge": "Garde de chien",
+      "hero_title": "Une garde",
+      "hero_title_accent": "personnalisée pour votre chien",
+      "hero_subtitle": "Nous nous adaptons à votre chien — son âge, son gabarit, ses besoins, ses peurs. Nous proposons des gardiens à domicile ou chez eux, professionnels ou particuliers, partout en France."
+    },
+    "garde_journee": {
+      "meta_title": "Garde de journée pour chien — Petcheri",
+      "meta_description": "Votre chien gardé le temps d'une journée par un chouchouteur certifié près de chez vous. Visites express, demi-journée ou journée complète — assurance AXA incluse.",
+      "hero_badge": "Garde de journée",
+      "hero_title": "Votre chien entre de bonnes mains",
+      "hero_title_accent": "même pour une longue journée",
+      "hero_subtitle": "Que vous soyez au travail ou accaparé, nos chouchouteurs certifiés gardent votre chien avec le même soin qu'à la maison."
+    },
+    "garde_nuit": {
+      "meta_title": "Garde de nuit pour chien — Petcheri",
+      "meta_description": "Votre chien gardé la nuit chez vous ou chez un chouchouteur certifié. Soirée, nuit complète ou week-end — assurance AXA, rapport photo inclus.",
+      "hero_badge": "Garde de nuit",
+      "hero_title": "Une nuit reposante",
+      "hero_title_accent": "même sans vous",
+      "hero_subtitle": "Soirée entre amis, voyage d'affaires ou week-end en amoureux ? Votre chien est entre de bonnes mains. Nos chouchouteurs certifiés assurent une présence nocturne rassurante — chez vous ou dans leur foyer."
+    },
+    "garde_chat": {
+      "meta_title": "Visite & Garde de chats — Petcheri",
+      "meta_description": "Visites à domicile, garde chez vous ou chez un chouchouteur pour votre chat. Services personnalisés selon ses habitudes — assurance AXA, photos incluses.",
+      "hero_badge": "Garde de chats",
+      "hero_title": "La garde que votre chat",
+      "hero_title_accent": "apprécie vraiment",
+      "hero_subtitle": "Les chats détestent le changement. Nos chouchouteurs spécialisés félins se déplacent chez vous, respectent ses habitudes et leur assurent un confort total."
+    },
+    "comportement_education": {
+      "meta_title": "Comportement & Éducation — Petcheri",
+      "meta_description": "Éducation positive, bilan comportemental, rééducation pour chiens et chats — par des comportementalistes certifiés. Assurance AXA incluse.",
+      "hero_badge": "Comportement & Éducation",
+      "hero_title": "Fini les",
+      "hero_title_accent": "humeurs de chien !",
+      "hero_subtitle": "Se faire accompagner par un professionnel n'est pas un échec — c'est un investissement pour offrir sérénité et complicité entre votre animal et vous."
+    },
+    "toilettage": {
+      "meta_title": "Toilettage professionnel — Petcheri",
+      "meta_description": "Toilettage à domicile ou en salon pour chiens et chats — bain, coupe, griffes, spa. Toiletteurs professionnels sélectionnés par Petcheri, assurance AXA.",
+      "hero_badge": "Toilettage professionnel",
+      "hero_title": "Votre animal rayonnant,",
+      "hero_title_accent": "du museau à la queue",
+      "hero_subtitle": "Toilettage mobile ou en salon — nos toiletteurs certifiés prennent soin de votre chien ou de votre chat avec expertise et douceur."
+    },
+    "transport": {
+      "meta_title": "Transport animalier — Petcheri",
+      "meta_description": "Transport de votre animal chez le vétérinaire, le toiletteur ou en famille. Chauffeurs animaliers certifiés, véhicules adaptés, assurance AXA incluse.",
+      "hero_badge": "Transport animalier",
+      "hero_title": "Votre animal voyage",
+      "hero_title_accent": "en toute sécurité",
+      "hero_subtitle": "Rendez-vous vétérinaires, déplacements, transferts aéroport — nos chauffeurs agréés transportent votre animal avec le plus grand soin."
+    },
+    "bien_etre": {
+      "meta_title": "Bien-être & soins pour animaux — Petcheri",
+      "meta_description": "Massage, ostéopathie, reiki, naturopathie, hydrothérapie… Des soins alternatifs pour l'équilibre physique et émotionnel de votre animal, par des praticiens certifiés.",
+      "hero_badge": "Bien-être & soins",
+      "hero_title": "Parce qu'un animal épanoui,",
+      "hero_title_accent": "ça se voit et ça se sent",
+      "hero_subtitle": "Au-delà de la garde et du toilettage, Petcheri propose des méthodes alternatives pour le bien-être profond de votre animal. Des praticiens certifiés, sélectionnés par nos vétérinaires partenaires, à domicile ou en salon."
+    },
+    "qui_sommes_nous": {
+      "meta_title": "Qui sommes-nous ? — Petcheri",
+      "meta_description": "Découvrez Petcheri : conciergerie animalière premium, 400+ chouchouteurs certifiés, assurance AXA. Médias : Gala, Europe 1, Purina…"
+    },
+    "vip_club": {
+      "meta_title": "Le VIP Club — Very Important Pet — Petcheri",
+      "meta_description": "Le Very Important Pet Club by Petcheri : événements exclusifs, ateliers bien-être animal, cadeaux personnalisés et rencontres entre membres passionnés."
+    },
+    "entreprises": {
+      "meta_title": "Petcheri pour les entreprises",
+      "meta_description": "Bureau pet-friendly, ateliers, services aux collaborateurs — Petcheri accompagne les entreprises dans leur démarche bien-être animal.",
+      "hero_badge": "Petcheri for Business"
+    },
+    "luxury_hotels": {
+      "meta_title": "Petcheri pour l'hôtellerie de luxe",
+      "meta_description": "Conciergerie animalière pour hôtels 4 et 5 étoiles — accueil, garde, promenade, toilettage pour les animaux de vos clients.",
+      "hero_badge": "Petcheri pour l'hôtellerie de luxe"
+    },
+    "devenir_petsitter": {
+      "meta_title": "Devenir chouchouteur — Rejoignez Petcheri",
+      "meta_description": "Rejoignez le réseau Petcheri et exercez votre passion des animaux en toute liberté. Assurance professionnelle incluse, accompagnement, communauté de 400 chouchouteurs.",
+      "hero_badge": "Rejoindre Petcheri"
+    },
+    "nos_bons_plans": {
+      "meta_title": "Nos bons plans — Petcheri",
+      "meta_description": "Des offres exclusives chez nos partenaires triés sur le volet : alimentation, santé, accessoires, assurance et compléments pour votre animal."
+    },
+    "vos_avis": {
+      "meta_title": "Avis clients — Petcheri",
+      "meta_description": "4,9/5 sur Google. Découvrez ce que pensent les propriétaires d'animaux qui font confiance à Petcheri pour garder, soigner et chouchouter leurs compagnons."
+    },
+    "contact": {
+      "meta_title": "Contact — Petcheri",
+      "meta_description": "Contactez notre équipe par téléphone, email ou formulaire. Réponse garantie sous 24 heures."
+    },
+    "blog": {
+      "meta_title": "Blog — Petcheri",
+      "meta_description": "Conseils, guides et inspirations pour les propriétaires d'animaux : santé, comportement, voyage, lifestyle et bien plus."
+    }
   }
 }

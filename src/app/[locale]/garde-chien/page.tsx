@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -9,57 +9,84 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import SparklesIcon from "@/components/icons/sparkles-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import ShieldCheckIcon from "@/components/icons/shield-check-icon";
+import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
+import type { ComponentType } from "react";
 
-export const metadata: Metadata = {
-  title: "Garde de chien",
-  description:
-    "Garde à domicile, garde de jour, garde de nuit et pension familiale — une solution sur-mesure pour chaque chien, assurée AXA.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("garde_chien.meta_title"),
+    description: t("garde_chien.meta_description"),
+    alternates: buildAlternates("/garde-chien", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const GARDE_OPTIONS = [
+interface IconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
+const GARDE_OPTIONS: ReadonlyArray<{
+  Icon: ComponentType<{ ref?: React.Ref<IconHandle>; size?: number; color?: string }>;
+  title: string;
+  desc: string;
+  image: string;
+  details: readonly string[];
+  href: "/garde-journee" | "/garde-nuit" | "/garde-chien";
+  cta: string;
+}> = [
   {
-    emoji: "☀️",
+    Icon: SparklesIcon,
     title: "Garde de jour",
     desc: "Une journée ou quelques heures d'absence ? On chouchoute votre toutou selon ses besoins et les vôtres !",
     image: ILLUSTRATIONS.dogDay,
     details: ["À domicile ou chez le chouchouteur", "Rapport photo en temps réel", "Assurance AXA incluse"],
-    href: "/garde-journee" as const,
+    href: "/garde-journee",
     cta: "Réserver une garde de jour",
   },
   {
-    emoji: "🌙",
+    Icon: PawPrintIcon,
     title: "Garde de nuit",
     desc: "Quelques jours de vacances en vue ? Nous lui préparons un séjour de wouf avec le chouchouteur de ses rêves !",
     image: ILLUSTRATIONS.gardeNuit,
     details: ["Hébergement chez le chouchouteur", "Suivi quotidien par message", "Assurance AXA incluse"],
-    href: "/garde-nuit" as const,
+    href: "/garde-nuit",
     cta: "Réserver une garde de nuit",
   },
   {
-    emoji: "🏠",
+    Icon: ShieldCheckIcon,
     title: "Garde à domicile",
     desc: "Votre chien est plus à l'aise chez lui ? Nous lui trouvons un chouchouteur de confiance pour le dorloter chez vous.",
     image: PHOTOS.chouchouteur1,
     details: ["Chouchouteur vient chez vous", "Routine habituelle respectée", "Assurance AXA incluse"],
-    href: "/garde-chien" as const,
+    href: "/garde-chien",
     cta: "Réserver une garde à domicile",
   },
   {
-    emoji: "🌿",
+    Icon: HeartHandshakeIcon,
     title: "Pension familiale",
     desc: "Votre toutou rêve d'une colo entre copains ? Faites-lui passer un séjour au vert dans une pension familiale !",
     image: PHOTOS.moodboard2,
     details: ["Ambiance familiale garantie", "Socialisation avec d'autres chiens", "Assurance AXA incluse"],
-    href: "/garde-nuit" as const,
+    href: "/garde-nuit",
     cta: "Réserver une pension",
   },
-] as const;
+];
 
 export default async function GardeChienPage({
   params,
@@ -68,21 +95,21 @@ export default async function GardeChienPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐕 Garde de chien"
+        badge={t("garde_chien.hero_badge")}
         title={
           <>
-            Une garde{" "}
-            <span className="text-accent">personnalisée</span>{" "}
-            pour votre chien
+            {t("garde_chien.hero_title")}{" "}
+            <span className="text-accent">{t("garde_chien.hero_title_accent")}</span>
           </>
         }
-        subtitle="Nous nous adaptons à votre chien — son âge, son gabarit, ses besoins, ses peurs. Nous proposons des gardiens à domicile ou chez eux, professionnels ou particuliers, partout en France."
+        subtitle={t("garde_chien.hero_subtitle")}
         ctas={[
           {
             label: "Recevoir un devis personnalisé",
@@ -119,9 +146,9 @@ export default async function GardeChienPage({
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, 50vw"
                   />
-                  {/* Emoji badge */}
-                  <span className="absolute top-3 left-3 text-2xl bg-white/90 rounded-full w-10 h-10 flex items-center justify-center shadow-sm">
-                    {opt.emoji}
+                  {/* Icon badge */}
+                  <span className="absolute top-3 left-3 bg-white/90 rounded-full w-10 h-10 flex items-center justify-center shadow-sm">
+                    <opt.Icon size={20} color="#E8705A" />
                   </span>
                 </div>
                 {/* Content */}
@@ -133,7 +160,7 @@ export default async function GardeChienPage({
                   <ul className="space-y-1.5 mt-1">
                     {opt.details.map((d) => (
                       <li key={d} className="flex items-center gap-2 text-xs text-[--color-muted-foreground]">
-                        <span className="text-emerald-500 font-bold">✓</span>
+                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "#E8705A" }} />
                         {d}
                       </li>
                     ))}

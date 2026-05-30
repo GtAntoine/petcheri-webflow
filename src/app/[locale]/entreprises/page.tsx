@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -16,12 +16,21 @@ import TruckIcon from "@/components/icons/truck-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import UnorderedListIcon from "@/components/icons/unordered-list-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Petcheri pour les Entreprises",
-  description:
-    "Offrez à vos collaborateurs un service de conciergerie animalière premium. Avantage salarié innovant, RH différenciant, assurance AXA incluse.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("entreprises.meta_title"),
+    description: t("entreprises.meta_description"),
+    alternates: buildAlternates("/entreprises", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -119,13 +128,14 @@ export default async function EntreprisesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🏢 Petcheri for Business"
+        badge={t("entreprises.hero_badge")}
         title={
           <>
             Le bien-être animal,{" "}

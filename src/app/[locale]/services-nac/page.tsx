@@ -1,32 +1,42 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
+import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Visite & Garde de NAC — Petcheri",
-  description:
-    "Garde et visites à domicile pour lapins, rongeurs, reptiles, oiseaux et autres NAC. Des chouchouteurs spécialisés sélectionnés par nos vétérinaires.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("services_nac.meta_title"),
+    description: t("services_nac.meta_description"),
+    alternates: buildAlternates("/services-nac", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+// Species labels — no emoji per AGENTS.md (no itshover equivalent exists)
 const ANIMAUX = [
-  { emoji: "🐇", label: "Lapins" },
-  { emoji: "🐹", label: "Rongeurs" },
-  { emoji: "🦎", label: "Reptiles" },
-  { emoji: "🐦", label: "Oiseaux" },
-  { emoji: "🐠", label: "Poissons" },
-  { emoji: "🦔", label: "Hérissons" },
-  { emoji: "🐾", label: "Autres NAC" },
+  "Lapins",
+  "Rongeurs",
+  "Reptiles",
+  "Oiseaux",
+  "Poissons",
+  "Hérissons",
+  "Autres NAC",
 ] as const;
 
 const SERVICES = [
@@ -59,20 +69,21 @@ export default async function ServicesNacPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐇 NAC — Nouveaux Animaux de Compagnie"
+        badge={t("services_nac.hero_badge")}
         title={
           <>
-            Ils sont 5 millions en France —{" "}
-            <span className="text-accent">ils méritent les mêmes soins</span>
+            {t("services_nac.hero_title")}{" "}
+            <span className="text-accent">{t("services_nac.hero_title_accent")}</span>
           </>
         }
-        subtitle="Lapins, rongeurs, reptiles, oiseaux… chaque espèce a ses besoins spécifiques. Nos chouchouteurs spécialisés NAC sont sélectionnés et validés par nos vétérinaires partenaires pour garantir des soins adaptés."
+        subtitle={t("services_nac.hero_subtitle")}
         ctas={[
           { label: "Trouver un chouchouteur NAC", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nos autres services", href: "/nos-services" },
@@ -81,16 +92,15 @@ export default async function ServicesNacPage({
         variant="warm"
       />
 
-      {/* Animaux */}
+      {/* Animaux — text-only pills */}
       <section className="py-10 bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            {ANIMAUX.map(({ emoji, label }) => (
+            {ANIMAUX.map((label) => (
               <span
                 key={label}
-                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-[--color-chocolat] bg-white border border-[--color-border]"
+                className="px-4 py-2 rounded-full text-sm font-medium text-[--color-chocolat] bg-white border border-[--color-border]"
               >
-                <span aria-hidden="true">{emoji}</span>
                 {label}
               </span>
             ))}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,12 +8,21 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Transport animalier — Petcheri",
-  description:
-    "Transport de votre animal chez le vétérinaire, le toiletteur ou en famille. Chauffeurs animaliers certifiés, véhicules adaptés, assurance AXA incluse.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("transport.meta_title"),
+    description: t("transport.meta_description"),
+    alternates: buildAlternates("/transport", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -62,20 +71,21 @@ export default async function TransportPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🚗 Transport animalier"
+        badge={t("transport.hero_badge")}
         title={
           <>
-            Votre animal voyage serein —{" "}
-            <span className="text-accent">vous restez où vous êtes</span>
+            {t("transport.hero_title")}{" "}
+            <span className="text-accent">{t("transport.hero_title_accent")}</span>
           </>
         }
-        subtitle="Vétérinaire, toiletteur, pension, famille, déménagement — nos chauffeurs animaliers prennent en charge votre compagnon de la montée en voiture à l'arrivée à destination. En douceur, sans stress."
+        subtitle={t("transport.hero_subtitle")}
         ctas={[
           { label: "Réserver un transport", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nos autres services", href: "/nos-services" },

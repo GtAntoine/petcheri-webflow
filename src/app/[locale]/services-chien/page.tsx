@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -10,13 +10,22 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { ICONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Services pour chien",
-  description:
-    "Garde, promenade, toilettage, comportement et éducation — des services ultra-personnalisés pour votre toutou partout en France.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("services_chien.meta_title"),
+    description: t("services_chien.meta_description"),
+    alternates: buildAlternates("/services-chien", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -80,20 +89,21 @@ export default async function ServicesChienPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🐶 Services chien"
+        badge={t("services_chien.hero_badge")}
         title={
           <>
-            Le concierge{" "}
-            <span className="text-accent">qui a du chien&nbsp;!</span>
+            {t("services_chien.hero_title")}{" "}
+            <span className="text-accent">{t("services_chien.hero_title_accent")}</span>
           </>
         }
-        subtitle="Services ultra-personnalisés pour votre toutou partout en France : garde, promenade, transport, éducation, toilettage et bien d'autres…"
+        subtitle={t("services_chien.hero_subtitle")}
         ctas={[
           {
             label: "Faire chouchouter mon chien",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -15,12 +15,21 @@ import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { PressLogos } from "@/components/sections/press-logos";
 import { StatsCounter } from "@/components/sections/stats-counter";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Qui sommes-nous ?",
-  description:
-    "Petcheri, la conciergerie créée par et pour des propriétaires d'animaux. 400 chouchouteurs certifiés, assurance AXA, récompensés par Purina et les Pépites du Tech.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("qui_sommes_nous.meta_title"),
+    description: t("qui_sommes_nous.meta_description"),
+    alternates: buildAlternates("/qui-sommes-nous", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

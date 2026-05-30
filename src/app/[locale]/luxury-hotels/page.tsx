@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import { Phone } from "lucide-react";
 import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import { TrustGridItem } from "@/components/ui/trust-grid-item";
@@ -23,11 +24,19 @@ import TrophyIcon from "@/components/icons/trophy-icon";
 import UsersIcon from "@/components/icons/users-icon";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 
-export const metadata: Metadata = {
-  title: "Petcheri Luxury Hotels — Conciergerie animalière pour l'hôtellerie de prestige",
-  description:
-    "Offrez à vos clients voyageant avec un animal une expérience palace à la hauteur de votre établissement. Box de bienvenue, room service animalier, événements sur-mesure — géré par Petcheri, à vos couleurs.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("luxury_hotels.meta_title"),
+    description: t("luxury_hotels.meta_description"),
+    alternates: buildAlternates("/luxury-hotels", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -121,13 +130,14 @@ export default async function LuxuryHotelsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="🏨 Petcheri pour l'hôtellerie de luxe"
+        badge={t("luxury_hotels.hero_badge")}
         title={
           <>
             Faites de chaque séjour{" "} <br />

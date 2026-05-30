@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
@@ -8,12 +8,21 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Garde de journée pour chien — Petcheri",
-  description:
-    "Votre chien gardé le temps d'une journée par un chouchouteur certifié près de chez vous. Visites express, demi-journée ou journée complète — assurance AXA incluse.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("garde_journee.meta_title"),
+    description: t("garde_journee.meta_description"),
+    alternates: buildAlternates("/garde-journee", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -55,20 +64,21 @@ export default async function GardeJourneePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHero
-        badge="☀️ Garde de journée"
+        badge={t("garde_journee.hero_badge")}
         title={
           <>
-            Gardé comme à la maison,{" "}
-            <span className="text-accent">même quand vous êtes absent</span>
+            {t("garde_journee.hero_title")}{" "}
+            <span className="text-accent">{t("garde_journee.hero_title_accent")}</span>
           </>
         }
-        subtitle="Longue journée au bureau, rendez-vous médical ou déplacement ? Un chouchouteur certifié prend le relai chez vous ou l'accueille dans un foyer chaleureux. Votre chien rentre épanoui — pas stressé."
+        subtitle={t("garde_journee.hero_subtitle")}
         ctas={[
           { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
           { label: "Nos autres services", href: "/nos-services" },

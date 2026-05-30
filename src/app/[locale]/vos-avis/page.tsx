@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
@@ -7,15 +7,24 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { PressLogos } from "@/components/sections/press-logos";
 import { routing } from "@/i18n/routing";
 import { UI } from "@/lib/assets";
+import { buildAlternates } from "@/lib/seo";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import MessageSquareIcon from "@/components/icons/message-square-icon";
 
-export const metadata: Metadata = {
-  title: "Avis clients — Petcheri",
-  description:
-    "4,9/5 sur Google. Découvrez ce que pensent les propriétaires d'animaux qui font confiance à Petcheri pour garder, soigner et chouchouter leurs compagnons.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
+  return {
+    title: t("vos_avis.meta_title"),
+    description: t("vos_avis.meta_description"),
+    alternates: buildAlternates("/vos-avis", locale),
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

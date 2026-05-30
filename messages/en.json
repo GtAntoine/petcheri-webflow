@@ -81,5 +81,146 @@
     "loading": "Loading...",
     "error": "An error occurred.",
     "press_title": "As seen in"
+  },
+  "pages": {
+    "home": {
+      "meta_title": "Petcheri — Premium Pet Concierge",
+      "meta_description": "A bespoke pet concierge service, across France. Dogs, cats and exotic pets entrusted to certified professionals. AXA insurance included."
+    },
+    "nos_services": {
+      "meta_title": "Our Services — Petcheri",
+      "meta_description": "Sitting, grooming, training, transport and wellness — all our services for dogs, cats and exotic pets across France.",
+      "hero_badge": "Our Services",
+      "hero_title": "Every service",
+      "hero_title_accent": "your pet deserves",
+      "hero_subtitle": "Sitting, walking, grooming, training — an exceptional concierge for dogs, cats and exotic pets, everywhere in France."
+    },
+    "services_chien": {
+      "meta_title": "Dog Services — Petcheri",
+      "meta_description": "Sitting, walking, grooming, training and transport — ultra-personalised services for your dog across France.",
+      "hero_badge": "Dog Services",
+      "hero_title": "The concierge",
+      "hero_title_accent": "that goes the extra mile",
+      "hero_subtitle": "Ultra-personalised services for your dog across France: sitting, walking, transport, training, grooming and much more."
+    },
+    "services_chat": {
+      "meta_title": "Cat Services — Petcheri",
+      "meta_description": "Home visits, sitting, grooming, training and wellness — personalised services for your cat. Specialist feline petsitters.",
+      "hero_badge": "Cat Services",
+      "hero_title": "Everything your cat",
+      "hero_title_accent": "deigns to accept",
+      "hero_subtitle": "Sitting, grooming, training, wellness and transport — a complete concierge at the service of your discerning feline."
+    },
+    "services_nac": {
+      "meta_title": "Exotic Pet Services — Petcheri",
+      "meta_description": "Rabbits, rodents, reptiles, birds — specialist care for all exotic pets, covered by AXA insurance.",
+      "hero_badge": "Exotic Pets",
+      "hero_title": "Specialist care",
+      "hero_title_accent": "for every species",
+      "hero_subtitle": "Rabbits, reptiles, birds, fish — our petsitters trained in exotic species care for your companions with the same expertise as for dogs and cats."
+    },
+    "garde_chien": {
+      "meta_title": "Dog Sitting — Petcheri",
+      "meta_description": "Home sitting, day care, overnight or family boarding — bespoke solutions for every dog, covered by AXA insurance.",
+      "hero_badge": "Dog Sitting",
+      "hero_title": "Personalised sitting",
+      "hero_title_accent": "for your dog",
+      "hero_subtitle": "We adapt to your dog — age, size, needs and fears. Professional or personal sitters, at home or theirs, across France."
+    },
+    "garde_journee": {
+      "meta_title": "Dog Day Care — Petcheri",
+      "meta_description": "Dog day care at home or at your sitter's — express (1 h), half day (4 h) or full day (8 h+), with photo updates.",
+      "hero_badge": "Day Care",
+      "hero_title": "Your dog in good hands",
+      "hero_title_accent": "even during a long day",
+      "hero_subtitle": "Whether you are at work or have a full day ahead, our certified petsitters look after your dog with the same care as at home."
+    },
+    "garde_nuit": {
+      "meta_title": "Overnight Dog Care — Petcheri",
+      "meta_description": "Evening, overnight or weekend care at home or at your petsitter's. Daily updates and AXA insurance.",
+      "hero_badge": "Overnight Care",
+      "hero_title": "A peaceful night",
+      "hero_title_accent": "even without you",
+      "hero_subtitle": "Dinner out, business trip or romantic weekend? Your dog is in safe hands. Our certified petsitters provide a reassuring overnight presence — at home or in their own."
+    },
+    "garde_chat": {
+      "meta_title": "Cat Sitting — Petcheri",
+      "meta_description": "Home visits or cat sitting — respectful of your cat's territory and habits. Certified petsitters, AXA insurance.",
+      "hero_badge": "Cat Sitting",
+      "hero_title": "The sitting your cat",
+      "hero_title_accent": "actually enjoys",
+      "hero_subtitle": "Cats hate change. Our specialist petsitters come to your home, respect their habits and make sure they feel truly comfortable."
+    },
+    "comportement_education": {
+      "meta_title": "Dog & Cat Training — Petcheri",
+      "meta_description": "Positive training, behaviour assessment, re-education for dogs and cats — by certified behaviourists. AXA insurance included.",
+      "hero_badge": "Training & Behaviour",
+      "hero_title": "No more",
+      "hero_title_accent": "ruff behaviour!",
+      "hero_subtitle": "Getting professional help is not a failure — it is an investment in harmony and understanding between you and your pet."
+    },
+    "toilettage": {
+      "meta_title": "Professional Grooming — Petcheri",
+      "meta_description": "Mobile or salon grooming for dogs and cats — bath, trim, nails, spa. Professional groomers selected by Petcheri.",
+      "hero_badge": "Professional Grooming",
+      "hero_title": "Your pet radiant,",
+      "hero_title_accent": "from nose to tail",
+      "hero_subtitle": "Mobile grooming or salon — our certified groomers take care of your dog or cat with expertise and gentleness."
+    },
+    "transport": {
+      "meta_title": "Pet Transport — Petcheri",
+      "meta_description": "Vet trips, holiday transport, airport transfers — professional pet transport across France, covered by AXA.",
+      "hero_badge": "Pet Transport",
+      "hero_title": "Your pet travels",
+      "hero_title_accent": "in complete safety",
+      "hero_subtitle": "Vet appointments, trips, airport transfers — our approved drivers transport your pet with the utmost care."
+    },
+    "bien_etre": {
+      "meta_title": "Pet Wellness — Petcheri",
+      "meta_description": "Massage, osteopathy, reiki, naturopathy, hydrotherapy — alternative therapies for your pet's physical and emotional wellbeing.",
+      "hero_badge": "Wellness & Care",
+      "hero_title": "Because a fulfilled animal",
+      "hero_title_accent": "shows it and feels it",
+      "hero_subtitle": "Beyond sitting and grooming, Petcheri offers alternative therapies for your pet's deep wellbeing. Certified practitioners, selected by our partner vets, at home or in salon."
+    },
+    "qui_sommes_nous": {
+      "meta_title": "About Petcheri — Premium Pet Concierge",
+      "meta_description": "Discover Petcheri: a premium pet concierge, 400+ certified petsitters, AXA insurance. Featured in Gala, Europe 1, Purina and more."
+    },
+    "vip_club": {
+      "meta_title": "The VIP Club — Very Important Pet — Petcheri",
+      "meta_description": "The Very Important Pet Club by Petcheri: exclusive events, wellness workshops, personalised gifts and meetings between passionate members."
+    },
+    "entreprises": {
+      "meta_title": "Petcheri for Business — Corporate Pet Services",
+      "meta_description": "Pet-friendly office, workshops, employee services — Petcheri supports businesses in their animal wellness approach.",
+      "hero_badge": "Petcheri for Business"
+    },
+    "luxury_hotels": {
+      "meta_title": "Petcheri for Luxury Hotels",
+      "meta_description": "Pet concierge for 4 and 5-star hotels — welcome service, sitting, walking, grooming for your guests' pets.",
+      "hero_badge": "Petcheri for Luxury Hotels"
+    },
+    "devenir_petsitter": {
+      "meta_title": "Become a Petsitter — Join Petcheri",
+      "meta_description": "Join 400+ petsitters and exercise your passion for animals freely. Professional insurance included, training and community support.",
+      "hero_badge": "Join Petcheri"
+    },
+    "nos_bons_plans": {
+      "meta_title": "Partners & Deals — Petcheri",
+      "meta_description": "Exclusive offers from our handpicked partners: pet food, health, accessories, insurance and supplements for your pet."
+    },
+    "vos_avis": {
+      "meta_title": "Client Reviews — Petcheri",
+      "meta_description": "4.9/5 on Google. Read what pet owners think about Petcheri — genuine reviews from hundreds of families."
+    },
+    "contact": {
+      "meta_title": "Contact Petcheri",
+      "meta_description": "Contact our team by phone, email or form. Response guaranteed within 24 hours."
+    },
+    "blog": {
+      "meta_title": "Petcheri Blog — Pet tips & news",
+      "meta_description": "Advice on pet wellbeing, training, health and lifestyle. Expert content from Petcheri's team of vets and behaviourists."
+    }
   }
 }
