@@ -192,17 +192,37 @@ export const BLOG_POSTS: BlogPost[] = [
 <h2>1. Toujours de l'eau fraîche à disposition</h2>
 <p>Veillez à ce que votre chat dispose en permanence d'eau fraîche. Ajoutez des glaçons dans la gamelle ou posez plusieurs points d'eau dans le logement. Une fontaine à eau filtrée avec circulation encourage l'hydratation.</p>
 
+<figure>
+  <img src="https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/66e9739ef3c6395568576167_668eb595aeda73101a67c539_carolien-van-oijen-E5HmmWbknoQ-unsplash1.jpeg" alt="Chat qui boit de l'eau fraîche" />
+</figure>
+
 <h2>2. Créer un espace frais</h2>
 <p>Fermez volets et rideaux pour maintenir la fraîcheur intérieure. Installez un ventilateur sans que l'air soit dirigé directement sur votre chat. Tapis de refroidissement ou serviettes humides au sol offrent des alternatives appréciées.</p>
+
+<figure>
+  <img src="https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/66e9739ef3c6395568576181_668eb595990fb40c9a9e09a5_anastacia-dvi-Kf-ZTjzNpLk-unsplash.jpeg" alt="Chat allongé au frais" />
+</figure>
 
 <h2>3. Brosser régulièrement</h2>
 <p>Un brossage régulier élimine les poils morts qui retiennent la chaleur dans un pelage épais. Il prévient aussi la formation de nœuds inconfortables par temps chaud.</p>
 
+<figure>
+  <img src="https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/66e9739ef3c63955685761a9_668eb596ddac075e00ede3e1_IMG_7056.jpeg" alt="Brossage d'un chat en été" />
+</figure>
+
 <h2>4. Des jouets rafraîchissants</h2>
 <p>Proposez des jouets congelés dans du tissu humide ou des ballons d'eau. Un bol avec des jouets flottants permet un jeu interactif tout en gardant votre chat au frais.</p>
 
+<figure>
+  <img src="https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/66e9739ef3c6395568576192_668eb595979e80ebee552b9e_madalyn-cox-kHu9yfpNm1w-unsplash.jpeg" alt="Chat qui joue avec de l'eau" />
+</figure>
+
 <h2>5. Éviter les heures les plus chaudes</h2>
 <p>Limitez les sessions de jeu aux heures fraîches — tôt le matin ou en fin de soirée. Évitez de forcer l'activité en milieu de journée.</p>
+
+<figure>
+  <img src="https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4/66e9739ef3c6395568576175_668eb5954051d1bb0205279a_kate-stone-matheson-uy5t-CJuIK4-unsplash.jpeg" alt="Chat au repos par temps chaud" />
+</figure>
 
 <p><strong>Attention :</strong> halètement excessif, léthargie ou gencives pâles sont des signes d'urgence vétérinaire.</p>`,
   },
