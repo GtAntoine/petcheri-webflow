@@ -18,6 +18,8 @@ export interface BlogPost {
   readTime: number; // minutes
   content: string; // HTML
   featured?: boolean;
+  /** IDs of linked Promotions (0–3). Maps to BlogPostsHasPromotions in DB. */
+  promotionIds?: string[];
 }
 
 const CDN = "https://cdn.prod.website-files.com/66672b13a367b9ed2f2972b4";
@@ -36,6 +38,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: `${CDN}/69f1e7206cf0fb9b4423947d_Couverture%20Articles%20de%20Blog-5.png`,
     readTime: 6,
     featured: true,
+    promotionIds: ["lassie", "kozoo"],
     content: `<p class="lead">"L'idée a germé un soir en regardant votre chien s'endormir au pied du canapé. Et si cette fois, il venait avec vous ?"</p>
 
 <p>Partir en voyage avec son chien, c'est une belle aventure — à condition de bien préparer le départ. Voici tout ce qu'il faut anticiper.</p>
@@ -79,6 +82,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chien", "voyage", "voiture", "avion", "train"],
     coverImage: `${CDN}/69f1ed14d844a36509b43bc6_Couverture%20Articles%20de%20Blog-7.png`,
     readTime: 5,
+    promotionIds: ["lassie", "charly-et-moi", "kozoo"],
     content: `<p class="lead">La valise est prête, le passeport de votre chien est en ordre. Reste la grande question : comment voyager ensemble ?</p>
 
 <h2>🚗 La voiture</h2>
@@ -104,6 +108,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chien", "voyage", "séjour", "garde"],
     coverImage: `${CDN}/69f1f247cab7cc1704a7d97f_Couverture%20Articles%20de%20Blog-8.png`,
     readTime: 5,
+    promotionIds: ["lassie", "zamz"],
     content: `<p class="lead">Le voyage de votre chien commence vraiment à l'arrivée. Comment lui permettre de profiter du séjour autant que vous ?</p>
 
 <h2>Laisser le temps à l'acclimatation</h2>
@@ -134,6 +139,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chien", "été", "chaleur", "santé"],
     coverImage: `${CDN}/68503a2c2cf5eac9cd067850_Sans%20titre%20(532%20x%20358%20px)-24.png`,
     readTime: 5,
+    promotionIds: ["fur-love", "truffe-moustache", "zamz"],
     content: `<p class="lead">L'été rime avec sorties et aventures — mais aussi avec chaleur intense. Contrairement à nous, les chiens ne transpirent pas, ce qui les rend particulièrement vulnérables.</p>
 
 <h2>🌡️ Les signes du coup de chaleur</h2>
@@ -180,6 +186,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chat", "été", "chaleur", "bien-être"],
     coverImage: `${CDN}/668eb8c42adef1ccfdb85103_Sans%20titre%20(532%20x%20358%20px)-9.png`,
     readTime: 4,
+    promotionIds: ["fur-love", "zamz"],
     content: `<p class="lead">Les chats régulent moins bien leur température que les humains. Par forte chaleur, quelques ajustements simples peuvent changer leur confort du tout au tout.</p>
 
 <h2>1. Toujours de l'eau fraîche à disposition</h2>
@@ -210,6 +217,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chien", "hiver", "froid", "bien-être"],
     coverImage: `${CDN}/675b05a6b93454c2a1026311_Sans%20titre%20(532%20x%20358%20px)-11.png`,
     readTime: 4,
+    promotionIds: ["truffe-moustache", "charly-et-moi"],
     content: `<p class="lead">Leur manteau naturel ne suffit pas toujours. En hiver, certains chiens ont besoin d'un coup de pouce pour rester au chaud.</p>
 
 <h2>Comment savoir si votre chien a froid ?</h2>
@@ -242,6 +250,7 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: `${CDN}/69f0c110777617029bce6150_Couverture%20Articles%20de%20Blog.png`,
     readTime: 7,
     featured: true,
+    promotionIds: ["zamz", "holistipet"],
     content: `<p class="lead">Les chiens sont des êtres profondément sociaux. Pour certains, chaque séparation devient une épreuve. Notre comportementaliste identifie les 9 signaux comportementaux de l'anxiété de séparation.</p>
 
 <h2>Pourquoi l'anxiété de séparation passe inaperçue</h2>
@@ -291,6 +300,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chien", "comportement", "petits chiens", "éducation"],
     coverImage: `${CDN}/697b3c43654f1b1ef4789681_Sans%20titre%20(532%20x%20358%20px)-27.png`,
     readTime: 8,
+    promotionIds: ["holistipet", "zamz"],
     content: `<p class="lead">Les chihuahuas, teckels et pinschers nains sont souvent étiquetés "hargneux". Pourtant, la science du comportement canin raconte une histoire bien plus nuancée.</p>
 
 <h2>Taille ≠ tempérament inné</h2>
@@ -378,6 +388,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["garde", "Paris", "choisir", "prestataire"],
     coverImage: `${CDN}/69e885cdda1508c84dc200db_Sans%20titre%20(532%20x%20358%20px)-29.png`,
     readTime: 6,
+    promotionIds: ["lassie", "kozoo"],
     content: `<p class="lead">Paris, 300 000 chiens, des centaines de prestataires de garde. Comment trouver celui qui prendra vraiment soin de votre animal ?</p>
 
 <h2>Les différentes formules de garde</h2>
@@ -414,6 +425,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["adoption", "Noël", "responsabilité", "guide"],
     coverImage: `${CDN}/694acc9b0339aeab175d6855_Sans%20titre%20(532%20x%20358%20px).jpg`,
     readTime: 4,
+    promotionIds: ["biovetol", "truffe-moustache"],
     content: `<p class="lead">Chaque année, les refuges constatent un pic d'abandons au lendemain des fêtes. La cause : des adoptions impulsives de Noël, prises sans réflexion suffisante.</p>
 
 <h2>Le piège de l'émotion festive</h2>
@@ -443,6 +455,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["expats", "Paris", "relocation", "guide"],
     coverImage: `${CDN}/68b712471b27571308c8fdda_Image%20blog.jpg`,
     readTime: 6,
+    promotionIds: ["lassie", "kozoo"],
     content: `<p class="lead">Pet Cheri and Your Friend in Paris have teamed up to help expat families relocating to the French capital with their animal companions.</p>
 
 <h2>Essential Admin Before You Arrive</h2>
@@ -477,6 +490,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chat", "adoption", "guide", "équipement"],
     coverImage: `${CDN}/668e5e5c97a54187aad2fabe_Sans%20titre%20(532%20x%20358%20px)-7.png`,
     readTime: 5,
+    promotionIds: ["homycat", "ziggy", "biovetol"],
     content: `<p class="lead">Adopter un chat, ça se prépare. Notre comportementaliste féline a dressé la liste des 10 indispensables pour bien accueillir votre nouveau compagnon.</p>
 
 <h2>1. La litière — l'emplacement compte autant que le produit</h2>
@@ -522,6 +536,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chat", "appartement", "design", "produits"],
     coverImage: `${CDN}/682454ca8d909036108c0673_Sans%20titre%20(532%20x%20358%20px)%20(1).png`,
     readTime: 4,
+    promotionIds: ["homycat", "charly-et-moi"],
     content: `<p class="lead">Vivre en appartement n'empêche pas un chat d'être épanoui — à condition que son espace réponde à ses besoins instinctifs : grimper, observer, chasser, se gratter, se cacher et dormir.</p>
 
 <h2>La sélection Petcheri × Homycat</h2>
@@ -553,6 +568,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["chat", "alimentation", "test", "nutrition"],
     coverImage: `${CDN}/67f798ca67ce63aa9fad7c0d_Sans%20titre%20(532%20x%20358%20px)-20.png`,
     readTime: 5,
+    promotionIds: ["ziggy"],
     content: `<p class="lead">Ziggy est une marque française d'alimentation féline développée avec le Dr Géraldine Blanchard, spécialiste en nutrition vétérinaire. On a testé sur Jascha, chat castré de 11 ans, pendant 4 semaines.</p>
 
 <h2>Le concept</h2>
@@ -589,6 +605,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["santé", "vétérinaire", "téléconsultation", "services"],
     coverImage: `${CDN}/67f3d717d165bd498da73e63_Sans%20titre%20(532%20x%20358%20px)-19.png`,
     readTime: 5,
+    promotionIds: ["lassie", "kozoo", "truffe-moustache"],
     content: `<p class="lead">Votre chien se gratte depuis ce matin. Est-ce urgent ? Faut-il appeler le vétérinaire ? Aller aux urgences ? Attendre ? Le guide des bonnes options selon la situation.</p>
 
 <h2>La visite vétérinaire à domicile</h2>
@@ -619,6 +636,7 @@ export const BLOG_POSTS: BlogPost[] = [
     tags: ["nutrition", "Noël", "alimentation", "toxique"],
     coverImage: `${CDN}/67604e8a4499ee82edd15c22_Sans%20titre%20(532%20x%20358%20px)-12.png`,
     readTime: 5,
+    promotionIds: ["canigourmand", "elmut", "ziggy"],
     content: `<p class="lead">Les fêtes mettent les yeux de vos animaux au niveau de la table de réveillon. Que peut-on partager sans risque ? La réponse tient en deux colonnes : ce qui est bon et ce qui est toxique.</p>
 
 <h2>✅ Ce qu'on peut partager (avec modération)</h2>

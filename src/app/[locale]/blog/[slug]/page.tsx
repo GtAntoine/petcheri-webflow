@@ -10,8 +10,10 @@ import {
   getPostBySlug,
   getRelatedPosts,
 } from "@/lib/blog-posts";
+import { getPromotionsByIds } from "@/lib/promotions";
 import { BlogCard } from "@/components/ui/blog-card";
-import { Clock, User, ArrowLeft, Tag } from "lucide-react";
+import { PromoCard } from "@/components/ui/promo-card";
+import { Clock, User, ArrowLeft, Tag, Gift } from "lucide-react";
 
 // ─── Static generation ───────────────────────────────────────────────────────
 
@@ -73,6 +75,7 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const related = getRelatedPosts(post, 3);
+  const promos = getPromotionsByIds(post.promotionIds ?? []);
   const categoryColor = CATEGORY_COLORS[post.category] ?? "#C9A96E";
 
   return (
@@ -250,6 +253,37 @@ export default async function BlogPostPage({
           </div>
         </div>
       </section>
+
+      {/* ── Linked promotions ────────────────────────────────────── */}
+      {promos.length > 0 && (
+        <section className="bg-[--color-ivoire] pb-2">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div
+                  className="w-9 h-9 rounded-full flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
+                >
+                  <Gift className="w-4 h-4" style={{ color: "#E8705A" }} />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or]">
+                    Nos bons plans
+                  </p>
+                  <p className="text-sm text-[--color-muted-foreground]">
+                    Des offres sélectionnées pour cet article
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                {promos.map((promo) => (
+                  <PromoCard key={promo.id} promo={promo} variant="inline" />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Related articles ─────────────────────────────────────── */}
       {related.length > 0 && (
