@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { UI } from "@/lib/assets";
 import { FooterSocial } from "./footer-social";
-import PawPrintIcon from "@/components/icons/paw-print-icon";
+import { FooterPawPrint } from "./footer-paw-print";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -128,7 +128,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/40">
             <span className="flex items-center gap-1.5">
-              Made in Paris with love <PawPrintIcon size={13} color="rgba(250,247,242,0.4)" />
+              Made in Paris with love <FooterPawPrint />
             </span>
           </div>
         </div>

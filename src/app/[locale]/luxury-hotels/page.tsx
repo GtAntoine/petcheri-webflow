@@ -11,6 +11,7 @@ import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
 import { Phone } from "lucide-react";
 import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
+import { TrustGridItem } from "@/components/ui/trust-grid-item";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
@@ -300,18 +301,7 @@ export default async function LuxuryHotelsPage({
               {/* Trust grid */}
               <div className="grid grid-cols-2 gap-3">
                 {TRUST_ITEMS.map(({ Icon, text }) => (
-                  <div
-                    key={text}
-                    className="flex items-start gap-3 rounded-xl border border-[--color-border] bg-white/60 p-4"
-                  >
-                    <div
-                      className="mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: "#fde0d4" }}
-                    >
-                      <Icon size={13} style={{ color: "#E8705A" }} />
-                    </div>
-                    <span className="text-sm text-[--color-muted-foreground] leading-snug">{text}</span>
-                  </div>
+                  <TrustGridItem key={text} Icon={Icon} text={text} />
                 ))}
               </div>
             </div>
