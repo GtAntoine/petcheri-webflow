@@ -87,8 +87,9 @@ export function Navbar() {
 
           {[
             { href: "/qui-sommes-nous" as const, label: t("about") },
-            { href: "/vip-club" as const, label: t("vip") },
             { href: "/entreprises" as const, label: t("for_business") },
+            { href: "/blog" as const, label: t("blog") },
+            { href: "/nos-bons-plans" as const, label: "Bons plans" },
           ].map((item) => (
             <Link
               key={item.href}
@@ -104,7 +105,7 @@ export function Navbar() {
             </Link>
           ))}
 
-          {/* Ressources dropdown — Blog + Bons plans */}
+          {/* Ressources dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setResourcesOpen(true)}
@@ -112,27 +113,33 @@ export function Navbar() {
           >
             <button className={cn(
               "flex items-center gap-1 text-sm font-medium transition-colors",
-              (pathname === "/blog" || pathname === "/nos-bons-plans")
+              ["/vip-club", "/vos-avis", "/devenir-petsitter", "/luxury-hotels"].includes(pathname)
                 ? "text-[--color-or]"
                 : "text-[--color-chocolat] hover:text-[--color-or]"
             )}>
-              Ressources
+              Découvrir
               <ChevronDown
                 className={cn("w-4 h-4 transition-transform duration-200", resourcesOpen && "rotate-180")}
               />
             </button>
             {resourcesOpen && (
-              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
-                <div className="bg-white border border-[--color-border] rounded-xl shadow-[--shadow-card-hover] p-2 min-w-[200px]">
+              <div className="absolute top-full right-0 pt-2 z-50">
+                <div className="bg-white border border-[--color-border] rounded-xl shadow-[--shadow-card-hover] p-2 min-w-[210px]">
                   {[
-                    { href: "/blog" as const, label: t("blog"), emoji: "✍️" },
-                    { href: "/nos-bons-plans" as const, label: "Bons plans", emoji: "🎁" },
-                    { href: "/vos-avis" as const, label: t("reviews"), emoji: "⭐" },
+                    { href: "/vip-club" as const,          label: t("vip"),              emoji: "👑" },
+                    { href: "/vos-avis" as const,          label: t("reviews"),          emoji: "⭐" },
+                    { href: "/luxury-hotels" as const,     label: "Luxury Hotels",       emoji: "🏨" },
+                    { href: "/devenir-petsitter" as const, label: t("become_petsitter"), emoji: "🐾" },
                   ].map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[--color-chocolat] hover:bg-[--color-ivoire] hover:text-[--color-or] rounded-lg transition-colors"
+                      className={cn(
+                        "flex items-center gap-2.5 px-4 py-2.5 text-sm rounded-lg transition-colors",
+                        pathname === item.href
+                          ? "text-[--color-or] bg-[--color-ivoire]"
+                          : "text-[--color-chocolat] hover:bg-[--color-ivoire] hover:text-[--color-or]"
+                      )}
                     >
                       <span>{item.emoji}</span>
                       {item.label}
@@ -174,16 +181,19 @@ export function Navbar() {
       {isOpen && (
         <div className="lg:hidden bg-[--color-ivoire] border-t border-[--color-border] px-6 py-4 flex flex-col gap-4">
           {[
-            { href: "/nos-services" as const, label: t("services") },
-            { href: "/services-chien" as const, label: t("services_dog") },
-            { href: "/services-chat" as const, label: t("services_cat") },
-            { href: "/services-nac" as const, label: t("services_nac") },
-            { href: "/qui-sommes-nous" as const, label: t("about") },
-            { href: "/vip-club" as const, label: t("vip") },
-            { href: "/entreprises" as const, label: t("for_business") },
-            { href: "/blog" as const, label: t("blog") },
-            { href: "/nos-bons-plans" as const, label: "Bons plans 🎁" },
-            { href: "/contact" as const, label: t("contact") },
+            { href: "/nos-services" as const,      label: t("services") },
+            { href: "/services-chien" as const,    label: t("services_dog") },
+            { href: "/services-chat" as const,     label: t("services_cat") },
+            { href: "/services-nac" as const,      label: t("services_nac") },
+            { href: "/qui-sommes-nous" as const,   label: t("about") },
+            { href: "/entreprises" as const,       label: t("for_business") },
+            { href: "/blog" as const,              label: t("blog") },
+            { href: "/nos-bons-plans" as const,    label: "Bons plans 🎁" },
+            { href: "/vip-club" as const,          label: `${t("vip")} 👑` },
+            { href: "/vos-avis" as const,          label: `${t("reviews")} ⭐` },
+            { href: "/luxury-hotels" as const,     label: "Luxury Hotels 🏨" },
+            { href: "/devenir-petsitter" as const, label: t("become_petsitter") },
+            { href: "/contact" as const,           label: t("contact") },
           ].map((item) => (
             <Link
               key={item.href}
