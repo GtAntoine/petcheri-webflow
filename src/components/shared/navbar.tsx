@@ -168,25 +168,27 @@ function DropdownMenu({
 
 const MEGA_CHIENS = [
   { href: "/garde-chien",   icon: ICONS.dog,      title: "Garde à domicile",    desc: "Chez vous, dans ses habitudes" },
-  { href: "/garde-journee", icon: ICONS.care,     title: "Garde de journée",    desc: "Le temps d'une longue journée" },
-  { href: "/garde-nuit",    icon: ICONS.ctSleep,  title: "Garde de nuit",       desc: "Chez vous ou chez un chouchouteur" },
+  { href: "/garde-journee", icon: ICONS.ctSleep,  title: "Garde de journée",    desc: "Le temps d'une longue journée" },
+  { href: "/garde-nuit",    icon: ICONS.sleep,    title: "Garde de nuit",       desc: "Chez vous ou chez un chouchouteur" },
   { href: "/services-chien",icon: ICONS.walking2, title: "Promenade",           desc: "Sorties solo ou en groupe" },
 ] as const;
 
 const MEGA_CHATS = [
-  { href: "/garde-chat",    icon: ICONS.ctCat,    title: "Visite & garde",      desc: "À domicile ou chez un chouchouteur" },
-  { href: "/services-chat", icon: ICONS.cat,      title: "Tous les services",   desc: "Toilettage, comportement…" },
+  { href: "/garde-chat",    icon: ICONS.ctCat,    title: "Visite & garde",       desc: "À domicile ou chez un chouchouteur" },
+  { href: "/services-chat", icon: ICONS.cat,      title: "Soins & services chat", desc: "Toilettage, comportement, bien-être…" },
 ] as const;
 
 const MEGA_NAC = [
-  { href: "/services-nac",  icon: ICONS.nac,      title: "Visite & garde NAC",  desc: "Lapins, rongeurs, reptiles…" },
+  { href: "/services-nac",          icon: ICONS.nac,         title: "Visite & garde NAC",   desc: "Lapins, rongeurs, reptiles…" },
+  { href: "/bien-etre",             icon: ICONS.care,        title: "Bien-être & soins",    desc: "Massages, ostéo, naturopathie" },
+  { href: "/transport",             icon: ICONS.ctTransport, title: "Transport",             desc: "Vétérinaire, déplacements" },
 ] as const;
 
 const MEGA_SOINS = [
-  { href: "/toilettage",              icon: ICONS.ctGrooming,   title: "Toilettage" },
-  { href: "/comportement-education",  icon: ICONS.ctEducation,  title: "Comportement" },
-  { href: "/bien-etre",               icon: ICONS.care,         title: "Bien-être & soins" },
-  { href: "/transport",               icon: ICONS.ctTransport,  title: "Transport" },
+  { href: "/toilettage",              title: "Toilettage" },
+  { href: "/comportement-education",  title: "Comportement" },
+  { href: "/bien-etre",               title: "Bien-être & soins" },
+  { href: "/transport",               title: "Transport" },
 ] as const;
 
 type MegaItem = { href: string; icon: string; title: string; desc?: string };
@@ -232,8 +234,8 @@ function MegaCol({
             <div
               className="shrink-0 mt-0.5 flex items-center justify-center rounded-md"
               style={{
-                width: 30,
-                height: 30,
+                width: 34,
+                height: 34,
                 background: active ? "#fde0d4" : "var(--color-ivoire)",
               }}
             >
@@ -241,10 +243,10 @@ function MegaCol({
                 src={item.icon}
                 alt=""
                 aria-hidden="true"
-                width={16}
-                height={16}
+                width={20}
+                height={20}
                 className="opacity-70 group-hover:opacity-100 transition-opacity"
-                style={{ width: 16, height: 16, objectFit: "contain" }}
+                style={{ width: 20, height: 20, objectFit: "contain" }}
               />
             </div>
             <div className="flex flex-col gap-0.5 min-w-0">
@@ -363,7 +365,7 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
             style={{
               border: "1px solid var(--color-border)",
               boxShadow: "0 12px 48px rgba(44,24,16,0.14)",
-              width: "clamp(560px, 48vw, 680px)",
+              width: "clamp(580px, 50vw, 720px)",
             }}
           >
             {/* 3-column grid: Chiens | Chats | NAC */}
@@ -396,21 +398,12 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
                   onClick={close}
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={cn(
-                    "flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors",
+                    "px-3 py-1.5 rounded-full text-xs font-medium transition-colors whitespace-nowrap",
                     pathname === item.href
                       ? "bg-[#fde0d4] text-[#E8705A]"
                       : "bg-white text-[--color-chocolat] hover:bg-[--color-creme] hover:text-[#E8705A] border border-[--color-border]"
                   )}
                 >
-                  <Image
-                    src={item.icon}
-                    alt=""
-                    aria-hidden="true"
-                    width={13}
-                    height={13}
-                    className="opacity-60"
-                    style={{ width: 13, height: 13, objectFit: "contain" }}
-                  />
                   {item.title}
                 </Link>
               ))}
@@ -438,6 +431,7 @@ export function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -447,7 +441,7 @@ export function Navbar() {
   }, []);
 
   // Close mobile menu on route change
-  useEffect(() => { setIsOpen(false); }, [pathname]);
+  useEffect(() => { setIsOpen(false); setServicesOpen(false); }, [pathname]);
 
   const otherLocale = locale === "fr" ? "en" : "fr";
 
@@ -553,36 +547,114 @@ export function Navbar() {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden bg-[--color-ivoire] border-t border-[--color-border] px-6 py-4 flex flex-col gap-4"
+          className="lg:hidden bg-[--color-ivoire] border-t border-[--color-border] px-5 py-4 flex flex-col gap-1"
           role="navigation"
           aria-label="Menu mobile"
         >
+          {/* ── Nos services accordion ── */}
+          <button
+            onClick={() => setServicesOpen((v) => !v)}
+            aria-expanded={servicesOpen}
+            className="flex items-center justify-between w-full py-2.5 text-sm font-semibold text-[--color-chocolat]"
+          >
+            Nos services
+            <ChevronDown
+              className={cn("w-4 h-4 transition-transform duration-200 text-[--color-muted]", servicesOpen && "rotate-180")}
+              aria-hidden="true"
+            />
+          </button>
+
+          {servicesOpen && (
+            <div className="mb-2 rounded-xl bg-white border border-[--color-border] overflow-hidden divide-y divide-[--color-border]">
+              {/* Chiens */}
+              <div className="px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐕 Chiens</p>
+                <div className="flex flex-col gap-0.5">
+                  {MEGA_CHIENS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href as Parameters<typeof Link>[0]["href"]}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className={cn("text-sm py-1.5 transition-colors", pathname === item.href ? "text-[#E8705A] font-medium" : "text-[--color-chocolat]")}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              {/* Chats */}
+              <div className="px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐱 Chats</p>
+                <div className="flex flex-col gap-0.5">
+                  {MEGA_CHATS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href as Parameters<typeof Link>[0]["href"]}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className={cn("text-sm py-1.5 transition-colors", pathname === item.href ? "text-[#E8705A] font-medium" : "text-[--color-chocolat]")}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              {/* NAC */}
+              <div className="px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐇 NAC</p>
+                <div className="flex flex-col gap-0.5">
+                  {MEGA_NAC.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href as Parameters<typeof Link>[0]["href"]}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className={cn("text-sm py-1.5 transition-colors", pathname === item.href ? "text-[#E8705A] font-medium" : "text-[--color-chocolat]")}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              {/* Soins */}
+              <div className="px-4 py-3">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-muted)" }}>Soins & services</p>
+                <div className="flex flex-col gap-0.5">
+                  {MEGA_SOINS.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href as Parameters<typeof Link>[0]["href"]}
+                      aria-current={pathname === item.href ? "page" : undefined}
+                      onClick={() => setIsOpen(false)}
+                      className={cn("text-sm py-1.5 transition-colors", pathname === item.href ? "text-[#E8705A] font-medium" : "text-[--color-chocolat]")}
+                    >
+                      {item.title}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── Top-level links ── */}
           {([
-            { href: "/nos-services",            label: t("services") },
-            { href: "/garde-chien",             label: "Garde à domicile" },
-            { href: "/garde-chat",              label: "Chats & NAC" },
-            { href: "/garde-journee",           label: "Garde de journée" },
-            { href: "/garde-nuit",              label: "Garde de nuit" },
-            { href: "/services-chien",          label: "Promenade" },
-            { href: "/toilettage",              label: "Toilettage" },
-            { href: "/comportement-education",  label: "Comportement & éducation" },
-            { href: "/transport",               label: "Transport" },
-            { href: "/qui-sommes-nous",         label: t("about") },
-            { href: "/entreprises",             label: t("for_business") },
-            { href: "/blog",                    label: t("blog") },
-            { href: "/nos-bons-plans",          label: "Bons plans" },
-            { href: "/vip-club",                label: t("vip") },
-            { href: "/vos-avis",                label: t("reviews") },
-            { href: "/luxury-hotels",           label: "Luxury Hotels" },
-            { href: "/devenir-petsitter",       label: t("become_petsitter") },
-            { href: "/contact",                 label: t("contact") },
+            { href: "/qui-sommes-nous", label: t("about") },
+            { href: "/entreprises",     label: t("for_business") },
+            { href: "/blog",            label: t("blog") },
+            { href: "/nos-bons-plans",  label: "Bons plans" },
+            { href: "/vip-club",        label: t("vip") },
+            { href: "/vos-avis",        label: t("reviews") },
+            { href: "/luxury-hotels",   label: "Luxury Hotels" },
+            { href: "/devenir-petsitter", label: t("become_petsitter") },
+            { href: "/contact",         label: t("contact") },
           ] as const).map((item) => (
             <Link
               key={item.href}
               href={item.href}
               aria-current={pathname === item.href ? "page" : undefined}
               className={cn(
-                "text-sm font-medium transition-colors",
+                "py-2.5 text-sm font-medium transition-colors",
                 pathname === item.href
                   ? "text-[--color-or]"
                   : "text-[--color-chocolat] hover:text-[--color-or]"
@@ -592,7 +664,8 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Button variant="or" size="md" className="mt-2" asChild>
+
+          <Button variant="or" size="md" className="mt-3" asChild>
             <a href={PETCHERI_APP} target="_blank" rel="noopener noreferrer">
               {t("book")}
             </a>
