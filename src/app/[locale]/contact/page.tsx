@@ -3,12 +3,12 @@
 export const dynamic = "force-dynamic";
 
 import React, { useState } from "react";
-import { useWebHaptics } from "web-haptics/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import { HAPTIC } from "@/lib/haptics";
+import { triggerHaptic } from "@/lib/haptics-engine";
 
 const HOURS = [
   "Lundi — Vendredi : 9h – 18h",
@@ -25,24 +25,22 @@ const INFO_ITEMS = [
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { trigger } = useWebHaptics();
   const formRef = React.useRef<HTMLFormElement>(null);
 
   function handleSubmitClick() {
-    // Fire before native validation — gives error haptic if fields are invalid
     if (formRef.current && !formRef.current.checkValidity()) {
-      trigger(HAPTIC.error);
+      triggerHaptic(HAPTIC.error);
     }
   }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    trigger(HAPTIC.tap); // immediate confirmation that submit was received
+    triggerHaptic(HAPTIC.tap);
     setTimeout(() => {
       setLoading(false);
       setSent(true);
-      trigger(HAPTIC.success); // two-pulse success once server confirms
+      triggerHaptic(HAPTIC.success);
     }, 1200);
   }
 
