@@ -3,7 +3,9 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import { useWebHaptics } from "web-haptics/react";
 import { cn } from "@/lib/utils";
+import { HAPTIC } from "@/lib/haptics";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-or disabled:pointer-events-none disabled:opacity-50 cursor-pointer",
@@ -47,12 +49,31 @@ export interface ButtonProps
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  ({ className, variant, size, asChild = false, onClick, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
+    const { trigger } = useWebHaptics();
+
+    const handleClick = React.useCallback(
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        switch (variant) {
+          case "or":      trigger(HAPTIC.buzz);  break;
+          case "primary": trigger(HAPTIC.tap);   break;
+          case "outline":
+          case "outline-or":
+          case "white":   trigger(HAPTIC.click); break;
+          case "ghost":   trigger(HAPTIC.ghost); break;
+          // "link" → no haptic
+        }
+        onClick?.(e);
+      },
+      [trigger, variant, onClick],
+    );
+
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        onClick={handleClick}
         {...props}
       />
     );

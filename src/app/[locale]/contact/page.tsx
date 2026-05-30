@@ -2,11 +2,13 @@
 
 export const dynamic = "force-dynamic";
 
-import { useState } from "react";
+import React, { useState } from "react";
+import { useWebHaptics } from "web-haptics/react";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
+import { HAPTIC } from "@/lib/haptics";
 
 const HOURS = [
   "Lundi — Vendredi : 9h – 18h",
@@ -23,12 +25,25 @@ const INFO_ITEMS = [
 export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { trigger } = useWebHaptics();
+  const formRef = React.useRef<HTMLFormElement>(null);
+
+  function handleSubmitClick() {
+    // Fire before native validation — gives error haptic if fields are invalid
+    if (formRef.current && !formRef.current.checkValidity()) {
+      trigger(HAPTIC.error);
+    }
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
-    // Simulate send
-    setTimeout(() => { setLoading(false); setSent(true); }, 1200);
+    trigger(HAPTIC.tap); // immediate confirmation that submit was received
+    setTimeout(() => {
+      setLoading(false);
+      setSent(true);
+      trigger(HAPTIC.success); // two-pulse success once server confirms
+    }, 1200);
   }
 
   return (
@@ -151,7 +166,7 @@ export default function ContactPage() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
@@ -217,6 +232,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
+                      onClick={handleSubmitClick}
                       className="w-full rounded-full py-4 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all disabled:opacity-60"
                       style={{ background: "#E8705A" }}
                     >
