@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import Image from "next/image";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
-import { PHOTOS } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "Bien-être & soins pour animaux — Petcheri",
@@ -125,47 +123,40 @@ export default async function BienEtrePage({
       {/* Quand y penser */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <SectionHeader
-                label="Quand y penser ?"
-                title="Votre animal vous parle. Il suffit d'écouter."
-                subtitle="Les soins de bien-être ne sont pas réservés aux animaux malades. Ils font partie d'une approche préventive et bienveillante du soin animal."
-                align="left"
-                className="mb-8"
-              />
-              <div className="space-y-3">
-                {[
-                  { situation: "Anxiété, peurs ou comportements régressifs" },
-                  { situation: "Douleurs musculaires ou articulaires" },
-                  { situation: "Récupération post-opératoire" },
-                  { situation: "Arrivée d'un nouvel animal ou d'un bébé" },
-                  { situation: "Vieillissement et mobilité réduite" },
-                  { situation: "Prévention chez les animaux de sport" },
-                  { situation: "Stress lié aux voyages ou déménagements" },
-                ].map(({ situation }) => (
-                  <div key={situation} className="flex items-start gap-3">
-                    <span
-                      className="w-5 h-5 rounded-full shrink-0 mt-0.5 flex items-center justify-center text-white text-xs"
-                      style={{ background: "var(--color-sauge)" }}
-                    >
-                      ✓
-                    </span>
-                    <span className="text-sm text-[--color-muted-foreground] leading-relaxed">{situation}</span>
-                  </div>
-                ))}
+          <SectionHeader
+            label="Quand y penser ?"
+            title="Votre animal vous parle. Il suffit d'écouter."
+            subtitle="Les soins de bien-être ne sont pas réservés aux animaux malades. Ils font partie d'une approche préventive et bienveillante du soin animal."
+            className="mb-12"
+          />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            {[
+              { emoji: "😰", label: "Anxiété & peurs",          desc: "Comportements régressifs, phobie, hyperactivité" },
+              { emoji: "🦴", label: "Douleurs articulaires",     desc: "Tensions musculaires, raideurs, inconfort chronique" },
+              { emoji: "🏥", label: "Post-opératoire",           desc: "Récupération après chirurgie ou blessure" },
+              { emoji: "🐣", label: "Nouvel animal ou bébé",     desc: "Transition, cohabitation, adaptation au changement" },
+              { emoji: "🐾", label: "Vieillissement",            desc: "Mobilité réduite, confort du senior" },
+              { emoji: "🏃", label: "Animaux de sport",          desc: "Prévention, récupération, performance" },
+              { emoji: "✈️", label: "Voyages & déménagements",   desc: "Stress du transport, nouvel environnement" },
+              { emoji: "💚", label: "Bien-être au quotidien",    desc: "Maintien de l'équilibre physique et émotionnel" },
+            ].map(({ emoji, label, desc }) => (
+              <div
+                key={label}
+                className="rounded-2xl p-5 flex flex-col gap-2"
+                style={{ background: "var(--color-ivoire)", border: "1px solid var(--color-border)" }}
+              >
+                <span className="text-2xl leading-none" aria-hidden="true">{emoji}</span>
+                <p
+                  className="text-[--color-chocolat] font-medium text-sm leading-snug"
+                  style={{ fontFamily: "var(--font-serif)", fontSize: "1rem" }}
+                >
+                  {label}
+                </p>
+                <p className="text-xs text-[--color-muted-foreground] leading-relaxed">{desc}</p>
               </div>
-            </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <Image
-                src={PHOTOS.moodboard2}
-                alt="Soin bien-être pour animal"
-                fill
-                className="object-cover"
-                sizes="50vw"
-              />
-            </div>
+            ))}
           </div>
+
         </div>
       </section>
 
