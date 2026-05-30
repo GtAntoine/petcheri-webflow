@@ -83,20 +83,24 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
     );
   }
 
-  // Default card (for nos-bons-plans page)
+  // Default card (for nos-bons-plans page + homepage)
   return (
     <div className="card-base flex flex-col overflow-hidden hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300">
-      {/* Header */}
-      <div className="flex items-center justify-between px-6 pt-6 pb-4">
-        <div className="w-16 h-16 rounded-2xl bg-[--color-creme] flex items-center justify-center overflow-hidden border border-[--color-border]">
-          <img src={promo.logoUrl} alt={promo.partnerName} className="w-14 h-14 object-contain" />
-        </div>
+
+      {/* Full-width logo banner */}
+      <div className="relative w-full h-40 bg-[--color-creme] flex items-center justify-center overflow-hidden">
+        <img
+          src={promo.logoUrl}
+          alt={promo.partnerName}
+          className="w-full h-full object-contain p-6"
+        />
+        {/* Category badge — top right */}
         <span
-          className="text-xs font-semibold rounded-full px-3 py-1"
+          className="absolute top-3 right-3 text-[10px] font-semibold rounded-full px-2.5 py-1"
           style={{ background: style.bg, color: style.text }}
         >
           <span
-            className="inline-block w-1.5 h-1.5 rounded-full mr-1.5 align-middle"
+            className="inline-block w-1.5 h-1.5 rounded-full mr-1 align-middle"
             style={{ background: style.dot }}
           />
           {promo.category}
@@ -104,41 +108,41 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
       </div>
 
       {/* Body */}
-      <div className="px-6 pb-4 flex flex-col flex-1 gap-2">
-        <h3 className="text-base font-semibold text-[--color-chocolat]">{promo.partnerName}</h3>
-        <p className="text-sm text-[--color-muted-foreground] leading-relaxed flex-1">
+      <div className="px-5 pt-4 pb-3 flex flex-col flex-1 gap-2">
+        <h3 className="text-sm font-semibold text-[--color-chocolat]">{promo.partnerName}</h3>
+        <p className="text-xs text-[--color-muted-foreground] leading-relaxed flex-1 line-clamp-2">
           {promo.description}
         </p>
 
         {/* Offer highlight */}
         <div
-          className="rounded-xl px-4 py-3 mt-1"
+          className="rounded-lg px-3 py-2 mt-1"
           style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
         >
-          <p className="text-sm font-semibold text-[--color-chocolat]">{promo.offer}</p>
+          <p className="text-xs font-semibold text-[--color-chocolat]">{promo.offer}</p>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="px-6 pb-6 flex items-center gap-3">
+      <div className="px-5 pb-5 flex items-center gap-2">
         {/* Code copy */}
         {promo.code ? (
           <button
             onClick={copyCode}
-            className="flex-1 flex items-center justify-between bg-[--color-creme] border border-[--color-border] rounded-xl px-4 py-2.5 hover:border-[--color-or] transition-colors group"
+            className="flex-1 flex items-center justify-between bg-[--color-creme] border border-[--color-border] rounded-lg px-3 py-2 hover:border-[--color-or] transition-colors group"
           >
-            <code className="text-sm font-mono font-semibold text-[--color-chocolat] tracking-wider">
+            <code className="text-xs font-mono font-semibold text-[--color-chocolat] tracking-wider">
               {promo.code}
             </code>
-            <span className="flex items-center gap-1 text-xs text-[--color-muted-foreground] group-hover:text-[--color-chocolat] transition-colors">
+            <span className="flex items-center gap-1 text-[10px] text-[--color-muted-foreground] group-hover:text-[--color-chocolat] transition-colors">
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-emerald-500" />
+                  <Check className="w-3 h-3 text-emerald-500" />
                   <span className="text-emerald-600">Copié !</span>
                 </>
               ) : (
                 <>
-                  <Copy className="w-3.5 h-3.5" />
+                  <Copy className="w-3 h-3" />
                   Copier
                 </>
               )}
@@ -153,11 +157,11 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
           href={promo.partnerUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold rounded-xl px-5 py-2.5 text-white hover:brightness-110 hover:shadow-md transition-all shrink-0"
+          className="inline-flex items-center gap-1 text-xs font-semibold rounded-lg px-4 py-2 text-white hover:brightness-110 hover:shadow-md transition-all shrink-0"
           style={{ background: "#E8705A" }}
         >
           Profiter
-          <ExternalLink className="w-3.5 h-3.5" />
+          <ExternalLink className="w-3 h-3" />
         </a>
       </div>
     </div>

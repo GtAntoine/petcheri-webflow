@@ -7,8 +7,8 @@ import { PROMOTIONS } from "@/lib/promotions";
 import { PromoCard } from "@/components/ui/promo-card";
 import { SectionHeader } from "./section-header";
 
-// Promos à mettre en avant sur la homepage — 1 par catégorie principale
-const FEATURED_IDS = ["elmut", "kozoo", "homycat"];
+// Promos à mettre en avant sur la homepage — 4 cartes, catégories variées
+const FEATURED_IDS = ["elmut", "kozoo", "homycat", "truffe-moustache"];
 
 const featured = FEATURED_IDS.map((id) =>
   PROMOTIONS.find((p) => p.id === id)!
@@ -25,7 +25,7 @@ export function HomePromos() {
           className="mb-14"
         />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {featured.map((promo, i) => (
             <motion.div
               key={promo.id}
