@@ -30,7 +30,7 @@ export default async function NosBonsPlansPage({
 
       <PageHeroCentered
         badge="15 offres exclusives"
-        title={<>Nos <span style={{ color: "#E8705A" }}>bons plans</span></>}
+        title={<>Nos <span className="text-accent">bons plans</span></>}
         subtitle="Des offres exclusives chez nos partenaires triés sur le volet — alimentation premium, soins, accessoires, assurance et compléments pour le bien-être de votre animal."
       />
 

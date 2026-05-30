@@ -81,7 +81,7 @@ export default async function VipClubPage({
                 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.15 }}
               >
                 Le{" "}
-                <span style={{ color: "#E8705A" }}>VIP Club</span>
+                <span className="text-accent">VIP Club</span>
                 <br />
                 <span className="text-[--color-muted-foreground]" style={{ fontSize: "0.65em" }}>
                   Very Important Pet

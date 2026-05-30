@@ -90,7 +90,7 @@ export default async function ServicesChienPage({
         title={
           <>
             Le concierge{" "}
-            <span style={{ color: "#E8705A" }}>qui a du chien&nbsp;!</span>
+            <span className="text-accent">qui a du chien&nbsp;!</span>
           </>
         }
         subtitle="Services ultra-personnalisés pour votre toutou partout en France : garde, promenade, transport, éducation, toilettage et bien d'autres…"

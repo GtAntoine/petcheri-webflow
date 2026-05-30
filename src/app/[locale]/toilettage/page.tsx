@@ -99,7 +99,7 @@ export default async function ToilettagePage({
         title={
           <>
             Votre animal a besoin d&apos;un petit{" "}
-            <span style={{ color: "#E8705A" }}>glow up&nbsp;?</span>
+            <span className="text-accent">glow up&nbsp;?</span>
           </>
         }
         subtitle="Petcheri vous propose des soins de toilettage à domicile ou en salon. Nous sélectionnons nos toiletteurs pour leur professionnalisme, leur douceur et leur patience."

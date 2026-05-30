@@ -129,7 +129,7 @@ export default async function EntreprisesPage({
         title={
           <>
             Le bien-être animal,{" "}
-            <span style={{ color: "#E8705A" }}>votre meilleur avantage salarié</span>
+            <span className="text-accent">votre meilleur avantage salarié</span>
           </>
         }
         subtitle="En France, 1 salarié sur 2 possède un animal de compagnie. Offrez-leur un service de conciergerie animalière premium — un avantage concret qui fidélise, recrute et réduit le stress au travail."

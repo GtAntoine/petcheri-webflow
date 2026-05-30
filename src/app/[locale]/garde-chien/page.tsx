@@ -78,7 +78,7 @@ export default async function GardeChienPage({
         title={
           <>
             Une garde{" "}
-            <span style={{ color: "#E8705A" }}>personnalisée</span>{" "}
+            <span className="text-accent">personnalisée</span>{" "}
             pour votre chien
           </>
         }

@@ -48,7 +48,7 @@ export function HomeHero() {
             transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
           >
             La conciergerie qui{" "}
-            <span style={{ color: "#E8705A" }}>chouchoute</span>{" "}
+            <span className="text-accent">chouchoute</span>{" "}
             votre animal
           </motion.h1>
 

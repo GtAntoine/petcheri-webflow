@@ -6,8 +6,8 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { UI } from "@/lib/assets";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { UI, ICONS } from "@/lib/assets";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
 const PETCHERI_APP = "https://app.petcheri.com";
 
@@ -164,6 +164,238 @@ function DropdownMenu({
   );
 }
 
+// ─── MegaMenuServices ─────────────────────────────────────────────────────────
+
+const MEGA_ITEMS = [
+  {
+    href: "/garde-chien",
+    icon: ICONS.dog,
+    title: "Garde à domicile",
+    desc: "Votre chien chez vous, veillé par un chouchouteur certifié",
+  },
+  {
+    href: "/garde-chat",
+    icon: ICONS.ctCat,
+    title: "Chats & NAC",
+    desc: "Chats, lapins, rongeurs, reptiles — on s'occupe de tout",
+  },
+  {
+    href: "/garde-journee",
+    icon: ICONS.care,
+    title: "Garde de journée",
+    desc: "Petite garde pendant vos longues journées au bureau",
+  },
+  {
+    href: "/garde-nuit",
+    icon: ICONS.ctSleep,
+    title: "Garde de nuit",
+    desc: "Hébergement chez un chouchouteur ou à votre domicile",
+  },
+  {
+    href: "/services-chien",
+    icon: ICONS.walking2,
+    title: "Promenade",
+    desc: "Sorties quotidiennes, solo ou en groupe, avec rapport de sortie",
+  },
+  {
+    href: "/toilettage",
+    icon: ICONS.ctGrooming,
+    title: "Toilettage",
+    desc: "Bain, coupe, brossage — un pelage impeccable garanti",
+  },
+  {
+    href: "/comportement-education",
+    icon: ICONS.ctEducation,
+    title: "Comportement & éducation",
+    desc: "Séances sur mesure avec nos comportementalistes certifiés",
+  },
+  {
+    href: "/transport",
+    icon: ICONS.ctTransport,
+    title: "Transport",
+    desc: "Véto, toiletteur, famille — votre animal voyages en sécurité",
+  },
+] as const;
+
+function MegaMenuServices({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const btnRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const close = useCallback(() => setOpen(false), []);
+  const openAndFocusFirst = useCallback(() => {
+    setOpen(true);
+    requestAnimationFrame(() => {
+      menuRef.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    });
+  }, []);
+
+  const handleButtonKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (e.key === "Enter" || e.key === " " || e.key === "ArrowDown") {
+        e.preventDefault();
+        openAndFocusFirst();
+      }
+      if (e.key === "Escape") close();
+    },
+    [openAndFocusFirst, close]
+  );
+
+  const handleMenuKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Escape") {
+        close();
+        btnRef.current?.focus();
+      }
+      const links = Array.from(
+        menuRef.current?.querySelectorAll<HTMLAnchorElement>("a") ?? []
+      );
+      const idx = links.indexOf(document.activeElement as HTMLAnchorElement);
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        links[(idx + 1) % links.length]?.focus();
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        links[(idx - 1 + links.length) % links.length]?.focus();
+      }
+    },
+    [close]
+  );
+
+  const handleBlur = useCallback((e: React.FocusEvent<HTMLDivElement>) => {
+    if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+  }, []);
+
+  const isActive = MEGA_ITEMS.some((item) => pathname === item.href);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onBlur={handleBlur}
+    >
+      <button
+        ref={btnRef}
+        id="nav-mega-services-btn"
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-controls="nav-mega-services"
+        onClick={() => setOpen((v) => !v)}
+        onKeyDown={handleButtonKeyDown}
+        className={cn(
+          "flex items-center gap-1 text-sm font-medium transition-colors",
+          isActive ? "text-[--color-or]" : "text-[--color-chocolat] hover:text-[--color-or]"
+        )}
+      >
+        Nos services
+        <ChevronDown
+          className={cn("w-4 h-4 transition-transform duration-200", open && "rotate-180")}
+          aria-hidden="true"
+        />
+      </button>
+
+      {open && (
+        <div
+          id="nav-mega-services"
+          ref={menuRef}
+          role="list"
+          aria-labelledby="nav-mega-services-btn"
+          onKeyDown={handleMenuKeyDown}
+          className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50"
+        >
+          <div
+            className="rounded-2xl shadow-2xl overflow-hidden"
+            style={{
+              background: "linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              width: "clamp(480px, 50vw, 620px)",
+            }}
+          >
+            {/* Grid of services */}
+            <div className="p-4 grid grid-cols-2 gap-1">
+              {MEGA_ITEMS.map((item) => {
+                const active = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href as Parameters<typeof Link>[0]["href"]}
+                    role="listitem"
+                    onClick={close}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "group flex items-start gap-3 px-4 py-3 rounded-xl transition-colors",
+                      active
+                        ? "bg-white/10"
+                        : "hover:bg-white/8"
+                    )}
+                    style={{ "--tw-bg-opacity": 1 } as React.CSSProperties}
+                  >
+                    {/* Icon */}
+                    <div
+                      className="shrink-0 mt-0.5 flex items-center justify-center rounded-lg"
+                      style={{
+                        width: 36,
+                        height: 36,
+                        background: active ? "rgba(232,112,90,0.25)" : "rgba(255,255,255,0.08)",
+                        transition: "background 0.2s",
+                      }}
+                    >
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        aria-hidden="true"
+                        width={20}
+                        height={20}
+                        className="brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
+                        style={{ width: 20, height: 20, objectFit: "contain" }}
+                      />
+                    </div>
+                    {/* Text */}
+                    <div className="flex flex-col gap-0.5 min-w-0">
+                      <span
+                        className={cn(
+                          "text-sm font-semibold leading-snug",
+                          active ? "text-[#E8705A]" : "text-white group-hover:text-[#E8705A] transition-colors"
+                        )}
+                      >
+                        {item.title}
+                      </span>
+                      <span className="text-xs leading-snug" style={{ color: "rgba(255,255,255,0.45)" }}>
+                        {item.desc}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Footer link */}
+            <div
+              className="px-5 py-3 flex items-center justify-between"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <span className="text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>
+                Conciergerie animalière premium · Assurance AXA incluse
+              </span>
+              <Link
+                href="/nos-services"
+                role="listitem"
+                onClick={close}
+                className="flex items-center gap-1.5 text-xs font-semibold text-[#E8705A] hover:text-[--color-or] transition-colors"
+              >
+                Tous nos services
+                <ArrowRight className="w-3 h-3" aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 export function Navbar() {
@@ -183,12 +415,6 @@ export function Navbar() {
   useEffect(() => { setIsOpen(false); }, [pathname]);
 
   const otherLocale = locale === "fr" ? "en" : "fr";
-
-  const SERVICES_ITEMS: DropdownItem[] = [
-    { href: "/services-chien", label: t("services_dog") },
-    { href: "/services-chat", label: t("services_cat") },
-    { href: "/services-nac", label: t("services_nac") },
-  ];
 
   const DECOUVRIR_ITEMS: DropdownItem[] = [
     { href: "/vip-club",          label: t("vip"),              emoji: "👑" },
@@ -231,13 +457,7 @@ export function Navbar() {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8" role="list" aria-label="Liens principaux">
-          <DropdownMenu
-            id="nav-services-dropdown"
-            label={t("services")}
-            items={SERVICES_ITEMS}
-            align="left"
-            pathname={pathname}
-          />
+          <MegaMenuServices pathname={pathname} />
 
           {NAV_LINKS.map((item) => (
             <Link
@@ -303,19 +523,24 @@ export function Navbar() {
           aria-label="Menu mobile"
         >
           {([
-            { href: "/nos-services",      label: t("services") },
-            { href: "/services-chien",    label: t("services_dog") },
-            { href: "/services-chat",     label: t("services_cat") },
-            { href: "/services-nac",      label: t("services_nac") },
-            { href: "/qui-sommes-nous",   label: t("about") },
-            { href: "/entreprises",       label: t("for_business") },
-            { href: "/blog",              label: t("blog") },
-            { href: "/nos-bons-plans",    label: "Bons plans" },
-            { href: "/vip-club",          label: t("vip") },
-            { href: "/vos-avis",          label: t("reviews") },
-            { href: "/luxury-hotels",     label: "Luxury Hotels" },
-            { href: "/devenir-petsitter", label: t("become_petsitter") },
-            { href: "/contact",           label: t("contact") },
+            { href: "/nos-services",            label: t("services") },
+            { href: "/garde-chien",             label: "Garde à domicile" },
+            { href: "/garde-chat",              label: "Chats & NAC" },
+            { href: "/garde-journee",           label: "Garde de journée" },
+            { href: "/garde-nuit",              label: "Garde de nuit" },
+            { href: "/services-chien",          label: "Promenade" },
+            { href: "/toilettage",              label: "Toilettage" },
+            { href: "/comportement-education",  label: "Comportement & éducation" },
+            { href: "/transport",               label: "Transport" },
+            { href: "/qui-sommes-nous",         label: t("about") },
+            { href: "/entreprises",             label: t("for_business") },
+            { href: "/blog",                    label: t("blog") },
+            { href: "/nos-bons-plans",          label: "Bons plans" },
+            { href: "/vip-club",                label: t("vip") },
+            { href: "/vos-avis",                label: t("reviews") },
+            { href: "/luxury-hotels",           label: "Luxury Hotels" },
+            { href: "/devenir-petsitter",       label: t("become_petsitter") },
+            { href: "/contact",                 label: t("contact") },
           ] as const).map((item) => (
             <Link
               key={item.href}

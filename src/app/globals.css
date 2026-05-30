@@ -140,6 +140,12 @@
     padding-bottom: var(--spacing-section-sm);
   }
 
+  /* Coral accent — used on <span> inside headings for colour + italic emphasis */
+  .text-accent {
+    color: #E8705A;
+    font-style: italic;
+  }
+
   /* Gold divider line */
   .divider-or {
     width: 3rem;

@@ -131,7 +131,7 @@ export default async function LuxuryHotelsPage({
         title={
           <>
             Faites de chaque séjour{" "} <br />
-            <span style={{ color: "#E8705A" }}>une expérience inoubliable</span>
+            <span className="text-accent">une expérience inoubliable</span>
             {" "}  <br />même pour leurs animaux
           </>
         }

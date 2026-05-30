@@ -90,7 +90,7 @@ export default async function QuiSommesNousPage({
                 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.15 }}
               >
                 Plus que de la mise en relation,{" "}
-                <span style={{ color: "#E8705A" }}>une conciergerie de cœur</span>
+                <span className="text-accent">une conciergerie de cœur</span>
               </h1>
               <p className="text-lead mb-8">
                 Petcheri est une conciergerie créée par et pour des propriétaires d&apos;animaux,

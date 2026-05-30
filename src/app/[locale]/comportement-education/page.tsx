@@ -92,7 +92,7 @@ export default async function ComportementEducationPage({
         title={
           <>
             Fini les{" "}
-            <span style={{ color: "#E8705A" }}>humeurs de chien&nbsp;!</span>
+            <span className="text-accent">humeurs de chien&nbsp;!</span>
           </>
         }
         subtitle="Se faire accompagner par un professionnel n'est pas un échec — c'est un investissement pour offrir sérénité et complicité entre votre animal et vous."

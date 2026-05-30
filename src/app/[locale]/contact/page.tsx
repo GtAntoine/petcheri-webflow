@@ -51,7 +51,7 @@ export default function ContactPage() {
 
       <PageHeroCentered
         badge="Réponse sous 24h"
-        title={<>Comment pouvons-nous <span style={{ color: "#E8705A" }}>vous aider&nbsp;?</span></>}
+        title={<>Comment pouvons-nous <span className="text-accent">vous aider&nbsp;?</span></>}
         subtitle="Contactez-nous pour toutes questions concernant nos services, toute demande de renseignements — nous serons heureux de vous aider !"
       />
 
@@ -155,7 +155,7 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Prénom <span style={{ color: "#E8705A" }}>*</span>
+                          Prénom <span className="text-accent">*</span>
                         </label>
                         <input
                           type="text"
@@ -166,7 +166,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Nom <span style={{ color: "#E8705A" }}>*</span>
+                          Nom <span className="text-accent">*</span>
                         </label>
                         <input
                           type="text"
@@ -180,7 +180,7 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Email <span style={{ color: "#E8705A" }}>*</span>
+                          Email <span className="text-accent">*</span>
                         </label>
                         <input
                           type="email"
@@ -191,7 +191,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Téléphone <span style={{ color: "#E8705A" }}>*</span>
+                          Téléphone <span className="text-accent">*</span>
                         </label>
                         <input
                           type="tel"
@@ -204,7 +204,7 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                        Votre message <span style={{ color: "#E8705A" }}>*</span>
+                        Votre message <span className="text-accent">*</span>
                       </label>
                       <textarea
                         required

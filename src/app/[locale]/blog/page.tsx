@@ -30,7 +30,7 @@ export default async function BlogPage({
 
       <PageHeroCentered
         badge="18 articles & guides"
-        title={<>Le blog <span style={{ color: "#E8705A" }}>Petcheri</span></>}
+        title={<>Le blog <span className="text-accent">Petcheri</span></>}
         subtitle="Conseils d'experts, guides pratiques et inspirations pour le bien-être de votre animal — par notre équipe de vétérinaires, comportementalistes et passionnés."
       />
 

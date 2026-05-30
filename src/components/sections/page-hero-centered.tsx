@@ -21,7 +21,7 @@ interface PageHeroCenteredProps {
  * Usage:
  *   <PageHeroCentered
  *     badge="18 articles & guides"
- *     title={<>Le blog <span style={{ color: "#E8705A" }}>Petcheri</span></>}
+ *     title={<>Le blog <span className="text-accent">Petcheri</span></>}
  *     subtitle="Conseils d'experts…"
  *   />
  */
