@@ -125,9 +125,9 @@ export default async function LuxuryHotelsPage({
         badge="🏨 Petcheri pour l'hôtellerie de luxe"
         title={
           <>
-            Faites de chaque séjour{" "}
+            Faites de chaque séjour{" "} <br />
             <span style={{ color: "#E8705A" }}>une expérience inoubliable</span>
-            {" "}— même pour leurs animaux
+            {" "}  <br />même pour leurs animaux
           </>
         }
         subtitle="Vos clients voyagent avec leurs compagnons et attendent le même niveau d'excellence pour eux. Petcheri accompagne les établissements de prestige avec une conciergerie animalière clé en main, à la hauteur de vos exigences."

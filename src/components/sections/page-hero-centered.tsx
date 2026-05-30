@@ -47,7 +47,7 @@ export function PageHeroCentered({ badge, title, subtitle }: PageHeroCenteredPro
         )}
 
         <motion.h1
-          className="text-display text-[--color-chocolat] mb-5 leading-[1.1]"
+          className="text-h1 text-[--color-chocolat] mb-5"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
