@@ -18,6 +18,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -102,6 +103,45 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {/* Ressources dropdown — Blog + Bons plans */}
+          <div
+            className="relative"
+            onMouseEnter={() => setResourcesOpen(true)}
+            onMouseLeave={() => setResourcesOpen(false)}
+          >
+            <button className={cn(
+              "flex items-center gap-1 text-sm font-medium transition-colors",
+              (pathname === "/blog" || pathname === "/nos-bons-plans")
+                ? "text-[--color-or]"
+                : "text-[--color-chocolat] hover:text-[--color-or]"
+            )}>
+              Ressources
+              <ChevronDown
+                className={cn("w-4 h-4 transition-transform duration-200", resourcesOpen && "rotate-180")}
+              />
+            </button>
+            {resourcesOpen && (
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50">
+                <div className="bg-white border border-[--color-border] rounded-xl shadow-[--shadow-card-hover] p-2 min-w-[200px]">
+                  {[
+                    { href: "/blog" as const, label: t("blog"), emoji: "✍️" },
+                    { href: "/nos-bons-plans" as const, label: "Bons plans", emoji: "🎁" },
+                    { href: "/vos-avis" as const, label: t("reviews"), emoji: "⭐" },
+                  ].map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-[--color-chocolat] hover:bg-[--color-ivoire] hover:text-[--color-or] rounded-lg transition-colors"
+                    >
+                      <span>{item.emoji}</span>
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Right side */}
@@ -141,6 +181,8 @@ export function Navbar() {
             { href: "/qui-sommes-nous" as const, label: t("about") },
             { href: "/vip-club" as const, label: t("vip") },
             { href: "/entreprises" as const, label: t("for_business") },
+            { href: "/blog" as const, label: t("blog") },
+            { href: "/nos-bons-plans" as const, label: "Bons plans 🎁" },
             { href: "/contact" as const, label: t("contact") },
           ].map((item) => (
             <Link

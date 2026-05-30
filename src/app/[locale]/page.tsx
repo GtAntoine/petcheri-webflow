@@ -8,6 +8,7 @@ import { HomeServices } from "@/components/sections/home-services";
 import { HomeProcess } from "@/components/sections/home-process";
 import { HomeTestimonials } from "@/components/sections/home-testimonials";
 import { HomeNewsletter } from "@/components/sections/home-newsletter";
+import { HomePromos } from "@/components/sections/home-promos";
 import { routing } from "@/i18n/routing";
 
 export function generateStaticParams() {
@@ -31,6 +32,7 @@ export default async function HomePage({
         <HomeServices />
         <HomeProcess />
         <HomeTestimonials />
+        <HomePromos />
         <HomeNewsletter />
       </main>
       <Footer />
