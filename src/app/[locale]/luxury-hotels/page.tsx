@@ -9,7 +9,8 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
-import { CheckCircle, Phone } from "lucide-react";
+import { Phone, Clock, UserCheck, Tag, BarChart2, Users as UsersLucide, ShieldCheck as ShieldCheckLucide } from "lucide-react";
+import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import PartyPopperIcon from "@/components/icons/party-popper-icon";
@@ -90,12 +91,12 @@ const HOW_IT_WORKS = [
 ] as const;
 
 const TRUST_ITEMS = [
-  "Réseau de +400 chouchouteurs certifiés",
-  "Assurance professionnelle AXA 9 000 000 €",
-  "Disponibilité 7j/7, de 8h à 20h",
-  "Mise à disposition de personnel sur site",
-  "Marque blanche disponible sur demande",
-  "Reporting mensuel de l'activité animalière",
+  { Icon: UsersLucide, text: "Réseau de +400 chouchouteurs certifiés" },
+  { Icon: ShieldCheckLucide, text: "Assurance professionnelle AXA 9 000 000 €" },
+  { Icon: Clock, text: "Disponibilité 7j/7, de 8h à 20h" },
+  { Icon: UserCheck, text: "Mise à disposition de personnel sur site" },
+  { Icon: Tag, text: "Marque blanche disponible sur demande" },
+  { Icon: BarChart2, text: "Reporting mensuel de l'activité animalière" },
 ];
 
 const HOTEL_TYPES = [
@@ -208,26 +209,18 @@ export default async function LuxuryHotelsPage({
           />
           <div className="grid sm:grid-cols-2 gap-6">
             {DIFFERENTIATORS.map(({ Icon, title, desc }) => (
-              <div key={title} className="card-base p-8 flex gap-5">
-                <div
-                  className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
-                  style={{ background: "#fde0d4" }}
+              <AnimatedCardHorizontal key={title} Icon={Icon}>
+                <h3
+                  className="text-[--color-chocolat] font-medium"
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontSize: "clamp(1.05rem, 1.5vw, 1.35rem)",
+                  }}
                 >
-                  <Icon size={20} color="#E8705A" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3
-                    className="text-[--color-chocolat] font-medium"
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontSize: "clamp(1.05rem, 1.5vw, 1.35rem)",
-                    }}
-                  >
-                    {title}
-                  </h3>
-                  <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-                </div>
-              </div>
+                  {title}
+                </h3>
+                <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
+              </AnimatedCardHorizontal>
             ))}
           </div>
         </div>
@@ -301,15 +294,23 @@ export default async function LuxuryHotelsPage({
                 </div>
               </div>
 
-              {/* Checklist */}
-              <ul className="space-y-3">
-                {TRUST_ITEMS.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-[--color-muted-foreground]">
-                    <CheckCircle className="w-4 h-4 shrink-0" style={{ color: "#E8705A" }} />
-                    {item}
-                  </li>
+              {/* Trust grid */}
+              <div className="grid grid-cols-2 gap-3">
+                {TRUST_ITEMS.map(({ Icon, text }) => (
+                  <div
+                    key={text}
+                    className="flex items-start gap-3 rounded-xl border border-[--color-border] bg-white/60 p-4"
+                  >
+                    <div
+                      className="mt-0.5 w-7 h-7 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "#fde0d4" }}
+                    >
+                      <Icon size={13} style={{ color: "#E8705A" }} />
+                    </div>
+                    <span className="text-sm text-[--color-muted-foreground] leading-snug">{text}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
             {/* Photo collage */}
