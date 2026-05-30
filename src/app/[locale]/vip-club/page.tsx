@@ -12,6 +12,7 @@ import PartyPopperIcon from "@/components/icons/party-popper-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
+import { AnimatedCard } from "@/components/ui/animated-card";
 
 export const metadata: Metadata = {
   title: "Le VIP Club — Very Important Pet",
@@ -138,8 +139,7 @@ export default async function VipClubPage({
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {BENEFITS.slice(0, 3).map(({ Icon, title, desc }) => (
-              <div key={title} className="card-base p-7 flex flex-col gap-4">
-                <Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
+              <AnimatedCard key={title} Icon={Icon} className="p-7 flex flex-col gap-4">
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
@@ -147,14 +147,13 @@ export default async function VipClubPage({
                   {title}
                 </h3>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6 mt-6 max-w-3xl mx-auto">
             {BENEFITS.slice(3).map(({ Icon, title, desc }) => (
-              <div key={title} className="card-base p-7 flex flex-col gap-4">
-                <Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
+              <AnimatedCard key={title} Icon={Icon} className="p-7 flex flex-col gap-4">
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
@@ -162,7 +161,7 @@ export default async function VipClubPage({
                   {title}
                 </h3>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>

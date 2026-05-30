@@ -15,6 +15,7 @@ import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
 import TruckIcon from "@/components/icons/truck-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import UnorderedListIcon from "@/components/icons/unordered-list-icon";
+import { AnimatedCard } from "@/components/ui/animated-card";
 
 export const metadata: Metadata = {
   title: "Petcheri pour les Entreprises",
@@ -210,18 +211,15 @@ export default async function EntreprisesPage({
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((svc) => (
-              <div key={svc.title} className="card-base p-6 flex flex-col gap-4">
-                <svc.Icon size={24} color="var(--color-or)" strokeWidth={1.5} />
-                <div className="flex flex-col gap-2">
-                  <h3
-                    className="text-[--color-chocolat] font-medium"
-                    style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 1.5vw, 1.3rem)" }}
-                  >
-                    {svc.title}
-                  </h3>
-                </div>
+              <AnimatedCard key={svc.title} Icon={svc.Icon} className="p-6 flex flex-col gap-4">
+                <h3
+                  className="text-[--color-chocolat] font-medium"
+                  style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1rem, 1.5vw, 1.3rem)" }}
+                >
+                  {svc.title}
+                </h3>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{svc.desc}</p>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>

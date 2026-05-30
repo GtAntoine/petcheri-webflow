@@ -8,6 +8,11 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import TrophyIcon from "@/components/icons/trophy-icon";
+import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
+import SparklesIcon from "@/components/icons/sparkles-icon";
+import SearchIcon from "@/components/icons/search-icon";
+import ShieldCheckIcon from "@/components/icons/shield-check-icon";
+import { AnimatedCard } from "@/components/ui/animated-card";
 
 export const metadata: Metadata = {
   title: "Qui sommes-nous ?",
@@ -21,22 +26,22 @@ export function generateStaticParams() {
 
 const VALUES = [
   {
-    emoji: "🤝",
+    Icon: HeartHandshakeIcon,
     title: "Confiance",
     desc: "Chaque chouchouteur est sélectionné après un processus rigoureux contrôlé par des comportementalistes et des vétérinaires.",
   },
   {
-    emoji: "⭐",
+    Icon: SparklesIcon,
     title: "Excellence",
     desc: "Nous veillons personnellement à ce que chaque prestation soit effectuée conformément à nos standards de qualité.",
   },
   {
-    emoji: "🔍",
+    Icon: SearchIcon,
     title: "Transparence",
     desc: "Photos, rapports de sortie, comptes-rendus en temps réel — vous savez toujours ce que vit votre animal.",
   },
   {
-    emoji: "🛡️",
+    Icon: ShieldCheckIcon,
     title: "Sécurité",
     desc: "Tous nos prestataires bénéficient de notre assurance professionnelle contractée chez AXA pour votre tranquillité.",
   },
@@ -199,9 +204,8 @@ export default async function QuiSommesNousPage({
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {VALUES.map(({ emoji, title, desc }) => (
-              <div key={title} className="card-base p-7 flex flex-col gap-4 text-center items-center">
-                <span className="text-3xl">{emoji}</span>
+            {VALUES.map(({ Icon, title, desc }) => (
+              <AnimatedCard key={title} Icon={Icon} className="p-7 flex flex-col gap-4 text-center items-center">
                 <h3
                   className="text-[--color-chocolat] font-medium"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}
@@ -209,7 +213,7 @@ export default async function QuiSommesNousPage({
                   {title}
                 </h3>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
         </div>
