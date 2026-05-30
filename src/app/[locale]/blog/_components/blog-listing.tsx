@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { BLOG_POSTS, BLOG_CATEGORIES, getFeaturedPosts } from "@/lib/blog-posts";
 import { BlogCard, FeaturedBlogCard } from "@/components/ui/blog-card";
+import { CategoryPills } from "@/components/ui/category-pills";
 
 export function BlogListing() {
   const [activeCategory, setActiveCategory] = useState("Tous");
@@ -24,22 +25,12 @@ export function BlogListing() {
   return (
     <>
       {/* ── Category filters ──────────────────────────────────────── */}
-      <div className="flex items-center gap-2 flex-wrap justify-center mb-10">
-        {BLOG_CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className="rounded-full px-5 py-2 text-sm font-medium transition-all duration-200"
-            style={
-              activeCategory === cat
-                ? { background: "#E8705A", color: "#fff", boxShadow: "0 2px 8px rgba(232,112,90,0.35)" }
-                : { background: "var(--color-white, #fff)", color: "var(--color-chocolat)", border: "1px solid var(--color-border)" }
-            }
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
+      <CategoryPills
+        items={BLOG_CATEGORIES.map((label) => ({ label }))}
+        active={activeCategory}
+        onChange={setActiveCategory}
+        className="mb-10"
+      />
 
       {/* ── Featured article (Tous only) ──────────────────────────── */}
       <AnimatePresence mode="wait">
