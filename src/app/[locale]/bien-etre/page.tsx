@@ -5,7 +5,16 @@ import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
+import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
+import HeartIcon from "@/components/icons/heart-icon";
+import HandHeartIcon from "@/components/icons/hand-heart-icon";
+import ShieldCheckIcon from "@/components/icons/shield-check-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
+import TrophyIcon from "@/components/icons/trophy-icon";
+import TruckIcon from "@/components/icons/truck-icon";
+import SparklesIcon from "@/components/icons/sparkles-icon";
 
 export const metadata: Metadata = {
   title: "Bien-être & soins pour animaux — Petcheri",
@@ -130,30 +139,25 @@ export default async function BienEtrePage({
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {[
-              { emoji: "😰", label: "Anxiété & peurs",          desc: "Comportements régressifs, phobie, hyperactivité" },
-              { emoji: "🦴", label: "Douleurs articulaires",     desc: "Tensions musculaires, raideurs, inconfort chronique" },
-              { emoji: "🏥", label: "Post-opératoire",           desc: "Récupération après chirurgie ou blessure" },
-              { emoji: "🐣", label: "Nouvel animal ou bébé",     desc: "Transition, cohabitation, adaptation au changement" },
-              { emoji: "🐾", label: "Vieillissement",            desc: "Mobilité réduite, confort du senior" },
-              { emoji: "🏃", label: "Animaux de sport",          desc: "Prévention, récupération, performance" },
-              { emoji: "✈️", label: "Voyages & déménagements",   desc: "Stress du transport, nouvel environnement" },
-              { emoji: "💚", label: "Bien-être au quotidien",    desc: "Maintien de l'équilibre physique et émotionnel" },
-            ].map(({ emoji, label, desc }) => (
-              <div
-                key={label}
-                className="rounded-2xl p-5 flex flex-col gap-2"
-                style={{ background: "var(--color-ivoire)", border: "1px solid var(--color-border)" }}
-              >
-                <span className="text-2xl leading-none" aria-hidden="true">{emoji}</span>
+            {([
+              { Icon: HeartIcon,         label: "Anxiété & peurs",        desc: "Comportements régressifs, phobie, hyperactivité" },
+              { Icon: HandHeartIcon,     label: "Douleurs articulaires",   desc: "Tensions musculaires, raideurs, inconfort chronique" },
+              { Icon: ShieldCheckIcon,   label: "Post-opératoire",         desc: "Récupération après chirurgie ou blessure" },
+              { Icon: PawPrintIcon,      label: "Nouvel animal ou bébé",   desc: "Transition, cohabitation, adaptation au changement" },
+              { Icon: HeartHandshakeIcon,label: "Vieillissement",          desc: "Mobilité réduite, confort du senior" },
+              { Icon: TrophyIcon,        label: "Animaux de sport",        desc: "Prévention, récupération, performance" },
+              { Icon: TruckIcon,         label: "Voyages & déménagements", desc: "Stress du transport, nouvel environnement" },
+              { Icon: SparklesIcon,      label: "Bien-être au quotidien",  desc: "Maintien de l'équilibre physique et émotionnel" },
+            ] as const).map(({ Icon, label, desc }) => (
+              <AnimatedCard key={label} Icon={Icon} className="p-5 flex flex-col gap-2">
                 <p
-                  className="text-[--color-chocolat] font-medium text-sm leading-snug"
+                  className="text-[--color-chocolat] font-medium leading-snug"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "1rem" }}
                 >
                   {label}
                 </p>
                 <p className="text-xs text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
+              </AnimatedCard>
             ))}
           </div>
 

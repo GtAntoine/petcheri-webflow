@@ -10,7 +10,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - ✅ itshover icons (`ShieldCheckIcon`, `UsersIcon`, `SparklesIcon`, etc.)
 - ❌ lucide-react (uniquement si aucune itshover ne convient et après confirmation)
-- ❌ emojis dans le code JSX
+- ❌ emojis dans le code JSX — **jamais, même dans des cards de contenu, des listes ou des sections "situations"**
+
+Si aucune itshover ne correspond parfaitement au sens voulu, choisir la plus proche sémantiquement plutôt que de fallback sur un emoji.
 
 Liste des icônes disponibles dans `src/components/icons/` :
 `flame`, `graduation-cap`, `hand-heart`, `heart-handshake`, `heart`,
