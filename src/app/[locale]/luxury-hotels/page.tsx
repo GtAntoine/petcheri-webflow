@@ -9,10 +9,13 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
-import { Phone, Clock, UserCheck, Tag, BarChart2, Users as UsersLucide, ShieldCheck as ShieldCheckLucide } from "lucide-react";
+import { Phone } from "lucide-react";
 import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
+import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import UnorderedListIcon from "@/components/icons/unordered-list-icon";
 import PartyPopperIcon from "@/components/icons/party-popper-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import TrophyIcon from "@/components/icons/trophy-icon";
@@ -91,12 +94,12 @@ const HOW_IT_WORKS = [
 ] as const;
 
 const TRUST_ITEMS = [
-  { Icon: UsersLucide, text: "Réseau de +400 chouchouteurs certifiés" },
-  { Icon: ShieldCheckLucide, text: "Assurance professionnelle AXA 9 000 000 €" },
-  { Icon: Clock, text: "Disponibilité 7j/7, de 8h à 20h" },
-  { Icon: UserCheck, text: "Mise à disposition de personnel sur site" },
-  { Icon: Tag, text: "Marque blanche disponible sur demande" },
-  { Icon: BarChart2, text: "Reporting mensuel de l'activité animalière" },
+  { Icon: UsersIcon, text: "Réseau de +400 chouchouteurs certifiés" },
+  { Icon: ShieldCheckIcon, text: "Assurance professionnelle AXA 9 000 000 €" },
+  { Icon: HeartHandshakeIcon, text: "Disponibilité 7j/7, de 8h à 20h" },
+  { Icon: GraduationCapIcon, text: "Mise à disposition de personnel sur site" },
+  { Icon: SparklesIcon, text: "Marque blanche disponible sur demande" },
+  { Icon: UnorderedListIcon, text: "Reporting mensuel de l'activité animalière" },
 ];
 
 const HOTEL_TYPES = [
