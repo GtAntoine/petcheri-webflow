@@ -4,7 +4,14 @@
   const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
   const nextConfig: NextConfig = {
-    // All assets are local in /public/assets — no external image domains needed
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "cdn.prod.website-files.com",
+        },
+      ],
+    },
 
     /**
      * 301 redirects: /ebook/[slug] → /blog/[slug]
