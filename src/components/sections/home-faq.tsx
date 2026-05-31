@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Plus, Minus } from "lucide-react";
 import { SectionHeader } from "@/components/sections/section-header";
-import { Link } from "@/i18n/navigation";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -81,12 +80,12 @@ export function HomeFaq() {
                       {t(aKey)}
                     </p>
                     {isLast && (
-                      <Link
+                      <a
                         href="/assurance"
                         className="inline-block text-sm font-medium text-[--color-or] hover:underline mt-1"
                       >
                         {t("a6_insurance_link")}
-                      </Link>
+                      </a>
                     )}
                   </div>
                 </div>
