@@ -7,8 +7,9 @@ import { HomeStats } from "@/components/sections/home-stats";
 import { HomeServices } from "@/components/sections/home-services";
 import { HomeProcess } from "@/components/sections/home-process";
 import { HomeTestimonials } from "@/components/sections/home-testimonials";
-import { HomeNewsletter } from "@/components/sections/home-newsletter";
 import { HomePromos } from "@/components/sections/home-promos";
+import { HomeFaq } from "@/components/sections/home-faq";
+import { HomeCta } from "@/components/sections/home-cta";
 import { PressLogos } from "@/components/sections/press-logos";
 import { StatsCounter } from "@/components/sections/stats-counter";
 import { routing } from "@/i18n/routing";
@@ -51,7 +52,8 @@ export default async function HomePage({
         <HomeProcess />
         <HomeTestimonials />
         <HomePromos />
-        <HomeNewsletter />
+        <HomeFaq />
+        <HomeCta />
       </main>
       <Footer />
     </>

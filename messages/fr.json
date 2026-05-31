@@ -129,7 +129,28 @@
     "promos_title": "Des offres exclusives pour vos animaux",
     "promos_subtitle": "Des réductions négociées chez nos partenaires triés sur le volet — alimentation, santé, accessoires et bien plus.",
     "promos_count": "15 offres partenaires disponibles",
-    "promos_cta": "Voir tous les bons plans"
+    "promos_cta": "Voir tous les bons plans",
+    "cta_title": "Prêt à chouchouter votre compagnon ?",
+    "cta_subtitle": "Rejoignez les familles qui font confiance à Petcheri pour le bonheur de leur animal.",
+    "cta_book": "Réserver maintenant",
+    "cta_note": "Sans engagement · Assurance incluse · Support 7j/7"
+  },
+  "faq": {
+    "label": "Questions fréquentes",
+    "title": "On répond à tout",
+    "q1": "Comment sont sélectionnés les chouchouteurs ?",
+    "a1": "Chaque chouchouteur passe un processus de vérification rigoureux : entretien individuel, vérification d'identité, contrôle des références, et période d'essai supervisée. Tous sont assurés.",
+    "q2": "Que se passe-t-il en cas de problème pendant une prestation ?",
+    "a2": "Notre équipe est disponible 7j/7 par téléphone et WhatsApp. En cas d'urgence vétérinaire, nous avons un protocole dédié. L'assurance couvre les frais vétérinaires et les dommages éventuels.",
+    "q3": "Puis-je annuler ou modifier une réservation ?",
+    "a3": "Oui, l'annulation est gratuite jusqu'à 48h avant la prestation. Entre 48h et 24h, des frais de 50 % s'appliquent. Les modifications de dates sont toujours possibles selon la disponibilité du chouchouteur.",
+    "q4": "Est-ce que Petcheri est disponible dans ma ville ?",
+    "a4": "Petcheri est présent partout en France. Remplissez le formulaire et on vous dit rapidement si on peut vous aider avec un chouchouteur près de chez vous !",
+    "q5": "Les tarifs affichés sont-ils définitifs ?",
+    "a5": "Les tarifs indiqués sont des prix indicatifs de départ. Le prix final dépend de la durée, du nombre d'animaux, des besoins spécifiques et de la localisation. Vous recevez un devis détaillé avant toute confirmation — sans engagement et sans surprise.",
+    "q6": "Mon animal est-il assuré pendant la prestation ?",
+    "a6": "Oui, tous les animaux sont couverts par notre assurance pendant les prestations.",
+    "a6_insurance_link": "En savoir plus sur notre assurance →"
   },
   "services": {
     "dog": {

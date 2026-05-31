@@ -129,7 +129,28 @@
     "promos_title": "Exclusive offers for your pets",
     "promos_subtitle": "Deals negotiated with our handpicked partners — food, health, accessories and more.",
     "promos_count": "15 partner offers available",
-    "promos_cta": "See all deals"
+    "promos_cta": "See all deals",
+    "cta_title": "Ready to pamper your companion?",
+    "cta_subtitle": "Join the families who trust Petcheri for their pet's happiness.",
+    "cta_book": "Book now",
+    "cta_note": "No commitment · Insurance included · 7/7 support"
+  },
+  "faq": {
+    "label": "Frequently asked questions",
+    "title": "We answer everything",
+    "q1": "How are petsitters selected?",
+    "a1": "Every petsitter goes through a rigorous vetting process: individual interview, identity check, reference check, and a supervised trial period. All are insured.",
+    "q2": "What happens if there's a problem during a service?",
+    "a2": "Our team is available 7 days a week by phone and WhatsApp. In case of a veterinary emergency, we have a dedicated protocol. Insurance covers vet fees and any damages.",
+    "q3": "Can I cancel or modify a booking?",
+    "a3": "Yes, cancellation is free up to 48 hours before the service. Between 48h and 24h, a 50% fee applies. Date changes are always possible subject to your petsitter's availability.",
+    "q4": "Is Petcheri available in my city?",
+    "a4": "Petcheri operates across all of France. Fill in the form and we'll quickly let you know if we can help with a petsitter near you!",
+    "q5": "Are the prices shown final?",
+    "a5": "The prices shown are indicative starting prices. The final price depends on duration, number of pets, specific needs and location. You receive a detailed quote before any confirmation — no commitment, no surprises.",
+    "q6": "Is my pet insured during the service?",
+    "a6": "Yes, all pets are covered by our insurance during services.",
+    "a6_insurance_link": "Learn more about our insurance →"
   },
   "services": {
     "dog": {
