@@ -15,7 +15,7 @@ const buttonVariants = cva(
         primary:
           "bg-chocolat text-ivoire hover:bg-chocolat-light shadow-sm hover:shadow-md",
         or:
-          "bg-[#E8705A] text-white shadow-md hover:shadow-lg hover:brightness-110 font-semibold",
+          "bg-[#C0432D] text-white shadow-md hover:shadow-lg hover:brightness-110 font-semibold",
         outline:
           "border border-chocolat text-chocolat bg-transparent hover:bg-chocolat hover:text-ivoire",
         "outline-or":

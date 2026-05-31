@@ -156,7 +156,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
         <div className="mt-2">
           <span
             className="inline-flex items-center gap-2 text-sm font-semibold rounded-full px-6 py-2.5 text-white shadow-sm group-hover:shadow-md group-hover:brightness-110 transition-all"
-            style={{ background: "#E8705A" }}
+            style={{ background: "#C0432D" }}
           >
             {t("read_article")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

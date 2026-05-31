@@ -1,9 +1,12 @@
+"use client";
+
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "@/components/ui/button";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
 
 const PETCHERI_APP = "https://app.petcheri.com";
 
-// ─── Large decorative paw shape ───────────────────────────────────────────────
+// ─── Paw shapes ───────────────────────────────────────────────────────────────
 
 function PawShape({ className }: { className?: string }) {
   return (
@@ -14,9 +17,7 @@ function PawShape({ className }: { className?: string }) {
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Main pad */}
       <ellipse cx="50" cy="66" rx="23" ry="19" />
-      {/* Toe pads */}
       <ellipse cx="21" cy="44" rx="10.5" ry="9" />
       <ellipse cx="40" cy="31" rx="10.5" ry="9" />
       <ellipse cx="61" cy="31" rx="10.5" ry="9" />
@@ -29,6 +30,7 @@ function PawShape({ className }: { className?: string }) {
 
 export function HomeCta() {
   const t = useTranslations("home");
+  const pawRef = useRef<{ startAnimation: () => void; stopAnimation: () => void }>(null);
 
   return (
     <section
@@ -63,11 +65,22 @@ export function HomeCta() {
           {t("cta_subtitle")}
         </p>
 
-        <a href={PETCHERI_APP} target="_blank" rel="noopener noreferrer">
-          <Button variant="white" size="lg" className="font-semibold gap-2">
-            {t("cta_book")}
-            <span aria-hidden="true">🐾</span>
-          </Button>
+        {/* Button — hover triggers paw animation across the whole element */}
+        <a
+          href={PETCHERI_APP}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={() => pawRef.current?.startAnimation()}
+          onMouseLeave={() => pawRef.current?.stopAnimation()}
+          className="inline-flex items-center gap-2.5 bg-white text-[--color-chocolat] font-semibold rounded-full px-9 py-3.5 text-base shadow-sm hover:shadow-md cursor-pointer transition-all duration-300"
+        >
+          {t("cta_book")}
+          <PawPrintIcon
+            ref={pawRef}
+            size={18}
+            color="var(--color-or)"
+            className="pointer-events-none"
+          />
         </a>
 
         <p className="mt-6 text-sm text-white/60">

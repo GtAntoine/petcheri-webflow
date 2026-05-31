@@ -261,32 +261,36 @@ export function HomeTestimonials() {
             <button
               onClick={prev}
               aria-label={t("testimonials_aria_prev")}
-              className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-white transition-colors"
+              className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-white transition-colors cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4 text-[--color-chocolat]" />
             </button>
             <button
               onClick={next}
               aria-label={t("testimonials_aria_next")}
-              className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-white transition-colors"
+              className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-white transition-colors cursor-pointer"
             >
               <ChevronRight className="w-4 h-4 text-[--color-chocolat]" />
             </button>
           </div>
 
-          {/* Dots */}
-          <div className="flex gap-2 items-center">
+          {/* Dots — w-11 h-11 for 44px touch target, visual dot inside */}
+          <div className="flex items-center">
             {PAGES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => go(i, i >= page ? 1 : -1)}
                 aria-label={`Page ${i + 1}`}
-                className={`rounded-full transition-all duration-300 ${
-                  i === page
-                    ? "w-6 h-2.5 bg-[--color-chocolat]"
-                    : "w-2.5 h-2.5 bg-[--color-border] hover:bg-[--color-muted-foreground]"
-                }`}
-              />
+                className="w-11 h-11 flex items-center justify-center cursor-pointer"
+              >
+                <span
+                  className={`rounded-full transition-all duration-300 block ${
+                    i === page
+                      ? "w-6 h-2.5 bg-[--color-chocolat]"
+                      : "w-2.5 h-2.5 bg-[--color-border] hover:bg-[--color-muted-foreground]"
+                  }`}
+                />
+              </button>
             ))}
           </div>
 

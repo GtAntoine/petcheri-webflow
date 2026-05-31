@@ -211,7 +211,7 @@ export default async function VosAvisPage({
                 <div className="flex items-center gap-3 pt-1 border-t border-[--color-border]">
                   <div
                     className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-semibold text-white shrink-0"
-                    style={{ background: "#E8705A" }}
+                    style={{ background: "#C0432D" }}
                   >
                     {item.author.charAt(0)}
                   </div>
@@ -243,7 +243,7 @@ export default async function VosAvisPage({
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
-            style={{ background: "#E8705A" }}
+            style={{ background: "#C0432D" }}
           >
             Laisser un avis Google
           </a>

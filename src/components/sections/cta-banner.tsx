@@ -43,7 +43,7 @@ export function CtaBanner({
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-200"
-              style={{ background: "#E8705A" }}
+              style={{ background: "#C0432D" }}
             >
               {primaryCta.label}
               <ArrowRight className="w-4 h-4" />
@@ -52,7 +52,7 @@ export function CtaBanner({
             <Link
               href={primaryCta.href as Parameters<typeof Link>[0]["href"]}
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all duration-200"
-              style={{ background: "#E8705A" }}
+              style={{ background: "#C0432D" }}
             >
               {primaryCta.label}
               <ArrowRight className="w-4 h-4" />

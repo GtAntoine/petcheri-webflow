@@ -56,7 +56,7 @@ export function HomePromos() {
           <Link
             href="/nos-bons-plans"
             className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
-            style={{ background: "#E8705A" }}
+            style={{ background: "#C0432D" }}
           >
             {t("promos_cta")}
             <ArrowRight className="w-4 h-4" />

@@ -45,7 +45,7 @@ export function HomeFaq() {
                 {/* Question row */}
                 <button
                   onClick={() => toggle(i)}
-                  className="flex items-center justify-between w-full text-left gap-4 group"
+                  className="flex items-center justify-between w-full text-left gap-4 group cursor-pointer"
                   aria-expanded={isOpen}
                 >
                   <span

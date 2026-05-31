@@ -40,7 +40,7 @@ export function FooterPawPrint() {
       <PawPrintIcon
         ref={iconRef}
         size={13}
-        color="rgba(250,247,242,0.4)"
+        color="var(--color-or)"
         className="pointer-events-none"
       />
     </span>

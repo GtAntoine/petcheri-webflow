@@ -83,7 +83,7 @@ export function HomeHero() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition-all duration-200 shadow-md hover:shadow-lg hover:brightness-110"
-              style={{ background: "#E8705A" }}
+              style={{ background: "#C0432D" }}
             >
               {t("hero_cta_book")}
             </a>
