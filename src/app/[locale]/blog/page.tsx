@@ -32,15 +32,16 @@ export default async function BlogPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHeroCentered
-        badge="18 articles & guides"
-        title={<>Le blog <span className="text-accent">Petcheri</span></>}
-        subtitle="Conseils d'experts, guides pratiques et inspirations pour le bien-être de votre animal — par notre équipe de vétérinaires, comportementalistes et passionnés."
+        badge={t("blog.hero_badge")}
+        title={<>{t("blog.hero_title")} <span className="text-accent">{t("blog.hero_title_accent")}</span></>}
+        subtitle={t("blog.hero_subtitle")}
       />
 
       {/* Listing */}

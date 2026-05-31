@@ -16,6 +16,7 @@ import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 import TruckIcon from "@/components/icons/truck-icon";
 import type { ComponentType } from "react";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -35,50 +36,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const SERVICES: ReadonlyArray<{
-  Icon: ComponentType<{ size?: number; color?: string }>;
-  title: string;
-  desc: string;
-  href: string;
-  cta: string;
-}> = [
-  {
-    Icon: ShieldCheckIcon,
-    title: "Visite & garde",
-    desc: "Visite à domicile, garde chez vous ou en famille d'accueil — selon les habitudes de votre chat et vos contraintes.",
-    href: "/garde-chat",
-    cta: "Découvrir",
-  },
-  {
-    Icon: SparklesIcon,
-    title: "Toilettage",
-    desc: "Brossage approfondi, coupe délicate, nettoyage des yeux et oreilles, griffes — par des toiletteurs spécialisés chats.",
-    href: "/toilettage",
-    cta: "Découvrir",
-  },
-  {
-    Icon: GraduationCapIcon,
-    title: "Comportement & éducation",
-    desc: "Votre chat griffe les meubles, panique au moindre bruit ou refuse de partager l'espace ? Nos comportementalistes ont les réponses.",
-    href: "/comportement-education",
-    cta: "Découvrir",
-  },
-  {
-    Icon: HeartIcon,
-    title: "Bien-être & soins",
-    desc: "Massage, ostéopathie, reiki, naturopathie — des soins alternatifs pour l'équilibre physique et émotionnel de votre chat.",
-    href: "/bien-etre",
-    cta: "Découvrir",
-  },
-  {
-    Icon: TruckIcon,
-    title: "Transport",
-    desc: "Trajet chez le vétérinaire, le toiletteur ou chez un proche — nos chauffeurs animaliers transportent votre chat en toute sécurité.",
-    href: "/transport",
-    cta: "Découvrir",
-  },
-] as const;
-
 export default async function ServicesChatPage({
   params,
 }: {
@@ -87,6 +44,20 @@ export default async function ServicesChatPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const SERVICES: Array<{
+    Icon: ComponentType<{ size?: number; color?: string }>;
+    title: string;
+    desc: string;
+    href: string;
+    cta: string;
+  }> = [
+    { Icon: ShieldCheckIcon, title: t("services_chat.svc_visite_title"), desc: t("services_chat.svc_visite_desc"), href: "/garde-chat", cta: t("services_chat.svc_visite_cta") },
+    { Icon: SparklesIcon, title: t("services_chat.svc_toilettage_title"), desc: t("services_chat.svc_toilettage_desc"), href: "/toilettage", cta: t("services_chat.svc_toilettage_cta") },
+    { Icon: GraduationCapIcon, title: t("services_chat.svc_comport_title"), desc: t("services_chat.svc_comport_desc"), href: "/comportement-education", cta: t("services_chat.svc_comport_cta") },
+    { Icon: HeartIcon, title: t("services_chat.svc_bienetre_title"), desc: t("services_chat.svc_bienetre_desc"), href: "/bien-etre", cta: t("services_chat.svc_bienetre_cta") },
+    { Icon: TruckIcon, title: t("services_chat.svc_transport_title"), desc: t("services_chat.svc_transport_desc"), href: "/transport", cta: t("services_chat.svc_transport_cta") },
+  ];
 
   return (
     <>
@@ -102,12 +73,12 @@ export default async function ServicesChatPage({
         }
         subtitle={t("services_chat.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Voir la garde de chats", href: "/garde-chat" },
+          { label: t("services_chat.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("services_chat.hero_cta_secondary"), href: "/garde-chat" },
         ]}
         image={ILLUSTRATIONS.catSitting}
-        imageAlt="Services pour chats Petcheri"
-        trustBadges={["Spécialistes félins", "Assurance AXA incluse", "7j/7"]}
+        imageAlt={t("services_chat.hero_image_alt")}
+        trustBadges={[t("services_chat.trust_1"), t("services_chat.trust_2"), t("services_chat.trust_3")]}
         variant="warm"
       />
 
@@ -115,9 +86,9 @@ export default async function ServicesChatPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos services"
-            title="Une conciergerie complète pour votre chat"
-            subtitle="De la garde au bien-être, on s'occupe de tout ce dont votre chat a besoin — même de ce qu'il ne réclame pas encore."
+            label={t("services_chat.svcs_label")}
+            title={t("services_chat.svcs_title")}
+            subtitle={t("services_chat.svcs_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -146,10 +117,10 @@ export default async function ServicesChatPage({
       </section>
 
       <CtaBanner
-        title="Votre chat a des exigences. Nous avons les chouchouteurs."
-        subtitle="Des spécialistes félins partout en France, disponibles 7j/7. Réservez en quelques minutes."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Services pour NAC", href: "/services-nac" }}
+        title={t("services_chat.banner_title")}
+        subtitle={t("services_chat.banner_subtitle")}
+        primaryCta={{ label: t("services_chat.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("services_chat.banner_secondary"), href: "/services-nac" }}
       />
 
       <Footer />

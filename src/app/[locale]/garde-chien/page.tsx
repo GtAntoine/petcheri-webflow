@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
-import { SITE_STATS } from "@/lib/site-stats";
+import { SITE_STATS, BOOKING_URL } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -42,53 +42,6 @@ interface IconHandle {
   stopAnimation: () => void;
 }
 
-const GARDE_OPTIONS: ReadonlyArray<{
-  Icon: ComponentType<{ ref?: React.Ref<IconHandle>; size?: number; color?: string }>;
-  title: string;
-  desc: string;
-  image: string;
-  details: readonly string[];
-  href: "/garde-journee" | "/garde-nuit" | "/garde-chien";
-  cta: string;
-}> = [
-  {
-    Icon: SparklesIcon,
-    title: "Garde de jour",
-    desc: "Une journée ou quelques heures d'absence ? On chouchoute votre toutou selon ses besoins et les vôtres !",
-    image: ILLUSTRATIONS.dogDay,
-    details: ["À domicile ou chez le chouchouteur", "Rapport photo en temps réel", "Assurance AXA incluse"],
-    href: "/garde-journee",
-    cta: "Réserver une garde de jour",
-  },
-  {
-    Icon: PawPrintIcon,
-    title: "Garde de nuit",
-    desc: "Quelques jours de vacances en vue ? Nous lui préparons un séjour de wouf avec le chouchouteur de ses rêves !",
-    image: ILLUSTRATIONS.gardeNuit,
-    details: ["Hébergement chez le chouchouteur", "Suivi quotidien par message", "Assurance AXA incluse"],
-    href: "/garde-nuit",
-    cta: "Réserver une garde de nuit",
-  },
-  {
-    Icon: ShieldCheckIcon,
-    title: "Garde à domicile",
-    desc: "Votre chien est plus à l'aise chez lui ? Nous lui trouvons un chouchouteur de confiance pour le dorloter chez vous.",
-    image: PHOTOS.chouchouteur1,
-    details: ["Chouchouteur vient chez vous", "Routine habituelle respectée", "Assurance AXA incluse"],
-    href: "/garde-chien",
-    cta: "Réserver une garde à domicile",
-  },
-  {
-    Icon: HeartHandshakeIcon,
-    title: "Pension familiale",
-    desc: "Votre toutou rêve d'une colo entre copains ? Faites-lui passer un séjour au vert dans une pension familiale !",
-    image: PHOTOS.moodboard2,
-    details: ["Ambiance familiale garantie", "Socialisation avec d'autres chiens", "Assurance AXA incluse"],
-    href: "/garde-nuit",
-    cta: "Réserver une pension",
-  },
-];
-
 export default async function GardeChienPage({
   params,
 }: {
@@ -97,6 +50,53 @@ export default async function GardeChienPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const GARDE_OPTIONS: Array<{
+    Icon: ComponentType<{ ref?: React.Ref<IconHandle>; size?: number; color?: string }>;
+    title: string;
+    desc: string;
+    image: string;
+    details: string[];
+    href: "/garde-journee" | "/garde-nuit" | "/garde-chien";
+    cta: string;
+  }> = [
+    {
+      Icon: SparklesIcon,
+      title: t("garde_chien.opt_jour_title"),
+      desc: t("garde_chien.opt_jour_desc"),
+      image: ILLUSTRATIONS.dogDay,
+      details: [t("garde_chien.opt_jour_d1"), t("garde_chien.opt_jour_d2"), t("garde_chien.opt_jour_d3")],
+      href: "/garde-journee",
+      cta: t("garde_chien.opt_jour_cta"),
+    },
+    {
+      Icon: PawPrintIcon,
+      title: t("garde_chien.opt_nuit_title"),
+      desc: t("garde_chien.opt_nuit_desc"),
+      image: ILLUSTRATIONS.gardeNuit,
+      details: [t("garde_chien.opt_nuit_d1"), t("garde_chien.opt_nuit_d2"), t("garde_chien.opt_nuit_d3")],
+      href: "/garde-nuit",
+      cta: t("garde_chien.opt_nuit_cta"),
+    },
+    {
+      Icon: ShieldCheckIcon,
+      title: t("garde_chien.opt_dom_title"),
+      desc: t("garde_chien.opt_dom_desc"),
+      image: PHOTOS.chouchouteur1,
+      details: [t("garde_chien.opt_dom_d1"), t("garde_chien.opt_dom_d2"), t("garde_chien.opt_dom_d3")],
+      href: "/garde-chien",
+      cta: t("garde_chien.opt_dom_cta"),
+    },
+    {
+      Icon: HeartHandshakeIcon,
+      title: t("garde_chien.opt_pension_title"),
+      desc: t("garde_chien.opt_pension_desc"),
+      image: PHOTOS.moodboard2,
+      details: [t("garde_chien.opt_pension_d1"), t("garde_chien.opt_pension_d2"), t("garde_chien.opt_pension_d3")],
+      href: "/garde-nuit",
+      cta: t("garde_chien.opt_pension_cta"),
+    },
+  ];
 
   return (
     <>
@@ -113,16 +113,16 @@ export default async function GardeChienPage({
         subtitle={t("garde_chien.hero_subtitle")}
         ctas={[
           {
-            label: "Recevoir un devis personnalisé",
-            href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
+            label: t("garde_chien.hero_cta_primary"),
+            href: BOOKING_URL,
             external: true,
             primary: true,
           },
-          { label: "Voir tous les services chien", href: "/services-chien" },
+          { label: t("garde_chien.hero_cta_secondary"), href: "/services-chien" },
         ]}
         image={PHOTOS.chouchouteur2}
-        imageAlt="Chouchouteur avec un chien"
-        trustBadges={["Chouchouteurs certifiés", "Assurance AXA incluse", "Rapport photo inclus"]}
+        imageAlt={t("garde_chien.hero_image_alt")}
+        trustBadges={[t("garde_chien.trust_1"), t("garde_chien.trust_2"), t("garde_chien.trust_3")]}
         variant="warm"
       />
 
@@ -130,9 +130,9 @@ export default async function GardeChienPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="De quoi a-t-il besoin ?"
-            title="3 formules selon vos préférences"
-            subtitle="Dites-nous tout sur lui et sur vous — nous vous proposerons une solution de garde 100% sur-mesure."
+            label={t("garde_chien.options_label")}
+            title={t("garde_chien.options_title")}
+            subtitle={t("garde_chien.options_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 gap-6">
@@ -186,9 +186,9 @@ export default async function GardeChienPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             {[
-              { num: "400+", label: "Chouchouteurs certifiés" },
-              { num: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "Note moyenne clients" },
-              { num: "100%", label: "Assurés AXA" },
+              { num: "400+", label: t("garde_chien.stats_1_label") },
+              { num: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("garde_chien.stats_2_label") },
+              { num: "100%", label: t("garde_chien.stats_3_label") },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-3xl font-bold mb-1" style={{ color: "#E8705A" }}>{stat.num}</p>
@@ -203,14 +203,10 @@ export default async function GardeChienPage({
       <HomeProcess />
 
       <CtaBanner
-        title="Trouvez le gardien idéal pour votre chien"
-        subtitle="En quelques minutes, nous identifions le chouchouteur certifié le plus adapté à votre animal."
-        primaryCta={{
-          label: "Recevoir un devis",
-          href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
-          external: true,
-        }}
-        secondaryCta={{ label: "Tous les services chien", href: "/services-chien" }}
+        title={t("garde_chien.banner_title")}
+        subtitle={t("garde_chien.banner_subtitle")}
+        primaryCta={{ label: t("garde_chien.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("garde_chien.banner_secondary"), href: "/services-chien" }}
       />
 
       <Footer />

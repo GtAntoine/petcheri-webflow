@@ -37,91 +37,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const BENEFITS = [
-  {
-    Icon: Users,
-    title: "Avantage salarié différenciant",
-    desc: "Fidélisez vos talents en offrant un service premium dédié au bien-être de leurs animaux. Un bénéfice concret et mémorable qui fait la différence lors du recrutement.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Zéro risque, 100 % assuré",
-    desc: "Chaque prestation est couverte par notre assurance professionnelle AXA. Vous offrez tranquillité d'esprit à vos collaborateurs sans aucune responsabilité supplémentaire.",
-  },
-  {
-    Icon: Building2,
-    title: "Tarifs négociés pour les équipes",
-    desc: "Accès préférentiel à notre réseau de chouchouteurs vérifiés. Tarifs dégressifs selon la taille de votre entreprise et vos besoins spécifiques.",
-  },
-  {
-    Icon: Headphones,
-    title: "Account manager dédié",
-    desc: "Un interlocuteur unique pour gérer l'accès de vos collaborateurs, le suivi des prestations et toute demande particulière. Simple et efficace.",
-  },
-] as const;
-
-const SERVICES = [
-  {
-    Icon: PawPrintIcon,
-    title: "Garde & promenades",
-    desc: "Garde à domicile, pension, promenades quotidiennes — vos collaborateurs choisissent la formule qui leur convient.",
-  },
-  {
-    Icon: SparklesIcon,
-    title: "Toilettage",
-    desc: "Bain, coupe, soins — disponibles à domicile ou en salon proche du bureau, selon les préférences.",
-  },
-  {
-    Icon: GraduationCapIcon,
-    title: "Comportement & éducation",
-    desc: "Séances avec comportementalistes certifiés pour accompagner l'éducation et le bien-être des animaux.",
-  },
-  {
-    Icon: TruckIcon,
-    title: "Transport",
-    desc: "Déplacements chez le vétérinaire, en pension ou sur tout trajet — avec des conducteurs formés.",
-  },
-  {
-    Icon: HeartIcon,
-    title: "Pension & hébergement",
-    desc: "Des familles d'accueil ou pensions vérifiées pour les périodes de déplacements professionnels.",
-  },
-  {
-    Icon: UnorderedListIcon,
-    title: "Suivi personnalisé",
-    desc: "Photos, rapports de sortie, compte-rendu de séances — tout est communiqué en temps réel via l'app.",
-  },
-];
-
-const HOW_IT_WORKS = [
-  {
-    step: "01",
-    title: "On s'appelle",
-    desc: "Un échange de 30 minutes pour comprendre vos besoins, la taille de votre équipe et définir l'offre la plus adaptée.",
-  },
-  {
-    step: "02",
-    title: "On configure votre espace",
-    desc: "Nous créons votre espace entreprise sur l'app Petcheri en moins de 48h. Vos collaborateurs reçoivent leurs accès par email.",
-  },
-  {
-    step: "03",
-    title: "Vos équipes profitent",
-    desc: "Chaque collaborateur réserve ses prestations en totale autonomie. Vous gardez la main sur les budgets et le reporting.",
-  },
-] as const;
-
-const TRUST_ITEMS = [
-  "Réseau de +400 chouchouteurs vérifiés",
-  "Assurance professionnelle AXA incluse",
-  "App disponible 7j/7, 24h/24",
-  "4,9 / 5 de satisfaction client",
-  "Facturation mensuelle simplifiée",
-  "Reporting RH disponible sur demande",
-];
-
-const SECTORS = ["Start-ups & scale-ups", "Cabinets conseil", "Agences créatives", "ESN & Tech", "Cabinets RH", "PME & ETI"];
-
 export default async function EntreprisesPage({
   params,
 }: {
@@ -131,6 +46,46 @@ export default async function EntreprisesPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
 
+  const BENEFITS = [
+    { Icon: Users,      title: t("entreprises.ben_users_title"),      desc: t("entreprises.ben_users_desc") },
+    { Icon: ShieldCheck,title: t("entreprises.ben_shield_title"),     desc: t("entreprises.ben_shield_desc") },
+    { Icon: Building2,  title: t("entreprises.ben_building_title"),   desc: t("entreprises.ben_building_desc") },
+    { Icon: Headphones, title: t("entreprises.ben_headphones_title"), desc: t("entreprises.ben_headphones_desc") },
+  ];
+
+  const SERVICES = [
+    { Icon: PawPrintIcon,       title: t("entreprises.svc_garde_title"),      desc: t("entreprises.svc_garde_desc") },
+    { Icon: SparklesIcon,       title: t("entreprises.svc_toilettage_title"), desc: t("entreprises.svc_toilettage_desc") },
+    { Icon: GraduationCapIcon,  title: t("entreprises.svc_comport_title"),    desc: t("entreprises.svc_comport_desc") },
+    { Icon: TruckIcon,          title: t("entreprises.svc_transport_title"),  desc: t("entreprises.svc_transport_desc") },
+    { Icon: HeartIcon,          title: t("entreprises.svc_pension_title"),    desc: t("entreprises.svc_pension_desc") },
+    { Icon: UnorderedListIcon,  title: t("entreprises.svc_suivi_title"),      desc: t("entreprises.svc_suivi_desc") },
+  ];
+
+  const HOW_IT_WORKS = [
+    { step: "01", title: t("entreprises.step_1_title"), desc: t("entreprises.step_1_desc") },
+    { step: "02", title: t("entreprises.step_2_title"), desc: t("entreprises.step_2_desc") },
+    { step: "03", title: t("entreprises.step_3_title"), desc: t("entreprises.step_3_desc") },
+  ];
+
+  const TRUST_ITEMS = [
+    t("entreprises.check_1"),
+    t("entreprises.check_2"),
+    t("entreprises.check_3"),
+    t("entreprises.check_4"),
+    t("entreprises.check_5"),
+    t("entreprises.check_6"),
+  ];
+
+  const SECTORS = [
+    t("entreprises.sector_1"),
+    t("entreprises.sector_2"),
+    t("entreprises.sector_3"),
+    t("entreprises.sector_4"),
+    t("entreprises.sector_5"),
+    t("entreprises.sector_6"),
+  ];
+
   return (
     <>
       <Navbar />
@@ -139,18 +94,18 @@ export default async function EntreprisesPage({
         badge={t("entreprises.hero_badge")}
         title={
           <>
-            Le bien-être animal,{" "}
-            <span className="text-accent">votre meilleur avantage salarié</span>
+            {t("entreprises.hero_title")}{" "}
+            <span className="text-accent">{t("entreprises.hero_title_accent")}</span>
           </>
         }
-        subtitle="En France, 1 salarié sur 2 possède un animal de compagnie. Offrez-leur un service de conciergerie animalière premium — un avantage concret qui fidélise, recrute et réduit le stress au travail."
+        subtitle={t("entreprises.hero_subtitle")}
         ctas={[
-          { label: "Demander un devis", href: "/contact", primary: true },
-          { label: "Voir nos services", href: "/nos-services" },
+          { label: t("entreprises.hero_cta_primary"), href: "/contact", primary: true },
+          { label: t("entreprises.hero_cta_secondary"), href: "/nos-services" },
         ]}
         image={ILLUSTRATIONS.about}
-        imageAlt="Petcheri pour les entreprises"
-        trustBadges={["Facturation entreprise", "Assurance AXA incluse", "Onboarding en 48h"]}
+        imageAlt={t("entreprises.image_alt")}
+        trustBadges={[t("entreprises.trust_1"), t("entreprises.trust_2"), t("entreprises.trust_3")]}
         variant="warm"
       />
 
@@ -159,10 +114,10 @@ export default async function EntreprisesPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: "1 sur 2", label: "salariés français ont un animal" },
-              { value: "+400", label: "chouchouteurs vérifiés" },
-              { value: "48h", label: "pour onboarder vos équipes" },
-              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "de satisfaction client" },
+              { value: t("entreprises.stat_1_value"), label: t("entreprises.stat_1_label") },
+              { value: t("entreprises.stat_2_value"), label: t("entreprises.stat_2_label") },
+              { value: t("entreprises.stat_3_value"), label: t("entreprises.stat_3_label") },
+              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("entreprises.stat_4_label") },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span
@@ -182,9 +137,9 @@ export default async function EntreprisesPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Pourquoi choisir Petcheri ?"
-            title="Un investissement RH à fort retour"
-            subtitle="Les entreprises qui intègrent Petcheri comme avantage salarié observent une hausse de l'engagement et une réduction du stress lié à la garde d'animaux."
+            label={t("entreprises.why_label")}
+            title={t("entreprises.why_title")}
+            subtitle={t("entreprises.why_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-2 gap-6">
@@ -215,9 +170,9 @@ export default async function EntreprisesPage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Ce qui est inclus"
-            title="Tous les services Petcheri pour vos collaborateurs"
-            subtitle="Vos équipes accèdent à l'intégralité du catalogue Petcheri — avec les tarifs négociés de votre contrat entreprise."
+            label={t("entreprises.svcs_label")}
+            title={t("entreprises.svcs_title")}
+            subtitle={t("entreprises.svcs_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -240,9 +195,9 @@ export default async function EntreprisesPage({
       <section className="section-padding bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Comment ça marche ?"
-            title="Un onboarding en 3 étapes"
-            subtitle="De la signature du contrat à la première réservation de votre collaborateur — moins de 48 heures."
+            label={t("entreprises.how_label")}
+            title={t("entreprises.how_title")}
+            subtitle={t("entreprises.how_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-3 gap-8">
@@ -273,16 +228,16 @@ export default async function EntreprisesPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Ils nous font confiance"
-                title="Une solution éprouvée par des centaines d'entreprises"
-                subtitle="De la startup à l'ETI, nos partenaires entreprises apprécient la simplicité, la fiabilité et l'impact concret sur le bien-être de leurs équipes."
+                label={t("entreprises.trust_section_label")}
+                title={t("entreprises.trust_section_title")}
+                subtitle={t("entreprises.trust_section_subtitle")}
                 align="left"
                 className="mb-10"
               />
 
               {/* Sectors */}
               <div className="mb-8">
-                <p className="text-sm font-semibold text-[--color-chocolat] mb-3 uppercase tracking-wider">Secteurs partenaires</p>
+                <p className="text-sm font-semibold text-[--color-chocolat] mb-3 uppercase tracking-wider">{t("entreprises.sectors_label")}</p>
                 <div className="flex flex-wrap gap-2">
                   {SECTORS.map((s) => (
                     <span
@@ -310,7 +265,7 @@ export default async function EntreprisesPage({
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
                   src={PHOTOS.moodboard6}
-                  alt="Petcheri en entreprise"
+                  alt={t("entreprises.image_alt")}
                   fill
                   className="object-cover"
                   sizes="50vw"
@@ -322,7 +277,7 @@ export default async function EntreprisesPage({
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[--color-chocolat] mb-1">
-                  Satisfaction RH
+                  {t("entreprises.card_label")}
                 </p>
                 <p
                   className="font-normal text-[--color-chocolat]"
@@ -331,7 +286,7 @@ export default async function EntreprisesPage({
                   +38%
                 </p>
                 <p className="text-xs text-[--color-muted-foreground] mt-1">
-                  d'engagement collaborateur moyen
+                  {t("entreprises.card_desc")}
                 </p>
               </div>
             </div>
@@ -341,10 +296,10 @@ export default async function EntreprisesPage({
 
       {/* Contact CTA */}
       <CtaBanner
-        title="Intégrez Petcheri comme avantage salarié"
-        subtitle="Parlez-nous de votre entreprise — nous construisons ensemble l'offre la plus adaptée à votre équipe."
-        primaryCta={{ label: "Demander un devis", href: "/contact" }}
-        secondaryCta={{ label: "Découvrir nos services", href: "/nos-services" }}
+        title={t("entreprises.banner_title")}
+        subtitle={t("entreprises.banner_subtitle")}
+        primaryCta={{ label: t("entreprises.banner_primary"), href: "/contact" }}
+        secondaryCta={{ label: t("entreprises.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

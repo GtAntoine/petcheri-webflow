@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
-import { SITE_STATS } from "@/lib/site-stats";
+import { SITE_STATS, BOOKING_URL } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -39,80 +39,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const AVANTAGES = [
-  {
-    Icon: SparklesIcon,
-    title: "Liberté totale",
-    desc: "Vous choisissez vos disponibilités, vos services et votre zone géographique. Petcheri s'adapte à votre rythme de vie.",
-  },
-  {
-    Icon: ShieldCheckIcon,
-    title: "Assurance professionnelle",
-    desc: "Chaque prestation est couverte par notre assurance AXA à hauteur de 9 000 000 €. Vous exercez en toute sérénité.",
-  },
-  {
-    Icon: UsersIcon,
-    title: "Une communauté soudée",
-    desc: "400 chouchouteurs en France, des vétérinaires partenaires, des comportementalistes — un réseau d'entraide unique.",
-  },
-  {
-    Icon: GraduationCapIcon,
-    title: "Formation & accompagnement",
-    desc: "Accès à des modules de formation, webinaires et ressources exclusives pour monter en compétences en continu.",
-  },
-  {
-    Icon: TrophyIcon,
-    title: "Visibilité & réputation",
-    desc: "Profitez de la notoriété Petcheri (Purina, Pépites du Tech, Gala, Europe 1) pour développer votre activité.",
-  },
-  {
-    Icon: HeartHandshakeIcon,
-    title: "Un suivi personnalisé",
-    desc: "Un concierge dédié vous accompagne au quotidien — de la mise en relation au suivi qualité, vous n'êtes jamais seul.",
-  },
-] as const;
-
-const PROFILS = [
-  {
-    Icon: PawPrintIcon,
-    title: "Passionnés des animaux",
-    desc: "Votre amour des animaux n'est pas qu'un hobby — c'est une vocation. On cherche des gens comme vous.",
-  },
-  {
-    Icon: GraduationCapIcon,
-    title: "Professionnels du secteur",
-    desc: "Auxiliaires vétérinaires, soigneurs animaliers, comportementalistes, éducateurs — vos diplômes sont un atout majeur.",
-  },
-  {
-    Icon: HeartIcon,
-    title: "Profils en reconversion",
-    desc: "Vous souhaitez faire de votre passion un métier ? Nous accompagnons les reconversions avec formation et suivi.",
-  },
-] as const;
-
-const ETAPES = [
-  {
-    num: "01",
-    title: "Candidature en ligne",
-    desc: "Remplissez le formulaire en quelques minutes — expérience, disponibilités, services souhaités. Pas de CV requis.",
-  },
-  {
-    num: "02",
-    title: "Entretien avec notre équipe",
-    desc: "Un échange humain avec un membre de l'équipe Petcheri et un comportementaliste partenaire pour mieux vous connaître.",
-  },
-  {
-    num: "03",
-    title: "Validation & onboarding",
-    desc: "Test de compétences, vérification des références, signature de la charte qualité. Bienvenue dans la famille Petcheri.",
-  },
-  {
-    num: "04",
-    title: "Vos premières missions",
-    desc: "Votre profil est en ligne et visible par des milliers de propriétaires. Les demandes arrivent, vous choisissez.",
-  },
-] as const;
-
 export default async function DevenirPetsitterPage({
   params,
 }: {
@@ -122,6 +48,34 @@ export default async function DevenirPetsitterPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
 
+  const AVANTAGES = [
+    { Icon: SparklesIcon,       title: t("devenir_petsitter.avan_liberte_title"),    desc: t("devenir_petsitter.avan_liberte_desc") },
+    { Icon: ShieldCheckIcon,    title: t("devenir_petsitter.avan_assurance_title"),  desc: t("devenir_petsitter.avan_assurance_desc") },
+    { Icon: UsersIcon,          title: t("devenir_petsitter.avan_communaute_title"), desc: t("devenir_petsitter.avan_communaute_desc") },
+    { Icon: GraduationCapIcon,  title: t("devenir_petsitter.avan_formation_title"),  desc: t("devenir_petsitter.avan_formation_desc") },
+    { Icon: TrophyIcon,         title: t("devenir_petsitter.avan_visibilite_title"), desc: t("devenir_petsitter.avan_visibilite_desc") },
+    { Icon: HeartHandshakeIcon, title: t("devenir_petsitter.avan_suivi_title"),      desc: t("devenir_petsitter.avan_suivi_desc") },
+  ];
+
+  const PROFILS = [
+    { Icon: PawPrintIcon,      title: t("devenir_petsitter.prof_passionnes_title"), desc: t("devenir_petsitter.prof_passionnes_desc") },
+    { Icon: GraduationCapIcon, title: t("devenir_petsitter.prof_pros_title"),       desc: t("devenir_petsitter.prof_pros_desc") },
+    { Icon: HeartIcon,         title: t("devenir_petsitter.prof_reconversion_title"), desc: t("devenir_petsitter.prof_reconversion_desc") },
+  ];
+
+  const ETAPES = [
+    { num: "01", title: t("devenir_petsitter.etape_1_title"), desc: t("devenir_petsitter.etape_1_desc") },
+    { num: "02", title: t("devenir_petsitter.etape_2_title"), desc: t("devenir_petsitter.etape_2_desc") },
+    { num: "03", title: t("devenir_petsitter.etape_3_title"), desc: t("devenir_petsitter.etape_3_desc") },
+    { num: "04", title: t("devenir_petsitter.etape_4_title"), desc: t("devenir_petsitter.etape_4_desc") },
+  ];
+
+  const TEMOIGNAGES = [
+    { quote: t("devenir_petsitter.temo_1_quote"), author: t("devenir_petsitter.temo_1_author"), detail: t("devenir_petsitter.temo_1_detail") },
+    { quote: t("devenir_petsitter.temo_2_quote"), author: t("devenir_petsitter.temo_2_author"), detail: t("devenir_petsitter.temo_2_detail") },
+    { quote: t("devenir_petsitter.temo_3_quote"), author: t("devenir_petsitter.temo_3_author"), detail: t("devenir_petsitter.temo_3_detail") },
+  ];
+
   return (
     <>
       <Navbar />
@@ -130,18 +84,18 @@ export default async function DevenirPetsitterPage({
         badge={t("devenir_petsitter.hero_badge")}
         title={
           <>
-            Faites de votre passion{" "}
-            <span className="text-accent">un vrai métier</span>
+            {t("devenir_petsitter.hero_title")}{" "}
+            <span className="text-accent">{t("devenir_petsitter.hero_title_accent")}</span>
           </>
         }
-        subtitle="Vous aimez les animaux autant que nous ? Rejoignez les 400 chouchouteurs qui font confiance à Petcheri pour exercer en toute liberté, avec une assurance professionnelle et l'appui d'une équipe exigeante."
+        subtitle={t("devenir_petsitter.hero_subtitle")}
         ctas={[
-          { label: "Candidater maintenant", href: "https://forms.gle/petcheri", external: true, primary: true },
-          { label: "En savoir plus", href: "#avantages" },
+          { label: t("devenir_petsitter.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("devenir_petsitter.hero_cta_secondary"), href: "#avantages" },
         ]}
         image={ILLUSTRATIONS.heroPetsitter}
-        imageAlt="Chouchouteur Petcheri avec un chien"
-        trustBadges={["400+ chouchouteurs", "Assurance AXA incluse", "Formation continue"]}
+        imageAlt={t("devenir_petsitter.hero_image_alt")}
+        trustBadges={[t("devenir_petsitter.trust_1"), t("devenir_petsitter.trust_2"), t("devenir_petsitter.trust_3")]}
         variant="warm"
       />
 
@@ -150,10 +104,10 @@ export default async function DevenirPetsitterPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: "400+",  label: "chouchouteurs en France" },
-              { value: "80%",   label: "de professionnels certifiés" },
-              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "de satisfaction moyenne" },
-              { value: "9M€",   label: "d'assurance professionnelle" },
+              { value: "400+",  label: t("devenir_petsitter.stats_1_label") },
+              { value: "80%",   label: t("devenir_petsitter.stats_2_label") },
+              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("devenir_petsitter.stats_3_label") },
+              { value: "9M€",   label: t("devenir_petsitter.stats_4_label") },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span
@@ -173,9 +127,9 @@ export default async function DevenirPetsitterPage({
       <section id="avantages" className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Pourquoi Petcheri ?"
-            title="Ce que vous gagnez en rejoignant le réseau"
-            subtitle="Petcheri n'est pas une simple plateforme de mise en relation. C'est un réseau premium avec des standards élevés — et des avantages à la hauteur."
+            label={t("devenir_petsitter.avan_label")}
+            title={t("devenir_petsitter.avan_title")}
+            subtitle={t("devenir_petsitter.avan_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -200,9 +154,9 @@ export default async function DevenirPetsitterPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Qui cherchons-nous ?"
-                title="Des gens qui aiment vraiment les animaux"
-                subtitle="Notre processus de sélection est rigoureux parce que nos clients confient ce qu'ils ont de plus précieux. Voici les profils que nous cherchons."
+                label={t("devenir_petsitter.profils_label")}
+                title={t("devenir_petsitter.profils_title")}
+                subtitle={t("devenir_petsitter.profils_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -235,9 +189,9 @@ export default async function DevenirPetsitterPage({
       <section className="section-padding bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Comment ça marche ?"
-            title="De la candidature à votre première mission"
-            subtitle="Un processus clair, humain et rapide. De votre candidature à vos premières missions : comptez moins de deux semaines."
+            label={t("devenir_petsitter.etapes_label")}
+            title={t("devenir_petsitter.etapes_title")}
+            subtitle={t("devenir_petsitter.etapes_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -279,26 +233,21 @@ export default async function DevenirPetsitterPage({
                 style={{ background: "linear-gradient(to top, rgba(44,24,16,0.85) 0%, transparent 100%)" }}
               >
                 <p className="text-white/90 text-sm italic leading-relaxed">
-                  &ldquo;Rejoindre Petcheri, c&apos;est la meilleure décision que j&apos;ai prise pour ma reconversion.
-                  J&apos;ai des clients fidèles, une assurance sérieuse et une équipe qui répond toujours présente.&rdquo;
+                  &ldquo;{t("devenir_petsitter.temo_main_quote")}&rdquo;
                 </p>
-                <p className="text-white/60 text-xs mt-2">— Camille R., chouchouteuse depuis 2022, Paris</p>
+                <p className="text-white/60 text-xs mt-2">{t("devenir_petsitter.temo_main_author")}</p>
               </div>
             </div>
             <div>
               <SectionHeader
-                label="Ils ont sauté le pas"
-                title="Ce que disent nos chouchouteurs"
-                subtitle="400 chouchouteurs ont choisi Petcheri pour exercer leur passion. Voici ce qu'ils en pensent après quelques mois."
+                label={t("devenir_petsitter.temo_label")}
+                title={t("devenir_petsitter.temo_title")}
+                subtitle={t("devenir_petsitter.temo_subtitle")}
                 align="left"
                 className="mb-8"
               />
               <div className="space-y-4">
-                {[
-                  { quote: "En 6 mois j'ai constitué une clientèle fidèle. La réputation de Petcheri ouvre des portes.", author: "Lucas M.", detail: "Auxiliaire vétérinaire, Lyon" },
-                  { quote: "Le processus de candidature est exigeant, mais c'est exactement ce qui donne de la valeur au label.", author: "Fatima B.", detail: "Comportementaliste certifiée, Bordeaux" },
-                  { quote: "Je travaille à mon rythme, je choisis mes clients. Je n'ai jamais autant aimé mon métier.", author: "Julien K.", detail: "Dog-sitter professionnel, Marseille" },
-                ].map(({ quote, author, detail }) => (
+                {TEMOIGNAGES.map(({ quote, author, detail }) => (
                   <div key={author} className="p-5 rounded-xl bg-[--color-ivoire] border border-[--color-border]">
                     <p className="text-sm text-[--color-chocolat] italic leading-relaxed mb-3">&ldquo;{quote}&rdquo;</p>
                     <div>
@@ -314,10 +263,10 @@ export default async function DevenirPetsitterPage({
       </section>
 
       <CtaBanner
-        title="Prêt à rejoindre les meilleurs chouchouteurs de France ?"
-        subtitle="La candidature prend 5 minutes. Le reste, c'est nous qui nous en occupons."
-        primaryCta={{ label: "Candidater maintenant", href: "https://forms.gle/petcheri", external: true }}
-        secondaryCta={{ label: "Nous contacter", href: "/contact" }}
+        title={t("devenir_petsitter.banner_title")}
+        subtitle={t("devenir_petsitter.banner_subtitle")}
+        primaryCta={{ label: t("devenir_petsitter.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("devenir_petsitter.banner_secondary"), href: "/contact" }}
       />
 
       <Footer />

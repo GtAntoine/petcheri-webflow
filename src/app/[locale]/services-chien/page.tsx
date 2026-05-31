@@ -12,6 +12,7 @@ import { Link } from "@/i18n/navigation";
 import { ICONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -31,57 +32,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const DOG_SERVICES = [
-  {
-    icon: ICONS.dog,
-    title: "Garde de jour",
-    desc: "Des gardes à la journée personnalisées selon les besoins de votre chien et les vôtres.",
-    href: "/garde-chien" as const,
-  },
-  {
-    icon: ICONS.ctSleep,
-    title: "Garde de nuit & pension",
-    desc: "Des gardes sur-mesure lorsque vous partez en vacances — chez vous ou en pension familiale.",
-    href: "/garde-nuit" as const,
-  },
-  {
-    icon: ICONS.walking,
-    title: "Promenade",
-    desc: "Promenade en forêt ou en ville, en groupe ou en solo selon les besoins de votre toutou.",
-    href: "/nos-services" as const,
-  },
-  {
-    icon: ICONS.ctGrooming,
-    title: "Toilettage",
-    desc: "Toilettage en salon ou à domicile pour un pelage impeccable et un chien heureux.",
-    href: "/toilettage" as const,
-  },
-  {
-    icon: ICONS.education,
-    title: "Comportement & Éducation",
-    desc: "Des comportementalistes et éducateurs spécialistes en éducation positive.",
-    href: "/comportement-education" as const,
-  },
-  {
-    icon: ICONS.care,
-    title: "Bien-être & soins",
-    desc: "Permettez à votre toutou de bénéficier de méthodes d'experts du bien-être animalier.",
-    href: "/nos-services" as const,
-  },
-  {
-    icon: ICONS.ctTransport,
-    title: "Transport animalier",
-    desc: "Vos trajets et voyages tout-confort avec des chauffeurs agréés et un maximum de sécurité.",
-    href: "/transport" as const,
-  },
-  {
-    icon: ICONS.travel,
-    title: "Voyage, administratif & autres",
-    desc: "Vous partez avec votre chien ? Besoin d'aide administrative ? Nous avons la solution.",
-    href: "/nos-services" as const,
-  },
-] as const;
-
 export default async function ServicesChienPage({
   params,
 }: {
@@ -90,6 +40,17 @@ export default async function ServicesChienPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const DOG_SERVICES = [
+    { icon: ICONS.dog, title: t("services_chien.svc_garde_jour_title"), desc: t("services_chien.svc_garde_jour_desc"), href: "/garde-chien" as const },
+    { icon: ICONS.ctSleep, title: t("services_chien.svc_garde_nuit_title"), desc: t("services_chien.svc_garde_nuit_desc"), href: "/garde-nuit" as const },
+    { icon: ICONS.walking, title: t("services_chien.svc_promenade_title"), desc: t("services_chien.svc_promenade_desc"), href: "/nos-services" as const },
+    { icon: ICONS.ctGrooming, title: t("services_chien.svc_toilettage_title"), desc: t("services_chien.svc_toilettage_desc"), href: "/toilettage" as const },
+    { icon: ICONS.education, title: t("services_chien.svc_comportement_title"), desc: t("services_chien.svc_comportement_desc"), href: "/comportement-education" as const },
+    { icon: ICONS.care, title: t("services_chien.svc_bienetre_title"), desc: t("services_chien.svc_bienetre_desc"), href: "/nos-services" as const },
+    { icon: ICONS.ctTransport, title: t("services_chien.svc_transport_title"), desc: t("services_chien.svc_transport_desc"), href: "/transport" as const },
+    { icon: ICONS.travel, title: t("services_chien.svc_voyage_title"), desc: t("services_chien.svc_voyage_desc"), href: "/nos-services" as const },
+  ];
 
   return (
     <>
@@ -106,16 +67,16 @@ export default async function ServicesChienPage({
         subtitle={t("services_chien.hero_subtitle")}
         ctas={[
           {
-            label: "Faire chouchouter mon chien",
-            href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
+            label: t("services_chien.hero_cta_primary"),
+            href: BOOKING_URL,
             external: true,
             primary: true,
           },
-          { label: "Voir nos formules garde", href: "/garde-chien" },
+          { label: t("services_chien.hero_cta_secondary"), href: "/garde-chien" },
         ]}
         image={PHOTOS.moodboard2}
-        imageAlt="Chouchouteur avec un chien"
-        trustBadges={["Chouchouteurs certifiés", "Assurance AXA incluse", "Sans engagement"]}
+        imageAlt={t("services_chien.hero_image_alt")}
+        trustBadges={[t("services_chien.trust_1"), t("services_chien.trust_2"), t("services_chien.trust_3")]}
         variant="warm"
       />
 
@@ -123,9 +84,9 @@ export default async function ServicesChienPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Des services personnalisés"
-            title="Selon vos besoins et ceux de votre toutou"
-            subtitle="Nous vous trouvons une solution au poil — quel que soit le service recherché."
+            label={t("services_chien.svcs_label")}
+            title={t("services_chien.svcs_title")}
+            subtitle={t("services_chien.svcs_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -148,7 +109,7 @@ export default async function ServicesChienPage({
                   className="flex items-center gap-1.5 text-xs font-semibold mt-1"
                   style={{ color: "#E8705A" }}
                 >
-                  Voir plus <ArrowRight className="w-3.5 h-3.5" />
+                  {t("services_chien.svc_voir_plus")} <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>
             ))}
@@ -160,14 +121,10 @@ export default async function ServicesChienPage({
       <HomeProcess />
 
       <CtaBanner
-        title="Prêt à gâter votre toutou ?"
-        subtitle="Notre équipe identifie le chouchouteur certifié le plus adapté à votre chien et à votre situation."
-        primaryCta={{
-          label: "Faire chouchouter mon chien",
-          href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
-          external: true,
-        }}
-        secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
+        title={t("services_chien.banner_title")}
+        subtitle={t("services_chien.banner_subtitle")}
+        primaryCta={{ label: t("services_chien.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("services_chien.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

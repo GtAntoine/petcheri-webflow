@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { BOOKING_URL } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { routing } from "@/i18n/routing";
@@ -28,9 +29,10 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  const t = await getTranslations({ locale, namespace: "pages" });
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Article introuvable" };
+  if (!post) return { title: t("blog_post.not_found_title") };
   return {
     title: `${post.title} — Petcheri Blog`,
     description: post.excerpt,
@@ -44,8 +46,8 @@ export async function generateMetadata({
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("fr-FR", {
+function formatDate(iso: string, locale: string): string {
+  return new Date(iso).toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -70,6 +72,7 @@ export default async function BlogPostPage({
 }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   const post = getPostBySlug(slug);
   if (!post) notFound();
@@ -99,7 +102,7 @@ export default async function BlogPostPage({
                   className="inline-flex items-center gap-1.5 text-xs font-medium text-[--color-muted-foreground] hover:text-[--color-chocolat] transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
-                  Tous les articles
+                  {t("blog_post.back_link")}
                 </Link>
                 <span className="text-[--color-border]">·</span>
                 <span
@@ -132,11 +135,11 @@ export default async function BlogPostPage({
                   {post.author}
                 </span>
                 <span className="w-1 h-1 rounded-full bg-[--color-border]" />
-                <span>{formatDate(post.date)}</span>
+                <span>{formatDate(post.date, locale)}</span>
                 <span className="w-1 h-1 rounded-full bg-[--color-border]" />
                 <span className="flex items-center gap-1.5">
                   <Clock className="w-4 h-4" />
-                  {post.readTime} min de lecture
+                  {t("blog_post.read_time", { minutes: post.readTime })}
                 </span>
               </div>
             </div>
@@ -190,7 +193,7 @@ export default async function BlogPostPage({
                 {/* Author card */}
                 <div className="card-base p-6">
                   <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-3">
-                    Auteur
+                    {t("blog_post.author_label")}
                   </p>
                   <div className="flex items-center gap-3">
                     <div
@@ -201,7 +204,7 @@ export default async function BlogPostPage({
                     </div>
                     <div>
                       <p className="font-semibold text-[--color-chocolat]">{post.author}</p>
-                      <p className="text-xs text-[--color-muted-foreground]">Équipe Petcheri</p>
+                      <p className="text-xs text-[--color-muted-foreground]">{t("blog_post.author_team")}</p>
                     </div>
                   </div>
                 </div>
@@ -209,11 +212,11 @@ export default async function BlogPostPage({
                 {/* Article details */}
                 <div className="card-base p-6">
                   <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-4">
-                    Détails
+                    {t("blog_post.details_label")}
                   </p>
                   <div className="space-y-3 text-sm">
                     <div className="flex items-center justify-between">
-                      <span className="text-[--color-muted-foreground]">Catégorie</span>
+                      <span className="text-[--color-muted-foreground]">{t("blog_post.category_label")}</span>
                       <span
                         className="font-medium text-white rounded-full px-2.5 py-0.5 text-xs"
                         style={{ background: categoryColor }}
@@ -222,12 +225,12 @@ export default async function BlogPostPage({
                       </span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[--color-muted-foreground]">Lecture</span>
-                      <span className="font-medium text-[--color-chocolat]">{post.readTime} min</span>
+                      <span className="text-[--color-muted-foreground]">{t("blog_post.reading_label")}</span>
+                      <span className="font-medium text-[--color-chocolat]">{post.readTime} {t("blog_post.reading_unit")}</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-[--color-muted-foreground]">Publié le</span>
-                      <span className="font-medium text-[--color-chocolat]">{formatDate(post.date)}</span>
+                      <span className="text-[--color-muted-foreground]">{t("blog_post.published_label")}</span>
+                      <span className="font-medium text-[--color-chocolat]">{formatDate(post.date, locale)}</span>
                     </div>
                   </div>
                 </div>
@@ -238,19 +241,19 @@ export default async function BlogPostPage({
                   style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
                 >
                   <p className="text-sm font-semibold text-[--color-chocolat] mb-2">
-                    Besoin d&apos;une garde&nbsp;?
+                    {t("blog_post.cta_title")}
                   </p>
                   <p className="text-xs text-[--color-muted-foreground] mb-4 leading-relaxed">
-                    Des professionnels certifiés, matchés selon le profil de votre animal.
+                    {t("blog_post.cta_desc")}
                   </p>
                   <a
-                    href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+                    href={BOOKING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:shadow-md hover:brightness-110 transition-all"
                     style={{ background: "#E8705A" }}
                   >
-                    Démarrer ma demande
+                    {t("blog_post.cta_btn")}
                   </a>
                 </div>
               </div>
@@ -273,10 +276,10 @@ export default async function BlogPostPage({
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or]">
-                    Nos bons plans
+                    {t("blog_post.promos_label")}
                   </p>
                   <p className="text-sm text-[--color-muted-foreground]">
-                    Des offres sélectionnées pour cet article
+                    {t("blog_post.promos_desc")}
                   </p>
                 </div>
               </div>
@@ -296,13 +299,13 @@ export default async function BlogPostPage({
           <div className="max-w-7xl mx-auto px-6">
             <div className="mb-10 text-center">
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[--color-or]">
-                Continuez votre lecture
+                {t("blog_post.related_label")}
               </span>
               <h2
                 className="text-[--color-chocolat] font-normal mt-2"
                 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.5rem, 2.5vw, 2rem)" }}
               >
-                Articles similaires
+                {t("blog_post.related_title")}
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">

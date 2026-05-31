@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -28,42 +29,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const DESTINATIONS = [
-  {
-    title: "Vétérinaire",
-    desc: "Consultation, urgence ou suivi postopératoire — votre animal est conduit et récupéré par un chouchouteur qui connaît les établissements partenaires.",
-  },
-  {
-    title: "Toiletteur",
-    desc: "Plus besoin de vous libérer pour emmener votre animal chez le toiletteur. On s'en charge, aller et retour.",
-  },
-  {
-    title: "Famille & proches",
-    desc: "Votre animal passe le week-end chez des amis ou la famille ? On assure le trajet dans les deux sens, en toute sérénité.",
-  },
-  {
-    title: "Pension & hébergement",
-    desc: "Aller déposer et récupérer votre animal dans une pension ou chez un chouchouteur — sans que vous ayez à vous déplacer.",
-  },
-  {
-    title: "Déménagement",
-    desc: "Un déménagement est toujours une source de stress pour votre animal. Nos transporteurs adaptent le trajet à son rythme.",
-  },
-  {
-    title: "Sur mesure",
-    desc: "Toute demande de transport non listée ici peut être gérée par notre conciergerie — contactez-nous pour en discuter.",
-  },
-] as const;
-
-const GARANTIES = [
-  "Véhicules adaptés et sécurisés pour chaque espèce",
-  "Chouchouteurs certifiés et formés au transport animalier",
-  "Assurance professionnelle AXA 9 000 000 €",
-  "Rapport photo avant et après le trajet",
-  "Suivi en temps réel disponible sur demande",
-  "Disponible 7j/7, y compris week-ends et jours fériés",
-];
-
 export default async function TransportPage({
   params,
 }: {
@@ -72,6 +37,24 @@ export default async function TransportPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const DESTINATIONS = [
+    { title: t("transport.dest_veto_title"), desc: t("transport.dest_veto_desc") },
+    { title: t("transport.dest_toiletteur_title"), desc: t("transport.dest_toiletteur_desc") },
+    { title: t("transport.dest_famille_title"), desc: t("transport.dest_famille_desc") },
+    { title: t("transport.dest_pension_title"), desc: t("transport.dest_pension_desc") },
+    { title: t("transport.dest_demenagement_title"), desc: t("transport.dest_demenagement_desc") },
+    { title: t("transport.dest_mesure_title"), desc: t("transport.dest_mesure_desc") },
+  ];
+
+  const GARANTIES = [
+    t("transport.gar_1"),
+    t("transport.gar_2"),
+    t("transport.gar_3"),
+    t("transport.gar_4"),
+    t("transport.gar_5"),
+    t("transport.gar_6"),
+  ];
 
   return (
     <>
@@ -87,10 +70,10 @@ export default async function TransportPage({
         }
         subtitle={t("transport.hero_subtitle")}
         ctas={[
-          { label: "Réserver un transport", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nos autres services", href: "/nos-services" },
+          { label: t("transport.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("transport.hero_cta_secondary"), href: "/nos-services" },
         ]}
-        trustBadges={["Chauffeurs certifiés", "Assurance AXA incluse", "Chiens, chats & NAC"]}
+        trustBadges={[t("transport.trust_1"), t("transport.trust_2"), t("transport.trust_3")]}
         variant="warm"
       />
 
@@ -98,9 +81,9 @@ export default async function TransportPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Où on emmène votre animal"
-            title="Toutes les destinations, un seul interlocuteur"
-            subtitle="De la consultation vétérinaire au déménagement, nos chouchouteurs s'occupent du trajet pour que vous n'ayez pas à le faire."
+            label={t("transport.dest_label")}
+            title={t("transport.dest_title")}
+            subtitle={t("transport.dest_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -118,13 +101,13 @@ export default async function TransportPage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Réserver un transport
+              {t("transport.dest_btn")}
             </a>
           </div>
         </div>
@@ -145,9 +128,9 @@ export default async function TransportPage({
             </div>
             <div>
               <SectionHeader
-                label="Nos garanties"
-                title="Le transport aussi, c'est un métier"
-                subtitle="Un trajet stressant peut impacter votre animal pendant des heures. Nos chouchouteurs-transporteurs sont formés pour que l'expérience soit aussi douce que possible."
+                label={t("transport.gar_label")}
+                title={t("transport.gar_title")}
+                subtitle={t("transport.gar_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -170,10 +153,10 @@ export default async function TransportPage({
       </section>
 
       <CtaBanner
-        title="Votre animal mérite un trajet aussi doux que la destination"
-        subtitle="Réservez un transport en quelques minutes. Nos chauffeurs animaliers sont disponibles 7j/7 dans toute la France."
-        primaryCta={{ label: "Réserver un transport", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
+        title={t("transport.banner_title")}
+        subtitle={t("transport.banner_subtitle")}
+        primaryCta={{ label: t("transport.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("transport.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

@@ -43,87 +43,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// ─── Data ─────────────────────────────────────────────────────────────────────
-
-const SERVICES = [
-  {
-    Icon: SparklesIcon,
-    title: "Box de bienvenue sur-mesure",
-    desc: "Accueillez vos hôtes et leurs compagnons avec une box pensée dans les moindres détails : gamelle personnalisée aux couleurs de l'hôtel, friandises premium, kit de soins, carte de bienvenue et informations pratiques sur les services disponibles.",
-  },
-  {
-    Icon: HandHeartIcon,
-    title: "Room service animalier",
-    desc: "Un menu complet de produits et services intégré à votre offre room service, sous votre marque. Snacks haut de gamme, accessoires, réservation de promenades, toilettage, transport — tout est géré opérationnellement par Petcheri, en toute discrétion.",
-  },
-  {
-    Icon: PartyPopperIcon,
-    title: "Événements & expériences exclusives",
-    desc: "Co-créez des expériences mémorables pour vos clients : Pet Social Club, ateliers bien-être (shiatsu, brushing, massage), rencontres avec éducateurs, comportementalistes et photographes animaliers. Des moments qui font parler.",
-  },
-] as const;
-
-const DIFFERENTIATORS = [
-  {
-    Icon: ShieldCheckIcon,
-    title: "Assurance professionnelle 9 000 000 €",
-    desc: "Chaque intervention de nos chouchouteurs est couverte par une assurance professionnelle de 9 millions d'euros. Votre établissement est protégé, vos clients rassurés.",
-  },
-  {
-    Icon: TrophyIcon,
-    title: "Un seul interlocuteur dédié",
-    desc: "Un account manager Petcheri vous est attribué dès la signature. Il coordonne l'ensemble des prestations et répond à toute demande urgente de vos équipes en quelques minutes.",
-  },
-  {
-    Icon: UsersIcon,
-    title: "Personnel animalier à disposition",
-    desc: "Besoin d'un chouchouteur sur place pour un événement, un séjour longue durée ou une clientèle régulière ? Nous assurons la mise à disposition de professionnels certifiés, selon vos plannings.",
-  },
-  {
-    Icon: PawPrintIcon,
-    title: "Marque blanche disponible",
-    desc: "L'intégralité de nos services peut être proposée sous l'identité de votre établissement. Vos clients vivent une expérience palace cohérente — du check-in au check-out.",
-  },
-] as const;
-
-const HOW_IT_WORKS = [
-  {
-    step: "01",
-    title: "Un brief de 30 minutes",
-    desc: "Un échange avec notre équipe pour comprendre votre établissement, votre clientèle et vos standards de service. Nous adaptons chaque détail à votre positionnement.",
-  },
-  {
-    step: "02",
-    title: "On conçoit votre offre",
-    desc: "Création de votre kit d'accueil sur-mesure, de votre menu de services et de votre protocole d'intervention — aux couleurs de votre hôtel, en moins de deux semaines.",
-  },
-  {
-    step: "03",
-    title: "Vos clients profitent",
-    desc: "Dès la première réservation incluant un animal, le protocole Petcheri s'active. Simple, discret, impeccable — exactement à la hauteur de ce que votre établissement promet.",
-  },
-] as const;
-
-const TRUST_ITEMS = [
-  { Icon: UsersIcon, text: "Réseau de +400 chouchouteurs certifiés" },
-  { Icon: ShieldCheckIcon, text: "Assurance professionnelle AXA 9 000 000 €" },
-  { Icon: HeartHandshakeIcon, text: "Disponibilité 7j/7, de 8h à 20h" },
-  { Icon: GraduationCapIcon, text: "Mise à disposition de personnel sur site" },
-  { Icon: SparklesIcon, text: "Marque blanche disponible sur demande" },
-  { Icon: UnorderedListIcon, text: "Reporting mensuel de l'activité animalière" },
-];
-
-const HOTEL_TYPES = [
-  "Palaces & 5 étoiles",
-  "Hôtels boutique",
-  "Maisons de maître",
-  "Résidences de prestige",
-  "Lodges & domaines",
-  "Hôtels de charme",
-];
-
-// ─── Page ──────────────────────────────────────────────────────────────────────
-
 export default async function LuxuryHotelsPage({
   params,
 }: {
@@ -133,6 +52,43 @@ export default async function LuxuryHotelsPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
 
+  const SERVICES = [
+    { Icon: SparklesIcon,     title: t("luxury_hotels.svc_1_title"), desc: t("luxury_hotels.svc_1_desc") },
+    { Icon: HandHeartIcon,    title: t("luxury_hotels.svc_2_title"), desc: t("luxury_hotels.svc_2_desc") },
+    { Icon: PartyPopperIcon,  title: t("luxury_hotels.svc_3_title"), desc: t("luxury_hotels.svc_3_desc") },
+  ];
+
+  const DIFFERENTIATORS = [
+    { Icon: ShieldCheckIcon,    title: t("luxury_hotels.diff_1_title"), desc: t("luxury_hotels.diff_1_desc") },
+    { Icon: TrophyIcon,         title: t("luxury_hotels.diff_2_title"), desc: t("luxury_hotels.diff_2_desc") },
+    { Icon: UsersIcon,          title: t("luxury_hotels.diff_3_title"), desc: t("luxury_hotels.diff_3_desc") },
+    { Icon: PawPrintIcon,       title: t("luxury_hotels.diff_4_title"), desc: t("luxury_hotels.diff_4_desc") },
+  ];
+
+  const HOW_IT_WORKS = [
+    { step: "01", title: t("luxury_hotels.how_1_title"), desc: t("luxury_hotels.how_1_desc") },
+    { step: "02", title: t("luxury_hotels.how_2_title"), desc: t("luxury_hotels.how_2_desc") },
+    { step: "03", title: t("luxury_hotels.how_3_title"), desc: t("luxury_hotels.how_3_desc") },
+  ];
+
+  const TRUST_ITEMS = [
+    { Icon: UsersIcon,          text: t("luxury_hotels.check_1") },
+    { Icon: ShieldCheckIcon,    text: t("luxury_hotels.check_2") },
+    { Icon: HeartHandshakeIcon, text: t("luxury_hotels.check_3") },
+    { Icon: GraduationCapIcon,  text: t("luxury_hotels.check_4") },
+    { Icon: SparklesIcon,       text: t("luxury_hotels.check_5") },
+    { Icon: UnorderedListIcon,  text: t("luxury_hotels.check_6") },
+  ];
+
+  const HOTEL_TYPES = [
+    t("luxury_hotels.hotel_1"),
+    t("luxury_hotels.hotel_2"),
+    t("luxury_hotels.hotel_3"),
+    t("luxury_hotels.hotel_4"),
+    t("luxury_hotels.hotel_5"),
+    t("luxury_hotels.hotel_6"),
+  ];
+
   return (
     <>
       <Navbar />
@@ -141,19 +97,19 @@ export default async function LuxuryHotelsPage({
         badge={t("luxury_hotels.hero_badge")}
         title={
           <>
-            Faites de chaque séjour{" "} <br />
-            <span className="text-accent">une expérience inoubliable</span>
-            {" "}  <br />même pour leurs animaux
+            {t("luxury_hotels.hero_title")}{" "} <br />
+            <span className="text-accent">{t("luxury_hotels.hero_title_accent")}</span>
+            {" "}  <br />{t("luxury_hotels.hero_title_suffix")}
           </>
         }
-        subtitle="Vos clients voyagent avec leurs compagnons et attendent le même niveau d'excellence pour eux. Petcheri accompagne les établissements de prestige avec une conciergerie animalière clé en main, à la hauteur de vos exigences."
+        subtitle={t("luxury_hotels.hero_subtitle")}
         ctas={[
-          { label: "Nous contacter", href: "/contact", primary: true },
-          { label: "Découvrir les services", href: "#services" },
+          { label: t("luxury_hotels.hero_cta_primary"), href: "/contact", primary: true },
+          { label: t("luxury_hotels.hero_cta_secondary"), href: "#services" },
         ]}
         image={PHOTOS.luxuryHero}
-        imageAlt="Petcheri Luxury Hotels — conciergerie animalière de prestige"
-        trustBadges={["Clé en main", "Marque blanche disponible", "Assurance 9M€ incluse"]}
+        imageAlt={t("luxury_hotels.hero_image_alt")}
+        trustBadges={[t("luxury_hotels.trust_1"), t("luxury_hotels.trust_2"), t("luxury_hotels.trust_3")]}
         variant="warm"
       />
 
@@ -162,10 +118,10 @@ export default async function LuxuryHotelsPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: "1 sur 3", label: "voyageurs emmène son animal en vacances" },
-              { value: "9 000 000 €", label: "d'assurance professionnelle incluse" },
-              { value: "+400", label: "chouchouteurs certifiés disponibles" },
-              { value: "2 sem.", label: "pour déployer votre offre sur-mesure" },
+              { value: t("luxury_hotels.stat_1_value"), label: t("luxury_hotels.stat_1_label") },
+              { value: t("luxury_hotels.stat_2_value"), label: t("luxury_hotels.stat_2_label") },
+              { value: t("luxury_hotels.stat_3_value"), label: t("luxury_hotels.stat_3_label") },
+              { value: t("luxury_hotels.stat_4_value"), label: t("luxury_hotels.stat_4_label") },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span
@@ -189,9 +145,9 @@ export default async function LuxuryHotelsPage({
       <section id="services" className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Ce que nous proposons"
-            title="Un service complet, à vos couleurs"
-            subtitle="Trois piliers pour transformer chaque séjour avec animal en expérience palace — intégralement opérés par Petcheri, sous votre identité si vous le souhaitez."
+            label={t("luxury_hotels.svcs_label")}
+            title={t("luxury_hotels.svcs_title")}
+            subtitle={t("luxury_hotels.svcs_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-3 gap-6">
@@ -217,9 +173,9 @@ export default async function LuxuryHotelsPage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Pourquoi Petcheri ?"
-            title="Ce qui nous distingue dans l'hôtellerie haut de gamme"
-            subtitle="Nous ne sommes pas une plateforme généraliste. Petcheri est une conciergerie animalière premium, construite pour répondre aux standards de l'hôtellerie de luxe."
+            label={t("luxury_hotels.why_label")}
+            title={t("luxury_hotels.why_title")}
+            subtitle={t("luxury_hotels.why_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-2 gap-6">
@@ -245,9 +201,9 @@ export default async function LuxuryHotelsPage({
       <section className="section-padding bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Comment ça marche ?"
-            title="Opérationnel en deux semaines"
-            subtitle="De notre premier échange à l'accueil du premier client avec animal — un déploiement rapide, sans friction pour vos équipes."
+            label={t("luxury_hotels.how_label")}
+            title={t("luxury_hotels.how_title")}
+            subtitle={t("luxury_hotels.how_subtitle")}
             className="mb-14"
           />
           <div className="grid sm:grid-cols-3 gap-10">
@@ -285,9 +241,9 @@ export default async function LuxuryHotelsPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Des établissements qui nous font confiance"
-                title="Une solution éprouvée par les hôtels les plus exigeants"
-                subtitle="De Paris à la Côte d'Azur, nos partenaires hôteliers apprécient la rigueur, la discrétion et l'impact sur la satisfaction de leurs clients."
+                label={t("luxury_hotels.trust_section_label")}
+                title={t("luxury_hotels.trust_section_title")}
+                subtitle={t("luxury_hotels.trust_section_subtitle")}
                 align="left"
                 className="mb-10"
               />
@@ -295,7 +251,7 @@ export default async function LuxuryHotelsPage({
               {/* Hotel types */}
               <div className="mb-8">
                 <p className="text-sm font-semibold text-[--color-chocolat] mb-3 uppercase tracking-wider">
-                  Établissements partenaires
+                  {t("luxury_hotels.hotel_types_label")}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {HOTEL_TYPES.map((type) => (
@@ -344,7 +300,7 @@ export default async function LuxuryHotelsPage({
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[--color-chocolat] mb-1">
-                  Satisfaction client
+                  {t("luxury_hotels.card_label")}
                 </p>
                 <p
                   className="font-normal text-[--color-chocolat]"
@@ -353,7 +309,7 @@ export default async function LuxuryHotelsPage({
                   {SITE_STATS.googleRating.toLocaleString("fr-FR")} / 5
                 </p>
                 <p className="text-xs text-[--color-muted-foreground] mt-1">
-                  note moyenne sur nos interventions en hôtel
+                  {t("luxury_hotels.card_desc")}
                 </p>
               </div>
             </div>
@@ -365,7 +321,7 @@ export default async function LuxuryHotelsPage({
       <section className="py-12 bg-white border-y border-[--color-border]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="text-sm text-[--color-muted-foreground] mb-2 uppercase tracking-wider font-medium">
-            Une question ? Notre équipe vous répond
+            {t("luxury_hotels.contact_strip_label")}
           </p>
           <a
             href="tel:+33185089730"
@@ -375,15 +331,15 @@ export default async function LuxuryHotelsPage({
             <Phone className="w-5 h-5" />
             01 85 08 97 30
           </a>
-          <p className="text-xs text-[--color-muted-foreground] mt-1">Disponible du lundi au dimanche, 9h – 18h</p>
+          <p className="text-xs text-[--color-muted-foreground] mt-1">{t("luxury_hotels.contact_strip_hours")}</p>
         </div>
       </section>
 
       <CtaBanner
-        title="Offrez l'expérience palace à vos clients — et à leurs animaux"
-        subtitle="Parlez-nous de votre établissement. En 30 minutes, nous vous montrons ce que Petcheri peut apporter à votre offre pet-friendly."
-        primaryCta={{ label: "Demander un rendez-vous", href: "/contact" }}
-        secondaryCta={{ label: "Retour aux services", href: "/nos-services" }}
+        title={t("luxury_hotels.banner_title")}
+        subtitle={t("luxury_hotels.banner_subtitle")}
+        primaryCta={{ label: t("luxury_hotels.banner_primary"), href: "/contact" }}
+        secondaryCta={{ label: t("luxury_hotels.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

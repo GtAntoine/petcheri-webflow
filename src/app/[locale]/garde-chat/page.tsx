@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -28,38 +29,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const FORMULES = [
-  {
-    title: "Visite à domicile",
-    desc: "Un chouchouteur passe chez vous chaque jour pour nourrir votre chat, nettoyer la litière, jouer et le câliner. Votre félin reste dans son univers — son espace, ses habitudes, ses repères.",
-    ideal: "Idéal pour les chats casaniers ou anxieux",
-  },
-  {
-    title: "Garde à votre domicile",
-    desc: "Un chouchouteur s'installe chez vous pour toute la durée de votre absence. Présence, câlins et soins non-stop pour les chats qui ont besoin de compagnie prolongée.",
-    ideal: "Idéal pour les chats très sociaux",
-  },
-  {
-    title: "Garde chez le chouchouteur",
-    desc: "Votre chat est accueilli dans un foyer cat-friendly — espace dédié, jouets et attention personnalisée. Pour les félins qui s'adaptent bien aux nouveaux environnements.",
-    ideal: "Idéal pour les absences longues",
-  },
-  {
-    title: "Pension 5 étoiles",
-    desc: "Nos partenaires pension offrent des espaces dédiés, des couchages confortables, des jouets et une présence humaine quasi-permanente. Le palace pour votre minou.",
-    ideal: "Idéal pour un séjour premium",
-  },
-] as const;
-
-const INCLUS = [
-  "Nourrissage selon les habitudes de votre chat",
-  "Nettoyage de la litière à chaque visite",
-  "Rapport photo ou vidéo quotidien",
-  "Jeux, câlins et stimulation",
-  "Arrosage des plantes & relevé du courrier en option",
-  "Accès à un vétérinaire partenaire si nécessaire",
-];
-
 export default async function GardeChatPage({
   params,
 }: {
@@ -68,6 +37,22 @@ export default async function GardeChatPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const FORMULES = [
+    { title: t("garde_chat.form_visite_title"), desc: t("garde_chat.form_visite_desc"), ideal: t("garde_chat.form_visite_ideal") },
+    { title: t("garde_chat.form_garde_dom_title"), desc: t("garde_chat.form_garde_dom_desc"), ideal: t("garde_chat.form_garde_dom_ideal") },
+    { title: t("garde_chat.form_garde_chez_title"), desc: t("garde_chat.form_garde_chez_desc"), ideal: t("garde_chat.form_garde_chez_ideal") },
+    { title: t("garde_chat.form_pension_title"), desc: t("garde_chat.form_pension_desc"), ideal: t("garde_chat.form_pension_ideal") },
+  ];
+
+  const INCLUS = [
+    t("garde_chat.inclus_1"),
+    t("garde_chat.inclus_2"),
+    t("garde_chat.inclus_3"),
+    t("garde_chat.inclus_4"),
+    t("garde_chat.inclus_5"),
+    t("garde_chat.inclus_6"),
+  ];
 
   return (
     <>
@@ -83,12 +68,12 @@ export default async function GardeChatPage({
         }
         subtitle={t("garde_chat.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nos services chat", href: "/services-chat" },
+          { label: t("garde_chat.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("garde_chat.hero_cta_secondary"), href: "/services-chat" },
         ]}
         image={ILLUSTRATIONS.catSitting}
-        imageAlt="Chat gardé par Petcheri"
-        trustBadges={["Spécialistes félins", "Assurance AXA incluse", "Photos quotidiennes"]}
+        imageAlt={t("garde_chat.hero_image_alt")}
+        trustBadges={[t("garde_chat.trust_1"), t("garde_chat.trust_2"), t("garde_chat.trust_3")]}
         variant="warm"
       />
 
@@ -96,9 +81,9 @@ export default async function GardeChatPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos formules"
-            title="Selon son caractère et vos besoins"
-            subtitle="Certains chats tolèrent à peine qu'on déplace leur coussin. D'autres sautent sur les genoux du premier inconnu venu. On a une solution pour les deux."
+            label={t("garde_chat.formules_label")}
+            title={t("garde_chat.formules_title")}
+            subtitle={t("garde_chat.formules_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 gap-6">
@@ -122,13 +107,13 @@ export default async function GardeChatPage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Trouver un chouchouteur pour mon chat
+              {t("garde_chat.form_btn")}
             </a>
           </div>
         </div>
@@ -140,9 +125,9 @@ export default async function GardeChatPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Ce qui est inclus"
-                title="Tout ce dont votre chat a besoin"
-                subtitle="Chaque visite ou garde suit un protocole précis. Rien n'est laissé au hasard — surtout pas l'heure du repas."
+                label={t("garde_chat.inclus_label")}
+                title={t("garde_chat.inclus_title")}
+                subtitle={t("garde_chat.inclus_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -174,10 +159,10 @@ export default async function GardeChatPage({
       </section>
 
       <CtaBanner
-        title="Votre chat mérite la meilleure des gardes"
-        subtitle="Des chouchouteurs spécialisés félins, sélectionnés par nos comportementalistes. Partez serein."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Tous nos services chat", href: "/services-chat" }}
+        title={t("garde_chat.banner_title")}
+        subtitle={t("garde_chat.banner_subtitle")}
+        primaryCta={{ label: t("garde_chat.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("garde_chat.banner_secondary"), href: "/services-chat" }}
       />
 
       <Footer />

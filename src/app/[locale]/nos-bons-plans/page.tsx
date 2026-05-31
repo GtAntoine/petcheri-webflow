@@ -32,15 +32,16 @@ export default async function NosBonsPlansPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
 
   return (
     <>
       <Navbar />
 
       <PageHeroCentered
-        badge="15 offres exclusives"
-        title={<>Nos <span className="text-accent">bons plans</span></>}
-        subtitle="Des offres exclusives chez nos partenaires triés sur le volet — alimentation premium, soins, accessoires, assurance et compléments pour le bien-être de votre animal."
+        badge={t("nos_bons_plans.hero_badge")}
+        title={<>{t("nos_bons_plans.hero_title")} <span className="text-accent">{t("nos_bons_plans.hero_title_accent")}</span></>}
+        subtitle={t("nos_bons_plans.hero_subtitle")}
       />
 
       {/* Listing */}

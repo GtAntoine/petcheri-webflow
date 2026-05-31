@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -28,35 +29,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const FORMULES = [
-  {
-    title: "Visite express",
-    duration: "1h",
-    desc: "Un chouchouteur passe chez vous pour nourrir votre chien, jouer avec lui et lui faire faire une sortie. Idéal pour briser les longues heures seul.",
-    includes: ["Nourrissage", "Sortie courte", "Rapport photo"],
-  },
-  {
-    title: "Demi-journée",
-    duration: "4h",
-    desc: "Garde chez vous ou chez le chouchouteur le matin ou l'après-midi. Parfait pour les journées un peu chargées sans être une absence complète.",
-    includes: ["Nourrissage", "Promenade", "Jeux & câlins", "Rapport photo"],
-  },
-  {
-    title: "Journée complète",
-    duration: "8h+",
-    desc: "Votre chien est accueilli toute la journée dans un cadre familial et chaleureux. Il rentre le soir heureux et fatigué — vous aussi !",
-    includes: ["Nourrissage", "Promenades", "Socialisation", "Rapport photo", "Mises à jour en temps réel"],
-  },
-] as const;
-
-const INCLUS = [
-  "Rapport de sortie avec photos à chaque visite",
-  "Chouchouteurs sélectionnés et certifiés",
-  "Assurance professionnelle AXA 9 000 000 €",
-  "Suivi par nos concierges et vétérinaires partenaires",
-  "Réservation et paiement sécurisés via l'app Petcheri",
-];
-
 export default async function GardeJourneePage({
   params,
 }: {
@@ -65,6 +37,35 @@ export default async function GardeJourneePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const FORMULES = [
+    {
+      title: t("garde_journee.form_express_title"),
+      duration: t("garde_journee.form_express_duration"),
+      desc: t("garde_journee.form_express_desc"),
+      includes: [t("garde_journee.form_express_i1"), t("garde_journee.form_express_i2"), t("garde_journee.form_express_i3")],
+    },
+    {
+      title: t("garde_journee.form_demijournee_title"),
+      duration: t("garde_journee.form_demijournee_duration"),
+      desc: t("garde_journee.form_demijournee_desc"),
+      includes: [t("garde_journee.form_demijournee_i1"), t("garde_journee.form_demijournee_i2"), t("garde_journee.form_demijournee_i3"), t("garde_journee.form_demijournee_i4")],
+    },
+    {
+      title: t("garde_journee.form_journee_title"),
+      duration: t("garde_journee.form_journee_duration"),
+      desc: t("garde_journee.form_journee_desc"),
+      includes: [t("garde_journee.form_journee_i1"), t("garde_journee.form_journee_i2"), t("garde_journee.form_journee_i3"), t("garde_journee.form_journee_i4"), t("garde_journee.form_journee_i5")],
+    },
+  ];
+
+  const INCLUS = [
+    t("garde_journee.inclus_1"),
+    t("garde_journee.inclus_2"),
+    t("garde_journee.inclus_3"),
+    t("garde_journee.inclus_4"),
+    t("garde_journee.inclus_5"),
+  ];
 
   return (
     <>
@@ -80,12 +81,12 @@ export default async function GardeJourneePage({
         }
         subtitle={t("garde_journee.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nos autres services", href: "/nos-services" },
+          { label: t("garde_journee.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("garde_journee.hero_cta_secondary"), href: "/nos-services" },
         ]}
         image={ILLUSTRATIONS.dogDay}
-        imageAlt="Chien gardé à la journée"
-        trustBadges={["Chouchouteurs certifiés", "Assurance AXA incluse", "Rapport photo inclus"]}
+        imageAlt={t("garde_journee.hero_image_alt")}
+        trustBadges={[t("garde_journee.trust_1"), t("garde_journee.trust_2"), t("garde_journee.trust_3")]}
         variant="warm"
       />
 
@@ -93,9 +94,9 @@ export default async function GardeJourneePage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos formules"
-            title="À la carte, selon vos besoins"
-            subtitle="Que vous partiez une heure ou toute la journée, on a la formule qui colle. Sans engagement, réservable en quelques clics."
+            label={t("garde_journee.formules_label")}
+            title={t("garde_journee.formules_title")}
+            subtitle={t("garde_journee.formules_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-3 gap-6">
@@ -129,13 +130,13 @@ export default async function GardeJourneePage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Réserver une garde de journée
+              {t("garde_journee.form_btn")}
             </a>
           </div>
         </div>
@@ -156,9 +157,9 @@ export default async function GardeJourneePage({
             </div>
             <div>
               <SectionHeader
-                label="Ce qui est inclus"
-                title="Un service transparent de A à Z"
-                subtitle="Chaque prestation suit un protocole strict que nos concierges supervisent personnellement."
+                label={t("garde_journee.inclus_label")}
+                title={t("garde_journee.inclus_title")}
+                subtitle={t("garde_journee.inclus_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -181,10 +182,10 @@ export default async function GardeJourneePage({
       </section>
 
       <CtaBanner
-        title="Votre chien mérite la meilleure journée possible"
-        subtitle="Nos chouchouteurs sont disponibles 7j/7 dans toute la France. Trouvez le vôtre en quelques minutes."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Garde de nuit aussi", href: "/garde-nuit" }}
+        title={t("garde_journee.banner_title")}
+        subtitle={t("garde_journee.banner_subtitle")}
+        primaryCta={{ label: t("garde_journee.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("garde_journee.banner_secondary"), href: "/garde-nuit" }}
       />
 
       <Footer />

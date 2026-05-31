@@ -13,6 +13,9 @@ export const BOOKING_URL =
 /** Espace client (connexion / dashboard) */
 export const DASHBOARD_URL = "https://www.petcheri-app.com/customer/dashboard";
 
+/** Lien direct pour déposer un avis Google */
+export const GOOGLE_REVIEW_URL = "https://g.page/r/CSdvs9XGJTgXEBI/review";
+
 // ─── Stats ────────────────────────────────────────────────────────────────────
 
 export const SITE_STATS = {

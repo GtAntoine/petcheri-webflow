@@ -11,6 +11,7 @@ import { Link } from "@/i18n/navigation";
 import { ICONS, ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -30,75 +31,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const ANIMAL_CATEGORIES = [
-  {
-    icon: ICONS.dog,
-    title: "Services pour chiens",
-    desc: "Dogsitting, promenade, toilettage, comportement et éducation, massage, ostéopathie…",
-    href: "/services-chien" as const,
-    cta: "Voir les services chien",
-  },
-  {
-    icon: ICONS.ctCat,
-    title: "Services pour chats",
-    desc: "Catsitting et visites, comportement, toilettage, massage, ostéopathie…",
-    href: "/services-chat" as const,
-    cta: "Voir les services chat",
-  },
-  {
-    icon: ICONS.nac,
-    title: "Services pour NAC",
-    desc: "Visite, garde, soins spécifiques, transport, aide administrative…",
-    href: "/services-nac" as const,
-    cta: "Voir les services NAC",
-  },
-] as const;
-
-const SERVICE_CATEGORIES = [
-  {
-    title: "Garde sur-mesure",
-    desc: "Garde de chiens à la journée ou sur plusieurs jours, visites et garde de chats et NAC, pension familiale.",
-    items: ["Garde de jour", "Garde de nuit", "Garde à domicile", "Pension familiale"],
-    href: "/garde-chien" as const,
-    image: ILLUSTRATIONS.gardeNuit,
-  },
-  {
-    title: "Toilettage",
-    desc: "À domicile ou en salon, laissez votre animal se faire pomponner en toute détente par nos toiletteurs professionnels.",
-    items: ["Toilettage chien", "Toilettage chat", "Coupe des griffes", "Spa canin"],
-    href: "/toilettage" as const,
-    image: ILLUSTRATIONS.grooming,
-  },
-  {
-    title: "Comportement & Éducation",
-    desc: "Des comportementalistes et experts en éducation positive pour une relation harmonieuse.",
-    items: ["Bilan comportemental", "Éducation positive", "Comportement canin", "Comportement félin"],
-    href: "/comportement-education" as const,
-    image: ILLUSTRATIONS.dogDay,
-  },
-  {
-    title: "Bien-être & soins",
-    desc: "L'expertise de nos professionnels au service du bien-être de votre animal.",
-    items: ["Massage", "Ostéopathie", "Aromathérapie", "Naturopathie"],
-    href: "/nos-services" as const,
-    image: ILLUSTRATIONS.catSitting,
-  },
-  {
-    title: "Transport animalier",
-    desc: "Vos trajets tout-confort avec des chauffeurs agréés et un maximum de sécurité.",
-    items: ["Taxi animalier", "Livraison à domicile", "Transport longue distance"],
-    href: "/transport" as const,
-    image: PHOTOS.moodboard5,
-  },
-  {
-    title: "Autres services",
-    desc: "Votre demande ne figure pas sur cette liste ? Nous avons quand même la solution.",
-    items: ["Démarches administratives", "Aménagement pet-friendly", "Sur devis"],
-    href: "/contact" as const,
-    image: PHOTOS.moodboard6,
-  },
-] as const;
-
 export default async function NosServicesPage({
   params,
 }: {
@@ -107,6 +39,57 @@ export default async function NosServicesPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const ANIMAL_CATEGORIES = [
+    { icon: ICONS.dog, title: t("nos_services.cat_chiens_title"), desc: t("nos_services.cat_chiens_desc"), href: "/services-chien" as const, cta: t("nos_services.cat_chiens_cta") },
+    { icon: ICONS.ctCat, title: t("nos_services.cat_chats_title"), desc: t("nos_services.cat_chats_desc"), href: "/services-chat" as const, cta: t("nos_services.cat_chats_cta") },
+    { icon: ICONS.nac, title: t("nos_services.cat_nac_title"), desc: t("nos_services.cat_nac_desc"), href: "/services-nac" as const, cta: t("nos_services.cat_nac_cta") },
+  ];
+
+  const SERVICE_CATEGORIES = [
+    {
+      title: t("nos_services.svc_garde_title"),
+      desc: t("nos_services.svc_garde_desc"),
+      items: [t("nos_services.svc_garde_i1"), t("nos_services.svc_garde_i2"), t("nos_services.svc_garde_i3"), t("nos_services.svc_garde_i4")],
+      href: "/garde-chien" as const,
+      image: ILLUSTRATIONS.gardeNuit,
+    },
+    {
+      title: t("nos_services.svc_toilettage_title"),
+      desc: t("nos_services.svc_toilettage_desc"),
+      items: [t("nos_services.svc_toilettage_i1"), t("nos_services.svc_toilettage_i2"), t("nos_services.svc_toilettage_i3"), t("nos_services.svc_toilettage_i4")],
+      href: "/toilettage" as const,
+      image: ILLUSTRATIONS.grooming,
+    },
+    {
+      title: t("nos_services.svc_comport_title"),
+      desc: t("nos_services.svc_comport_desc"),
+      items: [t("nos_services.svc_comport_i1"), t("nos_services.svc_comport_i2"), t("nos_services.svc_comport_i3"), t("nos_services.svc_comport_i4")],
+      href: "/comportement-education" as const,
+      image: ILLUSTRATIONS.dogDay,
+    },
+    {
+      title: t("nos_services.svc_bienetre_title"),
+      desc: t("nos_services.svc_bienetre_desc"),
+      items: [t("nos_services.svc_bienetre_i1"), t("nos_services.svc_bienetre_i2"), t("nos_services.svc_bienetre_i3"), t("nos_services.svc_bienetre_i4")],
+      href: "/nos-services" as const,
+      image: ILLUSTRATIONS.catSitting,
+    },
+    {
+      title: t("nos_services.svc_transport_title"),
+      desc: t("nos_services.svc_transport_desc"),
+      items: [t("nos_services.svc_transport_i1"), t("nos_services.svc_transport_i2"), t("nos_services.svc_transport_i3")],
+      href: "/transport" as const,
+      image: PHOTOS.moodboard5,
+    },
+    {
+      title: t("nos_services.svc_autres_title"),
+      desc: t("nos_services.svc_autres_desc"),
+      items: [t("nos_services.svc_autres_i1"), t("nos_services.svc_autres_i2"), t("nos_services.svc_autres_i3")],
+      href: "/contact" as const,
+      image: PHOTOS.moodboard6,
+    },
+  ];
 
   return (
     <>
@@ -122,12 +105,12 @@ export default async function NosServicesPage({
         }
         subtitle={t("nos_services.hero_subtitle")}
         ctas={[
-          { label: "Réserver", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nous contacter", href: "/contact" },
+          { label: t("nos_services.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("nos_services.hero_cta_secondary"), href: "/contact" },
         ]}
         image={PHOTOS.moodboard5}
-        imageAlt="Chouchouteur Petcheri avec un animal"
-        trustBadges={["Chouchouteurs vérifiés", "Assurance AXA incluse", "Sans engagement"]}
+        imageAlt={t("nos_services.hero_image_alt")}
+        trustBadges={[t("nos_services.trust_1"), t("nos_services.trust_2"), t("nos_services.trust_3")]}
         variant="warm"
       />
 
@@ -135,9 +118,9 @@ export default async function NosServicesPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Pour des animaux heureux 🤎"
-            title="Chiens, chats et NAC sont les bienvenus"
-            subtitle="Sélectionnez l'espèce de votre compagnon pour découvrir les services adaptés."
+            label={t("nos_services.animals_label")}
+            title={t("nos_services.animals_title")}
+            subtitle={t("nos_services.animals_subtitle")}
             className="mb-12"
           />
           <div className="grid md:grid-cols-3 gap-6">
@@ -171,9 +154,9 @@ export default async function NosServicesPage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos prestations"
-            title="Garde sur-mesure, toilettage, éducation et plus"
-            subtitle="Chaque animal est unique — c'est pour cela que chez Petcheri, nous trouvons le service qui lui convient le mieux."
+            label={t("nos_services.svc_label")}
+            title={t("nos_services.svc_title")}
+            subtitle={t("nos_services.svc_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -206,7 +189,7 @@ export default async function NosServicesPage({
                     className="mt-auto pt-4 inline-flex items-center gap-1.5 text-sm font-semibold"
                     style={{ color: "#E8705A" }}
                   >
-                    En savoir plus
+                    {t("nos_services.svc_learn_more")}
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
@@ -217,10 +200,10 @@ export default async function NosServicesPage({
       </section>
 
       <CtaBanner
-        title="Prêt à chouchouter votre animal ?"
-        subtitle="Dites-nous tout sur lui et nous vous proposerons une solution 100 % sur-mesure."
-        primaryCta={{ label: "Trouver mon chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Nous contacter", href: "/contact" }}
+        title={t("nos_services.banner_title")}
+        subtitle={t("nos_services.banner_subtitle")}
+        primaryCta={{ label: t("nos_services.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("nos_services.banner_secondary"), href: "/contact" }}
       />
 
       <Footer />

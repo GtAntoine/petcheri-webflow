@@ -3,6 +3,7 @@
 export const dynamic = "force-dynamic";
 
 import React, { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHeroCentered } from "@/components/sections/page-hero-centered";
@@ -10,23 +11,25 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import { HAPTIC } from "@/lib/haptics";
 import { triggerHaptic } from "@/lib/haptics-engine";
-
-const HOURS = [
-  "Lundi — Vendredi : 9h – 18h",
-  "Samedi : 9h – 18h",
-  "Dimanche : 9h – 18h",
-];
-
-const INFO_ITEMS = [
-  { Icon: Mail,    label: "Email",    value: "contact@petcheri.com",      href: "mailto:contact@petcheri.com" },
-  { Icon: Phone,   label: "Téléphone", value: "01 XX XX XX XX",            href: "tel:+33100000000" },
-  { Icon: MapPin,  label: "Paris",    value: "Paris, France",              href: null },
-];
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export default function ContactPage() {
+  const t = useTranslations("pages");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const formRef = React.useRef<HTMLFormElement>(null);
+
+  const HOURS = [
+    t("contact.hour_1"),
+    t("contact.hour_2"),
+    t("contact.hour_3"),
+  ];
+
+  const INFO_ITEMS = [
+    { Icon: Mail,    label: t("contact.info_email_label"),    value: "contact@petcheri.com",      href: "mailto:contact@petcheri.com" },
+    { Icon: Phone,   label: t("contact.info_phone_label"),    value: "01 XX XX XX XX",            href: "tel:+33100000000" },
+    { Icon: MapPin,  label: t("contact.info_location_label"), value: "Paris, France",              href: null },
+  ];
 
   function handleSubmitClick() {
     if (formRef.current && !formRef.current.checkValidity()) {
@@ -50,9 +53,9 @@ export default function ContactPage() {
       <Navbar />
 
       <PageHeroCentered
-        badge="Réponse sous 24h"
-        title={<>Comment pouvons-nous <span className="text-accent">vous aider&nbsp;?</span></>}
-        subtitle="Contactez-nous pour toutes questions concernant nos services, toute demande de renseignements — nous serons heureux de vous aider !"
+        badge={t("contact.hero_badge")}
+        title={<>{t("contact.hero_title")} <span className="text-accent">{t("contact.hero_title_accent")}</span></>}
+        subtitle={t("contact.hero_subtitle")}
       />
 
       {/* Main content */}
@@ -68,7 +71,7 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: "#fde0d4" }}>
                     <PawPrintIcon size={20} color="#E8705A" strokeWidth={1.8} />
                   </div>
-                  <h2 className="text-h3 text-[--color-chocolat]">Nos coordonnées</h2>
+                  <h2 className="text-h3 text-[--color-chocolat]">{t("contact.info_title")}</h2>
                 </div>
                 <div className="space-y-4">
                   {INFO_ITEMS.map(({ Icon, label, value, href }) => (
@@ -97,7 +100,7 @@ export default function ContactPage() {
                   <div className="w-10 h-10 rounded-full bg-[--color-creme] flex items-center justify-center">
                     <Clock className="w-5 h-5 text-[--color-muted-foreground]" />
                   </div>
-                  <h2 className="text-h3 text-[--color-chocolat]">Horaires</h2>
+                  <h2 className="text-h3 text-[--color-chocolat]">{t("contact.hours_title")}</h2>
                 </div>
                 <ul className="space-y-2">
                   {HOURS.map((h) => (
@@ -115,19 +118,19 @@ export default function ContactPage() {
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
                 <p className="text-sm font-semibold text-[--color-chocolat] mb-2">
-                  Besoin d&apos;une réservation rapide ?
+                  {t("contact.app_cta_title")}
                 </p>
                 <p className="text-sm text-[--color-muted-foreground] mb-4">
-                  Notre application est disponible 7j/7.
+                  {t("contact.app_cta_desc")}
                 </p>
                 <a
-                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
                   style={{ background: "#E8705A" }}
                 >
-                  Accéder à l&apos;app
+                  {t("contact.app_cta_btn")}
                 </a>
               </div>
             </div>
@@ -135,9 +138,9 @@ export default function ContactPage() {
             {/* Right — form */}
             <div className="lg:col-span-2">
               <div className="card-base p-10">
-                <h2 className="text-h2 text-[--color-chocolat] mb-2">Envoyez-nous un message</h2>
+                <h2 className="text-h2 text-[--color-chocolat] mb-2">{t("contact.form_title")}</h2>
                 <p className="text-lead mb-8">
-                  Votre demande sera traitée dans les plus brefs délais.
+                  {t("contact.form_subtitle")}
                 </p>
 
                 {sent ? (
@@ -145,9 +148,9 @@ export default function ContactPage() {
                     <div className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center" style={{ background: "#fde0d4" }}>
                       <PawPrintIcon size={22} color="#E8705A" />
                     </div>
-                    <h3 className="text-h3 text-[--color-chocolat] mb-2">Message envoyé !</h3>
+                    <h3 className="text-h3 text-[--color-chocolat] mb-2">{t("contact.form_success_title")}</h3>
                     <p className="text-sm text-[--color-muted-foreground]">
-                      Nous vous répondrons dans les plus brefs délais.
+                      {t("contact.form_success_desc")}
                     </p>
                   </div>
                 ) : (
@@ -155,23 +158,23 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Prénom <span className="text-accent">*</span>
+                          {t("contact.form_firstname")} <span className="text-accent">*</span>
                         </label>
                         <input
                           type="text"
                           required
-                          placeholder="Marie"
+                          placeholder={t("contact.form_ph_firstname")}
                           className="w-full rounded-xl border border-[--color-border] bg-white px-4 py-3 text-sm text-[--color-chocolat] placeholder:text-[--color-muted] focus:outline-none focus:border-[#E8705A] transition-colors"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Nom <span className="text-accent">*</span>
+                          {t("contact.form_lastname")} <span className="text-accent">*</span>
                         </label>
                         <input
                           type="text"
                           required
-                          placeholder="Dupont"
+                          placeholder={t("contact.form_ph_lastname")}
                           className="w-full rounded-xl border border-[--color-border] bg-white px-4 py-3 text-sm text-[--color-chocolat] placeholder:text-[--color-muted] focus:outline-none focus:border-[#E8705A] transition-colors"
                         />
                       </div>
@@ -180,23 +183,23 @@ export default function ContactPage() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Email <span className="text-accent">*</span>
+                          {t("contact.form_email")} <span className="text-accent">*</span>
                         </label>
                         <input
                           type="email"
                           required
-                          placeholder="marie@email.com"
+                          placeholder={t("contact.form_ph_email")}
                           className="w-full rounded-xl border border-[--color-border] bg-white px-4 py-3 text-sm text-[--color-chocolat] placeholder:text-[--color-muted] focus:outline-none focus:border-[#E8705A] transition-colors"
                         />
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                          Téléphone <span className="text-accent">*</span>
+                          {t("contact.form_phone")} <span className="text-accent">*</span>
                         </label>
                         <input
                           type="tel"
                           required
-                          placeholder="06 XX XX XX XX"
+                          placeholder={t("contact.form_ph_phone")}
                           className="w-full rounded-xl border border-[--color-border] bg-white px-4 py-3 text-sm text-[--color-chocolat] placeholder:text-[--color-muted] focus:outline-none focus:border-[#E8705A] transition-colors"
                         />
                       </div>
@@ -204,12 +207,12 @@ export default function ContactPage() {
 
                     <div>
                       <label className="block text-sm font-medium text-[--color-chocolat] mb-2">
-                        Votre message <span className="text-accent">*</span>
+                        {t("contact.form_message")} <span className="text-accent">*</span>
                       </label>
                       <textarea
                         required
                         rows={6}
-                        placeholder="Décrivez votre demande, votre animal, vos besoins…"
+                        placeholder={t("contact.form_ph_message")}
                         className="w-full rounded-xl border border-[--color-border] bg-white px-4 py-3 text-sm text-[--color-chocolat] placeholder:text-[--color-muted] focus:outline-none focus:border-[#E8705A] transition-colors resize-none"
                       />
                     </div>
@@ -221,7 +224,7 @@ export default function ContactPage() {
                       className="w-full rounded-full py-4 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all disabled:opacity-60"
                       style={{ background: "#E8705A" }}
                     >
-                      {loading ? "Envoi en cours…" : "Envoyer le message"}
+                      {loading ? t("contact.form_sending") : t("contact.form_submit")}
                     </button>
                   </form>
                 )}

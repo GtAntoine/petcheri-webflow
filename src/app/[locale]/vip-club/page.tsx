@@ -33,34 +33,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const BENEFITS = [
-  {
-    Icon: GraduationCapIcon,
-    title: "Ateliers & tables rondes",
-    desc: "Des sessions animées par des spécialistes du comportement animal, des vétérinaires et des experts du bien-être — pour mieux comprendre et accompagner votre compagnon.",
-  },
-  {
-    Icon: PartyPopperIcon,
-    title: "Invitations exclusives",
-    desc: "Accès prioritaire à tous nos événements privés : soirées membres, avant-premières, rencontres VIP avec des experts du secteur animalier.",
-  },
-  {
-    Icon: HandHeartIcon,
-    title: "Cadeaux personnalisés & surprises",
-    desc: "Votre animal est unique — nos attentions aussi. Coffrets personnalisés, surprises d'anniversaire pour votre animal et sélections exclusives de produits premium.",
-  },
-  {
-    Icon: PawPrintIcon,
-    title: "Rencontres régulières entre membres",
-    desc: "Rejoignez une communauté de propriétaires passionnés. Des rencontres organisées régulièrement pour échanger, partager et créer des liens autour de l'amour des animaux.",
-  },
-  {
-    Icon: HeartHandshakeIcon,
-    title: "Interventions associatives",
-    desc: "Des représentants d'associations engagées pour le bien-être animal interviennent lors de nos événements pour sensibiliser et agir ensemble.",
-  },
-] as const;
-
 export default async function VipClubPage({
   params,
 }: {
@@ -68,6 +40,35 @@ export default async function VipClubPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
+
+  const BENEFITS = [
+    {
+      Icon: GraduationCapIcon,
+      title: t("vip_club.ben_ateliers_title"),
+      desc: t("vip_club.ben_ateliers_desc"),
+    },
+    {
+      Icon: PartyPopperIcon,
+      title: t("vip_club.ben_invitations_title"),
+      desc: t("vip_club.ben_invitations_desc"),
+    },
+    {
+      Icon: HandHeartIcon,
+      title: t("vip_club.ben_cadeaux_title"),
+      desc: t("vip_club.ben_cadeaux_desc"),
+    },
+    {
+      Icon: PawPrintIcon,
+      title: t("vip_club.ben_rencontres_title"),
+      desc: t("vip_club.ben_rencontres_desc"),
+    },
+    {
+      Icon: HeartHandshakeIcon,
+      title: t("vip_club.ben_associations_title"),
+      desc: t("vip_club.ben_associations_desc"),
+    },
+  ];
 
   return (
     <>
@@ -97,16 +98,14 @@ export default async function VipClubPage({
                 </span>
               </h1>
               <p className="text-lead mb-8">
-                Le Very Important Pet Club by Petcheri a pour mission de promouvoir le bien-être
-                animal à travers des événements exclusifs, ateliers et rencontres avec des experts
-                du secteur.
+                {t("vip_club.hero_desc")}
               </p>
               <a
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
                 style={{ background: "#E8705A" }}
               >
-                En savoir plus
+                {t("vip_club.hero_cta")}
               </a>
             </div>
 
@@ -127,8 +126,8 @@ export default async function VipClubPage({
               >
                 <PawPrintIcon size={22} color="#E8705A" />
                 <div>
-                  <p className="text-sm font-semibold text-[--color-chocolat]">Communauté bienveillante</p>
-                  <p className="text-xs text-[--color-muted-foreground]">Membres passionnés</p>
+                  <p className="text-sm font-semibold text-[--color-chocolat]">{t("vip_club.badge_title")}</p>
+                  <p className="text-xs text-[--color-muted-foreground]">{t("vip_club.badge_subtitle")}</p>
                 </div>
               </div>
             </div>
@@ -140,9 +139,9 @@ export default async function VipClubPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Des avantages de wouf"
-            title="Ce que vous offre le VIP Club"
-            subtitle="Rejoignez une communauté bienveillante et offrez à votre animal le privilège de faire partie d'une expérience unique."
+            label={t("vip_club.benefits_label")}
+            title={t("vip_club.benefits_title")}
+            subtitle={t("vip_club.benefits_subtitle")}
             className="mb-12"
           />
 
@@ -182,25 +181,15 @@ export default async function VipClubPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Notre mission"
-                title="Promouvoir le bien-être animal ensemble"
+                label={t("vip_club.mission_label")}
+                title={t("vip_club.mission_title")}
                 align="left"
                 className="mb-6"
               />
               <div className="space-y-4 text-sm text-[--color-muted-foreground] leading-relaxed">
-                <p>
-                  Le VIP Club est né d&apos;une conviction simple : les propriétaires d&apos;animaux
-                  méritent une communauté à la hauteur de leur engagement envers leurs compagnons.
-                </p>
-                <p>
-                  Plus qu&apos;un programme d&apos;avantages, c&apos;est un espace de partage où
-                  experts, associations et passionnés se retrouvent pour faire avancer la cause du
-                  bien-être animal.
-                </p>
-                <p>
-                  Rejoignez dès aujourd&apos;hui le Very Important Pet Club et offrez à votre animal
-                  le privilège de faire partie d&apos;une communauté bienveillante.
-                </p>
+                <p>{t("vip_club.mission_p1")}</p>
+                <p>{t("vip_club.mission_p2")}</p>
+                <p>{t("vip_club.mission_p3")}</p>
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -209,13 +198,13 @@ export default async function VipClubPage({
                   className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
                   style={{ background: "#E8705A" }}
                 >
-                  Rejoindre le VIP Club
+                  {t("vip_club.mission_join")}
                 </a>
                 <a
                   href="/nos-services"
                   className="inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-[--color-chocolat] border border-[--color-border] hover:border-[--color-chocolat] transition-colors bg-white"
                 >
-                  Voir nos services
+                  {t("vip_club.mission_services")}
                 </a>
               </div>
             </div>
@@ -243,10 +232,10 @@ export default async function VipClubPage({
       </section>
 
       <CtaBanner
-        title="Prêt à rejoindre le Very Important Pet Club ?"
-        subtitle="Contactez-nous pour en savoir plus sur les modalités d'adhésion et les prochains événements."
-        primaryCta={{ label: "Nous contacter", href: "/contact" }}
-        secondaryCta={{ label: "Découvrir Petcheri", href: "/qui-sommes-nous" }}
+        title={t("vip_club.banner_title")}
+        subtitle={t("vip_club.banner_subtitle")}
+        primaryCta={{ label: t("vip_club.banner_primary"), href: "/contact" }}
+        secondaryCta={{ label: t("vip_club.banner_secondary"), href: "/qui-sommes-nous" }}
       />
 
       <Footer />

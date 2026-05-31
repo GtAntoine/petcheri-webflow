@@ -8,6 +8,7 @@ import { SectionHeader } from "@/components/sections/section-header";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
+import { BOOKING_URL } from "@/lib/site-stats";
 import HeartIcon from "@/components/icons/heart-icon";
 import HandHeartIcon from "@/components/icons/hand-heart-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
@@ -35,41 +36,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const SOINS = [
-  {
-    title: "Massage",
-    desc: "Par des techniques précises et bienveillantes, le massage favorise l'équilibre physique et émotionnel de votre animal. Idéal pour les animaux stressés, douloureux ou en convalescence.",
-  },
-  {
-    title: "Ostéopathie",
-    desc: "Médecine douce qui sollicite les capacités naturelles d'auto-guérison du corps. Applicable à tous les vertébrés — chiens, chats, lapins, chevaux — pour soulager tensions et douleurs.",
-  },
-  {
-    title: "Reiki",
-    desc: "Technique de soin énergétique par imposition des mains, visant à réduire le stress et les douleurs émotionnelles. Particulièrement bénéfique pour les animaux anxieux ou traumatisés.",
-  },
-  {
-    title: "Naturopathie",
-    desc: "Approche naturelle et non invasive : aromathérapie, homéopathie, phytothérapie, compléments alimentaires. Un accompagnement global pour la vitalité et la prévention.",
-  },
-  {
-    title: "Bains d'algues",
-    desc: "Soins marins riches en minéraux favorisant la détente musculaire, la circulation et la régénération cutanée. Un vrai spa pour votre compagnon.",
-  },
-  {
-    title: "Hydrothérapie",
-    desc: "Soins par l'eau pour réduire les douleurs, renforcer la musculature et favoriser la récupération après blessure ou chirurgie. Recommandé par nos vétérinaires partenaires.",
-  },
-  {
-    title: "Thalassothérapie",
-    desc: "Enveloppements à l'argile de la Mer Morte pour la régénération cutanée et l'apport en minéraux essentiels. Un soin complet pour le pelage et la peau.",
-  },
-  {
-    title: "Proprioception",
-    desc: "Séances de conscience corporelle renforçant les muscles profonds et l'équilibre. Idéal en prévention, en rééducation ou pour les chiens de sport.",
-  },
-] as const;
-
 export default async function BienEtrePage({
   params,
 }: {
@@ -78,6 +44,36 @@ export default async function BienEtrePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const SOINS = [
+    { title: t("bien_etre.soin_massage_title"), desc: t("bien_etre.soin_massage_desc") },
+    { title: t("bien_etre.soin_osteo_title"), desc: t("bien_etre.soin_osteo_desc") },
+    { title: t("bien_etre.soin_reiki_title"), desc: t("bien_etre.soin_reiki_desc") },
+    { title: t("bien_etre.soin_naturo_title"), desc: t("bien_etre.soin_naturo_desc") },
+    { title: t("bien_etre.soin_algues_title"), desc: t("bien_etre.soin_algues_desc") },
+    { title: t("bien_etre.soin_hydro_title"), desc: t("bien_etre.soin_hydro_desc") },
+    { title: t("bien_etre.soin_thalasso_title"), desc: t("bien_etre.soin_thalasso_desc") },
+    { title: t("bien_etre.soin_proprio_title"), desc: t("bien_etre.soin_proprio_desc") },
+  ];
+
+  const WHEN_ITEMS = [
+    { Icon: HeartIcon,         label: t("bien_etre.when_1_label"), desc: t("bien_etre.when_1_desc") },
+    { Icon: HandHeartIcon,     label: t("bien_etre.when_2_label"), desc: t("bien_etre.when_2_desc") },
+    { Icon: ShieldCheckIcon,   label: t("bien_etre.when_3_label"), desc: t("bien_etre.when_3_desc") },
+    { Icon: PawPrintIcon,      label: t("bien_etre.when_4_label"), desc: t("bien_etre.when_4_desc") },
+    { Icon: HeartHandshakeIcon,label: t("bien_etre.when_5_label"), desc: t("bien_etre.when_5_desc") },
+    { Icon: TrophyIcon,        label: t("bien_etre.when_6_label"), desc: t("bien_etre.when_6_desc") },
+    { Icon: TruckIcon,         label: t("bien_etre.when_7_label"), desc: t("bien_etre.when_7_desc") },
+    { Icon: SparklesIcon,      label: t("bien_etre.when_8_label"), desc: t("bien_etre.when_8_desc") },
+  ];
+
+  const PILLS = [
+    t("bien_etre.pill_1"),
+    t("bien_etre.pill_2"),
+    t("bien_etre.pill_3"),
+    t("bien_etre.pill_4"),
+    t("bien_etre.pill_5"),
+  ];
 
   return (
     <>
@@ -93,10 +89,10 @@ export default async function BienEtrePage({
         }
         subtitle={t("bien_etre.hero_subtitle")}
         ctas={[
-          { label: "Trouver un praticien", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Tous nos services", href: "/nos-services" },
+          { label: t("bien_etre.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("bien_etre.hero_cta_secondary"), href: "/nos-services" },
         ]}
-        trustBadges={["Praticiens certifiés", "Sélectionnés par nos vétérinaires", "À domicile ou en salon"]}
+        trustBadges={[t("bien_etre.trust_1"), t("bien_etre.trust_2"), t("bien_etre.trust_3")]}
         variant="warm"
       />
 
@@ -104,9 +100,9 @@ export default async function BienEtrePage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos soins"
-            title="Des méthodes alternatives, des résultats concrets"
-            subtitle="Chaque soin est dispensé par un praticien certifié, validé par notre comité de vétérinaires et comportementalistes partenaires."
+            label={t("bien_etre.soins_label")}
+            title={t("bien_etre.soins_title")}
+            subtitle={t("bien_etre.soins_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -127,13 +123,13 @@ export default async function BienEtrePage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Trouver un praticien bien-être
+              {t("bien_etre.soin_btn")}
             </a>
           </div>
         </div>
@@ -143,22 +139,13 @@ export default async function BienEtrePage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Quand y penser ?"
-            title="Votre animal vous parle. Il suffit d'écouter."
-            subtitle="Les soins de bien-être ne sont pas réservés aux animaux malades. Ils font partie d'une approche préventive et bienveillante du soin animal."
+            label={t("bien_etre.when_label")}
+            title={t("bien_etre.when_title")}
+            subtitle={t("bien_etre.when_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
-            {([
-              { Icon: HeartIcon,         label: "Anxiété & peurs",        desc: "Comportements régressifs, phobie, hyperactivité" },
-              { Icon: HandHeartIcon,     label: "Douleurs articulaires",   desc: "Tensions musculaires, raideurs, inconfort chronique" },
-              { Icon: ShieldCheckIcon,   label: "Post-opératoire",         desc: "Récupération après chirurgie ou blessure" },
-              { Icon: PawPrintIcon,      label: "Nouvel animal ou bébé",   desc: "Transition, cohabitation, adaptation au changement" },
-              { Icon: HeartHandshakeIcon,label: "Vieillissement",          desc: "Mobilité réduite, confort du senior" },
-              { Icon: TrophyIcon,        label: "Animaux de sport",        desc: "Prévention, récupération, performance" },
-              { Icon: TruckIcon,         label: "Voyages & déménagements", desc: "Stress du transport, nouvel environnement" },
-              { Icon: SparklesIcon,      label: "Bien-être au quotidien",  desc: "Maintien de l'équilibre physique et émotionnel" },
-            ] as const).map(({ Icon, label, desc }) => (
+            {WHEN_ITEMS.map(({ Icon, label, desc }) => (
               <AnimatedCard key={label} Icon={Icon} className="p-5 flex flex-col gap-2">
                 <p
                   className="text-[--color-chocolat] font-medium leading-snug"
@@ -178,13 +165,13 @@ export default async function BienEtrePage({
       <section className="section-padding bg-[--color-creme]">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <SectionHeader
-            label="Notre exigence"
-            title="Pas n'importe qui ne touche à votre animal"
-            subtitle="Chaque praticien bien-être est évalué par notre comité vétérinaire avant d'intégrer le réseau Petcheri. Diplômes, références, entretien comportemental — notre processus de sélection est aussi rigoureux que pour nos chouchouteurs."
+            label={t("bien_etre.selection_label")}
+            title={t("bien_etre.selection_title")}
+            subtitle={t("bien_etre.selection_subtitle")}
             className="mb-8"
           />
           <div className="flex flex-wrap justify-center gap-3">
-            {["Diplômes vérifiés", "Entretien vétérinaire", "Expérience terrain", "Assurance professionnelle AXA", "Évaluations régulières"].map((label) => (
+            {PILLS.map((label) => (
               <span
                 key={label}
                 className="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-[--color-chocolat] border border-[--color-border]"
@@ -197,10 +184,10 @@ export default async function BienEtrePage({
       </section>
 
       <CtaBanner
-        title="Offrez à votre animal le soin qu'il mérite vraiment"
-        subtitle="Des praticiens certifiés, une approche bienveillante et des résultats visibles. Réservez une séance bien-être dès aujourd'hui."
-        primaryCta={{ label: "Trouver un praticien", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Comportement & éducation", href: "/comportement-education" }}
+        title={t("bien_etre.banner_title")}
+        subtitle={t("bien_etre.banner_subtitle")}
+        primaryCta={{ label: t("bien_etre.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("bien_etre.banner_secondary"), href: "/comportement-education" }}
       />
 
       <Footer />

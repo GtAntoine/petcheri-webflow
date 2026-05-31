@@ -9,6 +9,7 @@ import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/seo";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -28,40 +29,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-// Species labels — no emoji per AGENTS.md (no itshover equivalent exists)
-const ANIMAUX = [
-  "Lapins",
-  "Rongeurs",
-  "Reptiles",
-  "Oiseaux",
-  "Poissons",
-  "Hérissons",
-  "Autres NAC",
-] as const;
-
-const SERVICES = [
-  {
-    title: "Visite à domicile",
-    desc: "Un chouchouteur spécialisé passe chez vous pour nourrir votre animal, nettoyer son habitat (cage, terrarium, aquarium), et s'assurer de son bien-être. Votre NAC reste dans son environnement familier.",
-  },
-  {
-    title: "Garde à domicile",
-    desc: "Un chouchouteur s'installe chez vous pour toute la durée de votre absence. Présence et soins continus pour les animaux nécessitant une vigilance particulière.",
-  },
-  {
-    title: "Garde chez le chouchouteur",
-    desc: "Votre NAC est accueilli chez un spécialiste équipé pour l'espèce. Idéal pour les animaux qui s'adaptent bien aux déplacements.",
-  },
-  {
-    title: "Transport & accompagnement",
-    desc: "Déplacement chez le vétérinaire, le spécialiste ou lors d'un changement de domicile — en toute sécurité et avec les précautions adaptées à chaque espèce.",
-  },
-  {
-    title: "Bien-être & soins",
-    desc: "Soins courants, entretien de l'habitat, monitoring comportemental et accès à nos vétérinaires partenaires spécialisés NAC si nécessaire.",
-  },
-] as const;
-
 export default async function ServicesNacPage({
   params,
 }: {
@@ -70,6 +37,24 @@ export default async function ServicesNacPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const ANIMAUX = [
+    t("services_nac.species_lapins"),
+    t("services_nac.species_rongeurs"),
+    t("services_nac.species_reptiles"),
+    t("services_nac.species_oiseaux"),
+    t("services_nac.species_poissons"),
+    t("services_nac.species_herissons"),
+    t("services_nac.species_autres"),
+  ];
+
+  const SERVICES = [
+    { title: t("services_nac.svc_visite_title"), desc: t("services_nac.svc_visite_desc") },
+    { title: t("services_nac.svc_garde_dom_title"), desc: t("services_nac.svc_garde_dom_desc") },
+    { title: t("services_nac.svc_garde_chez_title"), desc: t("services_nac.svc_garde_chez_desc") },
+    { title: t("services_nac.svc_transport_title"), desc: t("services_nac.svc_transport_desc") },
+    { title: t("services_nac.svc_soins_title"), desc: t("services_nac.svc_soins_desc") },
+  ];
 
   return (
     <>
@@ -85,10 +70,10 @@ export default async function ServicesNacPage({
         }
         subtitle={t("services_nac.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur NAC", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nos autres services", href: "/nos-services" },
+          { label: t("services_nac.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("services_nac.hero_cta_secondary"), href: "/nos-services" },
         ]}
-        trustBadges={["Spécialistes NAC", "Assurance AXA incluse", "Vétérinaires partenaires"]}
+        trustBadges={[t("services_nac.trust_1"), t("services_nac.trust_2"), t("services_nac.trust_3")]}
         variant="warm"
       />
 
@@ -112,9 +97,9 @@ export default async function ServicesNacPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos services NAC"
-            title="Des soins adaptés à chaque espèce"
-            subtitle="Pas question d'improviser avec un reptile ou un lapin. Nos chouchouteurs spécialisés connaissent les besoins spécifiques de chaque espèce."
+            label={t("services_nac.svcs_label")}
+            title={t("services_nac.svcs_title")}
+            subtitle={t("services_nac.svcs_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -138,17 +123,17 @@ export default async function ServicesNacPage({
                 className="text-[--color-chocolat] font-medium"
                 style={{ fontFamily: "var(--font-serif)", fontSize: "1.15rem" }}
               >
-                Vous ne trouvez pas votre espèce ?
+                {t("services_nac.cta_card_title")}
               </p>
               <p className="text-sm text-[--color-muted-foreground]">
-                Contactez-nous — nous avons certainement le chouchouteur qu'il vous faut.
+                {t("services_nac.cta_card_desc")}
               </p>
               <Link
                 href="/contact"
                 className="flex items-center gap-1.5 text-sm font-semibold transition-colors"
                 style={{ color: "#E8705A" }}
               >
-                Nous contacter
+                {t("services_nac.cta_card_link")}
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
@@ -157,10 +142,10 @@ export default async function ServicesNacPage({
       </section>
 
       <CtaBanner
-        title="Votre NAC mérite des soins à la hauteur de sa singularité"
-        subtitle="Des spécialistes formés, des vétérinaires disponibles, une assurance incluse. Petcheri, aussi pour les animaux hors du commun."
-        primaryCta={{ label: "Trouver un chouchouteur NAC", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Services pour chats", href: "/services-chat" }}
+        title={t("services_nac.banner_title")}
+        subtitle={t("services_nac.banner_subtitle")}
+        primaryCta={{ label: t("services_nac.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("services_nac.banner_secondary"), href: "/services-chat" }}
       />
 
       <Footer />

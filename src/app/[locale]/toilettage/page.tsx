@@ -10,6 +10,7 @@ import { routing } from "@/i18n/routing";
 import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
 import { CheckCircle } from "lucide-react";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -29,68 +30,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const DOG_SERVICES = [
-  {
-    title: "Soin complet",
-    desc: "Coupe alliée à des traitements professionnels et des produits de soin rigoureusement sélectionnés pour leur qualité.",
-  },
-  {
-    title: "Bain & brossage",
-    desc: "Un bon bain et un brossage — votre chien en ressortira métamorphosé, impeccable de la truffe aux coussinets.",
-  },
-  {
-    title: "Brossage",
-    desc: "Brosse spéciale pour éliminer les poils morts et pénétrer le sous-poil pour un pelage d'une brillance « on fleek ».",
-  },
-  {
-    title: "Coupe",
-    desc: "De la coupe la plus classique à la plus excentrique — le savoir-faire de nos toiletteurs met en valeur votre toutou.",
-  },
-  {
-    title: "Patt'icure",
-    desc: "Couper et limer les griffes, essentiel pour la santé et le confort de votre boule de poils.",
-  },
-  {
-    title: "Tonte par zone",
-    desc: "Pour les zones spécifiques nécessitant une coupe ou les chiens aux poils longs sujets aux bourres.",
-  },
-] as const;
-
-const CAT_SERVICES = [
-  {
-    title: "Coupe délicate",
-    desc: "Coupe précise pour garantir le confort de votre chat et éviter les griffures accidentelles.",
-  },
-  {
-    title: "Brossage approfondi",
-    desc: "Élimine les poils morts, démêle les nœuds et maintient le pelage doux, brillant et en bonne santé.",
-  },
-  {
-    title: "Tonte par zone",
-    desc: "Coupe ciblée pour les zones à problèmes — idéale pour les poils longs ou autour de zones sensibles.",
-  },
-  {
-    title: "Nettoyage du pelage",
-    desc: "Élimine les impuretés et rafraîchit le pelage tout en respectant la peau sensible de votre chat.",
-  },
-  {
-    title: "Nettoyage yeux & oreilles",
-    desc: "Soin minutieux pour prévenir les infections et maintenir une bonne hygiène de votre félin.",
-  },
-  {
-    title: "Soin royal",
-    desc: "Le soin le plus complet : traitements professionnels et produits soigneusement sélectionnés pour leur qualité.",
-  },
-] as const;
-
-const WHY_US = [
-  "Des produits de haute qualité",
-  "Toiletteurs sélectionnés pour leur professionnalisme et leur douceur",
-  "Large éventail d'options selon les besoins de votre animal",
-  "Service couvert par une assurance professionnelle",
-  "À domicile ou en salon selon votre préférence",
-];
-
 export default async function ToilettagePage({
   params,
 }: {
@@ -99,6 +38,32 @@ export default async function ToilettagePage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const DOG_SERVICES = [
+    { title: t("toilettage.dog_soin_title"), desc: t("toilettage.dog_soin_desc") },
+    { title: t("toilettage.dog_bain_title"), desc: t("toilettage.dog_bain_desc") },
+    { title: t("toilettage.dog_brossage_title"), desc: t("toilettage.dog_brossage_desc") },
+    { title: t("toilettage.dog_coupe_title"), desc: t("toilettage.dog_coupe_desc") },
+    { title: t("toilettage.dog_patticure_title"), desc: t("toilettage.dog_patticure_desc") },
+    { title: t("toilettage.dog_tonte_title"), desc: t("toilettage.dog_tonte_desc") },
+  ];
+
+  const CAT_SERVICES = [
+    { title: t("toilettage.cat_coupe_title"), desc: t("toilettage.cat_coupe_desc") },
+    { title: t("toilettage.cat_brossage_title"), desc: t("toilettage.cat_brossage_desc") },
+    { title: t("toilettage.cat_tonte_title"), desc: t("toilettage.cat_tonte_desc") },
+    { title: t("toilettage.cat_nettoyage_title"), desc: t("toilettage.cat_nettoyage_desc") },
+    { title: t("toilettage.cat_yeux_title"), desc: t("toilettage.cat_yeux_desc") },
+    { title: t("toilettage.cat_royal_title"), desc: t("toilettage.cat_royal_desc") },
+  ];
+
+  const WHY_US = [
+    t("toilettage.why_1"),
+    t("toilettage.why_2"),
+    t("toilettage.why_3"),
+    t("toilettage.why_4"),
+    t("toilettage.why_5"),
+  ];
 
   return (
     <>
@@ -114,12 +79,12 @@ export default async function ToilettagePage({
         }
         subtitle={t("toilettage.hero_subtitle")}
         ctas={[
-          { label: "Trouver un toiletteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Voir nos services", href: "/nos-services" },
+          { label: t("toilettage.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("toilettage.hero_cta_secondary"), href: "/nos-services" },
         ]}
         image={ILLUSTRATIONS.grooming}
-        imageAlt="Toilettage d'un animal"
-        trustBadges={["Toiletteurs certifiés", "Assurance AXA incluse", "À domicile ou en salon"]}
+        imageAlt={t("toilettage.hero_image_alt")}
+        trustBadges={[t("toilettage.trust_1"), t("toilettage.trust_2"), t("toilettage.trust_3")]}
         variant="warm"
       />
 
@@ -127,9 +92,9 @@ export default async function ToilettagePage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Toilettage pour chiens"
-            title="Impeccable de la truffe aux coussinets"
-            subtitle="Tous les chiens qui croquent la vie à pleins crocs ont besoin d'être lavés régulièrement. Offrez à votre toutou le bain et les soins qu'il mérite !"
+            label={t("toilettage.dog_label")}
+            title={t("toilettage.dog_title")}
+            subtitle={t("toilettage.dog_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -144,13 +109,13 @@ export default async function ToilettagePage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Réserver un toilettage chien
+              {t("toilettage.dog_btn")}
             </a>
           </div>
         </div>
@@ -162,9 +127,9 @@ export default async function ToilettagePage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeader
-                label="Toilettage pour chats"
-                title="Pour faire ressortir tout leur panache"
-                subtitle="Les chats ont beau être de très bons toiletteurs, ils ont parfois besoin de l'aide d'un professionnel. À domicile ou en salon 100 % cat-friendly."
+                label={t("toilettage.cat_label")}
+                title={t("toilettage.cat_title")}
+                subtitle={t("toilettage.cat_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -180,13 +145,13 @@ export default async function ToilettagePage({
               </div>
               <div className="mt-8">
                 <a
-                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
                   style={{ background: "#E8705A" }}
                 >
-                  Réserver un toilettage chat
+                  {t("toilettage.cat_btn")}
                 </a>
               </div>
             </div>
@@ -209,10 +174,10 @@ export default async function ToilettagePage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] mb-3 block" style={{ color: "#E8705A" }}>
-                Pourquoi choisir Petcheri ?
+                {t("toilettage.why_label")}
               </span>
               <h2 className="text-h2 text-white mb-8">
-                Des soins de qualité pour un animal épanoui
+                {t("toilettage.why_title")}
               </h2>
               <ul className="space-y-4">
                 {WHY_US.map((item) => (
@@ -237,10 +202,10 @@ export default async function ToilettagePage({
       </section>
 
       <CtaBanner
-        title="Offrez à votre animal les soins qu'il mérite"
-        subtitle="Nos toiletteurs professionnels se déplacent chez vous ou vous accueillent en salon — à vous de choisir."
-        primaryCta={{ label: "Trouver un toiletteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
+        title={t("toilettage.banner_title")}
+        subtitle={t("toilettage.banner_subtitle")}
+        primaryCta={{ label: t("toilettage.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("toilettage.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

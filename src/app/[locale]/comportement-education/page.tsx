@@ -14,6 +14,7 @@ import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 import UsersIcon from "@/components/icons/users-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 export async function generateMetadata({
   params,
@@ -33,61 +34,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const DOG_SOLUTIONS = [
-  {
-    Icon: GraduationCapIcon,
-    title: "Troubles du comportement",
-    desc: "Votre animal présente un comportement problématique ? Nos éducateurs et comportementalistes professionnels vous aident à mieux comprendre ce que votre animal essaie d'exprimer.",
-    image: ILLUSTRATIONS.dogDay,
-  },
-  {
-    Icon: PawPrintIcon,
-    title: "Arrivée d'un chiot",
-    desc: "Accueillir un nouvel animal peut soulever beaucoup de questions. Un professionnel vous aidera à préparer son arrivée et assurer une cohabitation harmonieuse.",
-    image: PHOTOS.moodboard2,
-  },
-  {
-    Icon: UsersIcon,
-    title: "Leçon en groupe",
-    desc: "Idéales pour socialiser votre animal, les leçons en groupe allient théorie et pratique via des méthodes positives. Activités de communication entre chiens et humains.",
-    image: PHOTOS.chouchouteur1,
-  },
-  {
-    Icon: SparklesIcon,
-    title: "Promenade éducative",
-    desc: "Aider votre chien à mieux appréhender son environnement et ses imprévus. Promenades en forêt ou en ville selon les défis à relever.",
-    image: PHOTOS.moodboard5,
-  },
-] as const;
-
-const CAT_ISSUES = [
-  "Agressivité & comportements défensifs",
-  "Miaulements intempestifs",
-  "Déjections hors de la litière",
-  "Anxiété & stress chronique",
-  "Problèmes de cohabitation",
-  "Marquage urinaire",
-];
-
-const WHY_US = [
-  {
-    title: "Une approche positive et bienveillante",
-    desc: "Nos comportementalistes privilégient des méthodes respectueuses du bien-être animal — sans contrainte ni punition.",
-  },
-  {
-    title: "Un suivi personnalisé",
-    desc: "Chaque animal est unique. Nos experts établissent un plan d'action adapté à votre situation spécifique.",
-  },
-  {
-    title: "Des professionnels diplômés",
-    desc: "Nos comportementalistes et éducateurs sont sélectionnés pour leur formation, leur professionnalisme et leur douceur.",
-  },
-  {
-    title: "Service assuré",
-    desc: "Chaque intervention est couverte par notre assurance professionnelle pour votre tranquillité d'esprit.",
-  },
-] as const;
-
 export default async function ComportementEducationPage({
   params,
 }: {
@@ -96,6 +42,29 @@ export default async function ComportementEducationPage({
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
+
+  const DOG_SOLUTIONS = [
+    { Icon: GraduationCapIcon, title: t("comportement_education.sol_troubles_title"), desc: t("comportement_education.sol_troubles_desc"), image: ILLUSTRATIONS.dogDay },
+    { Icon: PawPrintIcon, title: t("comportement_education.sol_chiot_title"), desc: t("comportement_education.sol_chiot_desc"), image: PHOTOS.moodboard2 },
+    { Icon: UsersIcon, title: t("comportement_education.sol_groupe_title"), desc: t("comportement_education.sol_groupe_desc"), image: PHOTOS.chouchouteur1 },
+    { Icon: SparklesIcon, title: t("comportement_education.sol_promenade_title"), desc: t("comportement_education.sol_promenade_desc"), image: PHOTOS.moodboard5 },
+  ];
+
+  const CAT_ISSUES = [
+    t("comportement_education.cat_issue_1"),
+    t("comportement_education.cat_issue_2"),
+    t("comportement_education.cat_issue_3"),
+    t("comportement_education.cat_issue_4"),
+    t("comportement_education.cat_issue_5"),
+    t("comportement_education.cat_issue_6"),
+  ];
+
+  const WHY_US = [
+    { title: t("comportement_education.why_1_title"), desc: t("comportement_education.why_1_desc") },
+    { title: t("comportement_education.why_2_title"), desc: t("comportement_education.why_2_desc") },
+    { title: t("comportement_education.why_3_title"), desc: t("comportement_education.why_3_desc") },
+    { title: t("comportement_education.why_4_title"), desc: t("comportement_education.why_4_desc") },
+  ];
 
   return (
     <>
@@ -111,12 +80,12 @@ export default async function ComportementEducationPage({
         }
         subtitle={t("comportement_education.hero_subtitle")}
         ctas={[
-          { label: "Réserver une séance", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
-          { label: "Nos services chien", href: "/services-chien" },
+          { label: t("comportement_education.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
+          { label: t("comportement_education.hero_cta_secondary"), href: "/services-chien" },
         ]}
         image={ILLUSTRATIONS.dogDay}
-        imageAlt="Éducateur avec un chien"
-        trustBadges={["Comportementalistes certifiés", "Éducation positive", "Assurance AXA incluse"]}
+        imageAlt={t("comportement_education.hero_image_alt")}
+        trustBadges={[t("comportement_education.trust_1"), t("comportement_education.trust_2"), t("comportement_education.trust_3")]}
         variant="warm"
       />
 
@@ -124,9 +93,9 @@ export default async function ComportementEducationPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Nos solutions pour chiens"
-            title="Par quelle problématique êtes-vous concerné·e ?"
-            subtitle="Que vous souhaitiez aider votre chien à faire face à un trouble du comportement, éduquer votre chiot ou le socialiser — nous avons la solution adaptée."
+            label={t("comportement_education.dog_label")}
+            title={t("comportement_education.dog_title")}
+            subtitle={t("comportement_education.dog_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 gap-6">
@@ -153,13 +122,13 @@ export default async function ComportementEducationPage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#E8705A" }}
             >
-              Réserver une séance
+              {t("comportement_education.dog_btn")}
             </a>
           </div>
         </div>
@@ -180,9 +149,9 @@ export default async function ComportementEducationPage({
             </div>
             <div className="order-1 lg:order-2">
               <SectionHeader
-                label="Nos solutions pour chats"
-                title="Les comportementalistes félins existent pour ça"
-                subtitle="Agressivité, miaulements, déjections hors litière… les chats expriment leur stress à leur façon. Nos spécialistes identifient les causes et instaurent une harmonie bénéfique pour tout le foyer."
+                label={t("comportement_education.cat_label")}
+                title={t("comportement_education.cat_title")}
+                subtitle={t("comportement_education.cat_subtitle")}
                 align="left"
                 className="mb-8"
               />
@@ -196,13 +165,13 @@ export default async function ComportementEducationPage({
               </div>
               <div className="mt-8">
                 <a
-                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
+                  href={BOOKING_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
                   style={{ background: "#E8705A" }}
                 >
-                  Réserver une séance comportement chat
+                  {t("comportement_education.cat_btn")}
                 </a>
               </div>
             </div>
@@ -214,8 +183,8 @@ export default async function ComportementEducationPage({
       <section className="section-padding bg-[--color-creme]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Pourquoi choisir Petcheri ?"
-            title="Une approche positive et sur-mesure"
+            label={t("comportement_education.why_label")}
+            title={t("comportement_education.why_title")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -230,10 +199,10 @@ export default async function ComportementEducationPage({
       </section>
 
       <CtaBanner
-        title="Prêt à retrouver la sérénité avec votre animal ?"
-        subtitle="Un simple conditionnement peut faire la différence dans la communication avec votre compagnon."
-        primaryCta={{ label: "Réserver une séance", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
-        secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
+        title={t("comportement_education.banner_title")}
+        subtitle={t("comportement_education.banner_subtitle")}
+        primaryCta={{ label: t("comportement_education.banner_primary"), href: BOOKING_URL, external: true }}
+        secondaryCta={{ label: t("comportement_education.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />

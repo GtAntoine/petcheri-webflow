@@ -36,42 +36,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const VALUES = [
-  {
-    Icon: HeartHandshakeIcon,
-    title: "Confiance",
-    desc: "Chaque chouchouteur est sélectionné après un processus rigoureux contrôlé par des comportementalistes et des vétérinaires.",
-  },
-  {
-    Icon: SparklesIcon,
-    title: "Excellence",
-    desc: "Nous veillons personnellement à ce que chaque prestation soit effectuée conformément à nos standards de qualité.",
-  },
-  {
-    Icon: SearchIcon,
-    title: "Transparence",
-    desc: "Photos, rapports de sortie, comptes-rendus en temps réel — vous savez toujours ce que vit votre animal.",
-  },
-  {
-    Icon: ShieldCheckIcon,
-    title: "Sécurité",
-    desc: "Tous nos prestataires bénéficient de notre assurance professionnelle contractée chez AXA pour votre tranquillité.",
-  },
-] as const;
-
-const AWARDS = [
-  {
-    title: "Pépites du Tech",
-    date: "Octobre 2022",
-    desc: "Lauréats du concours Pépites du Tech, récompensant les startups technologiques les plus innovantes de France.",
-  },
-  {
-    title: "1er prix Pet Tech — Purina by Nestlé",
-    date: "Novembre 2023",
-    desc: "Premier prix du concours Pet Tech organisé par Purina by Nestlé, distinguant les solutions les plus prometteuses pour le bien-être animal.",
-  },
-] as const;
-
 export default async function QuiSommesNousPage({
   params,
 }: {
@@ -79,6 +43,19 @@ export default async function QuiSommesNousPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "pages" });
+
+  const VALUES = [
+    { Icon: HeartHandshakeIcon, title: t("qui_sommes_nous.val_confiance_title"),   desc: t("qui_sommes_nous.val_confiance_desc") },
+    { Icon: SparklesIcon,       title: t("qui_sommes_nous.val_excellence_title"),  desc: t("qui_sommes_nous.val_excellence_desc") },
+    { Icon: SearchIcon,         title: t("qui_sommes_nous.val_transparence_title"),desc: t("qui_sommes_nous.val_transparence_desc") },
+    { Icon: ShieldCheckIcon,    title: t("qui_sommes_nous.val_securite_title"),    desc: t("qui_sommes_nous.val_securite_desc") },
+  ];
+
+  const AWARDS = [
+    { title: t("qui_sommes_nous.award_1_title"), date: t("qui_sommes_nous.award_1_date"), desc: t("qui_sommes_nous.award_1_desc") },
+    { title: t("qui_sommes_nous.award_2_title"), date: t("qui_sommes_nous.award_2_date"), desc: t("qui_sommes_nous.award_2_desc") },
+  ];
 
   return (
     <>
@@ -93,26 +70,23 @@ export default async function QuiSommesNousPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[--color-or] mb-4 block">
-                Notre histoire
+                {t("qui_sommes_nous.hero_badge")}
               </span>
               <h1
                 className="text-[--color-chocolat] mb-6 font-normal"
                 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.5rem)", lineHeight: 1.15 }}
               >
-                Plus que de la mise en relation,{" "}
-                <span className="text-accent">une conciergerie de cœur</span>
+                {t("qui_sommes_nous.hero_title")}{" "}
+                <span className="text-accent">{t("qui_sommes_nous.hero_title_accent")}</span>
               </h1>
               <p className="text-lead mb-8">
-                Petcheri est une conciergerie créée par et pour des propriétaires d&apos;animaux,
-                dont le but est d&apos;offrir des services personnalisés au plus proche des besoins
-                du client et de son animal — en s&apos;appuyant sur 4 valeurs fondamentales :
-                Confiance, Excellence, Transparence et Sécurité.
+                {t("qui_sommes_nous.hero_subtitle")}
               </p>
               <div className="flex flex-wrap gap-6">
                 {[
-                  { value: "400+", label: "chouchouteurs" },
-                  { value: "80%", label: "professionnels certifiés" },
-                  { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "satisfaction client" },
+                  { value: t("qui_sommes_nous.hero_stat_1_value"), label: t("qui_sommes_nous.hero_stat_1_label") },
+                  { value: t("qui_sommes_nous.hero_stat_2_value"), label: t("qui_sommes_nous.hero_stat_2_label") },
+                  { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("qui_sommes_nous.hero_stat_3_label") },
                 ].map(({ value, label }) => (
                   <div key={label} className="flex flex-col">
                     <span
@@ -130,7 +104,7 @@ export default async function QuiSommesNousPage({
             <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
                 src={ILLUSTRATIONS.heroAbout}
-                alt="L'équipe Petcheri"
+                alt={t("qui_sommes_nous.hero_image_alt")}
                 fill
                 className="object-cover"
                 sizes="50vw"
@@ -149,7 +123,7 @@ export default async function QuiSommesNousPage({
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden">
                 <Image
                   src={ILLUSTRATIONS.about}
-                  alt="Mélanie, fondatrice de Petcheri"
+                  alt={t("qui_sommes_nous.histoire_image_alt")}
                   fill
                   className="object-cover"
                   sizes="50vw"
@@ -161,44 +135,29 @@ export default async function QuiSommesNousPage({
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
                 <p className="text-sm font-medium text-[--color-chocolat] leading-relaxed">
-                  &ldquo;Créée par des amoureux d&apos;animaux, pour des amoureux d&apos;animaux.&rdquo;
+                  &ldquo;{t("qui_sommes_nous.histoire_floating_quote")}&rdquo;
                 </p>
-                <p className="text-sm text-[--color-muted-foreground] mt-2">— Mélanie, fondatrice</p>
+                <p className="text-sm text-[--color-muted-foreground] mt-2">{t("qui_sommes_nous.histoire_floating_author")}</p>
               </div>
             </div>
 
             <div>
               <SectionHeader
-                label="Notre histoire"
-                title="L'histoire de Mélanie et Malka"
+                label={t("qui_sommes_nous.histoire_label")}
+                title={t("qui_sommes_nous.histoire_title")}
                 align="left"
                 className="mb-6"
               />
               <div className="space-y-4 text-sm text-[--color-muted-foreground] leading-relaxed">
-                <p>
-                  Petcheri, c&apos;est l&apos;histoire de Mélanie, une dog-mum qui a fait tous les
-                  mauvais choix pour que vous puissiez faire les bons&nbsp;!
-                </p>
-                <p>
-                  Rentrée en France après des années aux États-Unis, impossible de trouver une
-                  solution fiable pour faire garder sa chienne Malka durant ses longues journées au
-                  bureau.
-                </p>
-                <p>
-                  Après plusieurs expériences malheureuses, elle décide de créer une conciergerie
-                  qui offrirait une qualité de prestation à la hauteur de l&apos;amour que nous
-                  portons à nos animaux.
-                </p>
-                <p className="font-medium text-[--color-chocolat]">
-                  Petcheri est né.
-                </p>
+                <p>{t("qui_sommes_nous.histoire_p1")}</p>
+                <p>{t("qui_sommes_nous.histoire_p2")}</p>
+                <p>{t("qui_sommes_nous.histoire_p3")}</p>
+                <p className="font-medium text-[--color-chocolat]">{t("qui_sommes_nous.histoire_p4")}</p>
               </div>
 
               <div className="mt-8 p-6 rounded-2xl bg-[--color-creme]">
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed">
-                  &ldquo;Notre objectif est de révolutionner les services pour animaux de compagnie
-                  en France non pas quantitativement mais qualitativement&nbsp;: nous avons à cœur
-                  de faire évoluer les mentalités en termes de bien-être animal.&rdquo;
+                  &ldquo;{t("qui_sommes_nous.histoire_quote")}&rdquo;
                 </p>
               </div>
             </div>
@@ -210,9 +169,9 @@ export default async function QuiSommesNousPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Ce en quoi nous croyons"
-            title="4 valeurs fondamentales"
-            subtitle="Elles guident chaque recrutement, chaque prestation, chaque décision. Sans compromis."
+            label={t("qui_sommes_nous.values_label")}
+            title={t("qui_sommes_nous.values_title")}
+            subtitle={t("qui_sommes_nous.values_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -237,25 +196,22 @@ export default async function QuiSommesNousPage({
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-sm font-semibold uppercase tracking-[0.18em] mb-4 block" style={{ color: "#E8705A" }}>
-                Notre réseau
+                {t("qui_sommes_nous.network_badge")}
               </span>
               <h2
                 className="text-white mb-6 font-normal"
                 style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(1.75rem, 3vw, 2.5rem)", lineHeight: 1.2 }}
               >
-                Des chouchouteurs sélectionnés avec le plus grand soin
+                {t("qui_sommes_nous.network_title")}
               </h2>
               <p className="text-white/70 text-sm leading-relaxed mb-8">
-                Nos chouchouteurs sont sélectionnés après un processus de recrutement très rigoureux
-                contrôlé par des comportementalistes et des vétérinaires. Nous testons leurs
-                compétences, nous assurons de leur expérience mais aussi de leur amour pour les
-                animaux.
+                {t("qui_sommes_nous.network_p1")}
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8">
                 {[
-                  { value: "400", label: "prestataires passionnés à travers la France" },
-                  { value: "80%", label: "de professionnels certifiés du secteur animalier" },
-                  { value: "100%", label: "assurés professionnellement chez AXA" },
+                  { value: t("qui_sommes_nous.network_stat_1_value"), label: t("qui_sommes_nous.network_stat_1_label") },
+                  { value: t("qui_sommes_nous.network_stat_2_value"), label: t("qui_sommes_nous.network_stat_2_label") },
+                  { value: t("qui_sommes_nous.network_stat_3_value"), label: t("qui_sommes_nous.network_stat_3_label") },
                 ].map(({ value, label }) => (
                   <div key={label} className="flex flex-col gap-1">
                     <span
@@ -269,16 +225,14 @@ export default async function QuiSommesNousPage({
                 ))}
               </div>
               <p className="text-white/70 text-sm leading-relaxed">
-                80% de professionnels certifiés du secteur animalier (soigneurs, auxiliaires
-                vétérinaires, comportementalistes…) et 20% de non-professionnels ou en formation
-                qui témoignent de plusieurs années d&apos;expérience concluantes.
+                {t("qui_sommes_nous.network_p2")}
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               {[PHOTOS.chouchouteur1, PHOTOS.chouchouteur2, PHOTOS.chouchouteur3, PHOTOS.chouchouteur4].map((src, i) => (
                 <div key={i} className="relative aspect-square rounded-xl overflow-hidden">
-                  <Image src={src} alt={`Chouchouteur Petcheri`} fill className="object-cover" sizes="25vw" />
+                  <Image src={src} alt="Chouchouteur Petcheri" fill className="object-cover" sizes="25vw" />
                 </div>
               ))}
             </div>
@@ -290,8 +244,8 @@ export default async function QuiSommesNousPage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="Reconnus par les meilleurs"
-            title="Nos récompenses"
+            label={t("qui_sommes_nous.awards_label")}
+            title={t("qui_sommes_nous.awards_title")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -328,9 +282,9 @@ export default async function QuiSommesNousPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label="La team"
-            title="Des humains passionnés derrière chaque prestation"
-            subtitle="Nous veillons personnellement à ce que chaque prestation soit effectuée conformément à nos valeurs via un suivi très rigoureux par nos concierges mais aussi par nos équipes de vétérinaires et comportementalistes partenaires."
+            label={t("qui_sommes_nous.team_label")}
+            title={t("qui_sommes_nous.team_title")}
+            subtitle={t("qui_sommes_nous.team_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
@@ -348,10 +302,10 @@ export default async function QuiSommesNousPage({
       </section>
 
       <CtaBanner
-        title="Vous êtes professionnel ou amoureux des animaux ?"
-        subtitle="Rejoignez notre réseau de chouchouteurs et faites ce que vous aimez tout en aidant des propriétaires d'animaux."
-        primaryCta={{ label: "Nous rejoindre", href: "/devenir-petsitter" }}
-        secondaryCta={{ label: "Nos services", href: "/nos-services" }}
+        title={t("qui_sommes_nous.banner_title")}
+        subtitle={t("qui_sommes_nous.banner_subtitle")}
+        primaryCta={{ label: t("qui_sommes_nous.banner_primary"), href: "/devenir-petsitter" }}
+        secondaryCta={{ label: t("qui_sommes_nous.banner_secondary"), href: "/nos-services" }}
       />
 
       <Footer />
