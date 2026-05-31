@@ -306,4 +306,94 @@
     font-style: italic;
     margin-top: 0.6rem;
   }
+
+  /* ── Comparison table ── */
+  .prose-blog .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 2rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .prose-blog table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.825rem;
+    min-width: 560px;
+  }
+
+  .prose-blog thead tr {
+    background: var(--color-chocolat);
+  }
+
+  .prose-blog thead th {
+    padding: 0.75rem 0.875rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    color: var(--color-ivoire);
+    text-transform: uppercase;
+  }
+
+  .prose-blog thead th:first-child {
+    text-align: left;
+    width: 32%;
+  }
+
+  /* Colonne Petcheri mise en avant */
+  .prose-blog thead th:last-child {
+    background: #C0432D;
+    color: #fff;
+  }
+
+  .prose-blog tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.15s;
+  }
+
+  .prose-blog tbody tr:nth-child(even) {
+    background: var(--color-creme);
+  }
+
+  .prose-blog tbody tr:nth-child(odd) {
+    background: #fff;
+  }
+
+  .prose-blog tbody tr:last-child {
+    border-bottom: none;
+  }
+
+  .prose-blog tbody td {
+    padding: 0.625rem 0.875rem;
+    color: var(--color-muted-foreground);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 1.4;
+    font-size: 0.825rem;
+  }
+
+  .prose-blog tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-chocolat);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Colonne Petcheri */
+  .prose-blog tbody td:last-child {
+    background: rgba(192, 67, 45, 0.05);
+    font-weight: 500;
+    color: var(--color-chocolat);
+    border-left: 2px solid rgba(192, 67, 45, 0.15);
+  }
+
+  .prose-blog thead th:last-child + th,
+  .prose-blog tbody td:last-child + td {
+    border-left: none;
+  }
 }
