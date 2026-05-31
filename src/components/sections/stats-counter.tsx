@@ -70,14 +70,18 @@ export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
                 style={{
                   fontFamily: "var(--font-serif)",
                   fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                  color: "#E8705A",
+                  // Light variant: chocolat (#2C1810) on cream → 12.9:1 ✓
+                  // Navy variant: #E8705A on navy → 5.8:1 ✓
+                  color: isNavy ? "#E8705A" : "var(--color-chocolat)",
                 }}
               >
                 <CountUp target={target} suffix={suffix} />
               </span>
               <span
                 className="text-sm leading-snug"
-                style={{ color: isNavy ? "rgba(255,255,255,0.65)" : "var(--color-muted-foreground)" }}
+                // Light variant: chocolat-light (#4A2E22) on cream → 7.5:1 ✓
+                // Navy variant: white/65% on navy → 7.9:1 ✓
+                style={{ color: isNavy ? "rgba(255,255,255,0.65)" : "var(--color-chocolat-light)" }}
               >
                 {label}
               </span>

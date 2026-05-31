@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import NextImage from "next/image";
 import { Check, Copy, ExternalLink } from "lucide-react";
 import type { Promotion, PromoCategory } from "@/lib/promotions";
 
@@ -38,8 +39,8 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
     return (
       <div className="card-base flex items-center gap-4 px-5 py-4 hover:shadow-[--shadow-card-hover] transition-all duration-300">
         {/* Logo */}
-        <div className="w-14 h-14 rounded-xl bg-[--color-creme] flex items-center justify-center shrink-0 overflow-hidden border border-[--color-border]">
-          <img src={promo.logoUrl} alt={promo.partnerName} className="w-12 h-12 object-contain" />
+        <div className="relative w-14 h-14 rounded-xl bg-[--color-creme] flex items-center justify-center shrink-0 overflow-hidden border border-[--color-border]">
+          <NextImage src={promo.logoUrl} alt={promo.partnerName} fill className="object-contain p-1.5" sizes="56px" />
         </div>
 
         {/* Info */}
@@ -87,12 +88,14 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
   return (
     <div className="card-base flex flex-col overflow-hidden hover:shadow-[--shadow-card-hover] hover:-translate-y-1 transition-all duration-300">
 
-      {/* Full-width logo banner */}
-      <div className="relative w-full  bg-[--color-creme] flex items-center justify-center overflow-hidden">
-        <img
+      {/* Full-width logo banner — fixed height so next/image can optimise */}
+      <div className="relative w-full h-36 bg-[--color-creme] overflow-hidden">
+        <NextImage
           src={promo.logoUrl}
           alt={promo.partnerName}
-          className="w-full h-full p-3 object-contain"
+          fill
+          className="p-4 object-contain"
+          sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 22vw"
         />
         {/* Category badge — top right */}
         <span

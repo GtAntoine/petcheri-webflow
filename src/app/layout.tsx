@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
+/**
+ * Root layout — minimal shell.
+ * The <html lang={locale}> and <body> are provided by [locale]/layout.tsx
+ * so every page gets the correct lang attribute for SEO and accessibility.
+ */
 export const metadata: Metadata = {
   title: {
     default: "Petcheri — La conciergerie pour animaux",
@@ -32,12 +22,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html
-      suppressHydrationWarning
-      className={`${cormorant.variable} ${inter.variable}`}
-    >
-      <body>{children}</body>
-    </html>
-  );
+  // html/body come from [locale]/layout.tsx — this wrapper just passes through
+  return <>{children}</>;
 }

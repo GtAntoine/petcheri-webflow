@@ -130,7 +130,6 @@ function DropdownMenu({
         <div
           id={id}
           ref={menuRef}
-          role="list"
           aria-labelledby={`${id}-btn`}
           onKeyDown={handleMenuKeyDown}
           className={cn(
@@ -143,7 +142,7 @@ function DropdownMenu({
               <Link
                 key={item.href}
                 href={item.href as Parameters<typeof Link>[0]["href"]}
-                role="listitem"
+
                 onClick={close}
                 aria-current={pathname === item.href ? "page" : undefined}
                 className={cn(
@@ -223,7 +222,6 @@ function MegaCol({
           <Link
             key={item.href}
             href={item.href as Parameters<typeof Link>[0]["href"]}
-            role="listitem"
             onClick={onClose}
             aria-current={active ? "page" : undefined}
             className={cn(
@@ -231,24 +229,7 @@ function MegaCol({
               active ? "bg-[--color-creme]" : "hover:bg-[--color-ivoire]"
             )}
           >
-            <div
-              className="shrink-0 mt-0.5 flex items-center justify-center rounded-md"
-              style={{
-                width: 34,
-                height: 34,
-                background: active ? "#fde0d4" : "var(--color-ivoire)",
-              }}
-            >
-              <Image
-                src={item.icon}
-                alt=""
-                aria-hidden="true"
-                width={20}
-                height={20}
-                className="opacity-70 group-hover:opacity-100 transition-opacity"
-                style={{ width: 20, height: 20, objectFit: "contain" }}
-              />
-            </div>
+        
             <div className="flex flex-col gap-0.5 min-w-0">
               <span
                 className={cn(
@@ -355,7 +336,6 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
         <div
           id="nav-mega-services"
           ref={menuRef}
-          role="list"
           aria-labelledby="nav-mega-services-btn"
           onKeyDown={handleMenuKeyDown}
           className="absolute top-full left-1/2 -translate-x-1/2 pt-3 z-50"
@@ -394,7 +374,7 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
                 <Link
                   key={item.href}
                   href={item.href as Parameters<typeof Link>[0]["href"]}
-                  role="listitem"
+  
                   onClick={close}
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={cn(
@@ -409,7 +389,7 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
               ))}
               <Link
                 href="/nos-services"
-                role="listitem"
+
                 onClick={close}
                 className="ml-auto flex items-center gap-1 text-xs font-semibold text-[#E8705A] hover:text-[--color-or] transition-colors shrink-0"
               >
@@ -485,14 +465,13 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-8" role="list" aria-label="Liens principaux">
+        <div className="hidden lg:flex items-center gap-8">
           <MegaMenuServices pathname={pathname} />
 
           {NAV_LINKS.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              role="listitem"
               aria-current={pathname === item.href ? "page" : undefined}
               className={cn(
                 "text-sm font-medium transition-colors",

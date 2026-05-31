@@ -225,7 +225,8 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <p className="text-2xl font-bold leading-none" style={{ color: "#E8705A" }}>
+            {/* chocolat on white → 12.9:1 ✓ (was #E8705A → 3.0:1, borderline) */}
+            <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
               2 347
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
@@ -240,7 +241,8 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            <p className="text-2xl font-bold leading-none" style={{ color: "#4BBFAA" }}>
+            {/* chocolat on white → 12.9:1 ✓ (was #4BBFAA teal → 2.25:1 ✗) */}
+            <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
               98%
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">

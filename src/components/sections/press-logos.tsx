@@ -29,7 +29,9 @@ export function PressLogos({ variant = "light", className }: PressLogosProps) {
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
         <p
           className="text-xs font-semibold uppercase tracking-[0.2em]"
-          style={{ color: variant === "dark" ? "rgba(255,255,255,0.4)" : "var(--color-muted)" }}
+          // "dark": white/40 on navy → fine for decorative label
+          // "light": muted-foreground (#7A6A5A) on white → 5.2:1 ✓ (was: muted #9E8B7A → 3.3:1 ✗)
+          style={{ color: variant === "dark" ? "rgba(255,255,255,0.4)" : "var(--color-muted-foreground)" }}
         >
           {t("press_title")}
         </p>

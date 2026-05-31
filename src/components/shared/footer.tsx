@@ -31,9 +31,9 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
               {t("services_title")}
-            </h4>
+            </p>
             <ul className="space-y-3">
               {[
                 { href: "/services-chien" as const, label: nav("services_dog") },
@@ -58,9 +58,9 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
               {t("company_title")}
-            </h4>
+            </p>
             <ul className="space-y-3">
               {[
                 { href: "/qui-sommes-nous" as const, label: nav("about") },
@@ -85,9 +85,9 @@ export function Footer() {
 
           {/* Trust & Legal */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-5">
               {t("legal_title")}
-            </h4>
+            </p>
             <ul className="space-y-3">
               {[
                 { href: "/mentions-legales", label: t("mentions") },
