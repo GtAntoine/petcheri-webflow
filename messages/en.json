@@ -1188,6 +1188,47 @@
       "hero_title_accent": "blog",
       "hero_subtitle": "Expert advice, practical guides and inspiration for your pet's wellbeing — from our team of vets, behaviourists and enthusiasts."
     },
+    "garde_paris": {
+      "concierge_label": "Pet concierge service",
+      "hero_title_prefix": "Pet care in Paris ",
+      "hero_subtitle": "Hand-picked certified petsitters in your neighbourhood. AXA insurance included, daily photo updates, available 7 days a week.",
+      "stat_sitters_label": "sitters in your area",
+      "stat_rating_label": "Google rating",
+      "stat_match_label": "average match time",
+      "cta_find": "Find my petsitter",
+      "cta_see_services": "See our services",
+      "services_label": "Available services",
+      "services_title": "What we offer in {arrondissement}",
+      "services_subtitle": "All sitters are certified by our team. Numbers are updated regularly.",
+      "svc_garde_label": "Home sitting",
+      "svc_garde_sublabel": "Day & night",
+      "svc_promenade_label": "Dog walking",
+      "svc_promenade_sublabel": "City & forest",
+      "svc_visites_label": "Cat & exotic pet visits",
+      "svc_visites_sublabel": "At your home",
+      "svc_toilettage_label": "Grooming",
+      "svc_toilettage_sublabel": "At home",
+      "svc_comportement_label": "Training & behaviour",
+      "svc_comportement_sublabel": "Dogs & cats",
+      "svc_transport_label": "Pet transport",
+      "svc_transport_sublabel": "Vet & travel",
+      "guarantees_label": "Our commitments",
+      "guarantees_title": "Why choose Petcheri?",
+      "guarantees_subtitle": "What sets us apart from standard pet-sitting platforms.",
+      "guarantee_matching_title": "Human matching",
+      "guarantee_matching_desc": "Our team selects the right sitter for you — not an algorithm. Every match is carefully considered.",
+      "guarantee_certified_title": "Certified petsitters",
+      "guarantee_certified_desc": "Individual interview, reference checks, supervised trial. No self-declared profiles in our network.",
+      "guarantee_insurance_title": "AXA insurance included",
+      "guarantee_insurance_desc": "Every service is covered by our AXA insurance. No optional add-ons, no surprises.",
+      "guarantee_tracking_title": "Transparent follow-up",
+      "guarantee_tracking_desc": "Daily photos, activity reports, WhatsApp 7/7. You always know what's happening in real time.",
+      "other_zones_label": "We also operate in",
+      "cta_title": "Looking for a petsitter in {arrondissement}?",
+      "cta_subtitle": "Tell us about your pet and dates — our team will find the perfect match in under 24 hours.",
+      "cta_primary": "Make a request",
+      "cta_secondary": "Learn more"
+    },
     "blog_post": {
       "not_found_title": "Article not found",
       "back_link": "All articles",
@@ -1207,7 +1248,5 @@
       "related_label": "Keep reading",
       "related_title": "Similar articles"
     }
-  }
-}
   }
 }

@@ -81,89 +81,23 @@ export default async function GardeAnimauxParisPage({
   const zone = getZone(arrondissement);
   if (!zone) notFound();
 
-  const isFr = locale === "fr";
   const t = await getTranslations({ locale, namespace: "pages" });
-
-  // ── Libellés selon locale ───────────────────────────────────────────────────
-  const headingTitle = isFr
-    ? `Garde d'animaux à ${zone.label}`
-    : `Pet care in ${zone.label}`;
-
-  const headingAccent = isFr ? zone.arrondissement : zone.arrondissement;
-
-  const heroSubtitle = isFr
-    ? `Des prestataires certifiés, sélectionnés à la main par notre équipe de conciergerie. Assurance AXA incluse, suivi photos quotidien, disponible 7j/7.`
-    : `Hand-picked certified petsitters in your neighbourhood. AXA insurance included, daily photo updates, available 7 days a week.`;
 
   // ── Services cards ─────────────────────────────────────────────────────────
   const SERVICE_CARDS = [
-    {
-      label:    isFr ? "Garde à domicile" : "Home sitting",
-      sublabel: isFr ? "Jour & nuit" : "Day & night",
-      count:    zone.services.garde,
-      emoji:    "🏠",
-    },
-    {
-      label:    isFr ? "Promenade" : "Dog walking",
-      sublabel: isFr ? "Ville & forêt" : "City & forest",
-      count:    zone.services.promenade,
-      emoji:    "🦮",
-    },
-    {
-      label:    isFr ? "Visites chat / NAC" : "Cat & exotic pet visits",
-      sublabel: isFr ? "À votre domicile" : "At your home",
-      count:    zone.services.visites,
-      emoji:    "🐱",
-    },
-    {
-      label:    isFr ? "Toilettage" : "Grooming",
-      sublabel: isFr ? "À domicile" : "At home",
-      count:    zone.services.toilettage,
-      emoji:    "✂️",
-    },
-    {
-      label:    isFr ? "Comportement & éducation" : "Training & behaviour",
-      sublabel: isFr ? "Chiens & chats" : "Dogs & cats",
-      count:    zone.services.comportement,
-      emoji:    "🎓",
-    },
-    {
-      label:    isFr ? "Transport" : "Pet transport",
-      sublabel: isFr ? "Vétérinaire & voyages" : "Vet & travel",
-      count:    zone.services.transport,
-      emoji:    "🚗",
-    },
+    { label: t("garde_paris.svc_garde_label"),        sublabel: t("garde_paris.svc_garde_sublabel"),        count: zone.services.garde,        emoji: "🏠" },
+    { label: t("garde_paris.svc_promenade_label"),    sublabel: t("garde_paris.svc_promenade_sublabel"),    count: zone.services.promenade,    emoji: "🦮" },
+    { label: t("garde_paris.svc_visites_label"),      sublabel: t("garde_paris.svc_visites_sublabel"),      count: zone.services.visites,      emoji: "🐱" },
+    { label: t("garde_paris.svc_toilettage_label"),   sublabel: t("garde_paris.svc_toilettage_sublabel"),   count: zone.services.toilettage,   emoji: "✂️" },
+    { label: t("garde_paris.svc_comportement_label"), sublabel: t("garde_paris.svc_comportement_sublabel"), count: zone.services.comportement, emoji: "🎓" },
+    { label: t("garde_paris.svc_transport_label"),    sublabel: t("garde_paris.svc_transport_sublabel"),    count: zone.services.transport,    emoji: "🚗" },
   ];
 
   const GUARANTEES = [
-    {
-      Icon:  HeartHandshakeIcon,
-      title: isFr ? "Matching humain" : "Human matching",
-      desc:  isFr
-        ? "Notre équipe choisit le prestataire pour vous — pas un algorithme. Chaque match est réfléchi en fonction de votre animal."
-        : "Our team selects the right sitter for you — not an algorithm. Every match is carefully considered.",
-    },
-    {
-      Icon:  SparklesIcon,
-      title: isFr ? "Prestataires certifiés" : "Certified petsitters",
-      desc:  isFr
-        ? "Entretien individuel, vérification des références, période supervisée. 0 profil auto-déclaré dans notre réseau."
-        : "Individual interview, reference checks, supervised trial. No self-declared profiles in our network.",
-    },
-    {
-      Icon:  ShieldCheckIcon,
-      title: isFr ? "Assurance AXA incluse" : "AXA insurance included",
-      desc:  isFr
-        ? "Chaque prestation est couverte par notre assurance AXA. Pas d'option à cocher, pas de surprise."
-        : "Every service is covered by our AXA insurance. No optional add-ons, no surprises.",
-    },
-    {
-      Icon:  SearchIcon,
-      title: isFr ? "Suivi transparent" : "Transparent follow-up",
-      desc:  isFr
-        ? "Photos quotidiennes, compte-rendu de sortie, WhatsApp 7j/7. Vous savez ce qui se passe, en temps réel."
-        : "Daily photos, activity reports, WhatsApp 7/7. You always know what's happening in real time.",
-    },
+    { Icon: HeartHandshakeIcon, title: t("garde_paris.guarantee_matching_title"),  desc: t("garde_paris.guarantee_matching_desc")  },
+    { Icon: SparklesIcon,       title: t("garde_paris.guarantee_certified_title"), desc: t("garde_paris.guarantee_certified_desc") },
+    { Icon: ShieldCheckIcon,    title: t("garde_paris.guarantee_insurance_title"), desc: t("garde_paris.guarantee_insurance_desc") },
+    { Icon: SearchIcon,         title: t("garde_paris.guarantee_tracking_title"),  desc: t("garde_paris.guarantee_tracking_desc")  },
   ];
 
   return (
@@ -184,19 +118,19 @@ export default async function GardeAnimauxParisPage({
           </nav>
 
           <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[--color-or] mb-4 block">
-            {isFr ? "Conciergerie animalière" : "Pet concierge service"}
+            {t("garde_paris.concierge_label")}
           </span>
 
           <h1
             className="text-[--color-chocolat] mb-5 font-normal"
             style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(2rem, 4vw, 3.25rem)", lineHeight: 1.15 }}
           >
-            {isFr ? "Garde d'animaux à Paris " : "Pet care in Paris "}
-            <span className="text-accent">{headingAccent}</span>
+            {t("garde_paris.hero_title_prefix")}
+            <span className="text-accent">{zone.arrondissement}</span>
           </h1>
 
           <p className="text-lead mb-8 max-w-2xl mx-auto">
-            {heroSubtitle}
+            {t("garde_paris.hero_subtitle")}
           </p>
 
           {/* Stats inline */}
@@ -209,7 +143,7 @@ export default async function GardeAnimauxParisPage({
                 {totalSitters(zone)}+
               </span>
               <span className="text-sm text-[--color-muted-foreground] mt-1">
-                {isFr ? "prestataires dans votre zone" : "sitters in your area"}
+                {t("garde_paris.stat_sitters_label")}
               </span>
             </div>
             <div className="w-px h-10 bg-[--color-border] hidden sm:block" />
@@ -221,7 +155,7 @@ export default async function GardeAnimauxParisPage({
                 4,9/5
               </span>
               <span className="text-sm text-[--color-muted-foreground] mt-1">
-                {isFr ? "note moyenne Google" : "Google rating"}
+                {t("garde_paris.stat_rating_label")}
               </span>
             </div>
             <div className="w-px h-10 bg-[--color-border] hidden sm:block" />
@@ -233,7 +167,7 @@ export default async function GardeAnimauxParisPage({
                 24h
               </span>
               <span className="text-sm text-[--color-muted-foreground] mt-1">
-                {isFr ? "délai de match moyen" : "average match time"}
+                {t("garde_paris.stat_match_label")}
               </span>
             </div>
           </div>
@@ -246,14 +180,14 @@ export default async function GardeAnimauxParisPage({
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
               style={{ background: "#C0432D" }}
             >
-              {isFr ? "Trouver mon prestataire" : "Find my petsitter"}
+              {t("garde_paris.cta_find")}
             </a>
             <a
               href="/nos-services"
               className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-3.5 text-sm font-semibold text-[--color-chocolat] bg-white/70 hover:bg-white transition-all"
               style={{ borderColor: "#E8705A" }}
             >
-              {isFr ? "Voir nos services" : "See our services"}
+              {t("garde_paris.cta_see_services")}
             </a>
           </div>
         </div>
@@ -263,13 +197,9 @@ export default async function GardeAnimauxParisPage({
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label={isFr ? "Services disponibles" : "Available services"}
-            title={isFr ? `Ce que nous proposons dans le ${zone.arrondissement}` : `What we offer in ${zone.arrondissement}`}
-            subtitle={
-              isFr
-                ? "Tous les prestataires sont certifiés par notre équipe. Les chiffres sont mis à jour régulièrement."
-                : "All sitters are certified by our team. Numbers are updated regularly."
-            }
+            label={t("garde_paris.services_label")}
+            title={t("garde_paris.services_title", { arrondissement: zone.arrondissement })}
+            subtitle={t("garde_paris.services_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -303,13 +233,9 @@ export default async function GardeAnimauxParisPage({
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label={isFr ? "Nos engagements" : "Our commitments"}
-            title={isFr ? "Pourquoi choisir Petcheri ?" : "Why choose Petcheri?"}
-            subtitle={
-              isFr
-                ? "Ce qui nous différencie des plateformes de mise en relation classiques."
-                : "What sets us apart from standard pet-sitting platforms."
-            }
+            label={t("garde_paris.guarantees_label")}
+            title={t("garde_paris.guarantees_title")}
+            subtitle={t("garde_paris.guarantees_subtitle")}
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -338,7 +264,7 @@ export default async function GardeAnimauxParisPage({
       <section className="py-12 bg-white border-t border-[--color-border]">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[--color-muted-foreground] mb-5">
-            {isFr ? "Nous intervenons aussi dans" : "We also operate in"}
+            {t("garde_paris.other_zones_label")}
           </p>
           <div className="flex flex-wrap gap-2">
             {PARIS_ZONES.filter((z) => z.arrondissement !== zone.arrondissement).map((z) => (
@@ -355,23 +281,15 @@ export default async function GardeAnimauxParisPage({
       </section>
 
       <CtaBanner
-        title={
-          isFr
-            ? `Vous cherchez un prestataire dans le ${zone.arrondissement} ?`
-            : `Looking for a petsitter in ${zone.arrondissement}?`
-        }
-        subtitle={
-          isFr
-            ? "Décrivez votre animal et vos dates — notre équipe trouve la perle rare pour vous en moins de 24h."
-            : "Tell us about your pet and dates — our team will find the perfect match in under 24 hours."
-        }
+        title={t("garde_paris.cta_title", { arrondissement: zone.arrondissement })}
+        subtitle={t("garde_paris.cta_subtitle")}
         primaryCta={{
-          label: isFr ? "Faire une demande" : "Make a request",
-          href:  BOOKING_URL,
+          label:    t("garde_paris.cta_primary"),
+          href:     BOOKING_URL,
           external: true,
         }}
         secondaryCta={{
-          label: isFr ? "En savoir plus" : "Learn more",
+          label: t("garde_paris.cta_secondary"),
           href:  "/qui-sommes-nous",
         }}
       />
