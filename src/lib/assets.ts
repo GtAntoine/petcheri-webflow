@@ -31,6 +31,12 @@ export const PRESS = {
   envoyeSpecial: `${A}/press/envoye-special.jpg`,
   europe1:       `${A}/press/europe1.png`,
   marieClaire:   `${A}/press/marie-claire.png`,
+  luxuryPlace:   `${A}/press/luxury-place.png`,
+} as const;
+
+export const AWARDS = {
+  pepitesTech: `${A}/awards/pepites-tech.svg`,
+  purina:      `${A}/awards/purina.png`,
 } as const;
 
 export const PHOTOS = {

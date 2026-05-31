@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Star } from "lucide-react";
 import { PHOTOS } from "@/lib/assets";
-import { BOOKING_URL, SITE_STATS, fmtLocale } from "@/lib/site-stats";
+import { BOOKING_URL, SITE_STATS, fmtLocale, GOOGLE_PROFILE_URL } from "@/lib/site-stats";
 import { useLocale } from "next-intl";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -31,7 +31,7 @@ export function HomeHero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{
         background:
-          "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)",
+          "linear-gradient(160deg, #FFF9F0 0%, #FFECD2 40%, #fce4ec 70%, #E8E4F0 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto px-6 pt-28 pb-16 grid lg:grid-cols-2 gap-12 items-center w-full">
@@ -97,22 +97,31 @@ export function HomeHero() {
             </Link>
           </motion.div>
 
-          {/* Stars */}
+          {/* Stars — clickable → Google profile */}
           <motion.div
-            className="flex items-center gap-2 mb-8"
+            className="mb-8"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22, ease: EASE }}
           >
-            <span className="font-semibold text-[--color-chocolat]">4,9</span>
-            <div className="flex items-center gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-              ))}
-            </div>
-            <span className="text-sm text-[--color-muted-foreground]">
-              {t("hero_reviews_count")}
-            </span>
+            <a
+              href={GOOGLE_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
+            >
+              <span className="font-semibold text-[--color-chocolat]">
+                {SITE_STATS.googleRating.toLocaleString(locale === "fr" ? "fr-FR" : "en-US")}
+              </span>
+              <div className="flex items-center gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+              <span className="text-sm text-[--color-muted-foreground]">
+                {t("hero_reviews_count")}
+              </span>
+            </a>
           </motion.div>
 
           {/* Animal selector */}
@@ -171,25 +180,20 @@ export function HomeHero() {
               sizes="(max-width: 1280px) 50vw, 600px"
               priority
             />
-            {/* Caption overlay */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent pt-10 pb-4 px-5">
-              <p
-                className="text-xs text-white/80 italic"
-                style={{ fontFamily: "var(--font-cormorant)" }}
-              >
-                {t("hero_photo_caption_2")}
-              </p>
-            </div>
+            
           </div>
 
           {/* Stat card — families */}
           <motion.div
-            className="absolute top-4 right-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-10"
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
+            className="absolute -top-5 -right-5 bg-white rounded-2xl shadow-xl px-5 py-3 z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, -10, 0] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.7 },
+              y: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: 1.2 },
+            }}
           >
-            <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
+            <p className="text-2xl font-bold leading-none" style={{ color: "#E8705A" }}>
               {fmtLocale(SITE_STATS.familiesServed, locale)}+
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
@@ -199,12 +203,15 @@ export function HomeHero() {
 
           {/* Stat card — satisfaction */}
           <motion.div
-            className="absolute bottom-4 left-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-10"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            className="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-3 z-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, y: [0, -10, 0] }}
+            transition={{
+              opacity: { duration: 0.5, delay: 0.8 },
+              y: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: 1.8 },
+            }}
           >
-            <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
+            <p className="text-2xl font-bold leading-none" style={{ color: "#E8705A" }}>
               {SITE_STATS.satisfactionRate}%
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">

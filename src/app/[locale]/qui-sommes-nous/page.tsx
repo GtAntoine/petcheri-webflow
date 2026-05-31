@@ -7,14 +7,12 @@ import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { routing } from "@/i18n/routing";
-import { ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
-import TrophyIcon from "@/components/icons/trophy-icon";
+import { ILLUSTRATIONS, PHOTOS, PRESS, AWARDS } from "@/lib/assets";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import SearchIcon from "@/components/icons/search-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
-import { PressLogos } from "@/components/sections/press-logos";
 import { StatsCounter } from "@/components/sections/stats-counter";
 import { buildAlternates } from "@/lib/seo";
 
@@ -50,11 +48,6 @@ export default async function QuiSommesNousPage({
     { Icon: SparklesIcon,       title: t("qui_sommes_nous.val_excellence_title"),  desc: t("qui_sommes_nous.val_excellence_desc") },
     { Icon: SearchIcon,         title: t("qui_sommes_nous.val_transparence_title"),desc: t("qui_sommes_nous.val_transparence_desc") },
     { Icon: ShieldCheckIcon,    title: t("qui_sommes_nous.val_securite_title"),    desc: t("qui_sommes_nous.val_securite_desc") },
-  ];
-
-  const AWARDS = [
-    { title: t("qui_sommes_nous.award_1_title"), date: t("qui_sommes_nous.award_1_date"), desc: t("qui_sommes_nous.award_1_desc") },
-    { title: t("qui_sommes_nous.award_2_title"), date: t("qui_sommes_nous.award_2_date"), desc: t("qui_sommes_nous.award_2_desc") },
   ];
 
   return (
@@ -249,13 +242,30 @@ export default async function QuiSommesNousPage({
             className="mb-12"
           />
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {AWARDS.map(({ title, date, desc }) => (
+            {[
+              {
+                logo: AWARDS.pepitesTech,
+                alt:  "Pépites du Tech",
+                title: t("qui_sommes_nous.award_1_title"),
+                date:  t("qui_sommes_nous.award_1_date"),
+                desc:  t("qui_sommes_nous.award_1_desc"),
+              },
+              {
+                logo: AWARDS.purina,
+                alt:  "Purina by Nestlé",
+                title: t("qui_sommes_nous.award_2_title"),
+                date:  t("qui_sommes_nous.award_2_date"),
+                desc:  t("qui_sommes_nous.award_2_desc"),
+              },
+            ].map(({ logo, alt, title, date, desc }) => (
               <div
-                key={title}
-                className="card-base p-7 flex flex-col gap-3 text-center items-center"
+                key={alt}
+                className="card-base p-7 flex flex-col gap-4 text-center items-center"
                 style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
               >
-                <TrophyIcon size={28} color="#C9A96E" strokeWidth={1.5} />
+                <div className="h-16 w-full flex items-center justify-center">
+                  <Image src={logo} alt={alt} width={120} height={64} className="object-contain max-h-16" />
+                </div>
                 <div>
                   <p
                     className="text-[--color-chocolat] font-medium mb-1"
@@ -275,26 +285,29 @@ export default async function QuiSommesNousPage({
       {/* Chiffres clés */}
       <StatsCounter variant="navy" />
 
-      {/* Ils parlent de nous */}
-      <PressLogos />
+    
 
-      {/* Team photos */}
+      {/* Presse */}
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeader
-            label={t("qui_sommes_nous.team_label")}
-            title={t("qui_sommes_nous.team_title")}
-            subtitle={t("qui_sommes_nous.team_subtitle")}
+            label={t("qui_sommes_nous.press_label")}
+            title={t("qui_sommes_nous.press_title")}
             className="mb-12"
           />
-          <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+          <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { src: PHOTOS.team2, name: "Team Petcheri" },
-              { src: PHOTOS.team3, name: "Team Petcheri" },
-              { src: PHOTOS.team4, name: "Team Petcheri" },
-            ].map(({ src, name }, i) => (
-              <div key={i} className="relative aspect-[3/4] rounded-2xl overflow-hidden">
-                <Image src={src} alt={name} fill className="object-cover" sizes="33vw" />
+              { logo: PRESS.marieClaire, alt: "Marie Claire", quote: t("qui_sommes_nous.press_marie_claire_quote") },
+              { logo: PRESS.gala,        alt: "Gala",         quote: t("qui_sommes_nous.press_gala_quote") },
+              { logo: PRESS.luxuryPlace, alt: "Luxury Place", quote: t("qui_sommes_nous.press_luxury_quote") },
+            ].map(({ logo, alt, quote }) => (
+              <div key={alt} className="card-base p-7 flex flex-col items-center gap-5 text-center">
+                <div className="h-10 flex items-center justify-center">
+                  <Image src={logo} alt={alt} width={120} height={40} className="object-contain" />
+                </div>
+                <p className="text-sm text-[--color-muted-foreground] leading-relaxed italic flex-1">
+                  &ldquo;{quote}&rdquo;
+                </p>
               </div>
             ))}
           </div>

@@ -16,6 +16,9 @@ export const DASHBOARD_URL = "https://www.petcheri-app.com/customer/dashboard";
 /** Lien direct pour déposer un avis Google */
 export const GOOGLE_REVIEW_URL = "https://g.page/r/CSdvs9XGJTgXEBI/review";
 
+/** Fiche Google Business (affichage des avis) */
+export const GOOGLE_PROFILE_URL = "https://www.google.com/search?kgmid=/g/11r2hj5nvj&hl=fr-FR&q=Pet+Cheri&shndl=30&shem=lcuae&source=sh/x/loc/osrp/m5/3&kgs=2cf17060661bede9";
+
 // ─── Stats ────────────────────────────────────────────────────────────────────
 
 export const SITE_STATS = {
