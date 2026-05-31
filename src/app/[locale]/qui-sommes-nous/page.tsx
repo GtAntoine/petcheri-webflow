@@ -302,7 +302,7 @@ export default async function QuiSommesNousPage({
               { logo: PRESS.luxuryPlace, alt: "Luxury Place", quote: t("qui_sommes_nous.press_luxury_quote") },
             ].map(({ logo, alt, quote }) => (
               <div key={alt} className="card-base p-7 flex flex-col items-center gap-5 text-center">
-                <div className="h-10 flex items-center justify-center">
+                <div className="h-20 flex items-center justify-center">
                   <Image src={logo} alt={alt} width={120} height={40} className="object-contain" />
                 </div>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed italic flex-1">
