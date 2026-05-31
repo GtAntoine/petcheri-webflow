@@ -113,7 +113,7 @@ export default async function GardeChienPage({
         ctas={[
           {
             label: "Recevoir un devis personnalisé",
-            href: "https://app.petcheri.com",
+            href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
             external: true,
             primary: true,
           },
@@ -206,7 +206,7 @@ export default async function GardeChienPage({
         subtitle="En quelques minutes, nous identifions le chouchouteur certifié le plus adapté à votre animal."
         primaryCta={{
           label: "Recevoir un devis",
-          href: "https://app.petcheri.com",
+          href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ",
           external: true,
         }}
         secondaryCta={{ label: "Tous les services chien", href: "/services-chien" }}

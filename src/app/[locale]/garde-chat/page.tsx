@@ -83,7 +83,7 @@ export default async function GardeChatPage({
         }
         subtitle={t("garde_chat.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
+          { label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
           { label: "Nos services chat", href: "/services-chat" },
         ]}
         image={ILLUSTRATIONS.catSitting}
@@ -122,7 +122,7 @@ export default async function GardeChatPage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://app.petcheri.com"
+              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
@@ -176,7 +176,7 @@ export default async function GardeChatPage({
       <CtaBanner
         title="Votre chat mérite la meilleure des gardes"
         subtitle="Des chouchouteurs spécialisés félins, sélectionnés par nos comportementalistes. Partez serein."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Tous nos services chat", href: "/services-chat" }}
       />
 

@@ -256,7 +256,7 @@ export default async function VosAvisPage({
       <CtaBanner
         title="Rejoignez les familles qui nous font confiance"
         subtitle="4,9/5 sur Google. Assurance AXA. Chouchouteurs certifiés. Réservez votre première prestation."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Qui sommes-nous ?", href: "/qui-sommes-nous" }}
       />
 

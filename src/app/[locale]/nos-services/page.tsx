@@ -122,7 +122,7 @@ export default async function NosServicesPage({
         }
         subtitle={t("nos_services.hero_subtitle")}
         ctas={[
-          { label: "Réserver", href: "https://app.petcheri.com", external: true, primary: true },
+          { label: "Réserver", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
           { label: "Nous contacter", href: "/contact" },
         ]}
         image={PHOTOS.moodboard5}
@@ -219,7 +219,7 @@ export default async function NosServicesPage({
       <CtaBanner
         title="Prêt à chouchouter votre animal ?"
         subtitle="Dites-nous tout sur lui et nous vous proposerons une solution 100 % sur-mesure."
-        primaryCta={{ label: "Trouver mon chouchouteur", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Trouver mon chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Nous contacter", href: "/contact" }}
       />
 

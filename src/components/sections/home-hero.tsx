@@ -7,7 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { Star } from "lucide-react";
 import { PHOTOS } from "@/lib/assets";
 
-const PETCHERI_APP = "https://app.petcheri.com";
+const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function HomeHero() {

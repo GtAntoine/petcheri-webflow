@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
 
-const PETCHERI_APP = "https://app.petcheri.com";
+const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
 
 // ─── Paw shapes ───────────────────────────────────────────────────────────────
 

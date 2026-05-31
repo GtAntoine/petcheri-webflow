@@ -121,7 +121,7 @@ export default function ContactPage() {
                   Notre application est disponible 7j/7.
                 </p>
                 <a
-                  href="https://app.petcheri.com"
+                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"

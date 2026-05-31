@@ -111,7 +111,7 @@ export default async function ComportementEducationPage({
         }
         subtitle={t("comportement_education.hero_subtitle")}
         ctas={[
-          { label: "Réserver une séance", href: "https://app.petcheri.com", external: true, primary: true },
+          { label: "Réserver une séance", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
           { label: "Nos services chien", href: "/services-chien" },
         ]}
         image={ILLUSTRATIONS.dogDay}
@@ -153,7 +153,7 @@ export default async function ComportementEducationPage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://app.petcheri.com"
+              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
@@ -196,7 +196,7 @@ export default async function ComportementEducationPage({
               </div>
               <div className="mt-8">
                 <a
-                  href="https://app.petcheri.com"
+                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
@@ -232,7 +232,7 @@ export default async function ComportementEducationPage({
       <CtaBanner
         title="Prêt à retrouver la sérénité avec votre animal ?"
         subtitle="Un simple conditionnement peut faire la différence dans la communication avec votre compagnon."
-        primaryCta={{ label: "Réserver une séance", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Réserver une séance", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
       />
 

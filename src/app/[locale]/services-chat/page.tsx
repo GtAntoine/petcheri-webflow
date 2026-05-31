@@ -102,7 +102,7 @@ export default async function ServicesChatPage({
         }
         subtitle={t("services_chat.hero_subtitle")}
         ctas={[
-          { label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true, primary: true },
+          { label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
           { label: "Voir la garde de chats", href: "/garde-chat" },
         ]}
         image={ILLUSTRATIONS.catSitting}
@@ -148,7 +148,7 @@ export default async function ServicesChatPage({
       <CtaBanner
         title="Votre chat a des exigences. Nous avons les chouchouteurs."
         subtitle="Des spécialistes félins partout en France, disponibles 7j/7. Réservez en quelques minutes."
-        primaryCta={{ label: "Trouver un chouchouteur", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Trouver un chouchouteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Services pour NAC", href: "/services-nac" }}
       />
 

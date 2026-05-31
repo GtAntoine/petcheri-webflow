@@ -114,7 +114,7 @@ export default async function ToilettagePage({
         }
         subtitle={t("toilettage.hero_subtitle")}
         ctas={[
-          { label: "Trouver un toiletteur", href: "https://app.petcheri.com", external: true, primary: true },
+          { label: "Trouver un toiletteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true, primary: true },
           { label: "Voir nos services", href: "/nos-services" },
         ]}
         image={ILLUSTRATIONS.grooming}
@@ -144,7 +144,7 @@ export default async function ToilettagePage({
           </div>
           <div className="mt-10 text-center">
             <a
-              href="https://app.petcheri.com"
+              href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
@@ -180,7 +180,7 @@ export default async function ToilettagePage({
               </div>
               <div className="mt-8">
                 <a
-                  href="https://app.petcheri.com"
+                  href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
@@ -239,7 +239,7 @@ export default async function ToilettagePage({
       <CtaBanner
         title="Offrez à votre animal les soins qu'il mérite"
         subtitle="Nos toiletteurs professionnels se déplacent chez vous ou vous accueillent en salon — à vous de choisir."
-        primaryCta={{ label: "Trouver un toiletteur", href: "https://app.petcheri.com", external: true }}
+        primaryCta={{ label: "Trouver un toiletteur", href: "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ", external: true }}
         secondaryCta={{ label: "Tous nos services", href: "/nos-services" }}
       />
 

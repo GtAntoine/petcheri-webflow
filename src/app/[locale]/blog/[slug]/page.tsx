@@ -244,7 +244,7 @@ export default async function BlogPostPage({
                     Des professionnels certifiés, matchés selon le profil de votre animal.
                   </p>
                   <a
-                    href="https://app.petcheri.com"
+                    href="https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:shadow-md hover:brightness-110 transition-all"
