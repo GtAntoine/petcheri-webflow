@@ -695,66 +695,63 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage: `/assets/illustrations/blog-cover-1.png`,
     readTime: 8,
     featured: false,
-    content: `<p class="lead">Vous cherchez une solution de garde pour votre animal et vous vous retrouvez face à une dizaine de plateformes aux promesses similaires ? Vous n'êtes pas seul. Rover, Animaute, Holidog, Pawshake, Petcheri… chacune affirme proposer les meilleurs pet sitters, les meilleures garanties, le meilleur suivi. Alors comment s'y retrouver ?</p>
+    content: `<p class="lead">Si vous cherchez quelqu'un pour garder votre animal, vous allez tomber sur une dizaine de plateformes qui semblent toutes proposer la même chose. Ce guide vous aide à comprendre les vraies différences, pour choisir sans vous tromper.</p>
 
-<p>Ce comparatif vous aide à comprendre les différences réelles entre les principales solutions disponibles en France, pour choisir celle qui correspond à votre animal, votre budget et votre niveau d'exigence.</p>
+<h2>Trois modèles très différents</h2>
 
-<h2>Les trois grandes familles de services</h2>
-
-<p>Avant de comparer plateforme par plateforme, il faut comprendre qu'il existe trois modèles très différents :</p>
+<p>Ce qui ressemble à un même marché recouvre en réalité trois façons de fonctionner :</p>
 
 <ul>
-  <li><strong>Les plateformes marketplace</strong> : vous parcourez des profils, vous choisissez vous-même un gardien, vous gérez la mise en relation. Le site est un intermédiaire technique.</li>
-  <li><strong>Les plateformes communautaires</strong> : des particuliers s'organisent entre eux pour se rendre service, souvent gratuitement ou à coût très réduit.</li>
-  <li><strong>Les services de conciergerie</strong> : une équipe humaine s'occupe de trouver le bon prestataire pour vous, avec un suivi personnalisé de A à Z.</li>
+  <li><strong>Les marketplaces</strong> : vous parcourez des profils de gardiens, vous choisissez, vous gérez. La plateforme est un intermédiaire technique, rien de plus.</li>
+  <li><strong>Les réseaux d'entraide</strong> : des particuliers s'organisent entre eux, souvent gratuitement ou à coût symbolique.</li>
+  <li><strong>La conciergerie</strong> : une équipe humaine trouve le bon prestataire à votre place et assure le suivi de A à Z.</li>
 </ul>
 
-<p>Ces trois modèles ne s'adressent pas aux mêmes besoins. Voici un tour d'horizon complet.</p>
+<p>Ces trois modèles ne s'adressent pas aux mêmes besoins. Voici le tour d'horizon complet.</p>
 
-<h2>Les plateformes marketplace</h2>
+<h2>Les marketplaces</h2>
 
 <h3>Rover</h3>
-<p>Rover est l'un des leaders mondiaux du pet-sitting, présent dans plus de 15 pays dont la France. La plateforme propose la garde à domicile, les promenades, la garderie de jour, l'hébergement chez le gardien et les visites à domicile. Chaque gardien crée son profil, fixe ses tarifs et collecte des avis. Le système de vérification repose principalement sur une déclaration sur l'honneur du gardien, complétée d'une vérification d'identité basique. L'assurance est incluse pendant les prestations réservées via la plateforme.</p>
-<p><strong>À retenir :</strong> réseau très large, interface soignée, adapté aux chiens et chats. La qualité varie beaucoup d'un gardien à l'autre selon les villes.</p>
+<p>Rover est le leader mondial du pet-sitting, présent dans plus de 15 pays dont la France. La plateforme couvre garde à domicile, promenades, garderie de jour, hébergement chez le gardien et visites à domicile. Chaque gardien gère son propre profil, fixe ses tarifs et collecte des avis. La vérification repose principalement sur une déclaration sur l'honneur, complétée d'un contrôle d'identité basique.</p>
+<p><strong>À retenir :</strong> réseau très large et interface soignée. La qualité varie beaucoup d'un gardien à l'autre selon les villes. Bon point de départ si vous cherchez la largeur du choix.</p>
 
 <h3>Animaute</h3>
-<p>Plateforme française, Animaute se distingue par sa couverture des NAC (nouveaux animaux de compagnie) en plus des chiens et chats — une vraie rareté. Elle propose garde, visites, promenades et hébergement. Le réseau est bien développé sur l'ensemble du territoire français.</p>
-<p><strong>À retenir :</strong> bon choix si vous avez un lapin, cochon d'Inde, reptile ou autre animal atypique. Interface moins léchée que Rover mais couverture géographique solide.</p>
+<p>Plateforme française qui se distingue par sa couverture des NAC (lapins, rongeurs, reptiles, oiseaux) en plus des chiens et chats. Elle propose garde, visites, promenades et hébergement, avec un réseau bien développé sur l'ensemble du territoire.</p>
+<p><strong>À retenir :</strong> le meilleur choix si vous avez un animal atypique. Interface moins soignée que Rover, mais couverture géographique solide.</p>
 
 <h3>Holidog</h3>
-<p>Holidog est une plateforme française qui mise sur l'hébergement en famille d'accueil comme offre principale, complétée par les visites à domicile et les promenades. Elle couvre chiens, chats et NAC. Le système de vérification inclut un entretien téléphonique avec les gardiens. La plateforme a été rachetée et a connu quelques évolutions de service ces dernières années.</p>
-<p><strong>À retenir :</strong> bonne option pour l'hébergement en famille d'accueil, avec un niveau de vérification légèrement supérieur à la moyenne du secteur.</p>
+<p>Holidog mise sur l'hébergement en famille d'accueil comme offre principale, avec visites et promenades en complément. La plateforme couvre chiens, chats et NAC, et inclut un entretien téléphonique avec les gardiens avant leur inscription, ce qui représente un niveau de vérification légèrement supérieur à la moyenne du secteur.</p>
+<p><strong>À retenir :</strong> bonne option pour l'hébergement familial, avec un peu plus de sérieux dans la sélection. À considérer si Rover vous semble trop générique.</p>
 
 <h3>Pawshake</h3>
-<p>Très populaire en Belgique et aux Pays-Bas, Pawshake est également présent en France. Le modèle est similaire à Rover : profils de gardiens avec avis, réservation en ligne, assurance incluse. La couverture française reste moins dense que celle des plateformes locales dans certaines villes secondaires.</p>
-<p><strong>À retenir :</strong> bon choix si vous cherchez un gardien dans les grandes métropoles françaises, avec une communauté souvent internationale — pratique pour les familles expatriées.</p>
+<p>Très populaire en Belgique et aux Pays-Bas, Pawshake est aussi présent en France. Le modèle ressemble à Rover : profils avec avis, réservation en ligne, assurance incluse. La couverture française est moins dense dans les villes secondaires, mais la communauté est souvent internationale.</p>
+<p><strong>À retenir :</strong> bon choix dans les grandes métropoles, et particulièrement adapté aux familles expatriées qui cherchent des gardiens anglophones.</p>
 
 <h3>Gudog</h3>
-<p>Gudog est spécialisé dans les chiens uniquement : hébergement, promenades et garderie de jour. La plateforme propose une assurance incluse et met en avant un processus de sélection des gardiens plus rigoureux que la moyenne. En contrepartie, elle ne couvre pas les chats ni les NAC, et la garde à domicile (chez le client) est absente.</p>
-<p><strong>À retenir :</strong> idéal pour les propriétaires de chiens qui cherchent l'hébergement ou la promenade, avec une sélection de gardiens généralement fiable. Limité pour les autres animaux.</p>
+<p>Gudog se concentre uniquement sur les chiens : hébergement, promenades, garderie de jour. La sélection des gardiens est présentée comme plus rigoureuse que la moyenne, avec une assurance incluse. En contrepartie, pas de service pour les chats ou les NAC, et pas de garde à domicile chez le client.</p>
+<p><strong>À retenir :</strong> fiable pour les propriétaires de chiens qui cherchent l'hébergement ou la promenade. Ne convient pas si vous avez d'autres animaux.</p>
 
-<h2>Les plateformes communautaires</h2>
+<h2>Les réseaux d'entraide</h2>
 
 <h3>Emprunte Mon Toutou</h3>
-<p>Concept original et attachant : des passionnés de chiens proposent de garder ou promener des toutous, souvent à coût très réduit voire gratuit, dans une logique de partage. Le profil type est quelqu'un qui adoreraient avoir un chien mais n'en a pas, et qui profite de ce service pour en profiter ponctuellement.</p>
-<p><strong>À retenir :</strong> le budget est le point fort. En contrepartie, zéro garantie professionnelle, pas d'assurance formelle, et disponibilité très variable selon les zones. À réserver pour les petites gardes sans contrainte particulière.</p>
+<p>Le concept est attachant : des passionnés de chiens qui n'en ont pas proposent de garder ou promener des toutous, souvent gratuitement ou presque. L'esprit est celui du partage entre voisins, pas d'une transaction commerciale.</p>
+<p><strong>À retenir :</strong> le prix est imbattable. En échange, zéro garantie professionnelle, pas d'assurance formelle, et disponibilité très variable. À réserver pour les petites gardes sans contrainte particulière.</p>
 
 <h3>Animal Futé</h3>
-<p>Animal Futé fonctionne sur le principe de l'échange : vous gardez l'animal de quelqu'un, et cette personne garde le vôtre en retour. Un modèle malin pour réduire les coûts à zéro si vous êtes prêt à vous organiser en réseau. Couvre chiens, chats et NAC.</p>
-<p><strong>À retenir :</strong> intéressant en théorie, mais nécessite de trouver un partenaire fiable avec un calendrier compatible. Difficile à activer dans l'urgence.</p>
+<p>Animal Futé fonctionne sur l'échange : vous gardez l'animal de quelqu'un, cette personne garde le vôtre. Un modèle malin pour réduire les coûts à zéro si vous trouvez le bon partenaire et si vos agendas sont compatibles.</p>
+<p><strong>À retenir :</strong> intéressant mais difficile à activer rapidement. Pas la bonne solution pour une garde de dernière minute.</p>
 
-<h2>Les services de conciergerie animale</h2>
+<h2>La conciergerie animale</h2>
 
 <h3>Petcheri</h3>
-<p>Petcheri se positionne différemment de toutes les plateformes citées ci-dessus : il ne s'agit pas d'une marketplace où vous parcourez des profils, mais d'un service de conciergerie où une équipe humaine prend en charge tout le processus de matching pour vous.</p>
+<p>Petcheri fonctionne différemment de toutes les plateformes citées. Il ne s'agit pas d'une marketplace où vous parcourez des profils : une équipe humaine prend en charge tout le processus de matching à votre place.</p>
 
-<p>Concrètement : vous décrivez votre animal, vos dates et vos contraintes. Les concierges Petcheri identifient le prestataire le plus adapté parmi un réseau de plus de 350 professionnels certifiés, puis vous proposent un ou plusieurs profils correspondants. Vous validez, un groupe WhatsApp est créé, et le suivi démarre.</p>
+<p>Concrètement : vous décrivez votre animal, vos dates et vos contraintes. Les concierges identifient le prestataire le plus adapté parmi un réseau de plus de 350 professionnels certifiés, et vous proposent un ou plusieurs profils. Vous validez, un groupe WhatsApp est créé, et le suivi commence.</p>
 
-<p>Chaque prestataire du réseau passe par un processus de sélection rigoureux : entretien individuel, vérification des références, période supervisée. Tous sont couverts par l'assurance AXA, incluse systématiquement dans chaque prestation. Le suivi pendant la garde inclut photos et comptes-rendus quotidiens.</p>
+<p>Chaque prestataire passe par une sélection rigoureuse : entretien individuel, vérification des références, période supervisée. Tous sont couverts par l'assurance AXA, incluse dans chaque prestation sans exception. Le suivi pendant la garde comprend photos et comptes-rendus quotidiens.</p>
 
-<p>Petcheri couvre chiens, chats et NAC, avec des spécialistes pour chaque type d'animal. Le service est disponible 7j/7 par WhatsApp, avec un protocole d'urgence vétérinaire en cas de besoin.</p>
-
-<p><strong>À retenir :</strong> un niveau de service et de garanties supérieur aux plateformes marketplace, au prix d'une tarification plus élevée qui reflète la valeur ajoutée humaine et professionnelle. Idéal pour les propriétaires qui ne veulent pas gérer la recherche eux-mêmes ou dont l'animal a des besoins spécifiques.</p>
+<p>Petcheri couvre chiens, chats et NAC, avec des spécialistes pour chaque type d'animal, et un protocole d'urgence vétérinaire si besoin.</p>
+<p><strong>À retenir :</strong> niveau de garanties nettement supérieur aux marketplaces, pour un tarif plus élevé qui reflète cette valeur ajoutée. La bonne solution si vous ne voulez pas gérer la recherche vous-même, ou si votre animal a des besoins spécifiques.</p>
 
 <h2>Tableau comparatif</h2>
 
@@ -782,72 +779,66 @@ export const BLOG_POSTS: BlogPost[] = [
     </tr>
     <tr>
       <td><strong>NAC</strong></td>
-      <td>⚠️ selon gardien</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td>
+      <td>⚠️ variable</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td><td>✅</td>
     </tr>
     <tr>
       <td><strong>Matching humain</strong></td>
       <td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td>
     </tr>
     <tr>
-      <td><strong>Certification vérifiée</strong></td>
-      <td>⚠️ basique</td><td>⚠️ basique</td><td>⚠️ entretien tél.</td><td>⚠️ basique</td><td>✅ sélection renforcée</td><td>✅ entretien + période supervisée</td>
+      <td><strong>Certification</strong></td>
+      <td>⚠️ basique</td><td>⚠️ basique</td><td>⚠️ entretien tél.</td><td>⚠️ basique</td><td>✅ renforcée</td><td>✅ entretien + supervisé</td>
     </tr>
     <tr>
-      <td><strong>Assurance incluse</strong></td>
-      <td>✅ si via plateforme</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅ AXA systématique</td>
+      <td><strong>Assurance</strong></td>
+      <td>✅ via plateforme</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅ AXA systématique</td>
     </tr>
     <tr>
-      <td><strong>Suivi photos/rapports</strong></td>
-      <td>⚠️ selon gardien</td><td>⚠️ selon gardien</td><td>⚠️ selon gardien</td><td>⚠️ selon gardien</td><td>⚠️ selon gardien</td><td>✅ obligatoire</td>
+      <td><strong>Suivi photos</strong></td>
+      <td>⚠️ variable</td><td>⚠️ variable</td><td>⚠️ variable</td><td>⚠️ variable</td><td>⚠️ variable</td><td>✅ obligatoire</td>
     </tr>
     <tr>
       <td><strong>Support 7j/7</strong></td>
-      <td>✅ chat / email</td><td>⚠️</td><td>⚠️</td><td>⚠️</td><td>⚠️</td><td>✅ WhatsApp équipe</td>
+      <td>✅ chat/email</td><td>⚠️</td><td>⚠️</td><td>⚠️</td><td>⚠️</td><td>✅ WhatsApp</td>
     </tr>
     <tr>
-      <td><strong>Protocole urgence vétérinaire</strong></td>
+      <td><strong>Urgence vétérinaire</strong></td>
       <td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-<h2>Comment choisir selon votre situation ?</h2>
+<h2>Quelle plateforme selon votre situation ?</h2>
 
 <h3>Votre priorité : le budget</h3>
-<p>Orientez-vous vers Emprunte Mon Toutou ou Animal Futé pour les gardes ponctuelles sans contrainte particulière. Pour un animal sain, sociable et peu exigeant, Rover ou Pawshake offrent un bon rapport qualité/prix dans les grandes villes.</p>
+<p>Emprunte Mon Toutou ou Animal Futé pour les gardes ponctuelles sans exigence particulière. Pour un animal sain, sociable et peu exigeant, Rover ou Pawshake offrent un bon rapport qualité/prix dans les grandes villes.</p>
 
-<h3>Votre animal a des besoins spéciaux</h3>
-<p>Animal âgé, post-opératoire, sous traitement, anxieux, ou race sensible : choisissez un service où la certification du gardien est vérifiée de manière rigoureuse. Petcheri est la seule plateforme qui inclut systématiquement cette dimension dans le matching, avec des prestataires formés aux cas complexes.</p>
+<h3>Votre animal a des besoins particuliers</h3>
+<p>Animal âgé, sous traitement, anxieux ou de race sensible : choisissez un service où la certification du gardien est vraiment vérifiée. Petcheri est le seul service qui intègre cette dimension dans le matching, avec des prestataires formés aux cas complexes.</p>
 
 <h3>Vous avez un NAC</h3>
-<p>Animaute est la plateforme marketplace la plus large pour les NAC. Petcheri dispose de spécialistes lapins, rongeurs, reptiles et oiseaux dans son réseau certifié — utile si vous cherchez une garantie de compétence en plus de la disponibilité.</p>
+<p>Animaute est la marketplace la plus large pour les NAC. Petcheri dispose de spécialistes lapins, rongeurs, reptiles et oiseaux dans son réseau certifié, ce qui peut faire la différence si vous cherchez une vraie garantie de compétence.</p>
 
 <h3>Vous n'avez pas le temps de chercher</h3>
-<p>Le principal avantage d'un service de conciergerie comme Petcheri est de vous éviter de parcourir des dizaines de profils, de vérifier les disponibilités, de lire les avis et de gérer les échanges. Vous décrivez votre besoin, l'équipe fait le travail. En 24 à 48h, vous avez un match.</p>
+<p>Le principal avantage d'un service de conciergerie est de vous éviter de parcourir des dizaines de profils, de vérifier les disponibilités et de gérer les échanges. Vous décrivez votre besoin, l'équipe s'occupe du reste. En 24 à 48h, vous avez un match.</p>
 
 <h3>Vous êtes expatrié ou non-francophone</h3>
-<p>Rover et Pawshake ont des interfaces multilingues et des communautés internationales. Petcheri propose également un service en anglais avec des prestataires anglophones — une option utile pour les familles étrangères à Paris qui ont besoin d'un interlocuteur réactif.</p>
+<p>Rover et Pawshake ont des interfaces multilingues et des communautés souvent internationales. Petcheri propose aussi un service en anglais avec des prestataires anglophones, ce qui peut être utile pour les familles étrangères à Paris.</p>
 
-<h3>Vous cherchez une solution pour une entreprise ou un hôtel</h3>
-<p>Les plateformes marketplace ne proposent pas de formules B2B. Petcheri dispose d'offres dédiées pour les entreprises (avantages salariés, garde en déplacement professionnel) et les hôtels de luxe (accueil et suivi des animaux des clients). C'est un segment non couvert par les autres acteurs du marché.</p>
-
-<h2>Ce que les plateformes ne vous disent pas toujours</h2>
-
-<p>Quelques points à garder en tête avant de réserver :</p>
+<h2>Ce que les plateformes ne précisent pas toujours</h2>
 
 <ul>
-  <li><strong>L'assurance n'est active que si vous réservez via la plateforme.</strong> Un gardien Rover qui vous propose de payer directement pour contourner les frais = couverture nulle en cas de problème.</li>
-  <li><strong>Les avis peuvent être biaisés.</strong> Sur les plateformes marketplace, les gardiens avec peu d'avis ne sont pas forcément mauvais — mais difficile à évaluer. Les gardiens très bien notés peuvent être indisponibles dans votre zone.</li>
-  <li><strong>Le tarif affiché n'est pas le tarif final.</strong> La plupart des plateformes ajoutent des frais de service (10 à 20 % du montant) à la charge du propriétaire ou du gardien, parfois les deux.</li>
-  <li><strong>La densité du réseau varie selon les villes.</strong> Dans les zones rurales ou les petites villes, le choix se réduit considérablement sur toutes les plateformes marketplace.</li>
+  <li><strong>L'assurance n'est active que si vous réservez via la plateforme.</strong> Si un gardien vous propose de payer directement pour éviter les frais, vous perdez toute couverture en cas de problème.</li>
+  <li><strong>Les avis sont imparfaits.</strong> Peu d'avis ne veut pas dire mauvais gardien. Beaucoup d'avis ne garantit pas la disponibilité dans votre quartier.</li>
+  <li><strong>La densité du réseau diminue hors des grandes villes.</strong> Dans les zones rurales ou les villes secondaires, le choix se réduit sur toutes les plateformes.</li>
 </ul>
 
-<h2>Notre recommandation</h2>
+<h2>En résumé</h2>
 
-<p>Il n'existe pas de plateforme universellement meilleure — tout dépend de ce que vous valorisez. Si vous cherchez le plus grand choix au meilleur prix dans une grande ville, Rover ou Animaute rempliront leur rôle. Si vous voulez un service qui prend en charge le matching à votre place, avec des garanties professionnelles et un suivi humain de bout en bout, Petcheri est une alternative sérieuse.</p>
-
-<p>Ce qui fait la différence au quotidien, ce n'est pas le nombre de profils disponibles — c'est la tranquillité d'esprit de savoir que quelqu'un a vérifié pour vous que la personne chez qui dort votre animal ce soir est vraiment compétente pour s'en occuper.</p>`,
+<p>Il n'existe pas de meilleure plateforme universelle. Tout dépend de ce que vous cherchez vraiment.</p>
+<p>Si vous voulez le plus grand choix au meilleur prix dans une grande ville, Rover ou Animaute font le travail. Si vous préférez déléguer entièrement la recherche et bénéficier d'un suivi professionnel garanti, Petcheri est une alternative sérieuse.</p>
+<p>Ce qui fait la différence au quotidien, c'est rarement le nombre de profils disponibles. C'est de savoir que quelqu'un a vraiment vérifié, pour vous, que la personne chez qui dort votre animal ce soir sait s'en occuper.</p>`,
   },
 ];
 
