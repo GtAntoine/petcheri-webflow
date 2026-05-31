@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { SITE_STATS } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -161,7 +162,7 @@ export default async function EntreprisesPage({
               { value: "1 sur 2", label: "salariés français ont un animal" },
               { value: "+400", label: "chouchouteurs vérifiés" },
               { value: "48h", label: "pour onboarder vos équipes" },
-              { value: "4,9/5", label: "de satisfaction client" },
+              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "de satisfaction client" },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span

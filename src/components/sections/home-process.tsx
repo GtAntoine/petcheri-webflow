@@ -9,7 +9,7 @@ import UnorderedListIcon from "@/components/icons/unordered-list-icon";
 import MagnifierIcon from "@/components/icons/magnifier-icon";
 import HeartIcon from "@/components/icons/heart-icon";
 
-const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
+import { BOOKING_URL as PETCHERI_APP } from "@/lib/site-stats";
 
 type IconHandle = { startAnimation: () => void; stopAnimation: () => void };
 

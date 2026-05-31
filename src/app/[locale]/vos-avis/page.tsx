@@ -8,6 +8,7 @@ import { PressLogos } from "@/components/sections/press-logos";
 import { routing } from "@/i18n/routing";
 import { UI } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
+import { SITE_STATS, fmtFR } from "@/lib/site-stats";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import MessageSquareIcon from "@/components/icons/message-square-icon";
@@ -149,11 +150,13 @@ export default async function VosAvisPage({
                   className="font-normal text-[--color-chocolat]"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "1.6rem", lineHeight: 1 }}
                 >
-                  4,9
+                  {SITE_STATS.googleRating.toLocaleString("fr-FR")}
                 </span>
                 <StarRow count={5} />
               </div>
-              <span className="text-xs text-[--color-muted-foreground]">Note moyenne Google</span>
+              <span className="text-xs text-[--color-muted-foreground]">
+                {SITE_STATS.googleReviewCount} avis Google
+              </span>
             </div>
           </div>
         </div>
@@ -164,10 +167,10 @@ export default async function VosAvisPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: "4,9/5",  label: "note moyenne Google" },
-              { value: "2 347+", label: "familles accompagnées" },
-              { value: "98%",    label: "de satisfaction client" },
-              { value: "15 000+",label: "prestations réalisées" },
+              { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "note moyenne Google" },
+              { value: `${fmtFR(SITE_STATS.familiesServed)}+`,                 label: "familles accompagnées" },
+              { value: `${SITE_STATS.satisfactionRate}%`,                       label: "de satisfaction client" },
+              { value: `${fmtFR(SITE_STATS.servicesDone)}+`,                    label: "prestations réalisées" },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">
                 <span

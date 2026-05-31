@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { SITE_STATS } from "@/lib/site-stats";
 import UsersIcon from "@/components/icons/users-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import ShieldCheckIcon from "@/components/icons/shield-check-icon";
@@ -21,10 +22,10 @@ export function HomeStats() {
   const iconRefs = useRef<Array<IconHandle | null>>([]);
 
   const STATS = [
-    { Icon: UsersIcon,       value: "400+", key: "stats_providers"    as const },
-    { Icon: SparklesIcon,    value: "98%",  key: "stats_satisfaction" as const },
+    { Icon: UsersIcon,       value: `${SITE_STATS.sittersNetwork}+`, key: "stats_providers"    as const },
+    { Icon: SparklesIcon,    value: `${SITE_STATS.satisfactionRate}%`, key: "stats_satisfaction" as const },
     { Icon: ShieldCheckIcon, value: "AXA",  key: "stats_insurance"    as const },
-    { Icon: FlameIcon,       value: "2×",   key: "stats_innovation" as const },
+    { Icon: FlameIcon,       value: "2×",   key: "stats_innovation"   as const },
   ] as const;
 
   return (

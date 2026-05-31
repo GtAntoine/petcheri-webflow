@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { SITE_STATS } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -349,7 +350,7 @@ export default async function LuxuryHotelsPage({
                   className="font-normal text-[--color-chocolat]"
                   style={{ fontFamily: "var(--font-serif)", fontSize: "2rem", lineHeight: 1 }}
                 >
-                  4,9 / 5
+                  {SITE_STATS.googleRating.toLocaleString("fr-FR")} / 5
                 </p>
                 <p className="text-xs text-[--color-muted-foreground] mt-1">
                   note moyenne sur nos interventions en hôtel

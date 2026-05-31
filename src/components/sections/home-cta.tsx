@@ -3,8 +3,7 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import PawPrintIcon from "@/components/icons/paw-print-icon";
-
-const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
+import { BOOKING_URL } from "@/lib/site-stats";
 
 // ─── Paw shapes ───────────────────────────────────────────────────────────────
 
@@ -67,7 +66,7 @@ export function HomeCta() {
 
         {/* Button — hover triggers paw animation across the whole element */}
         <a
-          href={PETCHERI_APP}
+          href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => pawRef.current?.startAnimation()}

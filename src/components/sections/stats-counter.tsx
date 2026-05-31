@@ -3,12 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { SITE_STATS } from "@/lib/site-stats";
 
 const STATS = [
-  { target: 2347,  suffix: "+", labelKey: "stats_families"       as const },
-  { target: 350,   suffix: "+", labelKey: "stats_sitters"        as const },
-  { target: 15000, suffix: "+", labelKey: "stats_services_done"  as const },
-  { target: 98,    suffix: "%", labelKey: "stats_satisfaction_label" as const },
+  { target: SITE_STATS.familiesServed,   suffix: "+", labelKey: "stats_families"          as const },
+  { target: SITE_STATS.sittersCount,     suffix: "+", labelKey: "stats_sitters"            as const },
+  { target: SITE_STATS.servicesDone,     suffix: "+", labelKey: "stats_services_done"      as const },
+  { target: SITE_STATS.satisfactionRate, suffix: "%", labelKey: "stats_satisfaction_label" as const },
 ] as const;
 
 /** Format number French-style: 15000 → "15 000", 2347 → "2 347" */

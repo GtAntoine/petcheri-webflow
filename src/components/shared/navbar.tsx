@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { UI, ICONS } from "@/lib/assets";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
-const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
+import { BOOKING_URL as PETCHERI_APP } from "@/lib/site-stats";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

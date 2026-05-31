@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
+import { SITE_STATS } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageHero } from "@/components/sections/page-hero";
@@ -186,7 +187,7 @@ export default async function GardeChienPage({
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             {[
               { num: "400+", label: "Chouchouteurs certifiés" },
-              { num: "4,9/5", label: "Note moyenne clients" },
+              { num: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "Note moyenne clients" },
               { num: "100%", label: "Assurés AXA" },
             ].map((stat) => (
               <div key={stat.label}>

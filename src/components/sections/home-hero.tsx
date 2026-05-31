@@ -6,12 +6,13 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Star } from "lucide-react";
 import { PHOTOS } from "@/lib/assets";
-
-const PETCHERI_APP = "https://prettyform.addxt.com/a/form/?vf=1FAIpQLSdwrFAcP9eRFGoVCs4BqNtZD7Iqc-uW7UjRduB-NcfR10qxTQ";
+import { BOOKING_URL, SITE_STATS, fmtLocale } from "@/lib/site-stats";
+import { useLocale } from "next-intl";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function HomeHero() {
   const t = useTranslations("home");
+  const locale = useLocale();
 
   const ANIMALS = [
     { label: t("hero_animal_dog"),   emoji: "🐶", href: "/services-chien" as const },
@@ -79,7 +80,7 @@ export function HomeHero() {
             transition={{ duration: 0.5, delay: 0.2, ease: EASE }}
           >
             <a
-              href={PETCHERI_APP}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition-all duration-200 shadow-md hover:shadow-lg hover:brightness-110"
@@ -189,7 +190,7 @@ export function HomeHero() {
             transition={{ duration: 0.5, delay: 0.7 }}
           >
             <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
-              {t("hero_stat_families_count")}
+              {fmtLocale(SITE_STATS.familiesServed, locale)}+
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
               {t("hero_stat_families_label")}
@@ -204,7 +205,7 @@ export function HomeHero() {
             transition={{ duration: 0.5, delay: 0.8 }}
           >
             <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
-              98%
+              {SITE_STATS.satisfactionRate}%
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
               {t("hero_stat_satisfaction_label")}

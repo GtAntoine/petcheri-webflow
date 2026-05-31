@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
+import { SITE_STATS } from "@/lib/site-stats";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
@@ -111,7 +112,7 @@ export default async function QuiSommesNousPage({
                 {[
                   { value: "400+", label: "chouchouteurs" },
                   { value: "80%", label: "professionnels certifiés" },
-                  { value: "4,9/5", label: "satisfaction client" },
+                  { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: "satisfaction client" },
                 ].map(({ value, label }) => (
                   <div key={label} className="flex flex-col">
                     <span

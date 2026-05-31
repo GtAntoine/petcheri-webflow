@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+import { SITE_STATS } from "@/lib/site-stats";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -186,7 +187,7 @@ export function HomeTestimonials() {
               className="text-[--color-chocolat] font-semibold text-lg ml-1"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              4,9
+              {SITE_STATS.googleRating.toLocaleString("fr-FR")}
             </span>
             <span className="text-sm text-[--color-muted-foreground]">/ 5</span>
           </div>
