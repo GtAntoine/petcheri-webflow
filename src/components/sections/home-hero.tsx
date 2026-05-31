@@ -153,62 +153,27 @@ export function HomeHero() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT COLUMN — polaroid collage ── */}
+        {/* ── RIGHT COLUMN — single large photo ── */}
         <motion.div
           className="relative hidden lg:flex items-center justify-center h-[520px]"
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: EASE }}
         >
-          {/* Warm blob background */}
-          <div
-            className="absolute inset-8 rounded-[60%_40%_55%_45%/50%_55%_45%_50%]"
-            style={{ background: "#f5ddd0" }}
-          />
-
-          {/* Photo 1 — back, rotated left */}
-          <div
-            className="absolute z-10 shadow-xl"
-            style={{ transform: "rotate(-8deg) translate(-30px, 40px)" }}
-          >
-            <div className="bg-white p-2 pb-8 rounded-sm w-48">
-              <div className="relative w-full aspect-square overflow-hidden rounded-sm">
-                <Image
-                  src={PHOTOS.moodboard2}
-                  alt="Animal chouchouté"
-                  fill
-                  className="object-cover"
-                  sizes="200px"
-                  priority
-                />
-              </div>
+          {/* Full-column photo */}
+          <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+            <Image
+              src={PHOTOS.moodboard1}
+              alt="Animal chouchouté par Louise"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1280px) 50vw, 600px"
+              priority
+            />
+            {/* Caption overlay */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 to-transparent pt-10 pb-4 px-5">
               <p
-                className="text-[10px] text-center mt-2 text-[--color-chocolat]/50 italic"
-                style={{ fontFamily: "var(--font-cormorant)" }}
-              >
-                {t("hero_photo_caption_1")}
-              </p>
-            </div>
-          </div>
-
-          {/* Photo 2 — front, rotated right */}
-          <div
-            className="absolute z-20 shadow-2xl"
-            style={{ transform: "rotate(4deg) translate(40px, -30px)" }}
-          >
-            <div className="bg-white p-2 pb-8 rounded-sm w-52">
-              <div className="relative w-full aspect-square overflow-hidden rounded-sm">
-                <Image
-                  src={PHOTOS.moodboard1}
-                  alt="Animal chouchouté"
-                  fill
-                  className="object-cover"
-                  sizes="220px"
-                  priority
-                />
-              </div>
-              <p
-                className="text-[10px] text-center mt-2 text-[--color-chocolat]/50 italic"
+                className="text-xs text-white/80 italic"
                 style={{ fontFamily: "var(--font-cormorant)" }}
               >
                 {t("hero_photo_caption_2")}
@@ -216,14 +181,9 @@ export function HomeHero() {
             </div>
           </div>
 
-          {/* Heart emoji */}
-          <div className="absolute z-30 text-2xl" style={{ top: "52%", left: "32%" }}>
-            ❤️
-          </div>
-
           {/* Stat card — families */}
           <motion.div
-            className="absolute top-6 right-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-30"
+            className="absolute top-4 right-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-10"
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
@@ -238,7 +198,7 @@ export function HomeHero() {
 
           {/* Stat card — satisfaction */}
           <motion.div
-            className="absolute bottom-10 left-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-30"
+            className="absolute bottom-4 left-4 bg-white rounded-2xl shadow-lg px-5 py-3 z-10"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
