@@ -297,14 +297,14 @@ export default async function QuiSommesNousPage({
           />
           <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {[
-              { logo: PRESS.marieClaire, alt: "Marie Claire", quote: t("qui_sommes_nous.press_marie_claire_quote") },
-              { logo: PRESS.gala,        alt: "Gala",         quote: t("qui_sommes_nous.press_gala_quote") },
-              { logo: PRESS.luxuryPlace, alt: "Luxury Place", quote: t("qui_sommes_nous.press_luxury_quote") },
-            ].map(({ logo, alt, quote }) => (
-              <div key={alt} className="card-base p-7 flex flex-col items-center gap-5 text-center">
-                <div className="h-20 flex items-center justify-center">
+              { logo: PRESS.marieClaire, alt: "Marie Claire", quote: t("qui_sommes_nous.press_marie_claire_quote"), href: "https://www.marieclaire.fr/adresses-incontournables/tout-pour-le-toutou/" },
+              { logo: PRESS.gala,        alt: "Gala",         quote: t("qui_sommes_nous.press_gala_quote"),         href: "https://www.moncarnet-gala.fr/articles/view/TOUT-POUR-LE-TOUTOU" },
+              { logo: PRESS.luxuryPlace, alt: "Luxury Place", quote: t("qui_sommes_nous.press_luxury_quote"),       href: "https://luxury-place.fr/2023/11/09/tout-pour-le-toutou-revolutionner-les-services-pour-animaux-de-compagnie-en-france/" },
+            ].map(({ logo, alt, quote, href }) => (
+              <div key={alt} className="card-base p-4 flex flex-col items-center gap-5 text-center">
+                <a href={href} target="_blank" rel="noopener noreferrer" className="h-30 flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Image src={logo} alt={alt} width={120} height={40} className="object-contain" />
-                </div>
+                </a>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed italic flex-1">
                   &ldquo;{quote}&rdquo;
                 </p>
