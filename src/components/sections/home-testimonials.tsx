@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const BASE = "https://cdn.prod.website-files.com/66672b13a367b9ed2f297248/";
@@ -118,6 +119,7 @@ function Stars({ size = "sm" }: { size?: "sm" | "md" }) {
 }
 
 export function HomeTestimonials() {
+  const t = useTranslations("home");
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
   const total = REVIEWS.length;
@@ -138,7 +140,7 @@ export function HomeTestimonials() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <span className="text-sm font-semibold uppercase tracking-[0.18em] text-[--color-or] mb-3 block">
-              Vos avis
+              {t("testimonials_label")}
             </span>
             <h2
               className="text-[--color-chocolat] font-normal"
@@ -148,8 +150,7 @@ export function HomeTestimonials() {
                 lineHeight: 1.15,
               }}
             >
-              Ils nous confient ce qu&apos;ils ont
-              <br className="hidden sm:block" /> de plus précieux.
+              {t("testimonials_title")}
             </h2>
           </div>
           <div className="flex items-center gap-2 shrink-0 pb-1">
@@ -219,14 +220,14 @@ export function HomeTestimonials() {
             <div className="flex gap-2 shrink-0">
               <button
                 onClick={prev}
-                aria-label="Avis précédent"
+                aria-label={t("testimonials_aria_prev")}
                 className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-[--color-creme] transition-colors"
               >
                 <ChevronLeft className="w-4 h-4 text-[--color-chocolat]" />
               </button>
               <button
                 onClick={next}
-                aria-label="Avis suivant"
+                aria-label={t("testimonials_aria_next")}
                 className="w-9 h-9 rounded-full border border-[--color-border] flex items-center justify-center hover:border-[--color-chocolat] hover:bg-[--color-creme] transition-colors"
               >
                 <ChevronRight className="w-4 h-4 text-[--color-chocolat]" />

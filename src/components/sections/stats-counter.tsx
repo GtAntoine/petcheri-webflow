@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 const STATS = [
-  { target: 2347,  suffix: "+", label: "Familles accompagnées" },
-  { target: 350,   suffix: "+", label: "Chouchouteurs vérifiés" },
-  { target: 15000, suffix: "+", label: "Prestations réalisées" },
-  { target: 98,    suffix: "%", label: "De satisfaction" },
+  { target: 2347,  suffix: "+", labelKey: "stats_families"       as const },
+  { target: 350,   suffix: "+", labelKey: "stats_sitters"        as const },
+  { target: 15000, suffix: "+", labelKey: "stats_services_done"  as const },
+  { target: 98,    suffix: "%", labelKey: "stats_satisfaction_label" as const },
 ] as const;
 
 /** Format number French-style: 15000 → "15 000", 2347 → "2 347" */
@@ -50,6 +51,7 @@ interface StatsCounterProps {
  * Utilisé sur la home (variant light) et sur /qui-sommes-nous (variant navy).
  */
 export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
+  const t = useTranslations("home");
   const isNavy = variant === "navy";
 
   return (
@@ -63,8 +65,8 @@ export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
     >
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
-          {STATS.map(({ target, suffix, label }) => (
-            <div key={label} className="flex flex-col gap-2">
+          {STATS.map(({ target, suffix, labelKey }) => (
+            <div key={labelKey} className="flex flex-col gap-2">
               <span
                 className="font-normal leading-none"
                 style={{
@@ -83,7 +85,7 @@ export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
                 // Navy variant: white/65% on navy → 7.9:1 ✓
                 style={{ color: isNavy ? "rgba(255,255,255,0.65)" : "var(--color-chocolat-light)" }}
               >
-                {label}
+                {t(labelKey)}
               </span>
             </div>
           ))}

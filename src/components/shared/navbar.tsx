@@ -19,6 +19,9 @@ interface DropdownItem {
   emoji?: string;
 }
 
+type MegaItem = { href: string; icon: string; title: string; desc?: string };
+type SoinItem  = { href: string; title: string };
+
 // ─── DropdownMenu ─────────────────────────────────────────────────────────────
 
 /**
@@ -165,33 +168,6 @@ function DropdownMenu({
 
 // ─── MegaMenuServices ─────────────────────────────────────────────────────────
 
-const MEGA_CHIENS = [
-  { href: "/garde-chien",   icon: ICONS.dog,      title: "Garde à domicile",    desc: "Chez vous, dans ses habitudes" },
-  { href: "/garde-journee", icon: ICONS.ctSleep,  title: "Garde de journée",    desc: "Le temps d'une longue journée" },
-  { href: "/garde-nuit",    icon: ICONS.sleep,    title: "Garde de nuit",       desc: "Chez vous ou chez un chouchouteur" },
-  { href: "/services-chien",icon: ICONS.walking2, title: "Promenade",           desc: "Sorties solo ou en groupe" },
-] as const;
-
-const MEGA_CHATS = [
-  { href: "/garde-chat",    icon: ICONS.ctCat,    title: "Visite & garde",       desc: "À domicile ou chez un chouchouteur" },
-  { href: "/services-chat", icon: ICONS.cat,      title: "Soins & services chat", desc: "Toilettage, comportement, bien-être…" },
-] as const;
-
-const MEGA_NAC = [
-  { href: "/services-nac",          icon: ICONS.nac,         title: "Visite & garde NAC",   desc: "Lapins, rongeurs, reptiles…" },
-  { href: "/bien-etre",             icon: ICONS.care,        title: "Bien-être & soins",    desc: "Massages, ostéo, naturopathie" },
-  { href: "/transport",             icon: ICONS.ctTransport, title: "Transport",             desc: "Vétérinaire, déplacements" },
-] as const;
-
-const MEGA_SOINS = [
-  { href: "/toilettage",              title: "Toilettage" },
-  { href: "/comportement-education",  title: "Comportement" },
-  { href: "/bien-etre",               title: "Bien-être & soins" },
-  { href: "/transport",               title: "Transport" },
-] as const;
-
-type MegaItem = { href: string; icon: string; title: string; desc?: string };
-
 function MegaCol({
   label,
   emoji,
@@ -201,7 +177,7 @@ function MegaCol({
 }: {
   label: string;
   emoji: string;
-  items: readonly MegaItem[];
+  items: MegaItem[];
   pathname: string;
   onClose: () => void;
 }) {
@@ -229,7 +205,6 @@ function MegaCol({
               active ? "bg-[--color-creme]" : "hover:bg-[--color-ivoire]"
             )}
           >
-        
             <div className="flex flex-col gap-0.5 min-w-0">
               <span
                 className={cn(
@@ -253,6 +228,7 @@ function MegaCol({
 }
 
 function MegaMenuServices({ pathname }: { pathname: string }) {
+  const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
   const btnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -302,7 +278,30 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
     if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
   }, []);
 
-  const allHrefs = [...MEGA_CHIENS, ...MEGA_CHATS, ...MEGA_NAC, ...MEGA_SOINS].map((i) => i.href);
+  // ── Translated mega-menu data ──────────────────────────────────────────────
+  const megaChiens: MegaItem[] = [
+    { href: "/garde-chien",    icon: ICONS.dog,         title: t("mega.garde_domicile"),    desc: t("mega.garde_domicile_desc") },
+    { href: "/garde-journee",  icon: ICONS.ctSleep,     title: t("mega.garde_journee"),     desc: t("mega.garde_journee_desc") },
+    { href: "/garde-nuit",     icon: ICONS.sleep,       title: t("mega.garde_nuit"),        desc: t("mega.garde_nuit_desc") },
+    { href: "/services-chien", icon: ICONS.walking2,    title: t("mega.promenade"),         desc: t("mega.promenade_desc") },
+  ];
+  const megaChats: MegaItem[] = [
+    { href: "/garde-chat",    icon: ICONS.ctCat, title: t("mega.visite_garde"),  desc: t("mega.visite_garde_desc") },
+    { href: "/services-chat", icon: ICONS.cat,   title: t("mega.soins_chat"),    desc: t("mega.soins_chat_desc") },
+  ];
+  const megaNac: MegaItem[] = [
+    { href: "/services-nac", icon: ICONS.nac,         title: t("mega.visite_garde_nac"),    desc: t("mega.visite_garde_nac_desc") },
+    { href: "/bien-etre",    icon: ICONS.care,        title: t("mega.bien_etre"),            desc: t("mega.bien_etre_desc") },
+    { href: "/transport",    icon: ICONS.ctTransport, title: t("mega.transport"),             desc: t("mega.transport_desc") },
+  ];
+  const megaSoins: SoinItem[] = [
+    { href: "/toilettage",             title: t("mega.toilettage") },
+    { href: "/comportement-education", title: t("mega.comportement") },
+    { href: "/bien-etre",              title: t("mega.bien_etre") },
+    { href: "/transport",              title: t("mega.transport") },
+  ];
+
+  const allHrefs = [...megaChiens, ...megaChats, ...megaNac, ...megaSoins].map((i) => i.href);
   const isActive = allHrefs.some((href) => pathname === href);
 
   return (
@@ -325,7 +324,7 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
           isActive ? "text-[--color-or]" : "text-[--color-chocolat] hover:text-[--color-or]"
         )}
       >
-        Nos services
+        {t("services")}
         <ChevronDown
           className={cn("w-4 h-4 transition-transform duration-200", open && "rotate-180")}
           aria-hidden="true"
@@ -350,12 +349,12 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
           >
             {/* 3-column grid: Chiens | Chats | NAC */}
             <div className="grid grid-cols-3 divide-x divide-[--color-border] p-2">
-              <MegaCol label="Chiens" emoji="🐕" items={MEGA_CHIENS} pathname={pathname} onClose={close} />
+              <MegaCol label={t("mega.col_chiens")} emoji="🐕" items={megaChiens} pathname={pathname} onClose={close} />
               <div className="px-1">
-                <MegaCol label="Chats" emoji="🐱" items={MEGA_CHATS} pathname={pathname} onClose={close} />
+                <MegaCol label={t("mega.col_chats")} emoji="🐱" items={megaChats} pathname={pathname} onClose={close} />
               </div>
               <div className="px-1">
-                <MegaCol label="NAC" emoji="🐇" items={MEGA_NAC} pathname={pathname} onClose={close} />
+                <MegaCol label={t("mega.col_nac")} emoji="🐇" items={megaNac} pathname={pathname} onClose={close} />
               </div>
             </div>
 
@@ -368,13 +367,13 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
                 className="text-[10px] font-bold uppercase tracking-[0.16em] mr-2 shrink-0"
                 style={{ color: "var(--color-muted)" }}
               >
-                Soins & services
+                {t("mega.soins_section")}
               </span>
-              {MEGA_SOINS.map((item) => (
+              {megaSoins.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href as Parameters<typeof Link>[0]["href"]}
-  
+
                   onClick={close}
                   aria-current={pathname === item.href ? "page" : undefined}
                   className={cn(
@@ -393,7 +392,7 @@ function MegaMenuServices({ pathname }: { pathname: string }) {
                 onClick={close}
                 className="ml-auto flex items-center gap-1 text-xs font-semibold text-[#E8705A] hover:text-[--color-or] transition-colors shrink-0"
               >
-                Tout voir
+                {t("mega.see_all")}
                 <ArrowRight className="w-3 h-3" aria-hidden="true" />
               </Link>
             </div>
@@ -425,10 +424,33 @@ export function Navbar() {
 
   const otherLocale = locale === "fr" ? "en" : "fr";
 
+  // ── Mega items for the mobile accordion ──────────────────────────────────
+  const megaChiens: MegaItem[] = [
+    { href: "/garde-chien",    icon: ICONS.dog,         title: t("mega.garde_domicile"),    desc: t("mega.garde_domicile_desc") },
+    { href: "/garde-journee",  icon: ICONS.ctSleep,     title: t("mega.garde_journee"),     desc: t("mega.garde_journee_desc") },
+    { href: "/garde-nuit",     icon: ICONS.sleep,       title: t("mega.garde_nuit"),        desc: t("mega.garde_nuit_desc") },
+    { href: "/services-chien", icon: ICONS.walking2,    title: t("mega.promenade"),         desc: t("mega.promenade_desc") },
+  ];
+  const megaChats: MegaItem[] = [
+    { href: "/garde-chat",    icon: ICONS.ctCat, title: t("mega.visite_garde"),  desc: t("mega.visite_garde_desc") },
+    { href: "/services-chat", icon: ICONS.cat,   title: t("mega.soins_chat"),    desc: t("mega.soins_chat_desc") },
+  ];
+  const megaNac: MegaItem[] = [
+    { href: "/services-nac", icon: ICONS.nac,         title: t("mega.visite_garde_nac"),    desc: t("mega.visite_garde_nac_desc") },
+    { href: "/bien-etre",    icon: ICONS.care,        title: t("mega.bien_etre"),            desc: t("mega.bien_etre_desc") },
+    { href: "/transport",    icon: ICONS.ctTransport, title: t("mega.transport"),             desc: t("mega.transport_desc") },
+  ];
+  const megaSoins: SoinItem[] = [
+    { href: "/toilettage",             title: t("mega.toilettage") },
+    { href: "/comportement-education", title: t("mega.comportement") },
+    { href: "/bien-etre",              title: t("mega.bien_etre") },
+    { href: "/transport",              title: t("mega.transport") },
+  ];
+
   const DECOUVRIR_ITEMS: DropdownItem[] = [
     { href: "/vip-club",          label: t("vip"),              emoji: "👑" },
     { href: "/vos-avis",          label: t("reviews"),          emoji: "⭐" },
-    { href: "/luxury-hotels",     label: "Luxury Hotels",       emoji: "🏨" },
+    { href: "/luxury-hotels",     label: t("luxury_hotels"),    emoji: "🏨" },
     { href: "/devenir-petsitter", label: t("become_petsitter"), emoji: "🐾" },
   ];
 
@@ -436,7 +458,7 @@ export function Navbar() {
     { href: "/qui-sommes-nous", label: t("about") },
     { href: "/entreprises",     label: t("for_business") },
     { href: "/blog",            label: t("blog") },
-    { href: "/nos-bons-plans",  label: "Bons plans" },
+    { href: "/nos-bons-plans",  label: t("bons_plans") },
   ] as const;
 
   return (
@@ -448,7 +470,7 @@ export function Navbar() {
       )}
     >
       <nav
-        aria-label="Navigation principale"
+        aria-label={t("aria_main")}
         className="max-w-7xl mx-auto px-6 flex items-center justify-between h-18"
       >
         {/* Logo */}
@@ -486,7 +508,7 @@ export function Navbar() {
 
           <DropdownMenu
             id="nav-decouvrir-dropdown"
-            label="Découvrir"
+            label={t("discover")}
             items={DECOUVRIR_ITEMS}
             align="right"
             pathname={pathname}
@@ -516,7 +538,7 @@ export function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
-          aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+          aria-label={isOpen ? t("aria_close") : t("aria_open")}
         >
           {isOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
         </button>
@@ -528,7 +550,7 @@ export function Navbar() {
           id="mobile-menu"
           className="lg:hidden bg-[--color-ivoire] border-t border-[--color-border] px-5 py-4 flex flex-col gap-1"
           role="navigation"
-          aria-label="Menu mobile"
+          aria-label={t("aria_mobile")}
         >
           {/* ── Nos services accordion ── */}
           <button
@@ -536,7 +558,7 @@ export function Navbar() {
             aria-expanded={servicesOpen}
             className="flex items-center justify-between w-full py-2.5 text-sm font-semibold text-[--color-chocolat]"
           >
-            Nos services
+            {t("services")}
             <ChevronDown
               className={cn("w-4 h-4 transition-transform duration-200 text-[--color-muted]", servicesOpen && "rotate-180")}
               aria-hidden="true"
@@ -547,9 +569,11 @@ export function Navbar() {
             <div className="mb-2 rounded-xl bg-white border border-[--color-border] overflow-hidden divide-y divide-[--color-border]">
               {/* Chiens */}
               <div className="px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐕 Chiens</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>
+                  🐕 {t("mega.col_chiens")}
+                </p>
                 <div className="flex flex-col gap-0.5">
-                  {MEGA_CHIENS.map((item) => (
+                  {megaChiens.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href as Parameters<typeof Link>[0]["href"]}
@@ -564,9 +588,11 @@ export function Navbar() {
               </div>
               {/* Chats */}
               <div className="px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐱 Chats</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>
+                  🐱 {t("mega.col_chats")}
+                </p>
                 <div className="flex flex-col gap-0.5">
-                  {MEGA_CHATS.map((item) => (
+                  {megaChats.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href as Parameters<typeof Link>[0]["href"]}
@@ -581,9 +607,11 @@ export function Navbar() {
               </div>
               {/* NAC */}
               <div className="px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>🐇 NAC</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-or)" }}>
+                  🐇 {t("mega.col_nac")}
+                </p>
                 <div className="flex flex-col gap-0.5">
-                  {MEGA_NAC.map((item) => (
+                  {megaNac.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href as Parameters<typeof Link>[0]["href"]}
@@ -598,9 +626,11 @@ export function Navbar() {
               </div>
               {/* Soins */}
               <div className="px-4 py-3">
-                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-muted)" }}>Soins & services</p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: "var(--color-muted)" }}>
+                  {t("mega.soins_section")}
+                </p>
                 <div className="flex flex-col gap-0.5">
-                  {MEGA_SOINS.map((item) => (
+                  {megaSoins.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href as Parameters<typeof Link>[0]["href"]}
@@ -621,10 +651,10 @@ export function Navbar() {
             { href: "/qui-sommes-nous", label: t("about") },
             { href: "/entreprises",     label: t("for_business") },
             { href: "/blog",            label: t("blog") },
-            { href: "/nos-bons-plans",  label: "Bons plans" },
+            { href: "/nos-bons-plans",  label: t("bons_plans") },
             { href: "/vip-club",        label: t("vip") },
             { href: "/vos-avis",        label: t("reviews") },
-            { href: "/luxury-hotels",   label: "Luxury Hotels" },
+            { href: "/luxury-hotels",   label: t("luxury_hotels") },
             { href: "/devenir-petsitter", label: t("become_petsitter") },
             { href: "/contact",         label: t("contact") },
           ] as const).map((item) => (

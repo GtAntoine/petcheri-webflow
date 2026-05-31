@@ -24,7 +24,7 @@ export function HomeStats() {
     { Icon: UsersIcon,       value: "400+", key: "stats_providers"    as const },
     { Icon: SparklesIcon,    value: "98%",  key: "stats_satisfaction" as const },
     { Icon: ShieldCheckIcon, value: "AXA",  key: "stats_insurance"    as const },
-    { Icon: FlameIcon,       value: "2×",   label: "Prix de l'innovation" },
+    { Icon: FlameIcon,       value: "2×",   key: "stats_innovation" as const },
   ] as const;
 
   return (
@@ -56,7 +56,7 @@ export function HomeStats() {
                 {stat.value}
               </span>
               <span className="text-xs text-[--color-muted-foreground] leading-snug">
-                {"key" in stat ? t(stat.key) : stat.label}
+                {t(stat.key)}
               </span>
             </motion.div>
           ))}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Star } from "lucide-react";
 import { PHOTOS } from "@/lib/assets";
@@ -9,13 +10,21 @@ import { PHOTOS } from "@/lib/assets";
 const PETCHERI_APP = "https://app.petcheri.com";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const ANIMALS = [
-  { label: "Chien",        emoji: "🐶", href: "/services-chien" as const },
-  { label: "Chat",         emoji: "🐱", href: "/services-chat"  as const },
-  { label: "Autre animal", emoji: "🐰", href: "/services-nac"   as const },
-];
-
 export function HomeHero() {
+  const t = useTranslations("home");
+
+  const ANIMALS = [
+    { label: t("hero_animal_dog"),   emoji: "🐶", href: "/services-chien" as const },
+    { label: t("hero_animal_cat"),   emoji: "🐱", href: "/services-chat"  as const },
+    { label: t("hero_animal_other"), emoji: "🐰", href: "/services-nac"   as const },
+  ];
+
+  const TRUST_BADGES = [
+    t("hero_trust_verified"),
+    t("hero_trust_insured"),
+    t("hero_trust_free"),
+  ];
+
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
@@ -37,19 +46,19 @@ export function HomeHero() {
             className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-full px-5 py-2 text-sm font-medium text-[--color-chocolat] shadow-sm mb-8"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-            Disponible 7j/7 partout en France
+            {t("hero_badge")}
           </motion.div>
 
-          {/* Main title — "chouchoute" highlighted */}
+          {/* Main title — accent word highlighted */}
           <motion.h1
             className="text-display text-[--color-chocolat] mb-6 leading-[1.1]"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
           >
-            La conciergerie qui{" "}
-            <span className="text-accent">chouchoute</span>{" "}
-            votre animal
+            {t("hero_title_before")}{" "}
+            <span className="text-accent">{t("hero_title_accent")}</span>{" "}
+            {t("hero_title_after")}
           </motion.h1>
 
           {/* Subtitle */}
@@ -59,9 +68,7 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: EASE }}
           >
-            Services ultra-personnalisés pour animaux de compagnie partout en
-            France : garde, promenades, toilettage, transport, comportement,
-            bien-être, et bien d&apos;autres&hellip;
+            {t("hero_subtitle_detail")}
           </motion.p>
 
           {/* CTAs */}
@@ -78,14 +85,14 @@ export function HomeHero() {
               className="inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white transition-all duration-200 shadow-md hover:shadow-lg hover:brightness-110"
               style={{ background: "#E8705A" }}
             >
-              Réserver maintenant
+              {t("hero_cta_book")}
             </a>
             <Link
               href="/nos-services"
               className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold text-[--color-chocolat] bg-white/70 hover:bg-white transition-all duration-200"
               style={{ borderColor: "#E8705A" }}
             >
-              Voir tous nos services
+              {t("hero_cta_services")}
             </Link>
           </motion.div>
 
@@ -103,7 +110,7 @@ export function HomeHero() {
               ))}
             </div>
             <span className="text-sm text-[--color-muted-foreground]">
-              1 200 avis
+              {t("hero_reviews_count")}
             </span>
           </motion.div>
 
@@ -114,7 +121,7 @@ export function HomeHero() {
             transition={{ duration: 0.5, delay: 0.28, ease: EASE }}
           >
             <p className="text-[11px] font-semibold tracking-widest text-[--color-muted-foreground] uppercase mb-3">
-              Mon compagnon est un :
+              {t("hero_animals_label")}
             </p>
             <div className="flex flex-wrap gap-3 mb-8">
               {ANIMALS.map((a) => (
@@ -137,11 +144,7 @@ export function HomeHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.35, ease: EASE }}
           >
-            {[
-              "Chouchouteurs vérifiés",
-              "Assurance incluse",
-              "Sans engagement",
-            ].map((label) => (
+            {TRUST_BADGES.map((label) => (
               <span key={label} className="flex items-center gap-1.5">
                 <span className="text-emerald-500 font-bold text-base leading-none">✓</span>
                 {label}
@@ -183,7 +186,7 @@ export function HomeHero() {
                 className="text-[10px] text-center mt-2 text-[--color-chocolat]/50 italic"
                 style={{ fontFamily: "var(--font-cormorant)" }}
               >
-                Malka, chouchoutée par Mélanie
+                {t("hero_photo_caption_1")}
               </p>
             </div>
           </div>
@@ -208,7 +211,7 @@ export function HomeHero() {
                 className="text-[10px] text-center mt-2 text-[--color-chocolat]/50 italic"
                 style={{ fontFamily: "var(--font-cormorant)" }}
               >
-                chouchouté par Louise
+                {t("hero_photo_caption_2")}
               </p>
             </div>
           </div>
@@ -225,12 +228,11 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            {/* chocolat on white → 12.9:1 ✓ (was #E8705A → 3.0:1, borderline) */}
             <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
-              2 347
+              {t("hero_stat_families_count")}
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
-              Familles accompagnées
+              {t("hero_stat_families_label")}
             </p>
           </motion.div>
 
@@ -241,12 +243,11 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.8 }}
           >
-            {/* chocolat on white → 12.9:1 ✓ (was #4BBFAA teal → 2.25:1 ✗) */}
             <p className="text-2xl font-bold leading-none" style={{ color: "var(--color-chocolat)" }}>
               98%
             </p>
             <p className="text-xs text-[--color-muted-foreground] mt-0.5">
-              Taux de satisfaction
+              {t("hero_stat_satisfaction_label")}
             </p>
           </motion.div>
         </motion.div>

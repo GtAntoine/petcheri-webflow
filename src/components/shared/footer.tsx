@@ -39,10 +39,10 @@ export function Footer() {
                 { href: "/services-chien" as const, label: nav("services_dog") },
                 { href: "/services-chat" as const, label: nav("services_cat") },
                 { href: "/services-nac" as const, label: nav("services_nac") },
-                { href: "/garde-chien" as const, label: "Garde de chien" },
-                { href: "/comportement-education" as const, label: "Comportement & Éducation" },
-                { href: "/toilettage" as const, label: "Toilettage" },
-                { href: "/transport" as const, label: "Transport" },
+                { href: "/garde-chien" as const, label: t("service_garde_chien") },
+                { href: "/comportement-education" as const, label: t("service_comportement") },
+                { href: "/toilettage" as const, label: t("service_toilettage") },
+                { href: "/transport" as const, label: t("service_transport") },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -111,11 +111,11 @@ export function Footer() {
             <div className="mt-8 space-y-2">
               <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/50">
                 <span className="w-4 h-4 rounded-full bg-[--color-sauge]/30 flex items-center justify-center text-[--color-sauge]">✓</span>
-                400 prestataires certifiés
+                {t("trust_providers")}
               </div>
               <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/50">
                 <span className="w-4 h-4 rounded-full bg-[--color-sauge]/30 flex items-center justify-center text-[--color-sauge]">✓</span>
-                Assurance AXA incluse
+                {t("trust_insurance")}
               </div>
             </div>
           </div>

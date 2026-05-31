@@ -44,7 +44,7 @@ export function HomeProcess() {
     <section className="section-padding bg-[--color-creme]">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
-          label="Notre méthode"
+          label={t("process_label")}
           title={t("process_title")}
           className="mb-16"
         />
@@ -93,7 +93,7 @@ export function HomeProcess() {
         <div className="mt-14 flex justify-center">
           <Button variant="or" size="lg" asChild>
             <a href={PETCHERI_APP} target="_blank" rel="noopener noreferrer">
-              Démarrer ma demande
+              {t("process_cta")}
             </a>
           </Button>
         </div>

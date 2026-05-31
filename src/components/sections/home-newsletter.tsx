@@ -27,7 +27,7 @@ export function HomeNewsletter() {
         {submitted ? (
           <div className="bg-sauge/20 border border-sauge/30 rounded-xl px-6 py-5">
             <p className="text-sauge-light font-medium">
-              Merci ! Vous êtes bien inscrit.
+              {t("newsletter_success")}
             </p>
           </div>
         ) : (

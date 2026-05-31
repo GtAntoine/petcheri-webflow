@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 import type { BlogPost } from "@/lib/blog-posts";
 import { Clock, User, Tag } from "lucide-react";
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString("fr-FR", {
+function formatDate(iso: string, locale: string): string {
+  return new Date(iso).toLocaleDateString(locale, {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -43,6 +44,7 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post }: BlogCardProps) {
+  const locale = useLocale();
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -82,7 +84,7 @@ export function BlogCard({ post }: BlogCardProps) {
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-medium text-[--color-chocolat]">{post.author}</span>
-            <span className="text-xs text-[--color-muted-foreground]">{formatDate(post.date)}</span>
+            <span className="text-xs text-[--color-muted-foreground]">{formatDate(post.date, locale)}</span>
           </div>
         </div>
       </div>
@@ -97,6 +99,8 @@ interface FeaturedBlogCardProps {
 }
 
 export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
+  const t = useTranslations("common");
+  const locale = useLocale();
   return (
     <Link
       href={`/blog/${post.slug}`}
@@ -118,7 +122,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
       <div className="flex flex-col justify-center p-8 lg:p-12 gap-4">
         <div className="flex items-center gap-3">
           <span className="text-xs font-semibold uppercase tracking-widest text-[--color-or]">
-            Article à la une
+            {t("featured_article")}
           </span>
           <span className="w-1 h-1 rounded-full bg-[--color-border]" />
           <CategoryBadge category={post.category} />
@@ -141,7 +145,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
             {post.author}
           </span>
           <span className="w-1 h-1 rounded-full bg-[--color-border]" />
-          <span>{formatDate(post.date)}</span>
+          <span>{formatDate(post.date, locale)}</span>
           <span className="w-1 h-1 rounded-full bg-[--color-border]" />
           <span className="flex items-center gap-1.5">
             <Clock className="w-4 h-4" />
@@ -154,7 +158,7 @@ export function FeaturedBlogCard({ post }: FeaturedBlogCardProps) {
             className="inline-flex items-center gap-2 text-sm font-semibold rounded-full px-6 py-2.5 text-white shadow-sm group-hover:shadow-md group-hover:brightness-110 transition-all"
             style={{ background: "#E8705A" }}
           >
-            Lire l&apos;article
+            {t("read_article")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
