@@ -126,7 +126,7 @@ function Stars({ size = "sm" }: { size?: "sm" | "md" }) {
   return (
     <div className="flex gap-0.5">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className={`${cls} fill-[--color-or] text-[--color-or]`} />
+        <Star key={i} className={`${cls} fill-amber-400 text-amber-400`} />
       ))}
     </div>
   );
@@ -207,20 +207,30 @@ export function HomeTestimonials() {
               className="grid lg:grid-cols-[58fr_42fr] gap-4 items-stretch"
             >
               {/* Featured card */}
-              <div className="card-base p-8 md:p-10 flex flex-col gap-6 min-h-[340px]">
-                <Stars size="md" />
-                <p
-                  className="text-[--color-chocolat] italic leading-relaxed flex-1"
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
-                  }}
-                >
-                  &ldquo;{featured.text}&rdquo;
-                </p>
-                <div className="flex items-center gap-4 pt-5 border-t border-[--color-border]">
-                  <Avatar src={featured.photo} alt={featured.pet} size="lg" />
-                  <div>
+              <div className="card-base flex flex-col md:flex-row overflow-hidden min-h-[340px]">
+                {/* Large photo */}
+                <div className="relative md:w-[38%] min-h-[220px] md:min-h-full shrink-0">
+                  <Image
+                    src={featured.photo}
+                    alt={featured.author}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 280px"
+                  />
+                </div>
+                {/* Text */}
+                <div className="p-8 md:p-10 flex flex-col gap-6 flex-1">
+                  <Stars size="md" />
+                  <p
+                    className="text-[--color-chocolat] italic leading-relaxed flex-1"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontSize: "clamp(1rem, 1.3vw, 1.1rem)",
+                    }}
+                  >
+                    &ldquo;{featured.text}&rdquo;
+                  </p>
+                  <div className="pt-5 border-t border-[--color-border]">
                     <p className="text-sm font-bold text-[--color-chocolat]">{featured.author}</p>
                     <p className="text-xs text-[--color-muted-foreground] mt-0.5">{featured.pet}</p>
                   </div>
