@@ -301,14 +301,14 @@ export default async function QuiSommesNousPage({
               { logo: PRESS.gala,        alt: "Gala",         quote: t("qui_sommes_nous.press_gala_quote"),         href: "https://www.moncarnet-gala.fr/articles/view/TOUT-POUR-LE-TOUTOU" },
               { logo: PRESS.luxuryPlace, alt: "Luxury Place", quote: t("qui_sommes_nous.press_luxury_quote"),       href: "https://luxury-place.fr/2023/11/09/tout-pour-le-toutou-revolutionner-les-services-pour-animaux-de-compagnie-en-france/" },
             ].map(({ logo, alt, quote, href }) => (
-              <div key={alt} className="card-base p-4 flex flex-col items-center gap-5 text-center">
-                <a href={href} target="_blank" rel="noopener noreferrer" className="h-30 flex items-center justify-center hover:opacity-80 transition-opacity">
+              <a key={alt} href={href} target="_blank" rel="noopener noreferrer" className="card-base p-4 flex flex-col items-center gap-5 text-center hover:shadow-[var(--shadow-card-hover)] hover:-translate-y-0.5 transition-all">
+                <div className="h-30 flex items-center justify-center">
                   <Image src={logo} alt={alt} width={120} height={40} className="object-contain" />
-                </a>
+                </div>
                 <p className="text-sm text-[--color-muted-foreground] leading-relaxed italic flex-1">
                   &ldquo;{quote}&rdquo;
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         </div>
