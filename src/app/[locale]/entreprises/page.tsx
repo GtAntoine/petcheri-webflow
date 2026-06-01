@@ -69,7 +69,7 @@ export default async function EntreprisesPage({
   ];
 
   const TRUST_ITEMS = [
-    t("entreprises.check_1"),
+    t("entreprises.check_1", { sittersNetwork: SITE_STATS.sittersNetwork }),
     t("entreprises.check_2"),
     t("entreprises.check_3"),
     t("entreprises.check_4"),
@@ -115,7 +115,7 @@ export default async function EntreprisesPage({
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
               { value: t("entreprises.stat_1_value"), label: t("entreprises.stat_1_label") },
-              { value: t("entreprises.stat_2_value"), label: t("entreprises.stat_2_label") },
+              { value: t("entreprises.stat_2_value", { sittersNetwork: SITE_STATS.sittersNetwork }), label: t("entreprises.stat_2_label") },
               { value: t("entreprises.stat_3_value"), label: t("entreprises.stat_3_label") },
               { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("entreprises.stat_4_label") },
             ].map(({ value, label }) => (

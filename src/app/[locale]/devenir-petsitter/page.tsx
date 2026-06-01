@@ -30,7 +30,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "pages" });
   return {
     title: t("devenir_petsitter.meta_title"),
-    description: t("devenir_petsitter.meta_description"),
+    description: t("devenir_petsitter.meta_description", { sittersNetwork: SITE_STATS.sittersNetwork }),
     alternates: buildAlternates("/devenir-petsitter", locale),
   };
 }
@@ -51,7 +51,7 @@ export default async function DevenirPetsitterPage({
   const AVANTAGES = [
     { Icon: SparklesIcon,       title: t("devenir_petsitter.avan_liberte_title"),    desc: t("devenir_petsitter.avan_liberte_desc") },
     { Icon: ShieldCheckIcon,    title: t("devenir_petsitter.avan_assurance_title"),  desc: t("devenir_petsitter.avan_assurance_desc") },
-    { Icon: UsersIcon,          title: t("devenir_petsitter.avan_communaute_title"), desc: t("devenir_petsitter.avan_communaute_desc") },
+    { Icon: UsersIcon,          title: t("devenir_petsitter.avan_communaute_title"), desc: t("devenir_petsitter.avan_communaute_desc", { sittersNetwork: SITE_STATS.sittersNetwork }) },
     { Icon: GraduationCapIcon,  title: t("devenir_petsitter.avan_formation_title"),  desc: t("devenir_petsitter.avan_formation_desc") },
     { Icon: TrophyIcon,         title: t("devenir_petsitter.avan_visibilite_title"), desc: t("devenir_petsitter.avan_visibilite_desc") },
     { Icon: HeartHandshakeIcon, title: t("devenir_petsitter.avan_suivi_title"),      desc: t("devenir_petsitter.avan_suivi_desc") },
@@ -88,14 +88,14 @@ export default async function DevenirPetsitterPage({
             <span className="text-accent">{t("devenir_petsitter.hero_title_accent")}</span>
           </>
         }
-        subtitle={t("devenir_petsitter.hero_subtitle")}
+        subtitle={t("devenir_petsitter.hero_subtitle", { sittersNetwork: SITE_STATS.sittersNetwork })}
         ctas={[
           { label: t("devenir_petsitter.hero_cta_primary"), href: BOOKING_URL, external: true, primary: true },
           { label: t("devenir_petsitter.hero_cta_secondary"), href: "#avantages" },
         ]}
         image={ILLUSTRATIONS.heroPetsitter}
         imageAlt={t("devenir_petsitter.hero_image_alt")}
-        trustBadges={[t("devenir_petsitter.trust_1"), t("devenir_petsitter.trust_2"), t("devenir_petsitter.trust_3")]}
+        trustBadges={[t("devenir_petsitter.trust_1", { sittersNetwork: SITE_STATS.sittersNetwork }), t("devenir_petsitter.trust_2"), t("devenir_petsitter.trust_3")]}
         variant="warm"
       />
 
@@ -104,7 +104,7 @@ export default async function DevenirPetsitterPage({
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { value: "400+",  label: t("devenir_petsitter.stats_1_label") },
+              { value: `${SITE_STATS.sittersNetwork}+`, label: t("devenir_petsitter.stats_1_label") },
               { value: "80%",   label: t("devenir_petsitter.stats_2_label") },
               { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("devenir_petsitter.stats_3_label") },
               { value: "9M€",   label: t("devenir_petsitter.stats_4_label") },
@@ -242,7 +242,7 @@ export default async function DevenirPetsitterPage({
               <SectionHeader
                 label={t("devenir_petsitter.temo_label")}
                 title={t("devenir_petsitter.temo_title")}
-                subtitle={t("devenir_petsitter.temo_subtitle")}
+                subtitle={t("devenir_petsitter.temo_subtitle", { sittersNetwork: SITE_STATS.sittersNetwork })}
                 align="left"
                 className="mb-8"
               />

@@ -5,12 +5,12 @@ import { ChevronDown } from "lucide-react";
 import { PARIS_ZONES } from "@/lib/zones-data";
 
 const OTHER_CITIES = [
-  { name: "Lyon",      href: "/garde-animaux-lyon" },
-  { name: "Marseille", href: "/garde-animaux-marseille" },
-  { name: "Bordeaux",  href: "/garde-animaux-bordeaux" },
-  { name: "Toulouse",  href: "/garde-animaux-toulouse" },
-  { name: "Lille",     href: "/garde-animaux-lille" },
-  { name: "Nantes",    href: "/garde-animaux-nantes" },
+  { name: "Lyon",      href: "/garde-animaux/lyon" },
+  { name: "Marseille", href: "/garde-animaux/marseille" },
+  { name: "Bordeaux",  href: "/garde-animaux/bordeaux" },
+  { name: "Toulouse",  href: "/garde-animaux/toulouse" },
+  { name: "Lille",     href: "/garde-animaux/lille" },
+  { name: "Nantes",    href: "/garde-animaux/nantes" },
 ];
 
 export function FooterZones() {

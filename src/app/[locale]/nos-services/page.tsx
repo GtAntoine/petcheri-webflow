@@ -12,6 +12,8 @@ import { ICONS, ILLUSTRATIONS, PHOTOS } from "@/lib/assets";
 import { buildAlternates } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
 import { BOOKING_URL } from "@/lib/site-stats";
+import { HomeNewsletter } from "@/components/sections/home-newsletter";
+import { HomeBlog } from "@/components/sections/home-blog";
 
 export async function generateMetadata({
   params,
@@ -198,6 +200,10 @@ export default async function NosServicesPage({
           </div>
         </div>
       </section>
+
+      <HomeBlog locale={locale} />
+
+      <HomeNewsletter />
 
       <CtaBanner
         title={t("nos_services.banner_title")}

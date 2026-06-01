@@ -72,7 +72,7 @@ export default async function LuxuryHotelsPage({
   ];
 
   const TRUST_ITEMS = [
-    { Icon: UsersIcon,          text: t("luxury_hotels.check_1") },
+    { Icon: UsersIcon,          text: t("luxury_hotels.check_1", { sittersNetwork: SITE_STATS.sittersNetwork }) },
     { Icon: ShieldCheckIcon,    text: t("luxury_hotels.check_2") },
     { Icon: HeartHandshakeIcon, text: t("luxury_hotels.check_3") },
     { Icon: GraduationCapIcon,  text: t("luxury_hotels.check_4") },
@@ -120,7 +120,7 @@ export default async function LuxuryHotelsPage({
             {[
               { value: t("luxury_hotels.stat_1_value"), label: t("luxury_hotels.stat_1_label") },
               { value: t("luxury_hotels.stat_2_value"), label: t("luxury_hotels.stat_2_label") },
-              { value: t("luxury_hotels.stat_3_value"), label: t("luxury_hotels.stat_3_label") },
+              { value: t("luxury_hotels.stat_3_value", { sittersNetwork: SITE_STATS.sittersNetwork }), label: t("luxury_hotels.stat_3_label") },
               { value: t("luxury_hotels.stat_4_value"), label: t("luxury_hotels.stat_4_label") },
             ].map(({ value, label }) => (
               <div key={label} className="flex flex-col gap-1">

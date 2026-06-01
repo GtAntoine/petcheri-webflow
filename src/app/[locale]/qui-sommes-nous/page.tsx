@@ -15,6 +15,8 @@ import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import { AnimatedCard } from "@/components/ui/animated-card";
 import { StatsCounter } from "@/components/sections/stats-counter";
 import { buildAlternates } from "@/lib/seo";
+import { HomeNewsletter } from "@/components/sections/home-newsletter";
+import { HomeBlog } from "@/components/sections/home-blog";
 
 export async function generateMetadata({
   params,
@@ -25,7 +27,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "pages" });
   return {
     title: t("qui_sommes_nous.meta_title"),
-    description: t("qui_sommes_nous.meta_description"),
+    description: t("qui_sommes_nous.meta_description", { sittersNetwork: SITE_STATS.sittersNetwork }),
     alternates: buildAlternates("/qui-sommes-nous", locale),
   };
 }
@@ -77,7 +79,7 @@ export default async function QuiSommesNousPage({
               </p>
               <div className="flex flex-wrap gap-6">
                 {[
-                  { value: t("qui_sommes_nous.hero_stat_1_value"), label: t("qui_sommes_nous.hero_stat_1_label") },
+                  { value: t("qui_sommes_nous.hero_stat_1_value", { sittersNetwork: SITE_STATS.sittersNetwork }), label: t("qui_sommes_nous.hero_stat_1_label") },
                   { value: t("qui_sommes_nous.hero_stat_2_value"), label: t("qui_sommes_nous.hero_stat_2_label") },
                   { value: `${SITE_STATS.googleRating.toLocaleString("fr-FR")}/5`, label: t("qui_sommes_nous.hero_stat_3_label") },
                 ].map(({ value, label }) => (
@@ -202,7 +204,7 @@ export default async function QuiSommesNousPage({
               </p>
               <div className="grid grid-cols-3 gap-6 mb-8">
                 {[
-                  { value: t("qui_sommes_nous.network_stat_1_value"), label: t("qui_sommes_nous.network_stat_1_label") },
+                  { value: t("qui_sommes_nous.network_stat_1_value", { sittersNetwork: SITE_STATS.sittersNetwork }), label: t("qui_sommes_nous.network_stat_1_label") },
                   { value: t("qui_sommes_nous.network_stat_2_value"), label: t("qui_sommes_nous.network_stat_2_label") },
                   { value: t("qui_sommes_nous.network_stat_3_value"), label: t("qui_sommes_nous.network_stat_3_label") },
                 ].map(({ value, label }) => (
@@ -313,6 +315,10 @@ export default async function QuiSommesNousPage({
           </div>
         </div>
       </section>
+
+      <HomeBlog locale={locale} />
+
+      <HomeNewsletter />
 
       <CtaBanner
         title={t("qui_sommes_nous.banner_title")}

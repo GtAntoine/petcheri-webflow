@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { UI } from "@/lib/assets";
+import { SITE_STATS } from "@/lib/site-stats";
 import { FooterSocial } from "./footer-social";
 import { FooterPawPrint } from "./footer-paw-print";
 import { FooterZones } from "./footer-zones";
@@ -112,7 +113,7 @@ export function Footer() {
             <div className="mt-8 space-y-2">
               <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/50">
                 <span className="w-4 h-4 rounded-full bg-[--color-sauge]/30 flex items-center justify-center text-[--color-sauge]">✓</span>
-                {t("trust_providers")}
+                {t("trust_providers", { sittersNetwork: SITE_STATS.sittersNetwork })}
               </div>
               <div className="flex items-center gap-2 text-xs text-[--color-ivoire]/50">
                 <span className="w-4 h-4 rounded-full bg-[--color-sauge]/30 flex items-center justify-center text-[--color-sauge]">✓</span>
