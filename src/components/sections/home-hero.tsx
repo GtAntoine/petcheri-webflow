@@ -5,14 +5,17 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Star } from "lucide-react";
+import { useRef } from "react";
 import { PHOTOS } from "@/lib/assets";
 import { BOOKING_URL, SITE_STATS, fmtLocale, GOOGLE_PROFILE_URL } from "@/lib/site-stats";
 import { useLocale } from "next-intl";
+import CheckedIcon, { CheckedIconHandle } from "@/components/icons/checked-icon";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export function HomeHero() {
   const t = useTranslations("home");
   const locale = useLocale();
+  const iconRefs = useRef<(CheckedIconHandle | null)[]>([]);
 
   const ANIMALS = [
     { label: t("hero_animal_dog"),   emoji: "🐶", href: "/services-chien" as const },
@@ -124,7 +127,7 @@ export function HomeHero() {
             </a>
           </motion.div>
 
-          {/* Animal selector */}
+          {/* TODO  Animal selector 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -146,6 +149,7 @@ export function HomeHero() {
               ))}
             </div>
           </motion.div>
+          */}
 
           {/* Trust badges */}
           <motion.div
@@ -154,9 +158,14 @@ export function HomeHero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.35, ease: EASE }}
           >
-            {TRUST_BADGES.map((label) => (
+            {TRUST_BADGES.map((label, i) => (
               <span key={label} className="flex items-center gap-1.5">
-                <span className="text-emerald-500 font-bold text-base leading-none">✓</span>
+                <CheckedIcon
+                  ref={(el) => { iconRefs.current[i] = el; }}
+                  size={18}
+                  color="#10b981"
+                  strokeWidth={2.5}
+                />
                 {label}
               </span>
             ))}
