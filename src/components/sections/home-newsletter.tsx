@@ -16,7 +16,7 @@ export function HomeNewsletter() {
   };
 
   return (
-    <section className="py-20" style={{ background: "#2C1810" }}>
+    <section className="py-20" style={{ background: "var(--gradient-newsletter)" }}>
       <div className="max-w-2xl mx-auto px-6 text-center">
         <SendIcon size={32} color="var(--color-or)" className="mx-auto mb-5" />
         <h2 className="text-h2 text-ivoire mb-4">{t("newsletter_title")}</h2>

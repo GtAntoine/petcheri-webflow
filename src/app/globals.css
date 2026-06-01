@@ -17,6 +17,11 @@
   --color-navy: #0E1B30;
   --color-navy-light: #16294A;
 
+  /* ── Rouge (CTA / accent fort) ── */
+  --color-rouge: #C0432D;
+  --color-rouge-dark: #8B2016;
+  --color-rouge-light: #E8705A;
+
   /* ── Semantic colors ── */
   --color-background: var(--color-ivoire);
   --color-foreground: var(--color-chocolat);
@@ -43,6 +48,16 @@
   --shadow-card: 0 2px 20px rgba(44, 24, 16, 0.08);
   --shadow-card-hover: 0 8px 40px rgba(44, 24, 16, 0.14);
   --shadow-or: 0 4px 24px rgba(201, 169, 110, 0.3);
+}
+
+/* ── Gradient tokens (not Tailwind theme, but global CSS vars) ── */
+:root {
+  --gradient-rouge:        linear-gradient(135deg, #8B2016 0%, #C0432D 60%, #D4522F 100%);
+  --gradient-newsletter:   linear-gradient(135deg, #8B2016 0%, #C0432D 55%, #E8705A 100%);
+  --gradient-hero:         linear-gradient(160deg, #FFF9F0 0%, #FFECD2 40%, #fce4ec 70%, #E8E4F0 100%);
+  --gradient-about-hero:   linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%);
+  --gradient-navy:         linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+  --gradient-service-card: linear-gradient(135deg, #FFF9F0 0%, #FFF0E8 100%);
 }
 
 @layer base {

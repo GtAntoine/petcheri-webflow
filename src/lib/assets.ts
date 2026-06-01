@@ -5,6 +5,18 @@
 
 const A = "/assets";
 
+/** Official V4 illustrated service icons (downloaded from petcheri.com CDN) */
+export const SERVICE_ICONS = {
+  dog:        `${A}/icons/service-dog.svg`,
+  catNac:     `${A}/icons/service-cat-nac.svg`,
+  walking:    `${A}/icons/service-walking.svg`,
+  bath:       `${A}/icons/service-bath.svg`,
+  education:  `${A}/icons/service-education.svg`,
+  care:       `${A}/icons/service-care.svg`,
+  transport:  `${A}/icons/service-transport.svg`,
+  travel:     `${A}/icons/service-travel.svg`,
+} as const;
+
 export const ICONS = {
   dog:          `${A}/icons/dog.svg`,
   cat:          `${A}/icons/ct-cat.svg`,
