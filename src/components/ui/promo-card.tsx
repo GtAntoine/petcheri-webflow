@@ -37,7 +37,7 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
 
   if (variant === "inline") {
     return (
-      <div className="card-base flex items-center gap-4 px-5 py-4 hover:shadow-[--shadow-card-hover] transition-all duration-300">
+      <div className="card-base flex items-center gap-4 px-3 py-4 hover:shadow-[--shadow-card-hover] transition-all duration-300">
         {/* Logo */}
         <div className="relative w-14 h-14 rounded-xl bg-[--color-creme] flex items-center justify-center shrink-0 overflow-hidden border border-[--color-border]">
           <NextImage src={promo.logoUrl} alt={promo.partnerName} fill className="object-contain p-1.5" sizes="56px" />
@@ -111,7 +111,7 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
       </div>
 
       {/* Body */}
-      <div className="px-5 pb-3 flex flex-col flex-1 gap-2">
+      <div className="px-3 pb-3 flex flex-col flex-1 gap-2">
         <h3 className="text-sm font-semibold text-[--color-chocolat]">{promo.partnerName}</h3>
         <p className="text-xs text-[--color-muted-foreground] leading-relaxed flex-1 line-clamp-2">
           {promo.description}
@@ -127,7 +127,7 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
       </div>
 
       {/* Footer */}
-      <div className="px-5 pb-5 flex items-center gap-2">
+      <div className="px-3 pb-5 flex items-center gap-2">
         {/* Code copy */}
         {promo.code ? (
           <button
@@ -145,8 +145,7 @@ export function PromoCard({ promo, variant = "default" }: PromoCardProps) {
                 </>
               ) : (
                 <>
-                  <Copy className="w-3 h-3" />
-                  Copier
+                  <Copy className="cursor-pointer w-3 h-3" />
                 </>
               )}
             </span>

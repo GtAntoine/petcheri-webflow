@@ -20,6 +20,9 @@ export function PressLogos({ variant = "light", className }: PressLogosProps) {
 
   return (
     <section
+       style={{
+     background: "var(--color-creme)" 
+  }}
       className={cn(
         "py-12 border-y border-[--color-border]",
         variant === "dark" ? "bg-transparent" : "bg-white",
@@ -29,7 +32,7 @@ export function PressLogos({ variant = "light", className }: PressLogosProps) {
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
         <p
           className="text-xs font-semibold uppercase tracking-[0.2em]"
-          // "dark": white/40 on navy → fine for decorative label
+          // "dark": white/40 on chocolat → fine for decorative label
           // "light": muted-foreground (#7A6A5A) on white → 5.2:1 ✓ (was: muted #9E8B7A → 3.3:1 ✗)
           style={{ color: variant === "dark" ? "rgba(255,255,255,0.4)" : "var(--color-muted-foreground)" }}
         >

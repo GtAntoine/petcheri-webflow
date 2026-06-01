@@ -53,10 +53,10 @@ export default async function HomePage({
         <HomeServices />
         <HomeProcess />
         <HomeTestimonials />
-        <HomeBlog locale={locale} />
         <HomePromos />
         <HomeFaq />
         <HomeNewsletter />
+        <HomeBlog locale={locale} />
         <HomeCta />
       </main>
       <Footer />

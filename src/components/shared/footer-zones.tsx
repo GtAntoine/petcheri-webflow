@@ -47,8 +47,7 @@ export function FooterZones() {
 
           {open && (
             <div
-              className="absolute bottom-full left-0 mb-2 z-50 border border-[--color-ivoire]/10 rounded-xl p-4 grid grid-cols-4 gap-x-5 gap-y-1.5 min-w-[300px] shadow-xl"
-              style={{ background: "var(--color-navy)" }}
+              className="absolute bottom-full left-0 mb-2 z-50 bg-[--color-ivoire] border border-[--color-border] rounded-xl p-4 grid grid-cols-4 gap-x-5 gap-y-1.5 min-w-[300px] shadow-xl"
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >
@@ -59,7 +58,7 @@ export function FooterZones() {
                 <a
                   key={z.arrondissement}
                   href={`/garde-animaux-paris/${z.arrondissement}`}
-                  className="text-xs text-[--color-ivoire]/60 hover:text-[--color-or] transition-colors whitespace-nowrap"
+                  className="text-xs text-[--color-muted-foreground] hover:text-[--color-rouge] transition-colors whitespace-nowrap"
                 >
                   {z.arrondissement}
                 </a>

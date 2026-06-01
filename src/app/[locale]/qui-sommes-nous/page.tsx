@@ -184,7 +184,7 @@ export default async function QuiSommesNousPage({
       </section>
 
       {/* Nos chouchouteurs */}
-      <section className="section-padding" style={{ background: "linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%)" }}>
+      <section className="section-padding" style={{ background: "linear-gradient(160deg, var(--color-chocolat) 0%, var(--color-chocolat-light) 100%)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -283,7 +283,7 @@ export default async function QuiSommesNousPage({
       </section>
 
       {/* Chiffres clés */}
-      <StatsCounter variant="navy" />
+      <StatsCounter variant="dark" />
 
     
 

@@ -18,9 +18,6 @@ export const COLORS = {
   saugeLight:     "#A8BA94",
   saugeDark:      "#6E7D5E",
   creme:          "#F5EDD8",
-  navy:           "#0E1B30",
-  navyLight:      "#16294A",
-
   // Rouge (CTA / accent fort)
   rouge:          "#C0432D",
   rougeDark:      "#8B2016",
@@ -43,7 +40,7 @@ export const GRADIENTS = {
   aboutHero:   "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)",
 
   /** Section backgrounds */
-  navy:        `linear-gradient(160deg, ${COLORS.navy} 0%, ${COLORS.navyLight} 100%)`,
+  dark:        `linear-gradient(160deg, ${COLORS.chocolat} 0%, ${COLORS.chocolatLight} 100%)`,
   serviceCard: "linear-gradient(135deg, #FFF9F0 0%, #FFF0E8 100%)",
 
   /** Floating quote cards */

@@ -14,9 +14,6 @@
   --color-sauge-light: #A8BA94;
   --color-sauge-dark: #6E7D5E;
   --color-creme: #F5EDD8;
-  --color-navy: #0E1B30;
-  --color-navy-light: #16294A;
-
   /* ── Rouge (CTA / accent fort) ── */
   --color-rouge: #C0432D;
   --color-rouge-dark: #8B2016;
@@ -56,7 +53,7 @@
   --gradient-newsletter:   linear-gradient(135deg, #8B2016 0%, #C0432D 55%, #E8705A 100%);
   --gradient-hero:         linear-gradient(160deg, #FFF9F0 0%, #FFECD2 40%, #fce4ec 70%, #E8E4F0 100%);
   --gradient-about-hero:   linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%);
-  --gradient-navy:         linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%);
+  --gradient-dark:         linear-gradient(160deg, var(--color-chocolat) 0%, var(--color-chocolat-light) 100%);
   --gradient-service-card: linear-gradient(135deg, #FFF9F0 0%, #FFF0E8 100%);
 }
 

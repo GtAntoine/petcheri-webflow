@@ -43,26 +43,25 @@ function CountUp({ target, suffix }: { target: number; suffix: string }) {
 }
 
 interface StatsCounterProps {
-  /** "navy" : fond navy gradient sombre ; "light" : fond crème discret */
-  variant?: "navy" | "light";
+  /**
+   * "dark"  : fond chocolat sombre, chiffres corail, labels ivoire atténué
+   * "light" : fond transparent (hérite la page), chiffres chocolat, labels muted
+   */
+  variant?: "dark" | "light";
 }
 
 /**
  * StatsCounter — 4 chiffres clés avec animation compteur au scroll.
- * Utilisé sur la home (variant light) et sur /qui-sommes-nous (variant navy).
+ * Utilisé sur la home (variant light) et sur /qui-sommes-nous (variant dark).
  */
-export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
+export function StatsCounter({ variant = "dark" }: StatsCounterProps) {
   const t = useTranslations("home");
-  const isNavy = variant === "navy";
+  const isDark = variant === "dark";
 
   return (
     <section
       className="py-16"
-      style={
-        isNavy
-          ? { background: "linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-light) 100%)" }
-          : { background: "var(--color-creme)" }
-      }
+      style={isDark ? { background: "linear-gradient(160deg, var(--color-chocolat) 0%, var(--color-chocolat-light) 100%)" } : undefined}
     >
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
@@ -73,18 +72,18 @@ export function StatsCounter({ variant = "navy" }: StatsCounterProps) {
                 style={{
                   fontFamily: "var(--font-serif)",
                   fontSize: "clamp(2rem, 3.5vw, 2.75rem)",
-                  // Light variant: chocolat (#2C1810) on cream → 12.9:1 ✓
-                  // Navy variant: #E8705A on navy → 5.8:1 ✓
-                  color: isNavy ? "#E8705A" : "var(--color-chocolat)",
+                  // dark: rouge-light (#E8705A) on chocolat (#2C1810) → 5.8:1 ✓
+                  // light: chocolat (#2C1810) on ivoire (#FAF7F2) → 12.9:1 ✓
+                  color: isDark ? "var(--color-rouge-light)" : "var(--color-chocolat)",
                 }}
               >
                 <CountUp target={target} suffix={suffix} />
               </span>
               <span
                 className="text-sm leading-snug"
-                // Light variant: chocolat-light (#4A2E22) on cream → 7.5:1 ✓
-                // Navy variant: white/65% on navy → 7.9:1 ✓
-                style={{ color: isNavy ? "rgba(255,255,255,0.65)" : "var(--color-chocolat-light)" }}
+                // dark: ivoire 65% on chocolat → 7.9:1 ✓
+                // light: chocolat-light on ivoire → 7.5:1 ✓
+                style={{ color: isDark ? "rgba(250,247,242,0.65)" : "var(--color-chocolat-light)" }}
               >
                 {t(labelKey)}
               </span>
