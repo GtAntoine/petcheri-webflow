@@ -52,7 +52,7 @@ export function HomeStats() {
               />
               <span
                 className="font-normal mb-1"
-                style={{ fontFamily: "var(--font-serif)", fontSize: "1.875rem", color: "#2C1810" }}
+                style={{ fontFamily: "var(--font-serif)", fontSize: "1.875rem", color: "var(--color-chocolat)" }}
               >
                 {stat.value}
               </span>
