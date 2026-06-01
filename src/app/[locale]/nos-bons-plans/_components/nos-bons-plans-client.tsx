@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   PROMOTIONS,
   PROMO_CATEGORIES,
@@ -10,10 +11,10 @@ import {
 import { PromoCard } from "@/components/ui/promo-card";
 import { CategoryPills } from "@/components/ui/category-pills";
 
-const ALL = "Tous";
-
 export function NosBoonsPlansClient() {
-  const [active, setActive] = useState<PromoCategory | typeof ALL>(ALL);
+  const t = useTranslations("pages");
+  const ALL = t("nos_bons_plans.filter_all");
+  const [active, setActive] = useState<PromoCategory | string>(ALL);
 
   const filtered =
     active === ALL
@@ -32,7 +33,7 @@ export function NosBoonsPlansClient() {
           })),
         ]}
         active={active}
-        onChange={(label) => setActive(label as PromoCategory | typeof ALL)}
+        onChange={(label) => setActive(label as PromoCategory | string)}
         className="mb-12"
       />
 
@@ -58,7 +59,7 @@ export function NosBoonsPlansClient() {
 
       {filtered.length === 0 && (
         <p className="text-center py-16 text-[--color-muted-foreground]">
-          Aucun bon plan dans cette catégorie pour le moment.
+          {t("nos_bons_plans.empty")}
         </p>
       )}
     </>

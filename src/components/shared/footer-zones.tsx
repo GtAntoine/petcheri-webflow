@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { PARIS_ZONES } from "@/lib/zones-data";
 
 const OTHER_CITIES = [
@@ -14,6 +15,7 @@ const OTHER_CITIES = [
 ];
 
 export function FooterZones() {
+  const t = useTranslations("footer");
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -28,7 +30,7 @@ export function FooterZones() {
   return (
     <div className="mt-12 pt-8 border-t border-[--color-ivoire]/10">
       <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-4">
-        Garde d&apos;animaux en France
+        {t("zones_title")}
       </p>
       <div className="flex flex-wrap items-start gap-x-6 gap-y-3">
 
@@ -47,7 +49,8 @@ export function FooterZones() {
 
           {open && (
             <div
-              className="absolute bottom-full left-0 mb-2 z-50 bg-[--color-ivoire] border border-[--color-border] rounded-xl p-4 grid grid-cols-4 gap-x-5 gap-y-1.5 min-w-[300px] shadow-xl"
+              className="absolute bottom-full left-0 mb-2 z-50 border border-[--color-border] rounded-xl p-4 grid grid-cols-4 gap-x-5 gap-y-1.5 min-w-[300px] shadow-xl"
+              style={{ background: "var(--color-ivoire)" }}
               onMouseEnter={cancelClose}
               onMouseLeave={scheduleClose}
             >

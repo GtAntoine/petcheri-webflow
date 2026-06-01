@@ -28,6 +28,11 @@ interface AnimatedCardProps {
   iconColor?: string;
   iconSize?: number;
   iconStrokeWidth?: number;
+  /**
+   * Si fourni, l'icône est enveloppée dans un cercle coloré (w-12 h-12 rounded-full).
+   * Ex: "var(--color-creme)" pour les cartes de garanties.
+   */
+  iconBg?: string;
   /** Extra classes on the outer div (card-base is already included) */
   className?: string;
   children: ReactNode;
@@ -38,6 +43,7 @@ export function AnimatedCard({
   iconColor = "var(--color-or)",
   iconSize = 24,
   iconStrokeWidth = 1.5,
+  iconBg,
   className,
   children,
 }: AnimatedCardProps) {
@@ -49,12 +55,26 @@ export function AnimatedCard({
       onMouseEnter={() => iconRef.current?.startAnimation()}
       onMouseLeave={() => iconRef.current?.stopAnimation()}
     >
-      <Icon
-        ref={iconRef}
-        size={iconSize}
-        color={iconColor}
-        strokeWidth={iconStrokeWidth}
-      />
+      {iconBg ? (
+        <div
+          className="w-12 h-12 rounded-full flex items-center justify-center"
+          style={{ background: iconBg }}
+        >
+          <Icon
+            ref={iconRef}
+            size={iconSize}
+            color={iconColor}
+            strokeWidth={iconStrokeWidth}
+          />
+        </div>
+      ) : (
+        <Icon
+          ref={iconRef}
+          size={iconSize}
+          color={iconColor}
+          strokeWidth={iconStrokeWidth}
+        />
+      )}
       {children}
     </div>
   );

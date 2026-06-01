@@ -10,8 +10,8 @@ interface PageHeroCenteredProps {
   badge?: string;
   /** Title — pass a fragment with an accent <span> for the coral highlight */
   title: ReactNode;
-  /** Lead paragraph below the title */
-  subtitle: string;
+  /** Lead paragraph below the title — accepts ReactNode for inline icons */
+  subtitle: ReactNode;
 }
 
 /**
@@ -30,7 +30,7 @@ export function PageHeroCentered({ badge, title, subtitle }: PageHeroCenteredPro
     <section
       className="pt-28 pb-16 px-6"
       style={{
-        background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)",
+        background: "var(--gradient-about-hero)",
       }}
     >
       <div className="max-w-2xl mx-auto text-center">

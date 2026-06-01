@@ -6,6 +6,8 @@ import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { HomeProcess } from "@/components/sections/home-process";
+import { GuaranteesSection } from "@/components/sections/guarantees-section";
+import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import { routing } from "@/i18n/routing";
 import { CITIES, getCity, totalCitySitters } from "@/lib/cities-data";
 import { BOOKING_URL } from "@/lib/site-stats";
@@ -13,6 +15,12 @@ import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import SearchIcon from "@/components/icons/search-icon";
+import HomeIcon from "@/components/icons/home-icon";
+import FootprintsIcon from "@/components/icons/footprints-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import ScissorsIcon from "@/components/icons/scissors-icon";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import TruckIcon from "@/components/icons/truck-icon";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://petcheri.com";
 
@@ -27,25 +35,13 @@ export async function generateMetadata({
   const city = getCity(ville);
   if (!city) return {};
 
-  const title =
-    locale === "fr"
-      ? `Garde d'animaux à ${city.name} — Petcheri`
-      : `Pet sitting in ${city.name} — Petcheri`;
-
-  const description =
-    locale === "fr"
-      ? `${totalCitySitters(city)} prestataires certifiés disponibles à ${city.name} pour la garde de chien, chat et NAC. Service de conciergerie avec assurance AXA incluse.`
-      : `${totalCitySitters(city)} certified petsitters available in ${city.name}. Dog, cat and exotic pet care with AXA insurance included.`;
-
+  const t = await getTranslations({ locale, namespace: "pages" });
   const slug = `/garde-animaux/${ville}`;
-  const canonical =
-    locale === "fr"
-      ? `${BASE_URL}${slug}`
-      : `${BASE_URL}/en${slug}`;
+  const canonical = locale === "fr" ? `${BASE_URL}${slug}` : `${BASE_URL}/en${slug}`;
 
   return {
-    title,
-    description,
+    title:       t("garde_ville.meta_title",       { city: city.name }),
+    description: t("garde_ville.meta_description", { city: city.name, sitters: totalCitySitters(city) }),
     alternates: {
       canonical,
       languages: {
@@ -85,12 +81,12 @@ export default async function GardeAnimauxVillePage({
 
   // ── Services cards ─────────────────────────────────────────────────────────
   const SERVICE_CARDS = [
-    { label: t("garde_ville.svc_garde_label"),        sublabel: t("garde_ville.svc_garde_sublabel"),        count: city.services.garde,        emoji: "🏠" },
-    { label: t("garde_ville.svc_promenade_label"),    sublabel: t("garde_ville.svc_promenade_sublabel"),    count: city.services.promenade,    emoji: "🦮" },
-    { label: t("garde_ville.svc_visites_label"),      sublabel: t("garde_ville.svc_visites_sublabel"),      count: city.services.visites,      emoji: "🐱" },
-    { label: t("garde_ville.svc_toilettage_label"),   sublabel: t("garde_ville.svc_toilettage_sublabel"),   count: city.services.toilettage,   emoji: "✂️" },
-    { label: t("garde_ville.svc_comportement_label"), sublabel: t("garde_ville.svc_comportement_sublabel"), count: city.services.comportement, emoji: "🎓" },
-    { label: t("garde_ville.svc_transport_label"),    sublabel: t("garde_ville.svc_transport_sublabel"),    count: city.services.transport,    emoji: "🚗" },
+    { label: t("garde_ville.svc_garde_label"),        sublabel: t("garde_ville.svc_garde_sublabel"),        count: city.services.garde,        Icon: HomeIcon },
+    { label: t("garde_ville.svc_promenade_label"),    sublabel: t("garde_ville.svc_promenade_sublabel"),    count: city.services.promenade,    Icon: FootprintsIcon },
+    { label: t("garde_ville.svc_visites_label"),      sublabel: t("garde_ville.svc_visites_sublabel"),      count: city.services.visites,      Icon: PawPrintIcon },
+    { label: t("garde_ville.svc_toilettage_label"),   sublabel: t("garde_ville.svc_toilettage_sublabel"),   count: city.services.toilettage,   Icon: ScissorsIcon },
+    { label: t("garde_ville.svc_comportement_label"), sublabel: t("garde_ville.svc_comportement_sublabel"), count: city.services.comportement, Icon: GraduationCapIcon },
+    { label: t("garde_ville.svc_transport_label"),    sublabel: t("garde_ville.svc_transport_sublabel"),    count: city.services.transport,    Icon: TruckIcon },
   ];
 
   const GUARANTEES = [
@@ -107,7 +103,7 @@ export default async function GardeAnimauxVillePage({
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section
         className="pt-28 pb-20 px-6"
-        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
+        style={{ background: "var(--gradient-about-hero)" }}
       >
         <div className="max-w-4xl mx-auto text-center">
           {/* Breadcrumb */}
@@ -204,81 +200,45 @@ export default async function GardeAnimauxVillePage({
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICE_CARDS.map((svc) => (
-              <div key={svc.label} className="card-base p-6 flex items-start gap-4">
-                <span className="text-3xl shrink-0 mt-0.5">{svc.emoji}</span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p
-                      className="font-medium text-[--color-chocolat]"
-                      style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
-                    >
-                      {svc.label}
-                    </p>
-                    <span
-                      className="text-sm font-semibold shrink-0 px-2.5 py-0.5 rounded-full"
-                      style={{ background: "#fde0d4", color: "var(--color-rouge)" }}
-                    >
-                      {svc.count}+
-                    </span>
-                  </div>
-                  <p className="text-xs text-[--color-muted-foreground] mt-0.5">{svc.sublabel}</p>
+              <AnimatedCardHorizontal
+                key={svc.label}
+                Icon={svc.Icon}
+                iconSize={22}
+                iconStrokeWidth={1.5}
+                className="p-6 items-start"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <p
+                    className="font-medium text-[--color-chocolat]"
+                    style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
+                  >
+                    {svc.label}
+                  </p>
+                  <span
+                    className="text-sm font-semibold shrink-0 px-2.5 py-0.5 rounded-full"
+                    style={{ background: "var(--color-peach)", color: "var(--color-rouge)" }}
+                  >
+                    {svc.count}+
+                  </span>
                 </div>
-              </div>
+                <p className="text-xs text-[--color-muted-foreground]">{svc.sublabel}</p>
+              </AnimatedCardHorizontal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── Garanties ───────────────────────────────────────────────────────── */}
-      <section className="section-padding bg-[--color-ivoire]">
-        <div className="max-w-7xl mx-auto px-6">
-          <SectionHeader
-            label={t("garde_ville.guarantees_label")}
-            title={t("garde_ville.guarantees_title")}
-            subtitle={t("garde_ville.guarantees_subtitle")}
-            className="mb-12"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {GUARANTEES.map(({ Icon, title, desc }) => (
-              <div key={title} className="card-base p-7 flex flex-col items-center gap-4 text-center">
-                <div className="w-12 h-12 rounded-full bg-[--color-creme] flex items-center justify-center">
-                  <Icon size={22} color="var(--color-rouge)" strokeWidth={1.5} />
-                </div>
-                <h3
-                  className="text-[--color-chocolat] font-medium"
-                  style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
-                >
-                  {title}
-                </h3>
-                <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GuaranteesSection
+        label={t("garde_ville.guarantees_label")}
+        title={t("garde_ville.guarantees_title")}
+        subtitle={t("garde_ville.guarantees_subtitle")}
+        guarantees={GUARANTEES}
+      />
 
       {/* ── Comment ça marche ───────────────────────────────────────────────── */}
       <HomeProcess />
 
-      {/* ── Autres villes ──────────────────────────────────────────────────── */}
-      <section className="py-12 bg-white border-t border-[--color-border]">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[--color-muted-foreground] mb-5">
-            {t("garde_ville.other_cities_label")}
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {CITIES.filter((c) => c.slug !== city.slug).map((c) => (
-              <a
-                key={c.slug}
-                href={`/garde-animaux/${c.slug}`}
-                className="text-sm px-3.5 py-1.5 rounded-full border border-[--color-border] text-[--color-chocolat] hover:border-[--color-rouge-light] hover:text-[--color-rouge-light] transition-colors"
-              >
-                {c.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <CtaBanner
         title={t("garde_ville.cta_title", { city: city.name })}

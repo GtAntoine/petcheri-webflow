@@ -47,7 +47,7 @@ export default async function BlogPage({
       {/* Listing */}
       <section className="section-padding bg-[--color-ivoire]">
         <div className="max-w-7xl mx-auto px-6">
-          <BlogListing />
+          <BlogListing locale={locale} />
         </div>
       </section>
 

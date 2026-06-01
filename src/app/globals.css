@@ -18,6 +18,8 @@
   --color-rouge: #C0432D;
   --color-rouge-dark: #8B2016;
   --color-rouge-light: #E8705A;
+  /* ── Peach (fond icône / badge doux) ── */
+  --color-peach: #fde0d4;
 
   /* ── Semantic colors ── */
   --color-background: var(--color-ivoire);
@@ -53,6 +55,7 @@
   --gradient-newsletter:   linear-gradient(135deg, #8B2016 0%, #C0432D 55%, #E8705A 100%);
   --gradient-hero:         linear-gradient(160deg, #FFF9F0 0%, #FFECD2 40%, #fce4ec 70%, #E8E4F0 100%);
   --gradient-about-hero:   linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%);
+  --gradient-quote-pink:   linear-gradient(135deg, #fde0d4, #fdeee7);
   --gradient-dark:         linear-gradient(160deg, var(--color-chocolat) 0%, var(--color-chocolat-light) 100%);
   --gradient-service-card: linear-gradient(135deg, #FFF9F0 0%, #FFF0E8 100%);
 }

@@ -31,7 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const t = await getTranslations({ locale, namespace: "pages" });
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, locale);
   if (!post) return { title: t("blog_post.not_found_title") };
   return {
     title: `${post.title} — Petcheri Blog`,
@@ -74,10 +74,10 @@ export default async function BlogPostPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pages" });
 
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug, locale);
   if (!post) notFound();
 
-  const related = getRelatedPosts(post, 3);
+  const related = getRelatedPosts(post, locale, 3);
   const promos = getPromotionsByIds(post.promotionIds ?? []);
   const categoryColor = CATEGORY_COLORS[post.category] ?? "#C9A96E";
 
@@ -88,7 +88,7 @@ export default async function BlogPostPage({
       {/* ── Hero : titre à gauche, cover à droite ───────────────── */}
       <section
         className="pt-28 pb-16 px-6"
-        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
+        style={{ background: "var(--gradient-about-hero)" }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -198,7 +198,7 @@ export default async function BlogPostPage({
                   <div className="flex items-center gap-3">
                     <div
                       className="w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold"
-                      style={{ background: "linear-gradient(135deg, #E8705A, #C9A96E)" }}
+                      style={{ background: "linear-gradient(135deg, var(--color-rouge-light), var(--color-or))" }}
                     >
                       {post.author.charAt(0)}
                     </div>
@@ -238,7 +238,7 @@ export default async function BlogPostPage({
                 {/* CTA */}
                 <div
                   className="card-base p-6 text-center"
-                  style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
+                  style={{ background: "var(--gradient-quote-pink)" }}
                 >
                   <p className="text-sm font-semibold text-[--color-chocolat] mb-2">
                     {t("blog_post.cta_title")}
@@ -251,7 +251,7 @@ export default async function BlogPostPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:shadow-md hover:brightness-110 transition-all"
-                    style={{ background: "#E8705A" }}
+                    style={{ background: "var(--color-rouge-light)" }}
                   >
                     {t("blog_post.cta_btn")}
                   </a>
@@ -270,9 +270,9 @@ export default async function BlogPostPage({
               <div className="flex items-center gap-3 mb-6">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
+                  style={{ background: "var(--gradient-quote-pink)" }}
                 >
-                  <Gift className="w-4 h-4" style={{ color: "#E8705A" }} />
+                  <Gift className="w-4 h-4" style={{ color: "var(--color-rouge-light)" }} />
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or]">

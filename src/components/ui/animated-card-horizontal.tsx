@@ -27,6 +27,7 @@ interface AnimatedCardHorizontalProps {
   Icon: AnyIconComponent;
   iconColor?: string;
   iconSize?: number;
+  iconStrokeWidth?: number;
   iconBg?: string;
   className?: string;
   children: ReactNode;
@@ -34,9 +35,10 @@ interface AnimatedCardHorizontalProps {
 
 export function AnimatedCardHorizontal({
   Icon,
-  iconColor = "#E8705A",
+  iconColor = "var(--color-rouge)",
   iconSize = 20,
-  iconBg = "#fde0d4",
+  iconStrokeWidth = 1.5,
+  iconBg = "var(--color-peach)",
   className,
   children,
 }: AnimatedCardHorizontalProps) {
@@ -52,9 +54,10 @@ export function AnimatedCardHorizontal({
         className="w-12 h-12 rounded-2xl flex items-center justify-center shrink-0"
         style={{ background: iconBg }}
       >
-        <Icon ref={iconRef} size={iconSize} color={iconColor} />
+        <Icon ref={iconRef} size={iconSize} color={iconColor} strokeWidth={iconStrokeWidth} />
       </div>
-      <div className="flex flex-col gap-2">
+      {/* flex-1 min-w-0 pour que justify-between fonctionne dans les enfants */}
+      <div className="flex flex-col gap-2 flex-1 min-w-0">
         {children}
       </div>
     </div>

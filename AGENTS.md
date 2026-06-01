@@ -15,11 +15,14 @@ This version has breaking changes — APIs, conventions, and file structure may 
 Si aucune itshover ne correspond parfaitement au sens voulu, choisir la plus proche sémantiquement plutôt que de fallback sur un emoji.
 
 Liste des icônes disponibles dans `src/components/icons/` :
-`flame`, `graduation-cap`, `hand-heart`, `heart-handshake`, `heart`,
-`magnifier`, `message-square`, `party-popper`, `paw-print`, `search`,
+`checked`, `flame`, `footprints`, `graduation-cap`, `hand-heart`, `heart-handshake`, `heart`,
+`home`, `magnifier`, `message-square`, `party-popper`, `paw-print`, `scissors`, `search`,
 `send`, `shield-check`, `sparkles`, `trophy`, `truck`, `unordered-list`, `users`
 
-Pour les icônes animées au hover de la carte entière, utiliser `AnimatedCard` (layout vertical) ou `AnimatedCardHorizontal` (layout icône-gauche / texte-droite).
+Pour les icônes animées au hover de la carte entière, utiliser :
+- `AnimatedCard` — layout vertical (icône + `children` en colonne), prop `iconBg` optionnelle pour cercle coloré
+- `AnimatedCardHorizontal` — layout icône-gauche / texte-droite, prop `iconBg` + `iconColor` + `iconStrokeWidth`
+- `GuaranteesSection` — section "Nos garanties" prête à l'emploi (4 cartes `AnimatedCard` en grille)
 
 ## Animation itshover — déclenchement sur la card entière
 
@@ -34,7 +37,7 @@ const iconRef = useRef<{ startAnimation: () => void; stopAnimation: () => void }
   onMouseEnter={() => iconRef.current?.startAnimation()}
   onMouseLeave={() => iconRef.current?.stopAnimation()}
 >
-  <Icon ref={iconRef} size={20} color="#E8705A" />
+  <Icon ref={iconRef} size={20} color="var(--color-rouge)" />
   {/* contenu */}
 </div>
 ```

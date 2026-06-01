@@ -6,6 +6,8 @@ import { Footer } from "@/components/shared/footer";
 import { CtaBanner } from "@/components/sections/cta-banner";
 import { SectionHeader } from "@/components/sections/section-header";
 import { HomeProcess } from "@/components/sections/home-process";
+import { GuaranteesSection } from "@/components/sections/guarantees-section";
+import { AnimatedCardHorizontal } from "@/components/ui/animated-card-horizontal";
 import { routing } from "@/i18n/routing";
 import { PARIS_ZONES, getZone, totalSitters } from "@/lib/zones-data";
 import { BOOKING_URL } from "@/lib/site-stats";
@@ -13,6 +15,12 @@ import ShieldCheckIcon from "@/components/icons/shield-check-icon";
 import HeartHandshakeIcon from "@/components/icons/heart-handshake-icon";
 import SparklesIcon from "@/components/icons/sparkles-icon";
 import SearchIcon from "@/components/icons/search-icon";
+import HomeIcon from "@/components/icons/home-icon";
+import FootprintsIcon from "@/components/icons/footprints-icon";
+import PawPrintIcon from "@/components/icons/paw-print-icon";
+import ScissorsIcon from "@/components/icons/scissors-icon";
+import GraduationCapIcon from "@/components/icons/graduation-cap-icon";
+import TruckIcon from "@/components/icons/truck-icon";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? "https://petcheri.com";
 
@@ -27,25 +35,13 @@ export async function generateMetadata({
   const zone = getZone(arrondissement);
   if (!zone) return {};
 
-  const title =
-    locale === "fr"
-      ? `Garde d'animaux Paris ${zone.arrondissement} — Petcheri`
-      : `Pet sitting Paris ${zone.arrondissement} — Petcheri`;
-
-  const description =
-    locale === "fr"
-      ? `${totalSitters(zone)} prestataires certifiés disponibles dans le ${zone.label} pour la garde de chien, chat et NAC. Service de conciergerie avec assurance AXA incluse.`
-      : `${totalSitters(zone)} certified petsitters available in ${zone.label}. Dog, cat and exotic pet care with AXA insurance included.`;
-
+  const t = await getTranslations({ locale, namespace: "pages" });
   const slug = `/garde-animaux-paris/${arrondissement}`;
-  const canonical =
-    locale === "fr"
-      ? `${BASE_URL}${slug}`
-      : `${BASE_URL}/en${slug}`;
+  const canonical = locale === "fr" ? `${BASE_URL}${slug}` : `${BASE_URL}/en${slug}`;
 
   return {
-    title,
-    description,
+    title:       t("garde_paris.meta_title",       { arrondissement: zone.arrondissement }),
+    description: t("garde_paris.meta_description", { arrondissement: zone.arrondissement, label: zone.label, sitters: totalSitters(zone) }),
     alternates: {
       canonical,
       languages: {
@@ -85,12 +81,12 @@ export default async function GardeAnimauxParisPage({
 
   // ── Services cards ─────────────────────────────────────────────────────────
   const SERVICE_CARDS = [
-    { label: t("garde_paris.svc_garde_label"),        sublabel: t("garde_paris.svc_garde_sublabel"),        count: zone.services.garde,        emoji: "🏠" },
-    { label: t("garde_paris.svc_promenade_label"),    sublabel: t("garde_paris.svc_promenade_sublabel"),    count: zone.services.promenade,    emoji: "🦮" },
-    { label: t("garde_paris.svc_visites_label"),      sublabel: t("garde_paris.svc_visites_sublabel"),      count: zone.services.visites,      emoji: "🐱" },
-    { label: t("garde_paris.svc_toilettage_label"),   sublabel: t("garde_paris.svc_toilettage_sublabel"),   count: zone.services.toilettage,   emoji: "✂️" },
-    { label: t("garde_paris.svc_comportement_label"), sublabel: t("garde_paris.svc_comportement_sublabel"), count: zone.services.comportement, emoji: "🎓" },
-    { label: t("garde_paris.svc_transport_label"),    sublabel: t("garde_paris.svc_transport_sublabel"),    count: zone.services.transport,    emoji: "🚗" },
+    { label: t("garde_paris.svc_garde_label"),        sublabel: t("garde_paris.svc_garde_sublabel"),        count: zone.services.garde,        Icon: HomeIcon },
+    { label: t("garde_paris.svc_promenade_label"),    sublabel: t("garde_paris.svc_promenade_sublabel"),    count: zone.services.promenade,    Icon: FootprintsIcon },
+    { label: t("garde_paris.svc_visites_label"),      sublabel: t("garde_paris.svc_visites_sublabel"),      count: zone.services.visites,      Icon: PawPrintIcon },
+    { label: t("garde_paris.svc_toilettage_label"),   sublabel: t("garde_paris.svc_toilettage_sublabel"),   count: zone.services.toilettage,   Icon: ScissorsIcon },
+    { label: t("garde_paris.svc_comportement_label"), sublabel: t("garde_paris.svc_comportement_sublabel"), count: zone.services.comportement, Icon: GraduationCapIcon },
+    { label: t("garde_paris.svc_transport_label"),    sublabel: t("garde_paris.svc_transport_sublabel"),    count: zone.services.transport,    Icon: TruckIcon },
   ];
 
   const GUARANTEES = [
@@ -107,7 +103,7 @@ export default async function GardeAnimauxParisPage({
       {/* ── Hero ────────────────────────────────────────────────────────────── */}
       <section
         className="pt-28 pb-20 px-6"
-        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
+        style={{ background: "var(--gradient-about-hero)" }}
       >
         <div className="max-w-4xl mx-auto text-center">
           {/* Breadcrumb */}
@@ -178,14 +174,14 @@ export default async function GardeAnimauxParisPage({
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white shadow-md hover:shadow-lg hover:brightness-110 transition-all"
-              style={{ background: "#C0432D" }}
+              style={{ background: "var(--color-rouge)" }}
             >
               {t("garde_paris.cta_find")}
             </a>
             <a
               href="/nos-services"
               className="inline-flex items-center gap-2 rounded-full border-2 px-8 py-3.5 text-sm font-semibold text-[--color-chocolat] bg-white/70 hover:bg-white transition-all"
-              style={{ borderColor: "#E8705A" }}
+              style={{ borderColor: "var(--color-rouge-light)" }}
             >
               {t("garde_paris.cta_see_services")}
             </a>
@@ -204,58 +200,41 @@ export default async function GardeAnimauxParisPage({
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICE_CARDS.map((svc) => (
-              <div key={svc.label} className="card-base p-6 flex items-start gap-4">
-                <span className="text-3xl shrink-0 mt-0.5">{svc.emoji}</span>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <p
-                      className="font-medium text-[--color-chocolat]"
-                      style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
-                    >
-                      {svc.label}
-                    </p>
-                    <span
-                      className="text-sm font-semibold shrink-0 px-2.5 py-0.5 rounded-full"
-                      style={{ background: "#fde0d4", color: "#C0432D" }}
-                    >
-                      {svc.count}+
-                    </span>
-                  </div>
-                  <p className="text-xs text-[--color-muted-foreground] mt-0.5">{svc.sublabel}</p>
+              <AnimatedCardHorizontal
+                key={svc.label}
+                Icon={svc.Icon}
+                iconSize={22}
+                iconStrokeWidth={1.5}
+                className="p-6 items-start"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <p
+                    className="font-medium text-[--color-chocolat]"
+                    style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
+                  >
+                    {svc.label}
+                  </p>
+                  <span
+                    className="text-sm font-semibold shrink-0 px-2.5 py-0.5 rounded-full"
+                    style={{ background: "var(--color-peach)", color: "var(--color-rouge)" }}
+                  >
+                    {svc.count}+
+                  </span>
                 </div>
-              </div>
+                <p className="text-xs text-[--color-muted-foreground]">{svc.sublabel}</p>
+              </AnimatedCardHorizontal>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── Garanties ───────────────────────────────────────────────────────── */}
-      <section className="section-padding bg-[--color-ivoire]">
-        <div className="max-w-7xl mx-auto px-6">
-          <SectionHeader
-            label={t("garde_paris.guarantees_label")}
-            title={t("garde_paris.guarantees_title")}
-            subtitle={t("garde_paris.guarantees_subtitle")}
-            className="mb-12"
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {GUARANTEES.map(({ Icon, title, desc }) => (
-              <div key={title} className="card-base p-7 flex flex-col items-center gap-4 text-center">
-                <div className="w-12 h-12 rounded-full bg-[--color-creme] flex items-center justify-center">
-                  <Icon size={22} color="#C0432D" strokeWidth={1.5} />
-                </div>
-                <h3
-                  className="text-[--color-chocolat] font-medium"
-                  style={{ fontFamily: "var(--font-serif)", fontSize: "1.05rem" }}
-                >
-                  {title}
-                </h3>
-                <p className="text-sm text-[--color-muted-foreground] leading-relaxed">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <GuaranteesSection
+        label={t("garde_paris.guarantees_label")}
+        title={t("garde_paris.guarantees_title")}
+        subtitle={t("garde_paris.guarantees_subtitle")}
+        guarantees={GUARANTEES}
+      />
 
       {/* ── Comment ça marche ───────────────────────────────────────────────── */}
       <HomeProcess />

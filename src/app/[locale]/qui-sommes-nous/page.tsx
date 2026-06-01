@@ -59,7 +59,7 @@ export default async function QuiSommesNousPage({
       {/* Hero */}
       <section
         className="pt-28 pb-20 px-6"
-        style={{ background: "linear-gradient(135deg, #fde0d4 0%, #fdeee7 45%, #fdf6f2 100%)" }}
+        style={{ background: "var(--gradient-about-hero)" }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -127,7 +127,7 @@ export default async function QuiSommesNousPage({
               {/* Floating quote */}
               <div
                 className="absolute -bottom-6 -right-6 card-base p-5 max-w-[240px]"
-                style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
+                style={{ background: "var(--gradient-quote-pink)" }}
               >
                 <p className="text-sm font-medium text-[--color-chocolat] leading-relaxed">
                   &ldquo;{t("qui_sommes_nous.histoire_floating_quote")}&rdquo;
@@ -263,7 +263,7 @@ export default async function QuiSommesNousPage({
               <div
                 key={alt}
                 className="card-base p-7 flex flex-col gap-4 text-center items-center"
-                style={{ background: "linear-gradient(135deg, #fde0d4, #fdeee7)" }}
+                style={{ background: "var(--gradient-quote-pink)" }}
               >
                 <div className="h-16 w-full flex items-center justify-center">
                   <Image src={logo} alt={alt} width={120} height={64} className="object-contain max-h-16" />

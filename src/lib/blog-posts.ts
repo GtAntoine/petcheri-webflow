@@ -844,6 +844,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
+/** Internal category keys (French) — used for filtering */
 export const BLOG_CATEGORIES = [
   "Tous",
   "Santé",
@@ -854,21 +855,76 @@ export const BLOG_CATEGORIES = [
   "Lifestyle",
 ];
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((p) => p.slug === slug);
+// ─── Localisation ─────────────────────────────────────────────────────────────
+
+/** Category display labels per locale. Internal value is always the French key. */
+const CATEGORY_DISPLAY_LABELS: Record<string, Record<string, string>> = {
+  fr: {
+    Tous: "Tous",
+    Santé: "Santé",
+    Comportement: "Comportement",
+    Voyage: "Voyage",
+    Guide: "Guide",
+    Entreprises: "Entreprises",
+    Lifestyle: "Lifestyle",
+  },
+  en: {
+    Tous: "All",
+    Santé: "Health",
+    Comportement: "Behaviour",
+    Voyage: "Travel",
+    Guide: "Guide",
+    Entreprises: "Business",
+    Lifestyle: "Lifestyle",
+  },
+};
+
+/**
+ * Returns category items with localised display labels.
+ * `value` is always the internal French key used for post filtering.
+ */
+export function getBlogCategories(locale: string): { label: string; value: string }[] {
+  const labels = CATEGORY_DISPLAY_LABELS[locale] ?? CATEGORY_DISPLAY_LABELS.fr;
+  return BLOG_CATEGORIES.map((key) => ({ label: labels[key] ?? key, value: key }));
 }
 
-export function getPostsByCategory(category: string): BlogPost[] {
-  if (category === "Tous") return BLOG_POSTS;
-  return BLOG_POSTS.filter((p) => p.category === category);
+/**
+ * EN content overrides — empty for now (French content is shown on all locales).
+ * Add per-post EN translations here when available: { [postId]: { title, excerpt, content, … } }
+ */
+export const EN_OVERRIDES: Record<string, Partial<BlogPost>> = {};
+
+/**
+ * Returns blog posts for the given locale, with EN overrides applied if any.
+ */
+export function getBlogPosts(locale: string): BlogPost[] {
+  if (locale !== "en" || Object.keys(EN_OVERRIDES).length === 0) return BLOG_POSTS;
+  return BLOG_POSTS.map((post) => {
+    const override = EN_OVERRIDES[post.id];
+    return override ? { ...post, ...override } : post;
+  });
 }
 
-export function getFeaturedPosts(): BlogPost[] {
-  return BLOG_POSTS.filter((p) => p.featured);
+export function getPostBySlug(slug: string, locale = "fr"): BlogPost | undefined {
+  return getBlogPosts(locale).find((p) => p.slug === slug);
 }
 
-export function getRelatedPosts(post: BlogPost, limit = 3): BlogPost[] {
-  return BLOG_POSTS.filter(
-    (p) => p.id !== post.id && (p.category === post.category || p.tags.some((t) => post.tags.includes(t)))
-  ).slice(0, limit);
+export function getPostsByCategory(category: string, locale = "fr"): BlogPost[] {
+  const posts = getBlogPosts(locale);
+  if (category === "Tous") return posts;
+  return posts.filter((p) => p.category === category);
+}
+
+export function getFeaturedPosts(locale = "fr"): BlogPost[] {
+  return getBlogPosts(locale).filter((p) => p.featured);
+}
+
+export function getRelatedPosts(post: BlogPost, locale = "fr", limit = 3): BlogPost[] {
+  return getBlogPosts(locale)
+    .filter(
+      (p) =>
+        p.id !== post.id &&
+        (p.category === post.category || p.tags.some((t) => post.tags.includes(t)))
+    )
+    .slice(0, limit);
 }

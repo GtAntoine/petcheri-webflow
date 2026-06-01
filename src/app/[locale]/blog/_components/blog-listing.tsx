@@ -1,32 +1,49 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
-import { BLOG_POSTS, BLOG_CATEGORIES, getFeaturedPosts } from "@/lib/blog-posts";
+import {
+  getBlogPosts,
+  getBlogCategories,
+  getFeaturedPosts,
+} from "@/lib/blog-posts";
 import { BlogCard, FeaturedBlogCard } from "@/components/ui/blog-card";
 import { CategoryPills } from "@/components/ui/category-pills";
 
-export function BlogListing() {
-  const [activeCategory, setActiveCategory] = useState("Tous");
+interface BlogListingProps {
+  locale: string;
+}
 
-  const featured = getFeaturedPosts();
+export function BlogListing({ locale }: BlogListingProps) {
+  const t = useTranslations("pages");
+
+  const categories = getBlogCategories(locale);
+  /** Internal French key used for filtering ("Tous", "Santé", …) */
+  const ALL_VALUE = categories[0].value;
+
+  const [activeCategory, setActiveCategory] = useState(ALL_VALUE);
+
+  const posts    = getBlogPosts(locale);
+  const featured = getFeaturedPosts(locale);
+
   const filtered =
-    activeCategory === "Tous"
-      ? BLOG_POSTS
-      : BLOG_POSTS.filter((p) => p.category === activeCategory);
+    activeCategory === ALL_VALUE
+      ? posts
+      : posts.filter((p) => p.category === activeCategory);
 
-  // For "Tous": show featured separately + rest in grid; otherwise show all filtered
-  const heroPost = activeCategory === "Tous" ? featured[0] : null;
+  // "Tous" view: show first featured post as hero; everything else in grid
+  const heroPost  = activeCategory === ALL_VALUE ? featured[0] : null;
   const gridPosts =
-    activeCategory === "Tous"
-      ? BLOG_POSTS.filter((p) => !p.featured || BLOG_POSTS.indexOf(p) > 0)
+    activeCategory === ALL_VALUE
+      ? posts.filter((p) => !p.featured || posts.indexOf(p) > 0)
       : filtered;
 
   return (
     <>
       {/* ── Category filters ──────────────────────────────────────── */}
       <CategoryPills
-        items={BLOG_CATEGORIES.map((label) => ({ label }))}
+        items={categories}
         active={activeCategory}
         onChange={setActiveCategory}
         className="mb-10"
@@ -70,7 +87,7 @@ export function BlogListing() {
         </motion.div>
       ) : (
         <div className="text-center py-20 text-[--color-muted-foreground]">
-          Aucun article dans cette catégorie pour le moment.
+          {t("blog.no_articles")}
         </div>
       )}
     </>
