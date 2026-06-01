@@ -23,12 +23,14 @@ const itemVariants = {
 
 // Service image/href pairs — static data, labels translated via t()
 const SERVICE_ITEMS = [
-  { href: "/garde-chien"           as const, image: PHOTOS.moodboard2,        titleKey: "service_garde_domicile_title" as const, descKey: "service_garde_domicile_desc" as const, tagKey: "service_garde_domicile_tag" as const },
-  { href: "/garde-nuit"            as const, image: ILLUSTRATIONS.gardeNuit,  titleKey: "service_garde_nuit_title"    as const, descKey: "service_garde_nuit_desc"    as const, tagKey: "service_garde_nuit_tag"    as const },
-  { href: "/garde-chat"            as const, image: ILLUSTRATIONS.catSitting, titleKey: "service_visite_chat_title"   as const, descKey: "service_visite_chat_desc"   as const, tagKey: "service_visite_chat_tag"   as const },
-  { href: "/comportement-education"as const, image: ILLUSTRATIONS.dogDay,     titleKey: "service_comportement_title"  as const, descKey: "service_comportement_desc"  as const, tagKey: "service_comportement_tag"  as const },
-  { href: "/toilettage"            as const, image: ILLUSTRATIONS.grooming,   titleKey: "service_toilettage_title"    as const, descKey: "service_toilettage_desc"    as const, tagKey: "service_toilettage_tag"    as const },
-  { href: "/transport"             as const, image: PHOTOS.moodboard5,        titleKey: "service_transport_title"     as const, descKey: "service_transport_desc"     as const, tagKey: "service_transport_tag"     as const },
+  { href: "/garde-chien"            as const, image: PHOTOS.moodboard2,         titleKey: "service_dogsitting_title"      as const, descKey: "service_dogsitting_desc"      as const, tagKey: "service_dogsitting_tag"      as const },
+  { href: "/garde-chat"             as const, image: ILLUSTRATIONS.catSitting,  titleKey: "service_visite_chat_title"     as const, descKey: "service_visite_chat_desc"     as const, tagKey: "service_visite_chat_tag"     as const },
+  { href: "/services-chien"         as const, image: PHOTOS.chouchouteur7,      titleKey: "service_promenade_title"       as const, descKey: "service_promenade_desc"       as const, tagKey: "service_promenade_tag"       as const },
+  { href: "/toilettage"             as const, image: ILLUSTRATIONS.grooming,    titleKey: "service_toilettage_title"      as const, descKey: "service_toilettage_desc"      as const, tagKey: "service_toilettage_tag"      as const },
+  { href: "/comportement-education" as const, image: ILLUSTRATIONS.dogDay,      titleKey: "service_comportement_title"    as const, descKey: "service_comportement_desc"    as const, tagKey: "service_comportement_tag"    as const },
+  { href: "/bien-etre"              as const, image: PHOTOS.moodboard1,         titleKey: "service_bienetre_title"        as const, descKey: "service_bienetre_desc"        as const, tagKey: "service_bienetre_tag"        as const },
+  { href: "/transport"              as const, image: PHOTOS.moodboard5,         titleKey: "service_transport_title"       as const, descKey: "service_transport_desc"       as const, tagKey: "service_transport_tag"       as const },
+  { href: "/services-nac"           as const, image: PHOTOS.moodboard6,         titleKey: "service_autres_title"          as const, descKey: "service_autres_desc"          as const, tagKey: "service_autres_tag"          as const },
 ] as const;
 
 export function HomeServices() {
@@ -45,7 +47,7 @@ export function HomeServices() {
         />
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="show"
@@ -62,7 +64,7 @@ export function HomeServices() {
                       alt={t(service.titleKey)}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                     <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-xs font-medium text-[--color-chocolat] px-3 py-1 rounded-full">
                       {t(service.tagKey)}

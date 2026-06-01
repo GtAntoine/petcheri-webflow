@@ -2,9 +2,9 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { UI } from "@/lib/assets";
-import { PARIS_ZONES } from "@/lib/zones-data";
 import { FooterSocial } from "./footer-social";
 import { FooterPawPrint } from "./footer-paw-print";
+import { FooterZones } from "./footer-zones";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -22,7 +22,7 @@ export function Footer() {
               alt="Petcheri"
               width={130}
               height={38}
-              className="h-9 w-auto brightness-0 invert mb-4"
+              className="h-9 w-auto mb-4"
             />
             <p className="text-sm text-[--color-ivoire]/70 leading-relaxed mb-6">
               {t("tagline")}
@@ -122,23 +122,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Paris zones SEO */}
-        <div className="mt-12 pt-8 border-t border-[--color-ivoire]/10">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[--color-or] mb-4">
-            Garde d&apos;animaux à Paris
-          </p>
-          <div className="flex flex-wrap gap-x-5 gap-y-2">
-            {PARIS_ZONES.map((z) => (
-              <a
-                key={z.arrondissement}
-                href={`/garde-animaux-paris/${z.arrondissement}`}
-                className="text-xs text-[--color-ivoire]/50 hover:text-[--color-ivoire]/80 transition-colors whitespace-nowrap"
-              >
-                Paris {z.arrondissement}
-              </a>
-            ))}
-          </div>
-        </div>
+        <FooterZones />
 
         {/* Bottom bar */}
         <div className="mt-8 pt-6 border-t border-[--color-ivoire]/10 flex flex-col md:flex-row items-center justify-between gap-4">

@@ -10,6 +10,8 @@ import { HomeTestimonials } from "@/components/sections/home-testimonials";
 import { HomePromos } from "@/components/sections/home-promos";
 import { HomeFaq } from "@/components/sections/home-faq";
 import { HomeCta } from "@/components/sections/home-cta";
+import { HomeBlog } from "@/components/sections/home-blog";
+import { HomeNewsletter } from "@/components/sections/home-newsletter";
 import { PressLogos } from "@/components/sections/press-logos";
 import { StatsCounter } from "@/components/sections/stats-counter";
 import { routing } from "@/i18n/routing";
@@ -51,8 +53,10 @@ export default async function HomePage({
         <HomeServices />
         <HomeProcess />
         <HomeTestimonials />
+        <HomeBlog locale={locale} />
         <HomePromos />
         <HomeFaq />
+        <HomeNewsletter />
         <HomeCta />
       </main>
       <Footer />
